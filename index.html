@@ -3,111 +3,170 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Informatika SMA – Belajar Algoritma & Coding</title>
+  <meta name="description" content="Mata Pelajaran Informatika SMA Negeri 1 Cluring - Belajar Algoritma, Coding, dan Berpikir Komputasional untuk Masa Depan Digital">
+  <meta name="keywords" content="informatika, coding, algoritma, SMA, Cluring, pemrograman, JavaScript, LMS">
+  <meta name="author" content="Tim Informatika SMA Negeri 1 Cluring">
+  
+  <!-- Open Graph / Social Media Meta Tags -->
+  <meta property="og:title" content="Informatika SMA – Belajar Algoritma & Coding">
+  <meta property="og:description" content="Kembangkan keterampilan digital melalui pembelajaran informatika interaktif di SMA Negeri 1 Cluring">
+  <meta property="og:type" content="website">
+  
+  <title>Informatika SMA – Belajar Algoritma & Coding | SMA Negeri 1 Cluring</title>
+  
+  <!-- Preconnect untuk performa -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
   
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
   
   <style>
-    /* ===== CSS VARIABLES ===== */
+    /* ===== CSS VARIABLES - SHARED DESIGN SYSTEM ===== */
     :root {
+      /* Primary Colors */
       --primary-blue: #2563eb;
       --primary-blue-dark: #1d4ed8;
+      --primary-blue-light: #3b82f6;
+      
+      /* Secondary Colors */
       --secondary-green: #10b981;
       --secondary-green-dark: #059669;
+      --secondary-green-light: #34d399;
+      
+      /* Accent Colors */
       --accent-purple: #8b5cf6;
+      --accent-purple-dark: #7c3aed;
+      
+      /* Neutral Colors */
       --dark: #1e293b;
+      --dark-light: #334155;
       --light: #f8fafc;
       --gray: #64748b;
+      --gray-light: #94a3b8;
       --white: #ffffff;
+      
+      /* Effects */
       --shadow: 0 10px 30px -10px rgba(0,0,0,0.15);
       --shadow-hover: 0 20px 40px -10px rgba(0,0,0,0.25);
+      --shadow-lg: 0 25px 50px -12px rgba(0,0,0,0.3);
       --radius: 16px;
-      --transition: all 0.3s ease;
+      --radius-lg: 24px;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      
+      /* Typography */
+      --font-primary: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
     }
 
-    /* ===== RESET & BASE ===== */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    /* ===== RESET & BASE STYLES ===== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    html { 
+      scroll-behavior: smooth;
+      scroll-padding-top: 2rem;
+    }
+    
     body {
-      font-family: 'Poppins', sans-serif;
+      font-family: var(--font-primary);
       background: var(--light);
       color: var(--dark);
       line-height: 1.6;
       overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
-    img { max-width: 100%; display: block; }
-    a { text-decoration: none; color: inherit; }
+    
+    img { max-width: 100%; height: auto; display: block; }
+    a { text-decoration: none; color: inherit; transition: var(--transition); }
     ul { list-style: none; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
 
     /* ===== UTILITIES ===== */
     .container {
+      width: 100%;
       max-width: 1200px;
       margin: 0 auto;
       padding: 0 2rem;
     }
-    .section {
-      padding: 5rem 0;
-    }
+    
+    .section { padding: 5rem 0; }
+    .section-sm { padding: 3.5rem 0; }
+    
     .section-title {
       text-align: center;
       margin-bottom: 3rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
     }
+    
     .section-title h2 {
-      font-size: 2.25rem;
+      font-size: clamp(1.75rem, 4vw, 2.25rem);
       font-weight: 700;
       margin-bottom: 0.75rem;
       background: linear-gradient(135deg, var(--primary-blue), var(--secondary-green));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
+    
     .section-title p {
       color: var(--gray);
       font-size: 1.1rem;
-      max-width: 600px;
-      margin: 0 auto;
+      line-height: 1.7;
     }
+    
+    /* ===== BUTTONS ===== */
     .btn {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 0.5rem;
       padding: 0.875rem 1.75rem;
       border-radius: 50px;
       font-weight: 600;
       font-size: 1rem;
-      cursor: pointer;
       transition: var(--transition);
       border: none;
       box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
     }
-    .btn:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-hover);
+    
+    .btn::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.2), transparent);
+      opacity: 0;
+      transition: var(--transition);
     }
+    
+    .btn:hover::after { opacity: 1; }
+    .btn:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); }
+    .btn:active { transform: translateY(-1px); }
+    
     .btn-primary {
-      background: var(--primary-blue);
+      background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-dark));
       color: var(--white);
     }
-    .btn-primary:hover {
-      background: var(--primary-blue-dark);
-    }
+    .btn-primary:hover { background: linear-gradient(135deg, var(--primary-blue-dark), #1a44b8); }
+    
     .btn-success {
-      background: var(--secondary-green);
+      background: linear-gradient(135deg, var(--secondary-green), var(--secondary-green-dark));
       color: var(--white);
     }
-    .btn-success:hover {
-      background: var(--secondary-green-dark);
-    }
+    .btn-success:hover { background: linear-gradient(135deg, var(--secondary-green-dark), #047857); }
+    
     .btn-purple {
-      background: var(--accent-purple);
+      background: linear-gradient(135deg, var(--accent-purple), var(--accent-purple-dark));
       color: var(--white);
     }
-    .btn-purple:hover {
-      background: #7c3aed;
-    }
+    .btn-purple:hover { background: linear-gradient(135deg, var(--accent-purple-dark), #6d28d9); }
+    
     .btn-outline {
       background: transparent;
       border: 2px solid var(--primary-blue);
@@ -117,15 +176,41 @@
       background: var(--primary-blue);
       color: var(--white);
     }
+    
+    .btn-white {
+      background: var(--white);
+      color: var(--primary-blue);
+      font-weight: 700;
+    }
+    .btn-white:hover {
+      background: #f1f5f9;
+      transform: translateY(-3px);
+    }
+    
+    .btn-sm { padding: 0.625rem 1.25rem; font-size: 0.9rem; }
+    .btn-lg { padding: 1.125rem 2.25rem; font-size: 1.1rem; }
+    .btn-block { width: 100%; }
+    
+    .btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none !important;
+      box-shadow: none !important;
+    }
+
+    /* ===== BADGE ===== */
     .badge {
-      display: inline-block;
-      padding: 0.35rem 0.85rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.4rem 1rem;
       background: linear-gradient(135deg, var(--primary-blue), var(--accent-purple));
       color: white;
       border-radius: 50px;
       font-size: 0.85rem;
       font-weight: 500;
-      margin-bottom: 1rem;
+      margin-bottom: 1.25rem;
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
     }
 
     /* ===== HERO SECTION ===== */
@@ -133,89 +218,156 @@
       min-height: 100vh;
       display: flex;
       align-items: center;
-      background: linear-gradient(135deg, #eff6ff 0%, #ecfdf5 100%);
+      background: linear-gradient(135deg, #eff6ff 0%, #ecfdf5 50%, #faf5ff 100%);
       position: relative;
       overflow: hidden;
       padding-top: 2rem;
+      padding-bottom: 3rem;
     }
-    .hero::before {
-      content: '';
-      position: absolute;
-      width: 600px;
-      height: 600px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(37,99,235,0.15) 0%, transparent 70%);
-      top: -200px;
-      right: -200px;
-      animation: float 8s ease-in-out infinite;
-    }
+    
+    .hero::before,
     .hero::after {
       content: '';
       position: absolute;
-      width: 400px;
-      height: 400px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(16,185,129,0.15) 0%, transparent 70%);
-      bottom: -100px;
-      left: -100px;
-      animation: float 10s ease-in-out infinite reverse;
+      filter: blur(60px);
+      z-index: 1;
+      animation: float 8s ease-in-out infinite;
     }
+    
+    .hero::before {
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(37,99,235,0.15) 0%, transparent 70%);
+      top: -200px; right: -200px;
+      animation-delay: 0s;
+    }
+    
+    .hero::after {
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(16,185,129,0.15) 0%, transparent 70%);
+      bottom: -100px; left: -100px;
+      animation-delay: -4s;
+    }
+    
     @keyframes float {
       0%, 100% { transform: translateY(0) scale(1); }
-      50% { transform: translateY(-20px) scale(1.05); }
+      50% { transform: translateY(-25px) scale(1.05); }
     }
+    
     .hero-content {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1.1fr 0.9fr;
       gap: 3rem;
       align-items: center;
       position: relative;
       z-index: 2;
     }
+    
     .hero-text h1 {
-      font-size: 3.5rem;
+      font-size: clamp(2rem, 5vw, 3.5rem);
       font-weight: 800;
       line-height: 1.1;
       margin-bottom: 1.5rem;
       background: linear-gradient(135deg, var(--dark) 0%, var(--primary-blue) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
-    .hero-text p {
-      font-size: 1.25rem;
+    
+    .hero-text > p {
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
       color: var(--gray);
       margin-bottom: 2rem;
-      max-width: 550px;
+      max-width: 580px;
+      line-height: 1.7;
     }
+    
     .hero-buttons {
       display: flex;
       flex-wrap: wrap;
       gap: 1rem;
-      margin-bottom: 2.5rem;
+      margin-bottom: 2rem;
     }
+    
+    .hero-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.9rem;
+      color: var(--gray);
+    }
+    
+    .hero-features i {
+      color: var(--secondary-green);
+      margin-right: 0.35rem;
+    }
+    
     .hero-image {
       position: relative;
       display: flex;
       justify-content: center;
+      align-items: center;
     }
-    .hero-image img {
-      max-width: 100%;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow-hover);
+    
+    .hero-visual {
+      width: 100%;
+      max-width: 480px;
+      aspect-ratio: 4/3;
+      background: linear-gradient(135deg, var(--primary-blue-light), var(--accent-purple));
+      border-radius: var(--radius-lg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      overflow: hidden;
       animation: fadeInUp 0.8s ease-out;
     }
+    
+    .hero-visual::before {
+      content: '';
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+      animation: rotate 20s linear infinite;
+    }
+    
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    
+    .hero-visual i {
+      font-size: clamp(3rem, 8vw, 5rem);
+      margin-bottom: 1rem;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .hero-visual span {
+      font-size: 1.1rem;
+      font-weight: 500;
+      position: relative;
+      z-index: 2;
+      opacity: 0.95;
+    }
+    
     @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
+      from { opacity: 0; transform: translateY(40px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
     /* ===== ABOUT SECTION ===== */
     .about-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.75rem;
       margin-top: 2rem;
     }
+    
     .about-card {
       background: var(--white);
       padding: 2rem;
@@ -223,54 +375,84 @@
       box-shadow: var(--shadow);
       transition: var(--transition);
       text-align: center;
+      border: 2px solid transparent;
     }
+    
     .about-card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-6px);
       box-shadow: var(--shadow-hover);
+      border-color: var(--primary-blue-light);
     }
+    
+    .about-card .icon-wrapper {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(37,99,235,0.12), rgba(16,185,129,0.12));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.25rem;
+    }
+    
     .about-card i {
-      font-size: 2.5rem;
+      font-size: 1.75rem;
       color: var(--primary-blue);
-      margin-bottom: 1rem;
     }
+    
     .about-card h3 {
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       margin-bottom: 0.75rem;
       font-weight: 600;
     }
+    
     .about-card p {
       color: var(--gray);
       font-size: 0.95rem;
+      line-height: 1.6;
     }
 
     /* ===== MATERIALS SECTION ===== */
+    .materials-section { background: linear-gradient(180deg, #f1f5f9 0%, var(--light) 100%); }
+    
     .materials-tabs {
       display: flex;
       justify-content: center;
-      gap: 1rem;
+      gap: 0.75rem;
       margin-bottom: 2.5rem;
       flex-wrap: wrap;
+      background: var(--white);
+      padding: 0.5rem;
+      border-radius: 50px;
+      box-shadow: var(--shadow);
+      max-width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
     }
+    
     .tab-btn {
-      padding: 0.6rem 1.5rem;
-      border: 2px solid var(--primary-blue);
-      background: transparent;
+      padding: 0.65rem 1.5rem;
       border-radius: 50px;
       font-weight: 600;
-      cursor: pointer;
+      font-size: 0.95rem;
       transition: var(--transition);
-      color: var(--primary-blue);
+      color: var(--gray);
+      background: transparent;
     }
+    
     .tab-btn.active,
     .tab-btn:hover {
-      background: var(--primary-blue);
+      background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-dark));
       color: white;
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
     }
+    
     .materials-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 1.5rem;
     }
+    
     .material-card {
       background: var(--white);
       border-radius: var(--radius);
@@ -278,112 +460,181 @@
       box-shadow: var(--shadow);
       transition: var(--transition);
       border-top: 4px solid var(--primary-blue);
+      display: flex;
+      flex-direction: column;
     }
+    
     .material-card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-6px);
       box-shadow: var(--shadow-hover);
     }
-    .material-card.class-xi {
-      border-top-color: var(--accent-purple);
-    }
+    
+    .material-card.class-xi { border-top-color: var(--accent-purple); }
+    
     .material-content {
       padding: 1.75rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
     }
+    
     .material-content h3 {
-      font-size: 1.3rem;
+      font-size: 1.25rem;
       margin-bottom: 1rem;
+      font-weight: 600;
       display: flex;
       align-items: center;
       gap: 0.5rem;
     }
+    
     .material-content ul {
-      margin-left: 1.25rem;
+      margin: 0.5rem 0 1.5rem;
+      flex: 1;
     }
+    
     .material-content li {
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.6rem;
       color: var(--gray);
-      position: relative;
-      padding-left: 1.25rem;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
     }
+    
     .material-content li::before {
       content: '▹';
-      position: absolute;
-      left: 0;
       color: var(--secondary-green);
-      font-weight: bold;
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-top: 2px;
     }
+    
     .materials-cta {
       text-align: center;
       margin-top: 2.5rem;
     }
 
-    /* ===== SMART ALGORITHM (FEATURED) ===== */
+    /* ===== FEATURED SECTION (LMS) ===== */
     .featured {
-      background: linear-gradient(135deg, var(--dark) 0%, #334155 100%);
+      background: linear-gradient(135deg, var(--dark) 0%, var(--dark-light) 100%);
       color: var(--white);
       position: relative;
       overflow: hidden;
     }
+    
     .featured::before {
       content: '';
       position: absolute;
-      width: 100%;
-      height: 100%;
-      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zm0-30V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-      opacity: 0.3;
+      inset: 0;
+      background-image: 
+        radial-gradient(circle at 20% 80%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(16, 185, 129, 0.15) 0%, transparent 50%);
+      pointer-events: none;
     }
+    
     .featured .section-title h2 {
-      background: linear-gradient(135deg, #60a5fa, #34d399);
+      background: linear-gradient(135deg, var(--secondary-green-light), var(--primary-blue-light));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
-    .featured .section-title p {
-      color: #cbd5e1;
-    }
+    
+    .featured .section-title p { color: var(--gray-light); }
+    
     .featured-content {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1.1fr 0.9fr;
       gap: 3rem;
       align-items: center;
       position: relative;
       z-index: 2;
     }
+    
     .featured-text h3 {
-      font-size: 1.75rem;
-      margin-bottom: 1.5rem;
+      font-size: clamp(1.5rem, 3vw, 1.75rem);
+      margin-bottom: 1.25rem;
       font-weight: 700;
     }
-    .featured-text p {
-      color: #cbd5e1;
-      margin-bottom: 2rem;
+    
+    .featured-text > p {
+      color: var(--gray-light);
+      margin-bottom: 1.75rem;
       font-size: 1.05rem;
+      line-height: 1.7;
     }
-    .features-list {
-      margin-bottom: 2rem;
-    }
+    
+    .features-list { margin-bottom: 2rem; }
+    
     .features-list li {
       display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      margin-bottom: 0.85rem;
-      font-size: 1.05rem;
+      align-items: flex-start;
+      gap: 0.85rem;
+      margin-bottom: 1rem;
+      font-size: 1.02rem;
+      line-height: 1.5;
     }
+    
     .features-list i {
-      color: var(--secondary-green);
-      font-size: 1.25rem;
+      color: var(--secondary-green-light);
+      font-size: 1.2rem;
+      margin-top: 3px;
+      flex-shrink: 0;
     }
+    
     .featured-buttons {
       display: flex;
       gap: 1rem;
       flex-wrap: wrap;
     }
+    
     .featured-image {
       position: relative;
+      display: flex;
+      justify-content: center;
     }
-    .featured-image img {
-      border-radius: var(--radius);
-      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.4);
-      border: 3px solid rgba(255,255,255,0.1);
+    
+    .featured-visual {
+      width: 100%;
+      max-width: 450px;
+      aspect-ratio: 4/3;
+      background: linear-gradient(135deg, #1e293b, #334155);
+      border-radius: var(--radius-lg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary-blue-light);
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+      border: 2px solid rgba(255,255,255,0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .featured-visual::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      background: linear-gradient(45deg, transparent, rgba(96, 165, 250, 0.3), transparent);
+      animation: shine 3s ease-in-out infinite;
+    }
+    
+    @keyframes shine {
+      0%, 100% { transform: translateX(-100%) rotate(45deg); }
+      50% { transform: translateX(100%) rotate(45deg); }
+    }
+    
+    .featured-visual i {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      margin-bottom: 1rem;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .featured-visual span {
+      font-size: 0.95rem;
+      opacity: 0.85;
+      position: relative;
+      z-index: 2;
     }
 
     /* ===== METHODS SECTION ===== */
@@ -392,141 +643,190 @@
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 1.5rem;
     }
+    
     .method-card {
       background: var(--white);
-      padding: 2rem;
+      padding: 2rem 1.75rem;
       border-radius: var(--radius);
       text-align: center;
       box-shadow: var(--shadow);
       transition: var(--transition);
       border: 2px solid transparent;
     }
+    
     .method-card:hover {
-      border-color: var(--primary-blue);
-      transform: translateY(-5px);
+      border-color: var(--primary-blue-light);
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-hover);
     }
-    .method-card i {
-      font-size: 2.25rem;
-      color: var(--secondary-green);
-      margin-bottom: 1rem;
-      background: linear-gradient(135deg, rgba(16,185,129,0.15), rgba(37,99,235,0.15));
-      width: 70px;
-      height: 70px;
+    
+    .method-card .icon-wrapper {
+      width: 65px;
+      height: 65px;
       border-radius: 50%;
+      background: linear-gradient(135deg, rgba(16,185,129,0.15), rgba(37,99,235,0.15));
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 1rem;
+      margin: 0 auto 1.25rem;
     }
+    
+    .method-card i {
+      font-size: 1.6rem;
+      color: var(--secondary-green);
+    }
+    
     .method-card h3 {
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       margin-bottom: 0.75rem;
       font-weight: 600;
     }
+    
     .method-card p {
       color: var(--gray);
-      font-size: 0.95rem;
+      font-size: 0.93rem;
+      line-height: 1.6;
     }
 
     /* ===== PROJECTS SECTION ===== */
+    .projects-section { background: linear-gradient(180deg, var(--light) 0%, #f8fafc 100%); }
+    
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 1.75rem;
     }
+    
     .project-card {
       background: var(--white);
       border-radius: var(--radius);
       overflow: hidden;
       box-shadow: var(--shadow);
       transition: var(--transition);
+      display: flex;
+      flex-direction: column;
     }
+    
     .project-card:hover {
       transform: translateY(-8px);
       box-shadow: var(--shadow-hover);
     }
+    
     .project-image {
-      height: 180px;
+      height: 170px;
       background: linear-gradient(135deg, var(--primary-blue), var(--accent-purple));
       display: flex;
       align-items: center;
       justify-content: center;
       color: white;
-      font-size: 3rem;
+      font-size: 2.5rem;
+      position: relative;
+      overflow: hidden;
     }
+    
+    .project-image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 60%, rgba(0,0,0,0.2));
+    }
+    
     .project-content {
       padding: 1.5rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
     }
+    
     .project-content h3 {
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       margin-bottom: 0.5rem;
       font-weight: 600;
     }
+    
     .project-content p {
       color: var(--gray);
-      font-size: 0.95rem;
+      font-size: 0.93rem;
+      line-height: 1.6;
+      flex: 1;
     }
 
     /* ===== TESTIMONIALS ===== */
     .testimonials {
-      background: linear-gradient(135deg, #eff6ff 0%, #f0fdf4 100%);
+      background: linear-gradient(135deg, #eff6ff 0%, #f0fdf4 50%, #faf5ff 100%);
     }
+    
     .testimonials-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 2rem;
     }
+    
     .testimonial-card {
       background: var(--white);
       padding: 2rem;
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       position: relative;
+      display: flex;
+      flex-direction: column;
     }
+    
     .testimonial-card::before {
       content: '"';
       position: absolute;
-      top: 1rem;
-      left: 1.5rem;
-      font-size: 4rem;
-      color: rgba(37,99,235,0.1);
+      top: 1.25rem;
+      left: 1.75rem;
+      font-size: 4.5rem;
+      color: rgba(37,99,235,0.08);
       font-family: Georgia, serif;
       line-height: 1;
+      pointer-events: none;
     }
+    
     .testimonial-content {
-      margin-top: 1.5rem;
+      margin-top: 1rem;
       font-style: italic;
       color: var(--gray);
+      line-height: 1.7;
       position: relative;
       z-index: 2;
+      flex: 1;
     }
+    
     .testimonial-author {
       display: flex;
       align-items: center;
       gap: 1rem;
-      margin-top: 1.5rem;
+      margin-top: 1.75rem;
       padding-top: 1.25rem;
       border-top: 1px solid #e2e8f0;
     }
+    
     .author-avatar {
-      width: 50px;
-      height: 50px;
+      width: 52px;
+      height: 52px;
       border-radius: 50%;
       background: linear-gradient(135deg, var(--primary-blue), var(--secondary-green));
       display: flex;
       align-items: center;
       justify-content: center;
       color: white;
-      font-weight: 600;
+      font-weight: 700;
       font-size: 1.1rem;
+      flex-shrink: 0;
     }
+    
     .author-info h4 {
       font-weight: 600;
       font-size: 1.05rem;
+      margin-bottom: 0.15rem;
     }
+    
     .author-info p {
       color: var(--gray);
-      font-size: 0.9rem;
+      font-size: 0.88rem;
+      line-height: 1.4;
     }
 
     /* ===== FINAL CTA ===== */
@@ -534,69 +834,90 @@
       text-align: center;
       background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-purple) 100%);
       color: white;
-      padding: 4rem 2rem;
-      border-radius: var(--radius);
-      margin: 2rem auto;
-      max-width: 900px;
+      padding: clamp(2.5rem, 5vw, 4rem) 2rem;
+      border-radius: var(--radius-lg);
+      margin: 3rem auto;
+      max-width: 850px;
+      position: relative;
+      overflow: hidden;
     }
+    
+    .final-cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.15) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    
     .final-cta h2 {
-      font-size: 2.5rem;
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
       font-weight: 700;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.25rem;
+      position: relative;
+      z-index: 2;
     }
-    .final-cta p {
-      font-size: 1.2rem;
+    
+    .final-cta > p {
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
       margin-bottom: 2rem;
       opacity: 0.95;
-      max-width: 600px;
+      max-width: 550px;
       margin-left: auto;
       margin-right: auto;
+      line-height: 1.7;
+      position: relative;
+      z-index: 2;
     }
-    .final-cta .btn {
-      margin: 0.5rem;
-      padding: 1rem 2rem;
-      font-size: 1.1rem;
-    }
-    .final-cta .btn-white {
-      background: white;
-      color: var(--primary-blue);
-    }
-    .final-cta .btn-white:hover {
-      background: #f1f5f9;
-      transform: translateY(-3px);
+    
+    .final-cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 2;
     }
 
     /* ===== FOOTER ===== */
     .footer {
       background: var(--dark);
-      color: #cbd5e1;
+      color: var(--gray-light);
       padding: 4rem 0 2rem;
     }
+    
     .footer-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 2.5rem;
       margin-bottom: 2.5rem;
     }
+    
     .footer-brand h3 {
       color: white;
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       margin-bottom: 1rem;
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.6rem;
+      font-weight: 700;
     }
+    
     .footer-brand p {
-      margin-bottom: 1.25rem;
+      margin-bottom: 1.5rem;
       font-size: 0.95rem;
+      line-height: 1.7;
+      opacity: 0.9;
     }
+    
     .social-links {
       display: flex;
       gap: 0.75rem;
     }
+    
     .social-links a {
-      width: 40px;
-      height: 40px;
+      width: 42px;
+      height: 42px;
       border-radius: 50%;
       background: rgba(255,255,255,0.1);
       display: flex;
@@ -604,121 +925,177 @@
       justify-content: center;
       transition: var(--transition);
       color: white;
+      font-size: 1.1rem;
     }
+    
     .social-links a:hover {
       background: var(--primary-blue);
-      transform: translateY(-3px);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
     }
+    
     .footer-links h4 {
       color: white;
       margin-bottom: 1.25rem;
       font-size: 1.1rem;
+      font-weight: 600;
     }
+    
     .footer-links ul li {
-      margin-bottom: 0.65rem;
+      margin-bottom: 0.7rem;
     }
+    
     .footer-links a {
       transition: var(--transition);
       font-size: 0.95rem;
+      opacity: 0.9;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
+    
     .footer-links a:hover {
-      color: var(--secondary-green);
-      padding-left: 4px;
+      color: var(--secondary-green-light);
+      opacity: 1;
+      padding-left: 5px;
     }
+    
     .footer-contact li {
       display: flex;
-      gap: 0.75rem;
-      margin-bottom: 0.85rem;
-      font-size: 0.95rem;
+      gap: 0.85rem;
+      margin-bottom: 0.9rem;
+      font-size: 0.93rem;
+      line-height: 1.5;
     }
+    
     .footer-contact i {
-      color: var(--secondary-green);
+      color: var(--secondary-green-light);
       margin-top: 3px;
+      width: 18px;
+      text-align: center;
     }
+    
     .footer-bottom {
       text-align: center;
       padding-top: 2rem;
       border-top: 1px solid rgba(255,255,255,0.1);
       font-size: 0.9rem;
-      color: #94a3b8;
+      opacity: 0.85;
     }
+    
+    .footer-bottom a {
+      color: var(--secondary-green-light);
+      transition: var(--transition);
+    }
+    
+    .footer-bottom a:hover { opacity: 1; }
 
-    /* ===== RESPONSIVE ===== */
-    @media (max-width: 992px) {
+    /* ===== ANIMATIONS ON SCROLL ===== */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+      will-change: opacity, transform;
+    }
+    
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .fade-in.delay-1 { transition-delay: 0.1s; }
+    .fade-in.delay-2 { transition-delay: 0.2s; }
+    .fade-in.delay-3 { transition-delay: 0.3s; }
+
+    /* ===== RESPONSIVE DESIGN ===== */
+    @media (max-width: 1024px) {
       .hero-content,
       .featured-content {
         grid-template-columns: 1fr;
         text-align: center;
       }
-      .hero-text h1 {
-        font-size: 2.75rem;
+      
+      .hero-text > p,
+      .featured-text > p {
+        margin-left: auto;
+        margin-right: auto;
       }
-      .hero-buttons {
-        justify-content: center;
-      }
-      .hero-image {
-        order: -1;
-      }
-      .featured-buttons {
-        justify-content: center;
-      }
-    }
-    @media (max-width: 768px) {
-      .section {
-        padding: 3.5rem 0;
-      }
-      .section-title h2 {
-        font-size: 1.85rem;
-      }
-      .hero-text h1 {
-        font-size: 2.25rem;
-      }
-      .hero-text p {
-        font-size: 1.1rem;
-      }
-      .btn {
-        padding: 0.75rem 1.5rem;
-        font-size: 0.95rem;
-      }
-      .final-cta h2 {
-        font-size: 2rem;
-      }
-      .final-cta p {
-        font-size: 1.05rem;
-      }
-    }
-    @media (max-width: 480px) {
-      .container {
-        padding: 0 1.5rem;
-      }
+      
       .hero-buttons,
       .featured-buttons,
-      .final-cta .btn {
+      .hero-features {
+        justify-content: center;
+      }
+      
+      .hero-image { order: -1; }
+    }
+    
+    @media (max-width: 768px) {
+      .container { padding: 0 1.5rem; }
+      .section { padding: 4rem 0; }
+      .section-sm { padding: 3rem 0; }
+      
+      .section-title h2 { font-size: 1.9rem; }
+      
+      .hero-text h1 { font-size: 2.3rem; }
+      .hero-text > p { font-size: 1.1rem; }
+      
+      .btn { padding: 0.8rem 1.5rem; font-size: 0.95rem; }
+      .btn-lg { padding: 1rem 2rem; font-size: 1.05rem; }
+      
+      .final-cta { margin: 2rem 1rem; }
+      
+      .materials-tabs {
+        width: 100%;
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding: 0.5rem 1rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .hero-buttons,
+      .featured-buttons,
+      .final-cta-buttons {
         flex-direction: column;
         align-items: center;
       }
-      .btn {
-        width: 100%;
-        justify-content: center;
+      
+      .btn { width: 100%; max-width: 320px; }
+      
+      .hero-features {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
       }
+      
+      .about-card,
+      .method-card { padding: 1.75rem 1.5rem; }
     }
 
-    /* ===== ANIMATIONS ON SCROLL ===== */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
+    /* ===== ACCESSIBILITY ===== */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      html { scroll-behavior: auto; }
     }
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
+    
+    /* Focus styles for keyboard navigation */
+    a:focus-visible,
+    button:focus-visible,
+    .btn:focus-visible {
+      outline: 3px solid var(--secondary-green-light);
+      outline-offset: 2px;
     }
   </style>
 </head>
 <body>
 
   <!-- 🔹 HERO SECTION -->
-  <section class="hero">
+  <section class="hero" id="home">
     <div class="container">
       <div class="hero-content">
         <div class="hero-text fade-in">
@@ -727,22 +1104,29 @@
           <p>Mengembangkan Berpikir Komputasional, Logika, dan Kreativitas melalui Media Ajar Berbasis Web yang Interaktif & Menyenangkan.</p>
           
           <div class="hero-buttons">
-            <a href="#kelas-x" class="btn btn-primary"><i class="fas fa-user-graduate"></i> Masuk Kelas X</a>
-            <a href="#kelas-xi" class="btn btn-success"><i class="fas fa-rocket"></i> Masuk Kelas XI</a>
-            <a href="#lms" class="btn btn-purple"><i class="fas fa-laptop-code"></i> Akses LMS Smart Algorithm</a>
+            <!-- ✅ LINK KE kelas-x/index.html -->
+            <a href="kelas-x/index.html" class="btn btn-primary btn-lg">
+              <i class="fas fa-user-graduate"></i> Masuk Kelas X
+            </a>
+            <a href="kelas-xi/index.html" class="btn btn-success btn-lg">
+              <i class="fas fa-rocket"></i> Masuk Kelas XI
+            </a>
+            <a href="#lms" class="btn btn-purple btn-lg">
+              <i class="fas fa-laptop-code"></i> Akses LMS
+            </a>
           </div>
           
-          <p style="font-size: 0.9rem; color: var(--gray);">
-            <i class="fas fa-check-circle" style="color: var(--secondary-green);"></i> 
-            Gratis Akses Materi • <i class="fas fa-check-circle" style="color: var(--secondary-green);"></i> 
-            Evaluasi Otomatis • <i class="fas fa-check-circle" style="color: var(--secondary-green);"></i> 
-            Sertifikat Digital
-          </p>
+          <div class="hero-features">
+            <span><i class="fas fa-check-circle"></i> Gratis Akses Materi</span>
+            <span><i class="fas fa-check-circle"></i> Evaluasi Otomatis</span>
+            <span><i class="fas fa-check-circle"></i> Sertifikat Digital</span>
+          </div>
         </div>
-        <div class="hero-image fade-in">
-          <!-- Placeholder ilustrasi coding -->
-          <div style="background: linear-gradient(135deg, #3b82f6, #8b5cf6); width: 100%; max-width: 500px; height: 350px; border-radius: 16px; display: flex; align-items: center; justify-content: center; color: white; font-size: 4rem; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.3);">
+        
+        <div class="hero-image fade-in delay-1">
+          <div class="hero-visual">
             <i class="fas fa-code"></i>
+            <span>Smart Algorithm Platform</span>
           </div>
         </div>
       </div>
@@ -750,7 +1134,7 @@
   </section>
 
   <!-- 🔹 TENTANG MATA PELAJARAN -->
-  <section class="section">
+  <section class="section" id="tentang">
     <div class="container">
       <div class="section-title">
         <h2><i class="fas fa-book-open"></i> Tentang Informatika</h2>
@@ -759,22 +1143,22 @@
       
       <div class="about-grid">
         <div class="about-card fade-in">
-          <i class="fas fa-brain"></i>
+          <div class="icon-wrapper"><i class="fas fa-brain"></i></div>
           <h3>Berpikir Komputasional</h3>
           <p>Mengasah kemampuan dekomposisi, pola, abstraksi, dan algoritma untuk menyelesaikan masalah kompleks.</p>
         </div>
-        <div class="about-card fade-in">
-          <i class="fas fa-puzzle-piece"></i>
+        <div class="about-card fade-in delay-1">
+          <div class="icon-wrapper"><i class="fas fa-puzzle-piece"></i></div>
           <h3>Problem Solving</h3>
           <p>Belajar merancang solusi sistematis melalui pendekatan logis dan terstruktur dalam pemrograman.</p>
         </div>
-        <div class="about-card fade-in">
-          <i class="fas fa-laptop"></i>
+        <div class="about-card fade-in delay-2">
+          <div class="icon-wrapper"><i class="fas fa-laptop"></i></div>
           <h3>Literasi Digital</h3>
           <p>Memahami teknologi digital, keamanan siber, dan etika berinternet di era transformasi digital.</p>
         </div>
-        <div class="about-card fade-in">
-          <i class="fas fa-code"></i>
+        <div class="about-card fade-in delay-3">
+          <div class="icon-wrapper"><i class="fas fa-code"></i></div>
           <h3>Dasar Pemrograman</h3>
           <p>Menguasai konsep dasar coding dengan bahasa pemrograman modern seperti JavaScript dan Python.</p>
         </div>
@@ -783,7 +1167,7 @@
   </section>
 
   <!-- 🔹 MATERI PEMBELAJARAN -->
-  <section class="section" style="background: #f1f5f9;">
+  <section class="section materials-section" id="materi">
     <div class="container">
       <div class="section-title">
         <h2><i class="fas fa-layer-group"></i> Materi yang Dipelajari</h2>
@@ -796,8 +1180,8 @@
       </div>
       
       <div class="materials-grid" id="materials-container">
-        <!-- Kelas X -->
-        <div class="material-card fade-in" id="kelas-x">
+        <!-- Kelas X Cards -->
+        <div class="material-card fade-in" data-class="kelas-x">
           <div class="material-content">
             <h3><i class="fas fa-seedling"></i> Fondasi Algoritma</h3>
             <ul>
@@ -807,9 +1191,13 @@
               <li>Percabangan (If-Else) & Perulangan</li>
               <li>Studi Kasus: Kalkulator Sederhana</li>
             </ul>
+            <a href="kelas-x/index.html" class="btn btn-outline btn-sm" style="margin-top: auto;">
+              <i class="fas fa-arrow-right"></i> Pelajari Kelas X
+            </a>
           </div>
         </div>
-        <div class="material-card fade-in">
+        
+        <div class="material-card fade-in delay-1" data-class="kelas-x">
           <div class="material-content">
             <h3><i class="fas fa-diagram-project"></i> Visualisasi Data</h3>
             <ul>
@@ -820,7 +1208,8 @@
             </ul>
           </div>
         </div>
-        <div class="material-card fade-in">
+        
+        <div class="material-card fade-in delay-2" data-class="kelas-x">
           <div class="material-content">
             <h3><i class="fas fa-shield-alt"></i> Literasi Digital</h3>
             <ul>
@@ -831,21 +1220,65 @@
             </ul>
           </div>
         </div>
+        
+        <!-- Kelas XI Cards (hidden by default) -->
+        <div class="material-card class-xi fade-in" data-class="kelas-xi" style="display: none;">
+          <div class="material-content">
+            <h3><i class="fas fa-database"></i> Struktur Data Lanjut</h3>
+            <ul>
+              <li>Stack, Queue, Linked List</li>
+              <li>Tree & Graph Dasar</li>
+              <li>Algoritma Sorting & Searching</li>
+              <li>Optimasi Kode & Kompleksitas</li>
+            </ul>
+            <a href="kelas-xi/index.html" class="btn btn-outline btn-sm" style="margin-top: auto;">
+              <i class="fas fa-arrow-right"></i> Pelajari Kelas XI
+            </a>
+          </div>
+        </div>
+        
+        <div class="material-card class-xi fade-in delay-1" data-class="kelas-xi" style="display: none;">
+          <div class="material-content">
+            <h3><i class="fas fa-globe"></i> Pemrograman Web</h3>
+            <ul>
+              <li>HTML5 Semantic & Accessibility</li>
+              <li>CSS3 Flexbox & Grid</li>
+              <li>JavaScript DOM Manipulation</li>
+              <li>Proyek: Website Portfolio</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="material-card class-xi fade-in delay-2" data-class="kelas-xi" style="display: none;">
+          <div class="material-content">
+            <h3><i class="fas fa-robot"></i> Pengembangan Aplikasi</h3>
+            <ul>
+              <li>API Integration Dasar</li>
+              <li>Local Storage & Session</li>
+              <li>Responsive Design Patterns</li>
+              <li>Proyek: Aplikasi Task Manager</li>
+            </ul>
+          </div>
+        </div>
       </div>
       
       <div class="materials-cta">
-        <a href="#" class="btn btn-outline"><i class="fas fa-book"></i> Lihat Materi Lengkap</a>
+        <a href="kelas-x/index.html" class="btn btn-primary btn-lg">
+          <i class="fas fa-book"></i> Mulai Belajar Kelas X
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- 🔹 SMART ALGORITHM (FEATURED) -->
+  <!-- 🔹 SMART ALGORITHM (LMS FEATURED) -->
   <section class="section featured" id="lms">
     <div class="container">
       <div class="section-title">
-        <span class="badge" style="background: linear-gradient(135deg, #60a5fa, #34d399);"><i class="fas fa-star"></i> UNGGULAN</span>
-        <h2><i class="fas fa-rocket"></i> Smart Algorithm – Media Ajar Coding Berbasis Web</h2>
-        <p>Platform LMS interaktif yang dirancang khusus untuk pembelajaran informatika yang menyenangkan dan efektif.</p>
+        <span class="badge" style="background: linear-gradient(135deg, #60a5fa, #34d399);">
+          <i class="fas fa-star"></i> PLATFORM UNGGULAN
+        </span>
+        <h2><i class="fas fa-rocket"></i> Smart Algorithm – LMS Coding Interaktif</h2>
+        <p>Platform Learning Management System yang dirancang khusus untuk pembelajaran informatika yang menyenangkan, efektif, dan terukur.</p>
       </div>
       
       <div class="featured-content">
@@ -854,21 +1287,27 @@
           <p>Smart Algorithm menyediakan lingkungan belajar terintegrasi dengan materi interaktif, latihan coding langsung di browser, dan evaluasi otomatis yang memberikan feedback instan.</p>
           
           <ul class="features-list">
-            <li><i class="fas fa-check-circle"></i> Materi interaktif dengan video & animasi</li>
-            <li><i class="fas fa-check-circle"></i> Editor coding online (tanpa instalasi)</li>
-            <li><i class="fas fa-check-circle"></i> Kuis & tantangan harian dengan poin</li>
-            <li><i class="fas fa-check-circle"></i> Evaluasi otomatis + pembahasan detail</li>
-            <li><i class="fas fa-check-circle"></i> Dashboard progres belajar personal</li>
+            <li><i class="fas fa-check-circle"></i> <strong>Materi Interaktif:</strong> Video, animasi, dan simulasi visual</li>
+            <li><i class="fas fa-check-circle"></i> <strong>Code Editor Online:</strong> Latihan coding tanpa instalasi</li>
+            <li><i class="fas fa-check-circle"></i> <strong>Kuis Adaptif:</strong> Soal menyesuaikan level pemahaman</li>
+            <li><i class="fas fa-check-circle"></i> <strong>Evaluasi Otomatis:</strong> Feedback instan + pembahasan detail</li>
+            <li><i class="fas fa-check-circle"></i> <strong>Dashboard Progres:</strong> Pantau perkembangan belajar personal</li>
           </ul>
           
           <div class="featured-buttons">
-            <a href="#" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i> Akses LMS</a>
-            <a href="#" class="btn btn-outline" style="border-color: white; color: white;"><i class="fas fa-question-circle"></i> Panduan Penggunaan</a>
+            <a href="#" class="btn btn-primary btn-lg">
+              <i class="fas fa-sign-in-alt"></i> Akses LMS Smart Algorithm
+            </a>
+            <a href="#" class="btn btn-outline btn-lg" style="border-color: white; color: white;">
+              <i class="fas fa-question-circle"></i> Panduan Penggunaan
+            </a>
           </div>
         </div>
-        <div class="featured-image fade-in">
-          <div style="background: linear-gradient(135deg, #1e293b, #334155); width: 100%; max-width: 500px; height: 320px; border-radius: 16px; display: flex; align-items: center; justify-content: center; color: #60a5fa; font-size: 3.5rem; border: 3px solid rgba(96, 165, 250, 0.3); box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);">
+        
+        <div class="featured-image fade-in delay-1">
+          <div class="featured-visual">
             <i class="fas fa-laptop-code"></i>
+            <span>Live Coding Environment</span>
           </div>
         </div>
       </div>
@@ -876,7 +1315,7 @@
   </section>
 
   <!-- 🔹 METODE PEMBELAJARAN -->
-  <section class="section">
+  <section class="section" id="metode">
     <div class="container">
       <div class="section-title">
         <h2><i class="fas fa-chalkboard-teacher"></i> Model Pembelajaran</h2>
@@ -885,22 +1324,22 @@
       
       <div class="methods-grid">
         <div class="method-card fade-in">
-          <i class="fas fa-sync-alt"></i>
+          <div class="icon-wrapper"><i class="fas fa-sync-alt"></i></div>
           <h3>Blended Learning</h3>
           <p>Kombinasi pembelajaran tatap muka dan daring untuk fleksibilitas dan kedalaman materi.</p>
         </div>
-        <div class="method-card fade-in">
-          <i class="fas fa-lightbulb"></i>
+        <div class="method-card fade-in delay-1">
+          <div class="icon-wrapper"><i class="fas fa-lightbulb"></i></div>
           <h3>Problem Based Learning</h3>
           <p>Belajar melalui pemecahan masalah kontekstual yang melatih berpikir kritis dan kolaborasi.</p>
         </div>
-        <div class="method-card fade-in">
-          <i class="fas fa-tasks"></i>
+        <div class="method-card fade-in delay-2">
+          <div class="icon-wrapper"><i class="fas fa-tasks"></i></div>
           <h3>Project Based Learning</h3>
           <p>Menghasilkan karya nyata melalui proyek bertahap yang mengasah kreativitas dan portofolio.</p>
         </div>
-        <div class="method-card fade-in">
-          <i class="fas fa-keyboard"></i>
+        <div class="method-card fade-in delay-3">
+          <div class="icon-wrapper"><i class="fas fa-keyboard"></i></div>
           <h3>Hands-on Coding</h3>
           <p>Praktik langsung menulis kode dengan feedback instan untuk penguasaan keterampilan teknis.</p>
         </div>
@@ -909,7 +1348,7 @@
   </section>
 
   <!-- 🔹 HASIL & PROYEK SISWA -->
-  <section class="section" style="background: #f8fafc;">
+  <section class="section projects-section" id="proyek">
     <div class="container">
       <div class="section-title">
         <h2><i class="fas fa-trophy"></i> Karya dan Proyek Siswa</h2>
@@ -918,38 +1357,30 @@
       
       <div class="projects-grid">
         <div class="project-card fade-in">
-          <div class="project-image">
-            <i class="fas fa-globe"></i>
-          </div>
+          <div class="project-image"><i class="fas fa-globe"></i></div>
           <div class="project-content">
             <h3>Website Profil Sekolah</h3>
             <p>Website responsif dengan HTML, CSS, dan JavaScript untuk mempromosikan kegiatan sekolah.</p>
           </div>
         </div>
-        <div class="project-card fade-in">
-          <div class="project-image">
-            <i class="fas fa-calculator"></i>
-          </div>
+        <div class="project-card fade-in delay-1">
+          <div class="project-image"><i class="fas fa-calculator"></i></div>
           <div class="project-content">
-            <h3>Kalkulator Digital Interaktif</h3>
+            <h3>Kalkulator Digital</h3>
             <p>Aplikasi kalkulator dengan fitur ilmiah dan riwayat perhitungan menggunakan JavaScript.</p>
           </div>
         </div>
-        <div class="project-card fade-in">
-          <div class="project-image">
-            <i class="fas fa-gamepad"></i>
-          </div>
+        <div class="project-card fade-in delay-2">
+          <div class="project-image"><i class="fas fa-gamepad"></i></div>
           <div class="project-content">
-            <h3>Game Mini "Tebak Angka"</h3>
+            <h3>Game "Tebak Angka"</h3>
             <p>Game edukasi dengan logika percabangan, perulangan, dan animasi CSS yang menarik.</p>
           </div>
         </div>
-        <div class="project-card fade-in">
-          <div class="project-image">
-            <i class="fas fa-file-alt"></i>
-          </div>
+        <div class="project-card fade-in delay-3">
+          <div class="project-image"><i class="fas fa-file-alt"></i></div>
           <div class="project-content">
-            <h3>Formulir Pendaftaran Online</h3>
+            <h3>Formulir Interaktif</h3>
             <p>Aplikasi form dengan validasi input, penyimpanan data lokal, dan desain user-friendly.</p>
           </div>
         </div>
@@ -958,7 +1389,7 @@
   </section>
 
   <!-- 🔹 TESTIMONI -->
-  <section class="section testimonials">
+  <section class="section testimonials" id="testimoni">
     <div class="container">
       <div class="section-title">
         <h2><i class="fas fa-comments"></i> Apa Kata Siswa?</h2>
@@ -978,7 +1409,7 @@
             </div>
           </div>
         </div>
-        <div class="testimonial-card fade-in">
+        <div class="testimonial-card fade-in delay-1">
           <div class="testimonial-content">
             "Metode PjBL bikin saya belajar sambil berkarya. Proyek website saya bahkan dipakai untuk ekstrakurikuler sekolah!"
           </div>
@@ -990,7 +1421,7 @@
             </div>
           </div>
         </div>
-        <div class="testimonial-card fade-in">
+        <div class="testimonial-card fade-in delay-2">
           <div class="testimonial-content">
             "Fitur evaluasi otomatis di LMS sangat membantu. Saya langsung tahu kesalahan kode dan bisa perbaiki saat itu juga."
           </div>
@@ -1012,9 +1443,14 @@
       <div class="final-cta fade-in">
         <h2><i class="fas fa-rocket"></i> Siap Belajar Coding?</h2>
         <p>Bergabunglah sekarang dan mulai perjalanan Anda menjadi creator teknologi masa depan!</p>
-        <div>
-          <a href="#" class="btn btn-white"><i class="fas fa-play-circle"></i> Mulai Sekarang</a>
-          <a href="#lms" class="btn btn-outline" style="border-color: white; color: white;"><i class="fas fa-laptop"></i> Masuk LMS</a>
+        <div class="final-cta-buttons">
+          <!-- ✅ LINK UTAMA KE kelas-x/index.html -->
+          <a href="kelas-x/index.html" class="btn btn-white btn-lg">
+            <i class="fas fa-play-circle"></i> Mulai Belajar Sekarang
+          </a>
+          <a href="#lms" class="btn btn-outline btn-lg" style="border-color: white; color: white;">
+            <i class="fas fa-laptop"></i> Jelajahi LMS
+          </a>
         </div>
       </div>
     </div>
@@ -1028,28 +1464,28 @@
           <h3><i class="fas fa-school"></i> SMA Negeri 1 Cluring</h3>
           <p>Mencetak generasi unggul, berkarakter, dan siap menghadapi tantangan era digital melalui pendidikan informatika yang berkualitas.</p>
           <div class="social-links">
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-youtube"></i></a>
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-whatsapp"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
           </div>
         </div>
         
         <div class="footer-links">
           <h4>Link Penting</h4>
           <ul>
-            <li><a href="#"><i class="fas fa-chevron-right"></i> Kurikulum Informatika</a></li>
-            <li><a href="#"><i class="fas fa-chevron-right"></i> Jadwal Pembelajaran</a></li>
-            <li><a href="#"><i class="fas fa-chevron-right"></i> Panduan LMS</a></li>
-            <li><a href="#"><i class="fas fa-chevron-right"></i> Galeri Proyek Siswa</a></li>
-            <li><a href="#"><i class="fas fa-chevron-right"></i> Kontak Guru</a></li>
+            <li><a href="kelas-x/index.html"><i class="fas fa-chevron-right"></i> Materi Kelas X</a></li>
+            <li><a href="kelas-xi/index.html"><i class="fas fa-chevron-right"></i> Materi Kelas XI</a></li>
+            <li><a href="#lms"><i class="fas fa-chevron-right"></i> Akses LMS Smart Algorithm</a></li>
+            <li><a href="#proyek"><i class="fas fa-chevron-right"></i> Galeri Proyek Siswa</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Kontak Guru Informatika</a></li>
           </ul>
         </div>
         
         <div class="footer-links">
           <h4>Kontak Kami</h4>
           <ul class="footer-contact">
-            <li><i class="fas fa-map-marker-alt"></i> Jl. Raya Cluring No. 123, Banyuwangi, Jawa Timur</li>
+            <li><i class="fas fa-map-marker-alt"></i> Jl. Bhayangkara No. 67, Kebondalem, Bangorejo, Banyuwangi, Jawa Timur</li>
             <li><i class="fas fa-phone"></i> (0333) 713297</li>
             <li><i class="fas fa-envelope"></i> informatika@sman1cluring.sch.id</li>
             <li><i class="fas fa-clock"></i> Senin-Jumat: 07.00 - 15.00 WIB</li>
@@ -1058,67 +1494,109 @@
       </div>
       
       <div class="footer-bottom">
-        <p>&copy; 2026 SMA Negeri 1 Cluring. All Rights Reserved. | Dikembangkan oleh Tim Informatika SMA</p>
+        <p>&copy; 2026 SMA Negeri 1 Cluring. All Rights Reserved. | Dikembangkan oleh <a href="#">Tim Informatika SMA</a></p>
       </div>
     </div>
   </footer>
 
-  <!-- 🔹 JAVASCRIPT: Animasi Scroll & Tabs -->
+  <!-- 🔹 JAVASCRIPT: Animasi & Interaktivitas -->
   <script>
-    // Animasi fade-in on scroll
     document.addEventListener('DOMContentLoaded', function() {
+      
+      // ===== 1. SCROLL ANIMATIONS (Intersection Observer) =====
       const fadeElements = document.querySelectorAll('.fade-in');
+      
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
       
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add('visible');
+            observer.unobserve(entry.target); // Only animate once
           }
         });
-      }, { threshold: 0.1 });
+      }, observerOptions);
       
       fadeElements.forEach(el => observer.observe(el));
-      
-      // Tabs functionality for materials
+
+      // ===== 2. MATERIALS TABS FUNCTIONALITY =====
       const tabBtns = document.querySelectorAll('.tab-btn');
       const materialCards = document.querySelectorAll('.material-card');
       
       tabBtns.forEach(btn => {
         btn.addEventListener('click', () => {
-          // Remove active class from all buttons
+          // Update active tab button
           tabBtns.forEach(b => b.classList.remove('active'));
-          // Add active class to clicked button
           btn.classList.add('active');
           
-          const target = btn.getAttribute('data-target');
+          const targetClass = btn.getAttribute('data-target');
           
-          // Show/hide cards based on target
+          // Show/hide material cards based on selected class
           materialCards.forEach(card => {
-            if (target === 'kelas-x') {
-              // Show first 3 cards for Kelas X (already visible by default)
-              card.style.display = 'block';
+            const cardClass = card.getAttribute('data-class');
+            if (cardClass === targetClass) {
+              card.style.display = 'flex';
+              // Re-trigger animation for newly visible cards
+              setTimeout(() => card.classList.add('visible'), 50);
             } else {
-              // For demo: In real implementation, you'd load different content
-              // Here we just show a message
-              if (card.id !== 'kelas-x') {
-                card.style.display = 'block';
-              }
+              card.style.display = 'none';
+              card.classList.remove('visible');
             }
           });
         });
       });
-      
-      // Smooth scroll for anchor links
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+
+      // ===== 3. SMOOTH SCROLL FOR ANCHOR LINKS =====
+      document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
+          const href = this.getAttribute('href');
+          
+          // Skip if it's an external link or file link
+          if (href.includes('.') && !href.startsWith('#')) return;
+          
           e.preventDefault();
-          const target = document.querySelector(this.getAttribute('href'));
+          const target = document.querySelector(href);
+          
           if (target) {
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            const headerOffset = 80;
+            const elementPosition = target.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+            
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            });
+            
+            // Update URL without jumping
+            history.pushState(null, null, href);
           }
         });
       });
+
+      // ===== 4. HEADER OFFSET FOR FIXED NAV (if added later) =====
+      // Reserved for future sticky header implementation
+
+      // ===== 5. PERFORMANCE: Lazy load animations after initial paint =====
+      // Already optimized with Intersection Observer
+
+      // ===== 6. CONSOLE INFO FOR DEVELOPERS =====
+      console.log('🚀 Informatika SMA Landing Page Loaded');
+      console.log('📁 Kelas X: kelas-x/index.html');
+      console.log('📁 Kelas XI: kelas-xi/index.html');
+      console.log('💡 Tip: Use Tab buttons to switch between class materials');
     });
+
+    // ===== UTILITY: Check if element is in viewport =====
+    function isInViewport(element) {
+      const rect = element.getBoundingClientRect();
+      return (
+        rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.bottom >= 0
+      );
+    }
   </script>
 </body>
 </html>
