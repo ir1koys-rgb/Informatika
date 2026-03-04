@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Informatika SMA – Belajar Algoritma & Coding</title>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  
+  <style>
+    /* ===== CSS VARIABLES ===== */
+    :root {
+      --primary-blue: #2563eb;
+      --primary-blue-dark: #1d4ed8;
+      --secondary-green: #10b981;
+      --secondary-green-dark: #059669;
+      --accent-purple: #8b5cf6;
+      --dark: #1e293b;
+      --light: #f8fafc;
+      --gray: #64748b;
+      --white: #ffffff;
+      --shadow: 0 10px 30px -10px rgba(0,0,0,0.15);
+      --shadow-hover: 0 20px 40px -10px rgba(0,0,0,0.25);
+      --radius: 16px;
+      --transition: all 0.3s ease;
+    }
+
+    /* ===== RESET & BASE ===== */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--light);
+      color: var(--dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    /* ===== UTILITIES ===== */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    .section {
+      padding: 5rem 0;
+    }
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .section-title h2 {
+      font-size: 2.25rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      background: linear-gradient(135deg, var(--primary-blue), var(--secondary-green));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .section-title p {
+      color: var(--gray);
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.875rem 1.75rem;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: var(--transition);
+      border: none;
+      box-shadow: var(--shadow);
+    }
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-hover);
+    }
+    .btn-primary {
+      background: var(--primary-blue);
+      color: var(--white);
+    }
+    .btn-primary:hover {
+      background: var(--primary-blue-dark);
+    }
+    .btn-success {
+      background: var(--secondary-green);
+      color: var(--white);
+    }
+    .btn-success:hover {
+      background: var(--secondary-green-dark);
+    }
+    .btn-purple {
+      background: var(--accent-purple);
+      color: var(--white);
+    }
+    .btn-purple:hover {
+      background: #7c3aed;
+    }
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--primary-blue);
+      color: var(--primary-blue);
+    }
+    .btn-outline:hover {
+      background: var(--primary-blue);
+      color: var(--white);
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.35rem 0.85rem;
+      background: linear-gradient(135deg, var(--primary-blue), var(--accent-purple));
+      color: white;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+
+    /* ===== HERO SECTION ===== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(135deg, #eff6ff 0%, #ecfdf5 100%);
+      position: relative;
+      overflow: hidden;
+      padding-top: 2rem;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(37,99,235,0.15) 0%, transparent 70%);
+      top: -200px;
+      right: -200px;
+      animation: float 8s ease-in-out infinite;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(16,185,129,0.15) 0%, transparent 70%);
+      bottom: -100px;
+      left: -100px;
+      animation: float 10s ease-in-out infinite reverse;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-20px) scale(1.05); }
+    }
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+    .hero-text h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, var(--dark) 0%, var(--primary-blue) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-text p {
+      font-size: 1.25rem;
+      color: var(--gray);
+      margin-bottom: 2rem;
+      max-width: 550px;
+    }
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+    .hero-image {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+    .hero-image img {
+      max-width: 100%;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-hover);
+      animation: fadeInUp 0.8s ease-out;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ===== ABOUT SECTION ===== */
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .about-card {
+      background: var(--white);
+      padding: 2rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      text-align: center;
+    }
+    .about-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+    }
+    .about-card i {
+      font-size: 2.5rem;
+      color: var(--primary-blue);
+      margin-bottom: 1rem;
+    }
+    .about-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+    }
+    .about-card p {
+      color: var(--gray);
+      font-size: 0.95rem;
+    }
+
+    /* ===== MATERIALS SECTION ===== */
+    .materials-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+    }
+    .tab-btn {
+      padding: 0.6rem 1.5rem;
+      border: 2px solid var(--primary-blue);
+      background: transparent;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      color: var(--primary-blue);
+    }
+    .tab-btn.active,
+    .tab-btn:hover {
+      background: var(--primary-blue);
+      color: white;
+    }
+    .materials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .material-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      border-top: 4px solid var(--primary-blue);
+    }
+    .material-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+    }
+    .material-card.class-xi {
+      border-top-color: var(--accent-purple);
+    }
+    .material-content {
+      padding: 1.75rem;
+    }
+    .material-content h3 {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .material-content ul {
+      margin-left: 1.25rem;
+    }
+    .material-content li {
+      margin-bottom: 0.5rem;
+      color: var(--gray);
+      position: relative;
+      padding-left: 1.25rem;
+    }
+    .material-content li::before {
+      content: '▹';
+      position: absolute;
+      left: 0;
+      color: var(--secondary-green);
+      font-weight: bold;
+    }
+    .materials-cta {
+      text-align: center;
+      margin-top: 2.5rem;
+    }
+
+    /* ===== SMART ALGORITHM (FEATURED) ===== */
+    .featured {
+      background: linear-gradient(135deg, var(--dark) 0%, #334155 100%);
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+    .featured::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zm0-30V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      opacity: 0.3;
+    }
+    .featured .section-title h2 {
+      background: linear-gradient(135deg, #60a5fa, #34d399);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .featured .section-title p {
+      color: #cbd5e1;
+    }
+    .featured-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+    .featured-text h3 {
+      font-size: 1.75rem;
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+    }
+    .featured-text p {
+      color: #cbd5e1;
+      margin-bottom: 2rem;
+      font-size: 1.05rem;
+    }
+    .features-list {
+      margin-bottom: 2rem;
+    }
+    .features-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.85rem;
+      font-size: 1.05rem;
+    }
+    .features-list i {
+      color: var(--secondary-green);
+      font-size: 1.25rem;
+    }
+    .featured-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .featured-image {
+      position: relative;
+    }
+    .featured-image img {
+      border-radius: var(--radius);
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.4);
+      border: 3px solid rgba(255,255,255,0.1);
+    }
+
+    /* ===== METHODS SECTION ===== */
+    .methods-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+    .method-card {
+      background: var(--white);
+      padding: 2rem;
+      border-radius: var(--radius);
+      text-align: center;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      border: 2px solid transparent;
+    }
+    .method-card:hover {
+      border-color: var(--primary-blue);
+      transform: translateY(-5px);
+    }
+    .method-card i {
+      font-size: 2.25rem;
+      color: var(--secondary-green);
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, rgba(16,185,129,0.15), rgba(37,99,235,0.15));
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+    }
+    .method-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+    }
+    .method-card p {
+      color: var(--gray);
+      font-size: 0.95rem;
+    }
+
+    /* ===== PROJECTS SECTION ===== */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.75rem;
+    }
+    .project-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+    .project-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-hover);
+    }
+    .project-image {
+      height: 180px;
+      background: linear-gradient(135deg, var(--primary-blue), var(--accent-purple));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 3rem;
+    }
+    .project-content {
+      padding: 1.5rem;
+    }
+    .project-content h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+    .project-content p {
+      color: var(--gray);
+      font-size: 0.95rem;
+    }
+
+    /* ===== TESTIMONIALS ===== */
+    .testimonials {
+      background: linear-gradient(135deg, #eff6ff 0%, #f0fdf4 100%);
+    }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    .testimonial-card {
+      background: var(--white);
+      padding: 2rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+    .testimonial-card::before {
+      content: '"';
+      position: absolute;
+      top: 1rem;
+      left: 1.5rem;
+      font-size: 4rem;
+      color: rgba(37,99,235,0.1);
+      font-family: Georgia, serif;
+      line-height: 1;
+    }
+    .testimonial-content {
+      margin-top: 1.5rem;
+      font-style: italic;
+      color: var(--gray);
+      position: relative;
+      z-index: 2;
+    }
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 1.5rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid #e2e8f0;
+    }
+    .author-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary-blue), var(--secondary-green));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+    .author-info h4 {
+      font-weight: 600;
+      font-size: 1.05rem;
+    }
+    .author-info p {
+      color: var(--gray);
+      font-size: 0.9rem;
+    }
+
+    /* ===== FINAL CTA ===== */
+    .final-cta {
+      text-align: center;
+      background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-purple) 100%);
+      color: white;
+      padding: 4rem 2rem;
+      border-radius: var(--radius);
+      margin: 2rem auto;
+      max-width: 900px;
+    }
+    .final-cta h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+    .final-cta p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      opacity: 0.95;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .final-cta .btn {
+      margin: 0.5rem;
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+    }
+    .final-cta .btn-white {
+      background: white;
+      color: var(--primary-blue);
+    }
+    .final-cta .btn-white:hover {
+      background: #f1f5f9;
+      transform: translateY(-3px);
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      background: var(--dark);
+      color: #cbd5e1;
+      padding: 4rem 0 2rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .footer-brand h3 {
+      color: white;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .footer-brand p {
+      margin-bottom: 1.25rem;
+      font-size: 0.95rem;
+    }
+    .social-links {
+      display: flex;
+      gap: 0.75rem;
+    }
+    .social-links a {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+      color: white;
+    }
+    .social-links a:hover {
+      background: var(--primary-blue);
+      transform: translateY(-3px);
+    }
+    .footer-links h4 {
+      color: white;
+      margin-bottom: 1.25rem;
+      font-size: 1.1rem;
+    }
+    .footer-links ul li {
+      margin-bottom: 0.65rem;
+    }
+    .footer-links a {
+      transition: var(--transition);
+      font-size: 0.95rem;
+    }
+    .footer-links a:hover {
+      color: var(--secondary-green);
+      padding-left: 4px;
+    }
+    .footer-contact li {
+      display: flex;
+      gap: 0.75rem;
+      margin-bottom: 0.85rem;
+      font-size: 0.95rem;
+    }
+    .footer-contact i {
+      color: var(--secondary-green);
+      margin-top: 3px;
+    }
+    .footer-bottom {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      font-size: 0.9rem;
+      color: #94a3b8;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 992px) {
+      .hero-content,
+      .featured-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .hero-text h1 {
+        font-size: 2.75rem;
+      }
+      .hero-buttons {
+        justify-content: center;
+      }
+      .hero-image {
+        order: -1;
+      }
+      .featured-buttons {
+        justify-content: center;
+      }
+    }
+    @media (max-width: 768px) {
+      .section {
+        padding: 3.5rem 0;
+      }
+      .section-title h2 {
+        font-size: 1.85rem;
+      }
+      .hero-text h1 {
+        font-size: 2.25rem;
+      }
+      .hero-text p {
+        font-size: 1.1rem;
+      }
+      .btn {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.95rem;
+      }
+      .final-cta h2 {
+        font-size: 2rem;
+      }
+      .final-cta p {
+        font-size: 1.05rem;
+      }
+    }
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 1.5rem;
+      }
+      .hero-buttons,
+      .featured-buttons,
+      .final-cta .btn {
+        flex-direction: column;
+        align-items: center;
+      }
+      .btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+    /* ===== ANIMATIONS ON SCROLL ===== */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 🔹 HERO SECTION -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text fade-in">
+          <span class="badge"><i class="fas fa-code"></i> Informatika SMA</span>
+          <h1>Belajar Algoritma & Coding untuk Masa Depan Digital</h1>
+          <p>Mengembangkan Berpikir Komputasional, Logika, dan Kreativitas melalui Media Ajar Berbasis Web yang Interaktif & Menyenangkan.</p>
+          
+          <div class="hero-buttons">
+            <a href="#kelas-x" class="btn btn-primary"><i class="fas fa-user-graduate"></i> Masuk Kelas X</a>
+            <a href="#kelas-xi" class="btn btn-success"><i class="fas fa-rocket"></i> Masuk Kelas XI</a>
+            <a href="#lms" class="btn btn-purple"><i class="fas fa-laptop-code"></i> Akses LMS Smart Algorithm</a>
+          </div>
+          
+          <p style="font-size: 0.9rem; color: var(--gray);">
+            <i class="fas fa-check-circle" style="color: var(--secondary-green);"></i> 
+            Gratis Akses Materi • <i class="fas fa-check-circle" style="color: var(--secondary-green);"></i> 
+            Evaluasi Otomatis • <i class="fas fa-check-circle" style="color: var(--secondary-green);"></i> 
+            Sertifikat Digital
+          </p>
+        </div>
+        <div class="hero-image fade-in">
+          <!-- Placeholder ilustrasi coding -->
+          <div style="background: linear-gradient(135deg, #3b82f6, #8b5cf6); width: 100%; max-width: 500px; height: 350px; border-radius: 16px; display: flex; align-items: center; justify-content: center; color: white; font-size: 4rem; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.3);">
+            <i class="fas fa-code"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🔹 TENTANG MATA PELAJARAN -->
+  <section class="section">
+    <div class="container">
+      <div class="section-title">
+        <h2><i class="fas fa-book-open"></i> Tentang Informatika</h2>
+        <p>Mata pelajaran yang membekali siswa dengan keterampilan abad 21 melalui pendekatan teknologi dan pemecahan masalah.</p>
+      </div>
+      
+      <div class="about-grid">
+        <div class="about-card fade-in">
+          <i class="fas fa-brain"></i>
+          <h3>Berpikir Komputasional</h3>
+          <p>Mengasah kemampuan dekomposisi, pola, abstraksi, dan algoritma untuk menyelesaikan masalah kompleks.</p>
+        </div>
+        <div class="about-card fade-in">
+          <i class="fas fa-puzzle-piece"></i>
+          <h3>Problem Solving</h3>
+          <p>Belajar merancang solusi sistematis melalui pendekatan logis dan terstruktur dalam pemrograman.</p>
+        </div>
+        <div class="about-card fade-in">
+          <i class="fas fa-laptop"></i>
+          <h3>Literasi Digital</h3>
+          <p>Memahami teknologi digital, keamanan siber, dan etika berinternet di era transformasi digital.</p>
+        </div>
+        <div class="about-card fade-in">
+          <i class="fas fa-code"></i>
+          <h3>Dasar Pemrograman</h3>
+          <p>Menguasai konsep dasar coding dengan bahasa pemrograman modern seperti JavaScript dan Python.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🔹 MATERI PEMBELAJARAN -->
+  <section class="section" style="background: #f1f5f9;">
+    <div class="container">
+      <div class="section-title">
+        <h2><i class="fas fa-layer-group"></i> Materi yang Dipelajari</h2>
+        <p>Kurikulum terstruktur dengan pendekatan bertahap dari konsep dasar hingga proyek nyata.</p>
+      </div>
+      
+      <div class="materials-tabs">
+        <button class="tab-btn active" data-target="kelas-x">🔹 Kelas X</button>
+        <button class="tab-btn" data-target="kelas-xi">🔹 Kelas XI</button>
+      </div>
+      
+      <div class="materials-grid" id="materials-container">
+        <!-- Kelas X -->
+        <div class="material-card fade-in" id="kelas-x">
+          <div class="material-content">
+            <h3><i class="fas fa-seedling"></i> Fondasi Algoritma</h3>
+            <ul>
+              <li>Konsep Dasar Algoritma & Logika</li>
+              <li>Flowchart & Pseudocode</li>
+              <li>Variabel, Tipe Data & Operator</li>
+              <li>Percabangan (If-Else) & Perulangan</li>
+              <li>Studi Kasus: Kalkulator Sederhana</li>
+            </ul>
+          </div>
+        </div>
+        <div class="material-card fade-in">
+          <div class="material-content">
+            <h3><i class="fas fa-diagram-project"></i> Visualisasi Data</h3>
+            <ul>
+              <li>Struktur Data: Array & List</li>
+              <li>Pengenalan Fungsi & Prosedur</li>
+              <li>Debugging & Testing Dasar</li>
+              <li>Proyek Mini: To-Do List CLI</li>
+            </ul>
+          </div>
+        </div>
+        <div class="material-card fade-in">
+          <div class="material-content">
+            <h3><i class="fas fa-shield-alt"></i> Literasi Digital</h3>
+            <ul>
+              <li>Etika & Keamanan Digital</li>
+              <li>Hak Cipta & Open Source</li>
+              <li>Privasi Data & Jejak Digital</li>
+              <li>Proyek: Poster Kampanye Digital</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="materials-cta">
+        <a href="#" class="btn btn-outline"><i class="fas fa-book"></i> Lihat Materi Lengkap</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🔹 SMART ALGORITHM (FEATURED) -->
+  <section class="section featured" id="lms">
+    <div class="container">
+      <div class="section-title">
+        <span class="badge" style="background: linear-gradient(135deg, #60a5fa, #34d399);"><i class="fas fa-star"></i> UNGGULAN</span>
+        <h2><i class="fas fa-rocket"></i> Smart Algorithm – Media Ajar Coding Berbasis Web</h2>
+        <p>Platform LMS interaktif yang dirancang khusus untuk pembelajaran informatika yang menyenangkan dan efektif.</p>
+      </div>
+      
+      <div class="featured-content">
+        <div class="featured-text fade-in">
+          <h3>Belajar Coding Jadi Lebih Mudah & Menyenangkan!</h3>
+          <p>Smart Algorithm menyediakan lingkungan belajar terintegrasi dengan materi interaktif, latihan coding langsung di browser, dan evaluasi otomatis yang memberikan feedback instan.</p>
+          
+          <ul class="features-list">
+            <li><i class="fas fa-check-circle"></i> Materi interaktif dengan video & animasi</li>
+            <li><i class="fas fa-check-circle"></i> Editor coding online (tanpa instalasi)</li>
+            <li><i class="fas fa-check-circle"></i> Kuis & tantangan harian dengan poin</li>
+            <li><i class="fas fa-check-circle"></i> Evaluasi otomatis + pembahasan detail</li>
+            <li><i class="fas fa-check-circle"></i> Dashboard progres belajar personal</li>
+          </ul>
+          
+          <div class="featured-buttons">
+            <a href="#" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i> Akses LMS</a>
+            <a href="#" class="btn btn-outline" style="border-color: white; color: white;"><i class="fas fa-question-circle"></i> Panduan Penggunaan</a>
+          </div>
+        </div>
+        <div class="featured-image fade-in">
+          <div style="background: linear-gradient(135deg, #1e293b, #334155); width: 100%; max-width: 500px; height: 320px; border-radius: 16px; display: flex; align-items: center; justify-content: center; color: #60a5fa; font-size: 3.5rem; border: 3px solid rgba(96, 165, 250, 0.3); box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);">
+            <i class="fas fa-laptop-code"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🔹 METODE PEMBELAJARAN -->
+  <section class="section">
+    <div class="container">
+      <div class="section-title">
+        <h2><i class="fas fa-chalkboard-teacher"></i> Model Pembelajaran</h2>
+        <p>Pendekatan pembelajaran inovatif yang berpusat pada siswa dan relevan dengan dunia nyata.</p>
+      </div>
+      
+      <div class="methods-grid">
+        <div class="method-card fade-in">
+          <i class="fas fa-sync-alt"></i>
+          <h3>Blended Learning</h3>
+          <p>Kombinasi pembelajaran tatap muka dan daring untuk fleksibilitas dan kedalaman materi.</p>
+        </div>
+        <div class="method-card fade-in">
+          <i class="fas fa-lightbulb"></i>
+          <h3>Problem Based Learning</h3>
+          <p>Belajar melalui pemecahan masalah kontekstual yang melatih berpikir kritis dan kolaborasi.</p>
+        </div>
+        <div class="method-card fade-in">
+          <i class="fas fa-tasks"></i>
+          <h3>Project Based Learning</h3>
+          <p>Menghasilkan karya nyata melalui proyek bertahap yang mengasah kreativitas dan portofolio.</p>
+        </div>
+        <div class="method-card fade-in">
+          <i class="fas fa-keyboard"></i>
+          <h3>Hands-on Coding</h3>
+          <p>Praktik langsung menulis kode dengan feedback instan untuk penguasaan keterampilan teknis.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🔹 HASIL & PROYEK SISWA -->
+  <section class="section" style="background: #f8fafc;">
+    <div class="container">
+      <div class="section-title">
+        <h2><i class="fas fa-trophy"></i> Karya dan Proyek Siswa</h2>
+        <p>Berbagai proyek kreatif yang dihasilkan siswa sebagai bukti penguasaan kompetensi informatika.</p>
+      </div>
+      
+      <div class="projects-grid">
+        <div class="project-card fade-in">
+          <div class="project-image">
+            <i class="fas fa-globe"></i>
+          </div>
+          <div class="project-content">
+            <h3>Website Profil Sekolah</h3>
+            <p>Website responsif dengan HTML, CSS, dan JavaScript untuk mempromosikan kegiatan sekolah.</p>
+          </div>
+        </div>
+        <div class="project-card fade-in">
+          <div class="project-image">
+            <i class="fas fa-calculator"></i>
+          </div>
+          <div class="project-content">
+            <h3>Kalkulator Digital Interaktif</h3>
+            <p>Aplikasi kalkulator dengan fitur ilmiah dan riwayat perhitungan menggunakan JavaScript.</p>
+          </div>
+        </div>
+        <div class="project-card fade-in">
+          <div class="project-image">
+            <i class="fas fa-gamepad"></i>
+          </div>
+          <div class="project-content">
+            <h3>Game Mini "Tebak Angka"</h3>
+            <p>Game edukasi dengan logika percabangan, perulangan, dan animasi CSS yang menarik.</p>
+          </div>
+        </div>
+        <div class="project-card fade-in">
+          <div class="project-image">
+            <i class="fas fa-file-alt"></i>
+          </div>
+          <div class="project-content">
+            <h3>Formulir Pendaftaran Online</h3>
+            <p>Aplikasi form dengan validasi input, penyimpanan data lokal, dan desain user-friendly.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🔹 TESTIMONI -->
+  <section class="section testimonials">
+    <div class="container">
+      <div class="section-title">
+        <h2><i class="fas fa-comments"></i> Apa Kata Siswa?</h2>
+        <p>Pengalaman nyata siswa dalam mengikuti pembelajaran informatika yang menyenangkan dan bermakna.</p>
+      </div>
+      
+      <div class="testimonials-grid">
+        <div class="testimonial-card fade-in">
+          <div class="testimonial-content">
+            "Awalnya saya takut coding, tapi dengan Smart Algorithm belajar jadi seru! Sekarang saya bisa buat game sederhana sendiri."
+          </div>
+          <div class="testimonial-author">
+            <div class="author-avatar">AR</div>
+            <div class="author-info">
+              <h4>Aninda R.</h4>
+              <p>Siswa Kelas XI • Juara 1 Lomba Coding Tingkat Kabupaten</p>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card fade-in">
+          <div class="testimonial-content">
+            "Metode PjBL bikin saya belajar sambil berkarya. Proyek website saya bahkan dipakai untuk ekstrakurikuler sekolah!"
+          </div>
+          <div class="testimonial-author">
+            <div class="author-avatar">DF</div>
+            <div class="author-info">
+              <h4>Dinda F.</h4>
+              <p>Siswa Kelas X • Pengelola Website OSIS</p>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card fade-in">
+          <div class="testimonial-content">
+            "Fitur evaluasi otomatis di LMS sangat membantu. Saya langsung tahu kesalahan kode dan bisa perbaiki saat itu juga."
+          </div>
+          <div class="testimonial-author">
+            <div class="author-avatar">MR</div>
+            <div class="author-info">
+              <h4>Muhammad R.</h4>
+              <p>Siswa Kelas XI • Peserta Pelatihan Coding Nasional</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🔹 FINAL CTA -->
+  <section class="section">
+    <div class="container">
+      <div class="final-cta fade-in">
+        <h2><i class="fas fa-rocket"></i> Siap Belajar Coding?</h2>
+        <p>Bergabunglah sekarang dan mulai perjalanan Anda menjadi creator teknologi masa depan!</p>
+        <div>
+          <a href="#" class="btn btn-white"><i class="fas fa-play-circle"></i> Mulai Sekarang</a>
+          <a href="#lms" class="btn btn-outline" style="border-color: white; color: white;"><i class="fas fa-laptop"></i> Masuk LMS</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🔹 FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3><i class="fas fa-school"></i> SMA Negeri 1 Cluring</h3>
+          <p>Mencetak generasi unggul, berkarakter, dan siap menghadapi tantangan era digital melalui pendidikan informatika yang berkualitas.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+        
+        <div class="footer-links">
+          <h4>Link Penting</h4>
+          <ul>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Kurikulum Informatika</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Jadwal Pembelajaran</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Panduan LMS</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Galeri Proyek Siswa</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Kontak Guru</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-links">
+          <h4>Kontak Kami</h4>
+          <ul class="footer-contact">
+            <li><i class="fas fa-map-marker-alt"></i> Jl. Raya Cluring No. 123, Banyuwangi, Jawa Timur</li>
+            <li><i class="fas fa-phone"></i> (0333) 713297</li>
+            <li><i class="fas fa-envelope"></i> informatika@sman1cluring.sch.id</li>
+            <li><i class="fas fa-clock"></i> Senin-Jumat: 07.00 - 15.00 WIB</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2026 SMA Negeri 1 Cluring. All Rights Reserved. | Dikembangkan oleh Tim Informatika SMA</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 🔹 JAVASCRIPT: Animasi Scroll & Tabs -->
+  <script>
+    // Animasi fade-in on scroll
+    document.addEventListener('DOMContentLoaded', function() {
+      const fadeElements = document.querySelectorAll('.fade-in');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      fadeElements.forEach(el => observer.observe(el));
+      
+      // Tabs functionality for materials
+      const tabBtns = document.querySelectorAll('.tab-btn');
+      const materialCards = document.querySelectorAll('.material-card');
+      
+      tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          // Remove active class from all buttons
+          tabBtns.forEach(b => b.classList.remove('active'));
+          // Add active class to clicked button
+          btn.classList.add('active');
+          
+          const target = btn.getAttribute('data-target');
+          
+          // Show/hide cards based on target
+          materialCards.forEach(card => {
+            if (target === 'kelas-x') {
+              // Show first 3 cards for Kelas X (already visible by default)
+              card.style.display = 'block';
+            } else {
+              // For demo: In real implementation, you'd load different content
+              // Here we just show a message
+              if (card.id !== 'kelas-x') {
+                card.style.display = 'block';
+              }
+            }
+          });
+        });
+      });
+      
+      // Smooth scroll for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
