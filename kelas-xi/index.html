@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Materi Pembelajaran Informatika Kelas XI - Struktur Data, Web Programming, JavaScript | SMA Negeri 1 Cluring">
+  <meta name="keywords" content="informatika, kelas xi, struktur data, javascript, web programming, SMA Cluring">
+  
+  <title>Kelas XI Informatika | SMA Negeri 1 Cluring</title>
+  
+  <!-- Preconnect untuk performa -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+  
+  <style>
+    /* ===== CSS VARIABLES - SHARED WITH LANDING PAGE & KELAS X ===== */
+    :root {
+      --primary-blue: #2563eb;
+      --primary-blue-dark: #1d4ed8;
+      --primary-blue-light: #3b82f6;
+      --secondary-green: #10b981;
+      --secondary-green-dark: #059669;
+      --secondary-green-light: #34d399;
+      --accent-purple: #8b5cf6;
+      --accent-purple-dark: #7c3aed;
+      --accent-pink: #ec4899;
+      --dark: #1e293b;
+      --dark-light: #334155;
+      --light: #f8fafc;
+      --gray: #64748b;
+      --gray-light: #94a3b8;
+      --white: #ffffff;
+      --shadow: 0 10px 30px -10px rgba(0,0,0,0.15);
+      --shadow-hover: 0 20px 40px -10px rgba(0,0,0,0.25);
+      --shadow-lg: 0 25px 50px -12px rgba(0,0,0,0.3);
+      --radius: 16px;
+      --radius-lg: 24px;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --font-primary: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 2rem; }
+    body {
+      font-family: var(--font-primary);
+      background: var(--light);
+      color: var(--dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { text-decoration: none; color: inherit; transition: var(--transition); }
+    ul { list-style: none; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+    /* ===== UTILITIES ===== */
+    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+    .section { padding: 4rem 0; }
+    .text-center { text-align: center; }
+    .mb-2 { margin-bottom: 2rem; }
+    .mb-3 { margin-bottom: 3rem; }
+    
+    .badge {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.4rem 1rem; border-radius: 50px;
+      background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink));
+      color: white; font-size: 0.85rem; font-weight: 500;
+      margin-bottom: 1.25rem; box-shadow: 0 4px 14px rgba(139, 92, 246, 0.3);
+    }
+    
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+      padding: 0.875rem 1.75rem; border-radius: 50px;
+      font-weight: 600; font-size: 1rem; transition: var(--transition);
+      border: none; box-shadow: var(--shadow); position: relative; overflow: hidden;
+    }
+    .btn::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.2), transparent);
+      opacity: 0; transition: var(--transition);
+    }
+    .btn:hover::after { opacity: 1; }
+    .btn:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); }
+    
+    .btn-primary { background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-dark)); color: white; }
+    .btn-primary:hover { background: linear-gradient(135deg, var(--primary-blue-dark), #1a44b8); }
+    .btn-success { background: linear-gradient(135deg, var(--secondary-green), var(--secondary-green-dark)); color: white; }
+    .btn-purple { background: linear-gradient(135deg, var(--accent-purple), var(--accent-purple-dark)); color: white; }
+    .btn-pink { background: linear-gradient(135deg, var(--accent-pink), #db2777); color: white; }
+    .btn-outline { background: transparent; border: 2px solid var(--primary-blue); color: var(--primary-blue); }
+    .btn-outline:hover { background: var(--primary-blue); color: white; }
+    .btn-white { background: white; color: var(--primary-blue); font-weight: 700; }
+    .btn-sm { padding: 0.625rem 1.25rem; font-size: 0.9rem; }
+    .btn-lg { padding: 1.125rem 2.25rem; font-size: 1.1rem; }
+    .btn-block { width: 100%; }
+    .btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none !important; }
+
+    /* ===== BREADCRUMB ===== */
+    .breadcrumb {
+      display: flex; align-items: center; gap: 0.5rem;
+      padding: 1.25rem 0; font-size: 0.95rem; color: var(--gray);
+      flex-wrap: wrap;
+    }
+    .breadcrumb a { color: var(--primary-blue); font-weight: 500; }
+    .breadcrumb a:hover { color: var(--primary-blue-dark); }
+    .breadcrumb span { color: var(--dark); font-weight: 500; }
+    .breadcrumb i { font-size: 0.75rem; opacity: 0.7; }
+
+    /* ===== CLASS XI HEADER ===== */
+    .class-header {
+      background: linear-gradient(135deg, #faf5ff 0%, #f0fdf4 50%, #eff6ff 100%);
+      padding: 3rem 0; position: relative; overflow: hidden;
+      border-radius: 0 0 var(--radius-lg) var(--radius-lg); margin-bottom: 3rem;
+    }
+    .class-header::before {
+      content: ''; position: absolute; width: 500px; height: 500px;
+      border-radius: 50%; background: radial-gradient(circle, rgba(139,92,246,0.12) 0%, transparent 70%);
+      top: -150px; right: -150px; animation: float 10s ease-in-out infinite;
+    }
+    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-20px)} }
+    
+    .class-header-content {
+      display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 2.5rem;
+      align-items: center; position: relative; z-index: 2;
+    }
+    .class-header-text h1 {
+      font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 700; margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--dark), var(--accent-purple));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .class-header-text > p {
+      color: var(--gray); font-size: 1.1rem; margin-bottom: 1.5rem;
+      max-width: 550px; line-height: 1.7;
+    }
+    .class-stats { display: flex; gap: 1.5rem; margin-top: 1.5rem; flex-wrap: wrap; }
+    .stat-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.95rem; color: var(--gray); }
+    .stat-item i { color: var(--accent-purple); }
+    
+    .class-header-visual { display: flex; justify-content: center; }
+    .badge-xl {
+      width: 200px; height: 200px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink));
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      color: white; box-shadow: var(--shadow-lg); animation: pulse 3s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.05)} }
+    .badge-xl span:first-child { font-size: 4rem; font-weight: 800; line-height: 1; }
+    .badge-xl span:last-child { font-size: 1rem; opacity: 0.95; margin-top: 0.25rem; }
+
+    /* ===== PROGRESS TRACKER ===== */
+    .progress-container {
+      background: var(--white); padding: 1.75rem; border-radius: var(--radius);
+      box-shadow: var(--shadow); margin-bottom: 3rem;
+    }
+    .progress-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem; }
+    .progress-header h3 { font-size: 1.15rem; font-weight: 600; display: flex; align-items: center; gap: 0.5rem; }
+    .progress-header span { color: var(--accent-purple); font-weight: 700; font-size: 1.1rem; }
+    .progress-bar { height: 14px; background: #e2e8f0; border-radius: 10px; overflow: hidden; }
+    .progress-fill {
+      height: 100%; background: linear-gradient(90deg, var(--accent-purple), var(--accent-pink));
+      border-radius: 10px; transition: width 0.6s ease; width: var(--progress, 0%);
+    }
+    .progress-hint { margin-top: 0.75rem; font-size: 0.9rem; color: var(--gray); display: flex; align-items: center; gap: 0.4rem; }
+
+    /* ===== MODULES GRID ===== */
+    .modules-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.75rem; margin-bottom: 3rem; }
+    
+    .module-card {
+      background: var(--white); border-radius: var(--radius); overflow: hidden;
+      box-shadow: var(--shadow); transition: var(--transition);
+      border: 2px solid transparent; border-top: 4px solid var(--accent-purple);
+      display: flex; flex-direction: column;
+    }
+    .module-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-hover); border-color: var(--accent-purple-light); }
+    .module-card.completed { border-color: var(--secondary-green); }
+    .module-card.completed .module-badge { background: var(--secondary-green); }
+    .module-card.locked { opacity: 0.75; }
+    .module-card.locked:hover { transform: none; cursor: not-allowed; }
+    
+    .module-header {
+      padding: 1.5rem; background: linear-gradient(135deg, rgba(139,92,246,0.1), rgba(236,72,153,0.1));
+      border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: flex-start;
+    }
+    .module-number {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink));
+      color: white; display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 1.2rem;
+    }
+    .module-badge {
+      padding: 0.35rem 0.85rem; border-radius: 50px; font-size: 0.8rem; font-weight: 500;
+      background: var(--gray); color: white;
+    }
+    .module-badge.new { background: linear-gradient(135deg, #f59e0b, #ea580c); }
+    .module-badge.advanced { background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink)); }
+    .module-badge.project { background: linear-gradient(135deg, var(--secondary-green), #047857); }
+    
+    .module-body { padding: 1.75rem; flex: 1; display: flex; flex-direction: column; }
+    .module-body h3 { font-size: 1.35rem; margin-bottom: 0.75rem; font-weight: 600; }
+    .module-body > p { color: var(--gray); font-size: 0.95rem; margin-bottom: 1.25rem; line-height: 1.6; }
+    
+    .module-skills { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.25rem; }
+    .skill-tag {
+      padding: 0.3rem 0.7rem; background: #f1f5f9; border-radius: 50px;
+      font-size: 0.8rem; color: var(--gray); font-weight: 500;
+    }
+    
+    .module-topics { margin: 0.5rem 0 1.5rem; flex: 1; }
+    .module-topics li {
+      display: flex; align-items: flex-start; gap: 0.5rem;
+      font-size: 0.93rem; color: var(--gray); margin-bottom: 0.5rem;
+    }
+    .module-topics i { color: var(--secondary-green); margin-top: 3px; font-size: 0.85rem; }
+    
+    .module-footer {
+      padding: 0 1.75rem 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;
+    }
+    .module-meta { display: flex; align-items: center; gap: 1rem; font-size: 0.85rem; color: var(--gray); }
+    .module-meta-item { display: flex; align-items: center; gap: 0.35rem; }
+    
+    .module-progress-mini { width: 70px; height: 6px; background: #e2e8f0; border-radius: 3px; overflow: hidden; }
+    .module-progress-mini .fill { height: 100%; background: var(--secondary-green); border-radius: 3px; width: var(--fill, 0%); transition: width 0.4s ease; }
+    
+    .module-cta .btn { width: 100%; justify-content: center; }
+
+    /* ===== FEATURED PROJECT ===== */
+    .featured-project {
+      background: linear-gradient(135deg, var(--dark) 0%, var(--dark-light) 100%);
+      color: white; border-radius: var(--radius-lg); padding: 2.5rem;
+      margin: 3rem 0; display: grid; grid-template-columns: 1.1fr 0.9fr;
+      gap: 2.5rem; align-items: center; position: relative; overflow: hidden;
+    }
+    .featured-project::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(circle at 20% 80%, rgba(139,92,246,0.2) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .featured-project > * { position: relative; z-index: 2; }
+    .featured-project h3 {
+      font-size: 1.6rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.6rem;
+    }
+    .featured-project > p { color: var(--gray-light); margin-bottom: 1.75rem; font-size: 1.05rem; line-height: 1.7; }
+    
+    .project-features { margin-bottom: 2rem; }
+    .project-features li {
+      display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.85rem; font-size: 1rem;
+    }
+    .project-features i { color: var(--secondary-green-light); font-size: 1.1rem; }
+    
+    .project-preview {
+      background: rgba(255,255,255,0.1); border-radius: 16px; padding: 2rem;
+      text-align: center; border: 1px solid rgba(255,255,255,0.2);
+    }
+    .project-preview i { font-size: 3.5rem; color: var(--secondary-green-light); margin-bottom: 1rem; }
+    .project-preview p { font-size: 0.95rem; opacity: 0.9; margin-bottom: 0.5rem; }
+    .project-preview strong { color: white; }
+
+    /* ===== RESOURCES SECTION ===== */
+    .resources-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.25rem; margin-top: 2rem; }
+    .resource-card {
+      background: var(--white); padding: 1.75rem; border-radius: var(--radius);
+      text-align: center; box-shadow: var(--shadow); transition: var(--transition);
+      border: 2px solid transparent;
+    }
+    .resource-card:hover { border-color: var(--accent-purple); transform: translateY(-4px); }
+    .resource-card i { font-size: 2rem; color: var(--accent-purple); margin-bottom: 0.85rem; }
+    .resource-card h4 { font-size: 1.05rem; margin-bottom: 0.5rem; font-weight: 600; }
+    .resource-card p { color: var(--gray); font-size: 0.9rem; }
+
+    /* ===== ACHIEVEMENTS ===== */
+    .achievements {
+      background: linear-gradient(135deg, #faf5ff 0%, #f0fdf4 100%);
+      border-radius: var(--radius-lg); padding: 2rem; margin: 3rem 0;
+    }
+    .achievements h3 { text-align: center; font-size: 1.5rem; margin-bottom: 1.5rem; }
+    .achievements-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1.5rem; }
+    .achievement-item {
+      text-align: center; padding: 1.25rem; background: var(--white);
+      border-radius: var(--radius); box-shadow: var(--shadow);
+    }
+    .achievement-item i { font-size: 2rem; color: var(--accent-purple); margin-bottom: 0.75rem; }
+    .achievement-item .count { font-size: 1.5rem; font-weight: 700; color: var(--dark); }
+    .achievement-item .label { font-size: 0.85rem; color: var(--gray); }
+
+    /* ===== ANIMATIONS ===== */
+    .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .fade-in.delay-1 { transition-delay: 0.1s; }
+    .fade-in.delay-2 { transition-delay: 0.2s; }
+    .fade-in.delay-3 { transition-delay: 0.3s; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .class-header-content, .featured-project { grid-template-columns: 1fr; text-align: center; }
+      .class-header-visual { order: -1; }
+      .class-stats, .module-footer { justify-content: center; }
+      .featured-project .project-preview { max-width: 400px; margin: 0 auto; }
+    }
+    @media (max-width: 768px) {
+      .container { padding: 0 1.5rem; }
+      .section { padding: 3.5rem 0; }
+      .class-header-text h1 { font-size: 2rem; }
+      .btn { padding: 0.8rem 1.5rem; font-size: 0.95rem; }
+      .modules-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .breadcrumb { padding: 1rem 0; font-size: 0.9rem; }
+      .btn { width: 100%; max-width: 320px; }
+      .class-stats { flex-direction: column; align-items: center; gap: 0.75rem; }
+      .module-meta { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+    }
+
+    /* ===== ACCESSIBILITY ===== */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+      html { scroll-behavior: auto; }
+    }
+    a:focus-visible, button:focus-visible, .btn:focus-visible {
+      outline: 3px solid var(--secondary-green-light); outline-offset: 2px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 🔹 BREADCRUMB -->
+  <div class="container">
+    <nav class="breadcrumb">
+      <a href="../index.html"><i class="fas fa-home"></i> Beranda</a>
+      <i class="fas fa-chevron-right"></i>
+      <a href="#">Kelas XI</a>
+      <i class="fas fa-chevron-right"></i>
+      <span>Dashboard Materi</span>
+    </nav>
+  </div>
+
+  <!-- 🔹 CLASS XI HEADER -->
+  <header class="class-header">
+    <div class="container">
+      <div class="class-header-content">
+        <div class="class-header-text fade-in">
+          <span class="badge"><i class="fas fa-graduation-cap"></i> Kelas XI • Semester Ganjil</span>
+          <h1>Pemrograman Lanjut & Pengembangan Aplikasi Web</h1>
+          <p>Tingkatkan keterampilan coding dengan mempelajari struktur data, JavaScript modern, dan pengembangan proyek web interaktif yang siap portofolio.</p>
+          
+          <div class="class-stats">
+            <div class="stat-item"><i class="fas fa-book"></i> 4 Modul Lanjut</div>
+            <div class="stat-item"><i class="fas fa-clock"></i> ± 32 JP</div>
+            <div class="stat-item"><i class="fas fa-code"></i> 2 Proyek Besar</div>
+            <div class="stat-item"><i class="fas fa-certificate"></i> Sertifikat Kompetensi</div>
+          </div>
+          
+          <div style="margin-top: 1.75rem; display: flex; gap: 1rem; flex-wrap: wrap; justify-content: flex-start;">
+            <a href="#modules" class="btn btn-purple btn-lg"><i class="fas fa-play-circle"></i> Mulai Belajar</a>
+            <a href="../index.html" class="btn btn-outline btn-lg"><i class="fas fa-arrow-left"></i> Kembali</a>
+          </div>
+        </div>
+        <div class="class-header-visual fade-in delay-1">
+          <div class="badge-xl">
+            <span>XI</span>
+            <span>Advanced</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- 🔹 PROGRESS TRACKER -->
+  <div class="container">
+    <div class="progress-container fade-in">
+      <div class="progress-header">
+        <h3><i class="fas fa-chart-line"></i> Progres Belajar Anda</h3>
+        <span id="progress-percent">0%</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progress-fill"></div>
+      </div>
+      <p class="progress-hint">
+        <i class="fas fa-info-circle"></i> Selesaikan modul secara berurutan. Setiap modul yang selesai membuka akses ke modul berikutnya + poin achievement!
+      </p>
+    </div>
+  </div>
+
+  <!-- 🔹 MODULES GRID -->
+  <section class="section" id="modules">
+    <div class="container">
+      <div class="text-center mb-3">
+        <h2 style="font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem;">📚 Modul Pembelajaran Kelas XI</h2>
+        <p style="color: var(--gray);">Materi lanjutan untuk mengasah keterampilan pemrograman dan pengembangan aplikasi web.</p>
+      </div>
+      
+      <div class="modules-grid">
+        
+        <!-- 🔹 Modul 1: Struktur Data Dasar -->
+        <article class="module-card fade-in" data-module="01" data-status="available" data-prereq="kelas-x:04">
+          <div class="module-header">
+            <div class="module-number">1</div>
+            <span class="module-badge advanced"><i class="fas fa-fire"></i> Lanjut</span>
+          </div>
+          <div class="module-body">
+            <h3>Struktur Data Dasar</h3>
+            <p>Pahami cara organisasi dan manipulasi data secara efisien menggunakan struktur data fundamental.</p>
+            
+            <div class="module-skills">
+              <span class="skill-tag">Array</span>
+              <span class="skill-tag">Stack</span>
+              <span class="skill-tag">Queue</span>
+              <span class="skill-tag">Linked List</span>
+            </div>
+            
+            <ul class="module-topics">
+              <li><i class="fas fa-check"></i> Konsep Array Multi-dimensi</li>
+              <li><i class="fas fa-check"></i> Stack: LIFO & Implementasi</li>
+              <li><i class="fas fa-check"></i> Queue: FIFO & Aplikasi Real-world</li>
+              <li><i class="fas fa-check"></i> Linked List: Node & Pointer</li>
+              <li><i class="fas fa-check"></i> 🎯 Studi Kasus: Manajemen Antrian</li>
+            </ul>
+            
+            <div class="module-footer">
+              <div class="module-meta">
+                <span class="module-meta-item"><i class="fas fa-clock"></i> 8 JP</span>
+                <span class="module-meta-item"><i class="fas fa-star"></i> Level: Intermediate</span>
+              </div>
+              <div class="module-progress-mini"><div class="fill" style="--fill: 0%"></div></div>
+            </div>
+          </div>
+          <div class="module-cta" style="padding: 0 1.75rem 1.75rem;">
+            <a href="modules/01-struktur-data-dasar/index.html" class="btn btn-purple">
+              <i class="fas fa-arrow-right"></i> Mulai Modul 1
+            </a>
+          </div>
+        </article>
+
+        <!-- 🔹 Modul 2: Pemrograman Web Dasar -->
+        <article class="module-card fade-in delay-1" data-module="02" data-status="locked" data-prereq="01">
+          <div class="module-header">
+            <div class="module-number">2</div>
+            <span class="module-badge new"><i class="fas fa-globe"></i> Web Dev</span>
+          </div>
+          <div class="module-body">
+            <h3>Pemrograman Web Dasar</h3>
+            <p>Bangun website modern dan responsif dengan HTML5 semantic, CSS3 advanced, dan best practices.</p>
+            
+            <div class="module-skills">
+              <span class="skill-tag">HTML5</span>
+              <span class="skill-tag">CSS3</span>
+              <span class="skill-tag">Flexbox</span>
+              <span class="skill-tag">Grid</span>
+            </div>
+            
+            <ul class="module-topics">
+              <li><i class="fas fa-check"></i> Semantic HTML & Accessibility</li>
+              <li><i class="fas fa-check"></i> CSS Flexbox Layout System</li>
+              <li><i class="fas fa-check"></i> CSS Grid untuk Layout Kompleks</li>
+              <li><i class="fas fa-check"></i> Responsive Design dengan Media Queries</li>
+              <li><i class="fas fa-check"></i> 🎯 Proyek: Website Portfolio Personal</li>
+            </ul>
+            
+            <div class="module-footer">
+              <div class="module-meta">
+                <span class="module-meta-item"><i class="fas fa-clock"></i> 8 JP</span>
+                <span class="module-meta-item"><i class="fas fa-star"></i> Level: Intermediate</span>
+              </div>
+              <div class="module-progress-mini"><div class="fill" style="--fill: 0%"></div></div>
+            </div>
+          </div>
+          <div class="module-cta" style="padding: 0 1.75rem 1.75rem;">
+            <button class="btn btn-outline" disabled title="Selesaikan Modul 1 terlebih dahulu">
+              <i class="fas fa-lock"></i> Terkunci
+            </button>
+          </div>
+        </article>
+
+        <!-- 🔹 Modul 3: JavaScript Fundamental -->
+        <article class="module-card fade-in delay-2" data-module="03" data-status="locked" data-prereq="02">
+          <div class="module-header">
+            <div class="module-number">3</div>
+            <span class="module-badge advanced"><i class="fas fa-bolt"></i> JavaScript</span>
+          </div>
+          <div class="module-body">
+            <h3>JavaScript Fundamental</h3>
+            <p>Kuasai JavaScript modern untuk membuat website interaktif dan dinamis dengan DOM manipulation.</p>
+            
+            <div class="module-skills">
+              <span class="skill-tag">ES6+</span>
+              <span class="skill-tag">DOM</span>
+              <span class="skill-tag">Events</span>
+              <span class="skill-tag">Async</span>
+            </div>
+            
+            <ul class="module-topics">
+              <li><i class="fas fa-check"></i> Variabel, Function & Scope (ES6+)</li>
+              <li><i class="fas fa-check"></i> DOM Manipulation & Event Handling</li>
+              <li><i class="fas fa-check"></i> Fetch API & Async/Await</li>
+              <li><i class="fas fa-check"></i> Local Storage & Session Management</li>
+              <li><i class="fas fa-check"></i> 🎯 Proyek: Aplikasi Task Manager</li>
+            </ul>
+            
+            <div class="module-footer">
+              <div class="module-meta">
+                <span class="module-meta-item"><i class="fas fa-clock"></i> 10 JP</span>
+                <span class="module-meta-item"><i class="fas fa-star"></i> Level: Advanced</span>
+              </div>
+              <div class="module-progress-mini"><div class="fill" style="--fill: 0%"></div></div>
+            </div>
+          </div>
+          <div class="module-cta" style="padding: 0 1.75rem 1.75rem;">
+            <button class="btn btn-outline" disabled title="Selesaikan Modul 2 terlebih dahulu">
+              <i class="fas fa-lock"></i> Terkunci
+            </button>
+          </div>
+        </article>
+
+        <!-- 🔹 Modul 4: Proyek Mini Coding -->
+        <article class="module-card fade-in delay-3" data-module="04" data-status="locked" data-prereq="03">
+          <div class="module-header">
+            <div class="module-number">4</div>
+            <span class="module-badge project"><i class="fas fa-rocket"></i> Capstone</span>
+          </div>
+          <div class="module-body">
+            <h3>Proyek Mini Coding</h3>
+            <p>Terapkan semua keterampilan dalam proyek nyata yang siap ditampilkan di portofolio digital Anda.</p>
+            
+            <div class="module-skills">
+              <span class="skill-tag">Full Project</span>
+              <span class="skill-tag">Git</span>
+              <span class="skill-tag">Deploy</span>
+              <span class="skill-tag">Portfolio</span>
+            </div>
+            
+            <ul class="module-topics">
+              <li><i class="fas fa-check"></i> Perencanaan & Wireframing Proyek</li>
+              <li><i class="fas fa-check"></i> Implementasi Fitur Utama</li>
+              <li><i class="fas fa-check"></i> Testing & Debugging</li>
+              <li><i class="fas fa-check"></i> Version Control dengan Git Dasar</li>
+              <li><i class="fas fa-check"></i> 🚀 Deploy ke GitHub Pages / Netlify</li>
+            </ul>
+            
+            <div class="module-footer">
+              <div class="module-meta">
+                <span class="module-meta-item"><i class="fas fa-clock"></i> 6 JP</span>
+                <span class="module-meta-item"><i class="fas fa-trophy"></i> Final Project</span>
+              </div>
+              <div class="module-progress-mini"><div class="fill" style="--fill: 0%"></div></div>
+            </div>
+          </div>
+          <div class="module-cta" style="padding: 0 1.75rem 1.75rem;">
+            <button class="btn btn-outline" disabled title="Selesaikan Modul 3 terlebih dahulu">
+              <i class="fas fa-lock"></i> Terkunci
+            </button>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 🔹 FEATURED PROJECT -->
+  <div class="container">
+    <div class="featured-project fade-in">
+      <div>
+        <h3><i class="fas fa-rocket"></i> Capstone Project: Task Manager App</h3>
+        <p>Bangun aplikasi manajemen tugas lengkap dengan fitur CRUD, filter kategori, prioritas, dan penyimpanan lokal. Proyek ini mengintegrasikan HTML, CSS, JavaScript, dan konsep struktur data.</p>
+        
+        <ul class="project-features">
+          <li><i class="fas fa-check-circle"></i> Add, Edit, Delete Tasks</li>
+          <li><i class="fas fa-check-circle"></i> Filter by Status & Priority</li>
+          <li><i class="fas fa-check-circle"></i> Local Storage Persistence</li>
+          <li><i class="fas fa-check-circle"></i> Responsive & Accessible UI</li>
+          <li><i class="fas fa-check-circle"></i> 📦 Siap Deploy + Sertifikat</li>
+        </ul>
+        
+        <a href="modules/04-proyek-mini-coding/panduan-proyek.html" class="btn btn-success btn-lg">
+          <i class="fas fa-code"></i> Lihat Panduan Proyek
+        </a>
+      </div>
+      <div class="project-preview">
+        <i class="fas fa-clipboard-list"></i>
+        <p><strong>Teknologi:</strong> HTML5 • CSS3 • JavaScript ES6+</p>
+        <p><strong>Output:</strong> Web App Interaktif + Source Code</p>
+        <p style="margin-top: 0.75rem;"><i class="fas fa-certificate"></i> + Sertifikat Capstone</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 🔹 ACHIEVEMENTS -->
+  <div class="container">
+    <div class="achievements fade-in">
+      <h3><i class="fas fa-trophy"></i> Achievement Kelas XI</h3>
+      <div class="achievements-grid">
+        <div class="achievement-item">
+          <i class="fas fa-medal"></i>
+          <div class="count">4</div>
+          <div class="label">Modul Selesai</div>
+        </div>
+        <div class="achievement-item">
+          <i class="fas fa-code"></i>
+          <div class="count">500+</div>
+          <div class="label">Baris Kode</div>
+        </div>
+        <div class="achievement-item">
+          <i class="fas fa-project-diagram"></i>
+          <div class="count">2</div>
+          <div class="label">Proyek Portofolio</div>
+        </div>
+        <div class="achievement-item">
+          <i class="fas fa-certificate"></i>
+          <div class="count">1</div>
+          <div class="label">Sertifikat Kompetensi</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 🔹 RESOURCES -->
+  <section class="section" style="background: #f1f5f9;">
+    <div class="container">
+      <div class="text-center mb-2">
+        <h3 style="font-size: 1.5rem; font-weight: 700;">🧰 Sumber Belajar Lanjutan</h3>
+      </div>
+      
+      <div class="resources-grid">
+        <a href="#" class="resource-card fade-in">
+          <i class="fas fa-video"></i>
+          <h4>Video Tutorial</h4>
+          <p>Playlist YouTube materi Kelas XI</p>
+        </a>
+        <a href="#" class="resource-card fade-in delay-1">
+          <i class="fas fa-file-code"></i>
+          <h4>Code Snippets</h4>
+          <p>Kumpulan kode contoh siap pakai</p>
+        </a>
+        <a href="#" class="resource-card fade-in delay-2">
+          <i class="fas fa-book"></i>
+          <h4>Referensi MDN</h4>
+          <p>Link dokumentasi resmi JavaScript</p>
+        </a>
+        <a href="#" class="resource-card fade-in delay-3">
+          <i class="fas fa-users"></i>
+          <h4>Forum Diskusi</h4>
+          <p>Tanya jawab proyek dengan mentor</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🔹 FINAL CTA -->
+  <div class="container" style="margin: 3rem auto; text-align: center;">
+    <div style="background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink)); color: white; padding: 2.5rem; border-radius: var(--radius-lg); max-width: 750px; margin: 0 auto;">
+      <h3 style="font-size: 1.75rem; margin-bottom: 1rem;"><i class="fas fa-lightbulb"></i> Siap Menjadi Web Developer?</h3>
+      <p style="margin-bottom: 1.75rem; opacity: 0.95; font-size: 1.05rem;">Setiap baris kode yang Anda tulis hari ini adalah fondasi karir teknologi masa depan Anda.</p>
+      <a href="modules/01-struktur-data-dasar/index.html" class="btn btn-white btn-lg" style="font-weight: 700;">
+        <i class="fas fa-play"></i> Mulai Modul 1: Struktur Data
+      </a>
+    </div>
+  </div>
+
+  <!-- 🔹 FOOTER MINI -->
+  <footer style="background: var(--dark); color: var(--gray-light); padding: 2.5rem 0 2rem; margin-top: 3rem;">
+    <div class="container text-center">
+      <p style="margin-bottom: 0.5rem;"><strong>SMA Negeri 1 Cluring</strong> • Informatika Kelas XI</p>
+      <p style="font-size: 0.9rem; opacity: 0.85;">© 2026 Tim Informatika SMA. All rights reserved.</p>
+      <p style="margin-top: 1.25rem;">
+        <a href="../index.html" style="color: var(--secondary-green-light); margin: 0 0.6rem;"><i class="fas fa-home"></i> Beranda</a>
+        <a href="kelas-x/index.html" style="color: var(--secondary-green-light); margin: 0 0.6rem;"><i class="fas fa-arrow-left"></i> Kelas X</a>
+        <a href="#" style="color: var(--secondary-green-light); margin: 0 0.6rem;"><i class="fas fa-headset"></i> Bantuan</a>
+        <a href="#" style="color: var(--secondary-green-light); margin: 0 0.6rem;"><i class="fas fa-user-tie"></i> Kontak Guru</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- 🔹 JAVASCRIPT: Progress, Animations & Module Logic -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      
+      // ===== 1. SCROLL ANIMATIONS =====
+      const fadeElements = document.querySelectorAll('.fade-in');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+      fadeElements.forEach(el => observer.observe(el));
+
+      // ===== 2. PROGRESS TRACKER (localStorage Simulation) =====
+      function updateProgress() {
+        const completed = JSON.parse(localStorage.getItem('classXI_progress')) || [];
+        const total = 4;
+        const percent = Math.round((completed.length / total) * 100);
+        
+        document.getElementById('progress-percent').textContent = `${percent}%`;
+        document.getElementById('progress-fill').style.setProperty('--progress', `${percent}%`);
+        
+        // Update module cards status
+        document.querySelectorAll('.module-card').forEach(card => {
+          const modNum = card.dataset.module;
+          const isCompleted = completed.includes(modNum);
+          const prereq = card.dataset.prereq;
+          
+          // Check if prerequisite is met
+          let isAvailable = false;
+          if (modNum === '01') {
+            // Modul 1: cek jika Kelas X modul 4 sudah selesai
+            const classXProgress = JSON.parse(localStorage.getItem('classX_progress')) || [];
+            isAvailable = classXProgress.includes('04');
+          } else {
+            // Modul lain: cek modul sebelumnya di Kelas XI
+            const prevMod = String(parseInt(modNum) - 1).padStart(2, '0');
+            isAvailable = completed.includes(prevMod);
+          }
+          
+          if (isCompleted) {
+            card.classList.add('completed');
+            const btn = card.querySelector('.module-cta a, .module-cta button');
+            if (btn) {
+              btn.className = 'btn btn-success';
+              btn.innerHTML = '<i class="fas fa-check"></i> Selesai';
+              btn.style.width = '100%';
+              btn.style.justifyContent = 'center';
+            }
+          } else if (isAvailable) {
+            card.classList.remove('locked');
+            card.dataset.status = 'available';
+            // Ensure start button exists
+            if (!card.querySelector('.module-cta a')) {
+              const modSlug = card.querySelector('h3').textContent.toLowerCase()
+                .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+              const link = document.createElement('a');
+              link.href = `modules/${modNum}-${modSlug}/index.html`;
+              link.className = 'btn btn-purple';
+              link.innerHTML = '<i class="fas fa-arrow-right"></i> Mulai Modul';
+              link.style.width = '100%';
+              link.style.justifyContent = 'center';
+              card.querySelector('.module-cta').innerHTML = '';
+              card.querySelector('.module-cta').appendChild(link);
+            }
+          } else {
+            card.classList.add('locked');
+            // Ensure locked button exists
+            if (!card.querySelector('.module-cta button')) {
+              const prevNum = modNum === '01' ? 'Kelas X Modul 4' : `Modul ${parseInt(modNum) - 1}`;
+              const btn = document.createElement('button');
+              btn.className = 'btn btn-outline';
+              btn.disabled = true;
+              btn.title = `Selesaikan ${prevNum} terlebih dahulu`;
+              btn.innerHTML = '<i class="fas fa-lock"></i> Terkunci';
+              btn.style.width = '100%';
+              card.querySelector('.module-cta').innerHTML = '';
+              card.querySelector('.module-cta').appendChild(btn);
+            }
+          }
+        });
+      }
+      updateProgress();
+
+      // ===== 3. UTILITY: Mark module as completed (for demo) =====
+      window.markModuleComplete = function(moduleId) {
+        let progress = JSON.parse(localStorage.getItem('classXI_progress')) || [];
+        if (!progress.includes(moduleId)) {
+          progress.push(moduleId);
+          localStorage.setItem('classXI_progress', JSON.stringify(progress));
+          updateProgress();
+          alert(`🎉 Selamat! Modul ${moduleId} ditandai selesai.`);
+          return true;
+        }
+        return false;
+      };
+
+      // ===== 4. SMOOTH SCROLL FOR ANCHORS =====
+      document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          const href = this.getAttribute('href');
+          if (href.includes('.') && !href.startsWith('#')) return;
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if (target) {
+            const offset = 80;
+            const pos = target.getBoundingClientRect().top + window.pageYOffset - offset;
+            window.scrollTo({ top: pos, behavior: 'smooth' });
+            history.pushState(null, null, href);
+          }
+        });
+      });
+
+      // ===== 5. CONSOLE INFO =====
+      console.log('🚀 Kelas XI Dashboard Loaded');
+      console.log('📁 Modules: kelas-xi/modules/');
+      console.log('💡 Tip: Complete Modul 1 to unlock advanced modules');
+    });
+  </script>
+</body>
+</html>
