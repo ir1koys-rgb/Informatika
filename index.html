@@ -17,7 +17,6 @@
     <style>
         /* --- CSS VARIABLES (LIGHT & DARK) --- */
         :root {
-            /* Light Mode */
             --primary: #4F46E5;
             --primary-dark: #4338ca;
             --secondary: #0EA5E9;
@@ -33,7 +32,6 @@
         }
 
         [data-theme="dark"] {
-            /* Dark Mode */
             --primary: #6366f1;
             --primary-dark: #818cf8;
             --secondary: #38bdf8;
@@ -122,7 +120,6 @@
             transform: translateY(-2px);
         }
 
-        /* Dark Mode Toggle */
         .theme-toggle {
             background: transparent;
             border: 2px solid var(--border-color);
@@ -382,6 +379,23 @@
             gap: 30px;
         }
 
+        .tab-placeholder {
+            text-align: center;
+            padding: 60px 20px;
+            background: var(--bg-body);
+            border-radius: 12px;
+            border: 2px dashed var(--border-color);
+            color: var(--text-muted);
+            display: block;
+        }
+        
+        .tab-placeholder i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            opacity: 0.5;
+        }
+
         .materi-card {
             background: var(--bg-body);
             padding: 30px;
@@ -390,6 +404,7 @@
             transition: 0.3s;
             position: relative;
             overflow: hidden;
+            cursor: pointer;
         }
 
         .materi-card:hover {
@@ -434,6 +449,247 @@
             border-radius: 4px;
             margin-top: 15px;
             font-weight: 600;
+        }
+
+        .materi-card .btn-detail {
+            margin-top: 20px;
+            padding: 8px 20px;
+            background: var(--primary);
+            color: #ffffff;
+            border: none;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .materi-card .btn-detail:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        /* --- DETAIL PAGE SECTION --- */
+        .detail-page {
+            display: none;
+            padding: 120px 5% 60px;
+            background: var(--bg-body);
+            min-height: 100vh;
+        }
+
+        .detail-page.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .detail-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 30px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .breadcrumb a {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .detail-header {
+            background: var(--bg-card);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+            border-left: 5px solid var(--primary);
+        }
+
+        .detail-header h1 {
+            font-size: 2.5rem;
+            color: var(--text-main);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .detail-header h1 i {
+            color: var(--primary);
+        }
+
+        .detail-header .meta-info {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .meta-item i {
+            color: var(--primary);
+        }
+
+        .detail-content {
+            background: var(--bg-card);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+        }
+
+        .detail-section {
+            margin-bottom: 40px;
+        }
+
+        .detail-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .detail-section h2 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .detail-section p {
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .detail-section ul {
+            list-style: disc;
+            margin-left: 20px;
+            color: var(--text-muted);
+        }
+
+        .detail-section ul li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .detail-section ul li strong {
+            color: var(--text-main);
+        }
+
+        .code-block {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 20px;
+            border-radius: 10px;
+            overflow-x: auto;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin: 15px 0;
+            border-left: 4px solid var(--primary);
+        }
+
+        .code-block .keyword { color: #569cd6; }
+        .code-block .string { color: #ce9178; }
+        .code-block .comment { color: #6a9955; }
+        .code-block .function { color: #dcdcaa; }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 10px;
+            margin: 15px 0;
+            background: #000;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .detail-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .btn-back, .btn-next {
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-back {
+            background: var(--bg-body);
+            color: var(--text-main);
+            border: 2px solid var(--border-color);
+        }
+
+        .btn-back:hover {
+            background: var(--border-color);
+            transform: translateX(-5px);
+        }
+
+        .btn-next {
+            background: var(--primary);
+            color: #ffffff;
+        }
+
+        .btn-next:hover {
+            background: var(--primary-dark);
+            transform: translateX(5px);
+        }
+
+        .btn-home {
+            background: var(--secondary);
+            color: #ffffff;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-home:hover {
+            background: #0284c7;
+            transform: translateY(-2px);
         }
 
         /* --- BENEFITS SECTION --- */
@@ -565,6 +821,19 @@
             .stats { margin-top: 0; border-radius: 0; }
             .tabs-header { gap: 10px; }
             .tab-btn { padding: 10px 20px; font-size: 0.9rem; }
+            
+            .detail-header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .detail-navigation {
+                flex-direction: column;
+            }
+            
+            .btn-back, .btn-next, .btn-home {
+                width: 100%;
+                justify-content: center;
+            }
         }
     </style>
 </head>
@@ -584,201 +853,597 @@
             </div>
         </div>
         <div class="nav-links" id="navLinks">
+            <a href="#home" onclick="toggleMenu()">Home</a>
             <a href="#tentang" onclick="toggleMenu()">Tentang</a>
             <a href="#materi" onclick="toggleMenu()">Materi</a>
             <a href="#manfaat" onclick="toggleMenu()">Manfaat</a>
             <a href="#kontak" onclick="toggleMenu()">Kontak</a>
-            <a href="#" class="btn-nav">Masuk LMS</a>
         </div>
     </nav>
 
-    <!-- HERO SECTION -->
-    <section class="hero">
-        <div class="hero-content">
-            <span class="badge">Inovasi Pendidikan 4.0</span>
-            <h1>Belajar Coding Jadi <span>Mudah & Menyenangkan</span></h1>
-            <p>Media ajar berbasis web untuk meningkatkan kemampuan berpikir komputasional siswa SMA Negeri 1 Cluring. Akses materi anytime, anywhere.</p>
-            <div class="hero-btns">
-                <a href="#materi" class="btn-primary">Pilih Kelas <i class="fas fa-arrow-right"></i></a>
-                <a href="#tentang" class="btn-outline">Pelajari Lebih</a>
+    <!-- MAIN CONTENT (HOME) -->
+    <div id="main-content">
+        <!-- HERO SECTION -->
+        <section class="hero">
+            <div class="hero-content">
+                <span class="badge">Inovasi Pendidikan 4.0</span>
+                <h1>Belajar Coding Jadi <span>Mudah & Menyenangkan</span></h1>
+                <p>Media ajar berbasis web untuk meningkatkan kemampuan berpikir komputasional siswa SMA Negeri 1 Cluring. Akses materi anytime, anywhere.</p>
+                <div class="hero-btns">
+                    <a href="#materi" class="btn-primary">Pilih Kelas <i class="fas fa-arrow-right"></i></a>
+                    <a href="#tentang" class="btn-outline">Pelajari Lebih</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1587620962725-abab7fe55159?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Smart Algorithm Interface">
+            </div>
+        </section>
+
+        <!-- STATS SECTION -->
+        <div class="stats">
+            <div class="stat-item">
+                <span class="stat-number">≥80%</span>
+                <span class="stat-label">Partisipasi Siswa Aktif</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">+15%</span>
+                <span class="stat-label">Peningkatan Nilai Rata-rata</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">24/7</span>
+                <span class="stat-label">Akses Materi Fleksibel</span>
             </div>
         </div>
-        <div class="hero-image">
-            <img src="https://images.unsplash.com/photo-1587620962725-abab7fe55159?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Smart Algorithm Interface">
-        </div>
-    </section>
 
-    <!-- STATS SECTION -->
-    <div class="stats">
-        <div class="stat-item">
-            <span class="stat-number">≥80%</span>
-            <span class="stat-label">Partisipasi Siswa Aktif</span>
-        </div>
-        <div class="stat-item">
-            <span class="stat-number">+15%</span>
-            <span class="stat-label">Peningkatan Nilai Rata-rata</span>
-        </div>
-        <div class="stat-item">
-            <span class="stat-number">24/7</span>
-            <span class="stat-label">Akses Materi Fleksibel</span>
+        <!-- ABOUT SECTION -->
+        <section id="tentang" class="section">
+            <div class="section-header">
+                <h2>Tentang Inovasi</h2>
+                <p>Smart Algorithm hadir untuk menjawab tantangan pembelajaran Informatika di era digital.</p>
+            </div>
+            <div class="about-grid">
+                <div class="about-card">
+                    <h3><i class="fas fa-lightbulb" style="color:var(--accent)"></i> Latar Belakang</h3>
+                    <p>Pembelajaran coding sering menghadapi kendala waktu dan minimnya media interaktif. Smart Algorithm dikembangkan untuk mendukung pembelajaran algoritma secara fleksibel dan mandiri.</p>
+                </div>
+                <div class="about-card">
+                    <h3><i class="fas fa-bullseye" style="color:var(--primary)"></i> Tujuan Utama</h3>
+                    <p>Meningkatkan kemampuan berpikir komputasional, mendorong pembelajaran mandiri, serta mewujudkan model <em>blended learning</em> yang adaptif di SMA Negeri 1 Cluring.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- MATERI SECTION (TABS X, XI, XII) -->
+        <section id="materi" class="section materi">
+            <div class="section-header">
+                <h2>Materi Pembelajaran</h2>
+                <p>Pilih kelas Anda untuk mengakses materi algoritma dan pemrograman</p>
+            </div>
+
+            <div class="tabs-container">
+                <!-- Tab Buttons -->
+                <div class="tabs-header">
+                    <button class="tab-btn" onclick="openTab(event, 'kelasX')">Kelas X</button>
+                    <button class="tab-btn" onclick="openTab(event, 'kelasXI')">Kelas XI</button>
+                    <button class="tab-btn" onclick="openTab(event, 'kelasXII')">Kelas XII</button>
+                </div>
+
+                <!-- Placeholder -->
+                <div id="tab-placeholder" class="tab-placeholder">
+                    <i class="fas fa-hand-pointer"></i>
+                    <h3>Silakan Pilih Kelas di Atas</h3>
+                    <p>Klik tombol kelas untuk memuat materi pembelajaran</p>
+                </div>
+
+                <!-- Tab Content: Kelas X -->
+                <div id="kelasX" class="tab-content">
+                    <div class="materi-card" onclick="navigateToDetail('berpikir-komputasional')">
+                        <div class="materi-icon"><i class="fas fa-brain"></i></div>
+                        <h3>Berpikir Komputasional</h3>
+                        <p>Dasar logika penyelesaian masalah, dekomposisi, dan pengenalan pola.</p>
+                        <span class="materi-tag">Dasar</span>
+                        <button class="btn-detail">Baca Selengkapnya <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                    <div class="materi-card" onclick="navigateToDetail('algoritma-flowchart')">
+                        <div class="materi-icon"><i class="fas fa-project-diagram"></i></div>
+                        <h3>Algoritma & Flowchart</h3>
+                        <p>Pembuatan diagram alir dan pseudocode untuk solusi sederhana.</p>
+                        <span class="materi-tag">Inti</span>
+                        <button class="btn-detail">Baca Selengkapnya <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                    <div class="materi-card" onclick="navigateToDetail('variabel-tipe-data')">
+                        <div class="materi-icon"><i class="fas fa-variable"></i></div>
+                        <h3>Variabel & Tipe Data</h3>
+                        <p>Pengenalan konsep penyimpanan data dan jenis-jenis data dalam programming.</p>
+                        <span class="materi-tag">Praktik</span>
+                        <button class="btn-detail">Baca Selengkapnya <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- Tab Content: Kelas XI -->
+                <div id="kelasXI" class="tab-content">
+                    <div class="materi-card" onclick="navigateToDetail('struktur-kontrol')">
+                        <div class="materi-icon"><i class="fas fa-random"></i></div>
+                        <h3>Struktur Kontrol</h3>
+                        <p>Percabangan (If-Else) dan Perulangan (Looping) dalam studi kasus nyata.</p>
+                        <span class="materi-tag">Lanjut</span>
+                        <button class="btn-detail">Baca Selengkapnya <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                    <div class="materi-card" onclick="navigateToDetail('fungsi-prosedur')">
+                        <div class="materi-icon"><i class="fas fa-function"></i></div>
+                        <h3>Fungsi & Prosedur</h3>
+                        <p>Modularisasi kode untuk efisiensi dan kemudahan pembacaan program.</p>
+                        <span class="materi-tag">Inti</span>
+                        <button class="btn-detail">Baca Selengkapnya <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                    <div class="materi-card" onclick="navigateToDetail('pemrograman-web')">
+                        <div class="materi-icon"><i class="fas fa-laptop-code"></i></div>
+                        <h3>Dasar Pemrograman Web</h3>
+                        <p>Implementasi algoritma menggunakan HTML dan JavaScript dasar.</p>
+                        <span class="materi-tag">Praktik</span>
+                        <button class="btn-detail">Baca Selengkapnya <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- Tab Content: Kelas XII -->
+                <div id="kelasXII" class="tab-content">
+                    <div class="materi-card" onclick="navigateToDetail('struktur-data')">
+                        <div class="materi-icon"><i class="fas fa-database"></i></div>
+                        <h3>Struktur Data Dasar</h3>
+                        <p>Pengenalan Array, List, dan pengelolaan data yang lebih kompleks.</p>
+                        <span class="materi-tag">Advanced</span>
+                        <button class="btn-detail">Baca Selengkapnya <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                    <div class="materi-card" onclick="navigateToDetail('proyek-pemrograman')">
+                        <div class="materi-icon"><i class="fas fa-rocket"></i></div>
+                        <h3>Proyek Pemrograman</h3>
+                        <p>Pengembangan aplikasi sederhana berbasis masalah (Problem Based Learning).</p>
+                        <span class="materi-tag">Proyek</span>
+                        <button class="btn-detail">Baca Selengkapnya <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                    <div class="materi-card" onclick="navigateToDetail('optimasi-algoritma')">
+                        <div class="materi-icon"><i class="fas fa-search"></i></div>
+                        <h3>Optimasi Algoritma</h3>
+                        <p>Analisis efisiensi kode dan pencarian solusi terbaik.</p>
+                        <span class="materi-tag">Analisis</span>
+                        <button class="btn-detail">Baca Selengkapnya <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BENEFITS SECTION -->
+        <section id="manfaat" class="benefits">
+            <h2>Manfaat Bagi Stakeholder</h2>
+            <div class="benefit-grid">
+                <div class="benefit-item">
+                    <i class="fas fa-user-graduate"></i>
+                    <h4>Siswa</h4>
+                    <p>Mempermudah pemahaman konsep melalui materi interaktif dan latihan praktik mandiri.</p>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <h4>Guru</h4>
+                    <p>Membantu proses penyampaian materi dan evaluasi menjadi lebih efektif dan terpantau.</p>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-school"></i>
+                    <h4>Sekolah</h4>
+                    <p>Mendukung transformasi digital pembelajaran dan mewujudkan sekolah berbasis teknologi.</p>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-sync-alt"></i>
+                    <h4>Pembelajaran</h4>
+                    <p>Mewujudkan model blended learning yang adaptif, inovatif, dan berpusat pada siswa.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer id="kontak">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>Smart Algorithm</h3>
+                    <p>Media Ajar Coding Berbasis Web</p>
+                    <p>SMA Negeri 1 Cluring</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Kontak Kami</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Jalan H. Huzaini, Benculuk – Cluring 68482</p>
+                    <p><i class="fas fa-phone"></i> (0333) 397306</p>
+                    <p><i class="fas fa-envelope"></i> info@sman1cluring.sch.id</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Penyusun</h3>
+                    <p><strong>Muchamad Irwan Maulana, S.Kom</strong></p>
+                    <p>Guru Informatika & Pengembang</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 Smart Algorithm - SMA Negeri 1 Cluring. All Rights Reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- DETAIL PAGE SECTION (Hidden by default) -->
+    <div id="detail-page" class="detail-page">
+        <div class="detail-container">
+            <!-- Breadcrumb -->
+            <div class="breadcrumb">
+                <a href="#home" onclick="showHome()"><i class="fas fa-home"></i> Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="#materi" onclick="showHome()">Materi</a>
+                <i class="fas fa-chevron-right"></i>
+                <span id="breadcrumb-current">Detail Materi</span>
+            </div>
+
+            <!-- Detail Header -->
+            <div class="detail-header">
+                <h1 id="detail-title"><i class="fas fa-brain"></i> Judul Materi</h1>
+                <p id="detail-description" style="color: var(--text-muted); font-size: 1.1rem;">Deskripsi materi akan muncul di sini.</p>
+                <div class="meta-info">
+                    <div class="meta-item">
+                        <i class="fas fa-clock"></i>
+                        <span id="detail-duration">2 JP</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span id="detail-class">Kelas X</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-tag"></i>
+                        <span id="detail-tag">Dasar</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Detail Content -->
+            <div class="detail-content">
+                <div class="detail-section">
+                    <h2><i class="fas fa-book"></i> Deskripsi Materi</h2>
+                    <div id="detail-content-desc">
+                        <p>Konten materi akan dimuat di sini.</p>
+                    </div>
+                </div>
+
+                <div class="detail-section">
+                    <h2><i class="fas fa-list-check"></i> Kompetensi yang Dipelajari</h2>
+                    <div id="detail-content-competency">
+                        <ul>
+                            <li>Kompetensi akan dimuat di sini</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="detail-section">
+                    <h2><i class="fas fa-code"></i> Contoh Kode</h2>
+                    <div id="detail-content-code">
+                        <div class="code-block">
+                            <span class="comment"># Contoh kode akan muncul di sini</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="detail-section">
+                    <h2><i class="fas fa-video"></i> Video Pembelajaran</h2>
+                    <div id="detail-content-video">
+                        <div class="video-container">
+                            <iframe id="detail-video-frame" src="" title="Video Pembelajaran" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <div class="detail-navigation">
+                <button class="btn-back" onclick="showHome()">
+                    <i class="fas fa-arrow-left"></i> Kembali ke Materi
+                </button>
+                <button class="btn-home" onclick="showHome()">
+                    <i class="fas fa-home"></i> Home
+                </button>
+                <button class="btn-next" id="btn-next-material" onclick="nextMaterial()">
+                    Materi Selanjutnya <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
         </div>
     </div>
 
-    <!-- ABOUT SECTION -->
-    <section id="tentang" class="section">
-        <div class="section-header">
-            <h2>Tentang Inovasi</h2>
-            <p>Smart Algorithm hadir untuk menjawab tantangan pembelajaran Informatika di era digital.</p>
-        </div>
-        <div class="about-grid">
-            <div class="about-card">
-                <h3><i class="fas fa-lightbulb" style="color:var(--accent)"></i> Latar Belakang</h3>
-                <p>Pembelajaran coding sering menghadapi kendala waktu dan minimnya media interaktif. Smart Algorithm dikembangkan untuk mendukung pembelajaran algoritma secara fleksibel dan mandiri.</p>
-            </div>
-            <div class="about-card">
-                <h3><i class="fas fa-bullseye" style="color:var(--primary)"></i> Tujuan Utama</h3>
-                <p>Meningkatkan kemampuan berpikir komputasional, mendorong pembelajaran mandiri, serta mewujudkan model <em>blended learning</em> yang adaptif di SMA Negeri 1 Cluring.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- MATERI SECTION (TABS X, XI, XII) -->
-    <section id="materi" class="section materi">
-        <div class="section-header">
-            <h2>Materi Pembelajaran</h2>
-            <p>Pilih kelas Anda untuk mengakses materi algoritma dan pemrograman</p>
-        </div>
-
-        <div class="tabs-container">
-            <!-- Tab Buttons -->
-            <div class="tabs-header">
-                <button class="tab-btn active" onclick="openTab(event, 'kelasX')">Kelas X</button>
-                <button class="tab-btn" onclick="openTab(event, 'kelasXI')">Kelas XI</button>
-                <button class="tab-btn" onclick="openTab(event, 'kelasXII')">Kelas XII</button>
-            </div>
-
-            <!-- Tab Content: Kelas X -->
-            <div id="kelasX" class="tab-content active">
-                <div class="materi-card">
-                    <div class="materi-icon"><i class="fas fa-brain"></i></div>
-                    <h3>Berpikir Komputasional</h3>
-                    <p>Dasar logika penyelesaian masalah, dekomposisi, dan pengenalan pola.</p>
-                    <span class="materi-tag">Dasar</span>
-                </div>
-                <div class="materi-card">
-                    <div class="materi-icon"><i class="fas fa-project-diagram"></i></div>
-                    <h3>Algoritma & Flowchart</h3>
-                    <p>Pembuatan diagram alir dan pseudocode untuk solusi sederhana.</p>
-                    <span class="materi-tag">Inti</span>
-                </div>
-                <div class="materi-card">
-                    <div class="materi-icon"><i class="fas fa-variable"></i></div>
-                    <h3>Variabel & Tipe Data</h3>
-                    <p>Pengenalan konsep penyimpanan data dan jenis-jenis data dalam programming.</p>
-                    <span class="materi-tag">Praktik</span>
-                </div>
-            </div>
-
-            <!-- Tab Content: Kelas XI -->
-            <div id="kelasXI" class="tab-content">
-                <div class="materi-card">
-                    <div class="materi-icon"><i class="fas fa-random"></i></div>
-                    <h3>Struktur Kontrol</h3>
-                    <p>Percabangan (If-Else) dan Perulangan (Looping) dalam studi kasus nyata.</p>
-                    <span class="materi-tag">Lanjut</span>
-                </div>
-                <div class="materi-card">
-                    <div class="materi-icon"><i class="fas fa-function"></i></div>
-                    <h3>Fungsi & Prosedur</h3>
-                    <p>Modularisasi kode untuk efisiensi dan kemudahan pembacaan program.</p>
-                    <span class="materi-tag">Inti</span>
-                </div>
-                <div class="materi-card">
-                    <div class="materi-icon"><i class="fas fa-laptop-code"></i></div>
-                    <h3>Dasar Pemrograman Web</h3>
-                    <p>Implementasi algoritma menggunakan HTML dan JavaScript dasar.</p>
-                    <span class="materi-tag">Praktik</span>
-                </div>
-            </div>
-
-            <!-- Tab Content: Kelas XII -->
-            <div id="kelasXII" class="tab-content">
-                <div class="materi-card">
-                    <div class="materi-icon"><i class="fas fa-database"></i></div>
-                    <h3>Struktur Data Dasar</h3>
-                    <p>Pengenalan Array, List, dan pengelolaan data yang lebih kompleks.</p>
-                    <span class="materi-tag">Advanced</span>
-                </div>
-                <div class="materi-card">
-                    <div class="materi-icon"><i class="fas fa-rocket"></i></div>
-                    <h3>Proyek Pemrograman</h3>
-                    <p>Pengembangan aplikasi sederhana berbasis masalah (Problem Based Learning).</p>
-                    <span class="materi-tag">Proyek</span>
-                </div>
-                <div class="materi-card">
-                    <div class="materi-icon"><i class="fas fa-search"></i></div>
-                    <h3>Optimasi Algoritma</h3>
-                    <p>Analisis efisiensi kode dan pencarian solusi terbaik.</p>
-                    <span class="materi-tag">Analisis</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- BENEFITS SECTION -->
-    <section id="manfaat" class="benefits">
-        <h2>Manfaat Bagi Stakeholder</h2>
-        <div class="benefit-grid">
-            <div class="benefit-item">
-                <i class="fas fa-user-graduate"></i>
-                <h4>Siswa</h4>
-                <p>Mempermudah pemahaman konsep melalui materi interaktif dan latihan praktik mandiri.</p>
-            </div>
-            <div class="benefit-item">
-                <i class="fas fa-chalkboard-teacher"></i>
-                <h4>Guru</h4>
-                <p>Membantu proses penyampaian materi dan evaluasi menjadi lebih efektif dan terpantau.</p>
-            </div>
-            <div class="benefit-item">
-                <i class="fas fa-school"></i>
-                <h4>Sekolah</h4>
-                <p>Mendukung transformasi digital pembelajaran dan mewujudkan sekolah berbasis teknologi.</p>
-            </div>
-            <div class="benefit-item">
-                <i class="fas fa-sync-alt"></i>
-                <h4>Pembelajaran</h4>
-                <p>Mewujudkan model blended learning yang adaptif, inovatif, dan berpusat pada siswa.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer id="kontak">
-        <div class="footer-content">
-            <div class="footer-col">
-                <h3>Smart Algorithm</h3>
-                <p>Media Ajar Coding Berbasis Web</p>
-                <p>SMA Negeri 1 Cluring</p>
-            </div>
-            <div class="footer-col">
-                <h3>Kontak Kami</h3>
-                <p><i class="fas fa-map-marker-alt"></i> Jalan H. Huzaini, Benculuk – Cluring 68482</p>
-                <p><i class="fas fa-phone"></i> (0333) 397306</p>
-                <p><i class="fas fa-envelope"></i> info@sman1cluring.sch.id</p>
-            </div>
-            <div class="footer-col">
-                <h3>Penyusun</h3>
-                <p><strong>Muchamad Irwan Maulana, S.Kom</strong></p>
-                <p>Guru Informatika & Pengembang</p>
-            </div>
-        </div>
-        <div class="copyright">
-            <p>&copy; 2024 Smart Algorithm - SMA Negeri 1 Cluring. All Rights Reserved.</p>
-        </div>
-    </footer>
-
     <!-- JAVASCRIPT -->
     <script>
+        // === DATA MATERI ===
+        const materiData = {
+            'berpikir-komputasional': {
+                title: 'Berpikir Komputasional',
+                icon: 'fa-brain',
+                class: 'Kelas X',
+                duration: '2 JP',
+                tag: 'Dasar',
+                description: 'Berpikir komputasional adalah kemampuan untuk menyelesaikan masalah dengan cara yang sistematis dan logis, mirip dengan cara komputer memproses informasi.',
+                content: `
+                    <p>Berpikir komputasional adalah fondasi utama dalam pembelajaran informatika. Ini melibatkan empat pilar utama:</p>
+                    <ul>
+                        <li><strong>Dekomposisi:</strong> Memecah masalah kompleks menjadi bagian-bagian kecil yang lebih mudah dikelola</li>
+                        <li><strong>Pengenalan Pola:</strong> Mengidentifikasi kesamaan dan pola dalam masalah untuk menemukan solusi</li>
+                        <li><strong>Abstraksi:</strong> Fokus pada informasi penting dan mengabaikan detail yang tidak relevan</li>
+                        <li><strong>Algoritma:</strong> Membuat langkah-langkah solusi yang terstruktur dan dapat diikuti</li>
+                    </ul>
+                    <p>Kemampuan ini tidak hanya berguna dalam programming, tetapi juga dalam kehidupan sehari-hari untuk menyelesaikan masalah secara efektif.</p>
+                `,
+                competency: `
+                    <ul>
+                        <li>Memahami konsep dasar berpikir komputasional</li>
+                        <li>Mampu menerapkan dekomposisi pada masalah nyata</li>
+                        <li>Dapat mengidentifikasi pola dalam berbagai situasi</li>
+                        <li>Mampu membuat algoritma sederhana untuk menyelesaikan masalah</li>
+                    </ul>
+                `,
+                code: `
+<span class="comment"># Contoh: Membuat Roti Sandwich</span>
+<span class="keyword">def</span> <span class="function">buat_sandwich</span>():
+    ambil_roti()
+    oles_selai()
+    tambah_isian()
+    tutup_roti()
+    <span class="keyword">return</span> <span class="string">"Sandwich siap!"</span>
+                `,
+                video: 'https://www.youtube.com/embed/eq87WjbhKAE',
+                next: 'algoritma-flowchart'
+            },
+            'algoritma-flowchart': {
+                title: 'Algoritma & Flowchart',
+                icon: 'fa-project-diagram',
+                class: 'Kelas X',
+                duration: '4 JP',
+                tag: 'Inti',
+                description: 'Algoritma adalah urutan langkah-langkah logis untuk menyelesaikan masalah. Flowchart adalah representasi visual dari algoritma.',
+                content: `
+                    <p>Algoritma merupakan jantung dari pemrograman. Setiap program komputer dibangun dari algoritma yang terstruktur dengan baik.</p>
+                    <p>Flowchart membantu kita memvisualisasikan alur program sebelum mulai coding, sehingga mengurangi error dan memudahkan debugging.</p>
+                `,
+                competency: `
+                    <ul>
+                        <li>Memahami definisi dan karakteristik algoritma</li>
+                        <li>Menguasai simbol-simbol flowchart standar</li>
+                        <li>Dapat membuat flowchart untuk masalah sederhana</li>
+                        <li>Mampu menulis pseudocode yang terstruktur</li>
+                    </ul>
+                `,
+                code: `
+<span class="keyword">ALGORITMA</span> HitungLuasPersegiPanjang
+<span class="keyword">DEKLARASI</span>
+    panjang, lebar, luas : <span class="keyword">integer</span>
+<span class="keyword">DESKRIPSI</span>
+    <span class="function">read</span>(panjang, lebar)
+    luas ← panjang * lebar
+    <span class="function">write</span>(luas)
+                `,
+                video: 'https://www.youtube.com/embed/SZftrA-aCaI',
+                next: 'variabel-tipe-data'
+            },
+            'variabel-tipe-data': {
+                title: 'Variabel & Tipe Data',
+                icon: 'fa-variable',
+                class: 'Kelas X',
+                duration: '3 JP',
+                tag: 'Praktik',
+                description: 'Variabel adalah tempat untuk menyimpan data dalam program. Tipe data menentukan jenis nilai yang dapat disimpan.',
+                content: `
+                    <p>Variabel seperti kotak yang bisa kita beri nama untuk menyimpan nilai. Tipe data menentukan apa yang bisa kita simpan dalam kotak tersebut.</p>
+                    <p>Memahami tipe data sangat penting untuk menulis program yang efisien dan bebas error.</p>
+                `,
+                competency: `
+                    <ul>
+                        <li>Memahami konsep variabel dan fungsinya</li>
+                        <li>Mengenal berbagai tipe data dasar</li>
+                        <li>Dapat mendeklarasikan variabel dengan benar</li>
+                        <li>Mampu memilih tipe data yang sesuai untuk kasus tertentu</li>
+                    </ul>
+                `,
+                code: `
+<span class="comment"># Deklarasi Variabel</span>
+nama = <span class="string">"Irwan"</span>        <span class="comment"># String</span>
+umur = <span class="string">17</span>             <span class="comment"># Integer</span>
+tinggi = <span class="string">170.5</span>         <span class="comment"># Float</span>
+aktif = <span class="keyword">True</span>          <span class="comment"># Boolean</span>
+
+<span class="function">print</span>(nama, umur, tinggi, aktif)
+                `,
+                video: 'https://www.youtube.com/embed/OH86oLzGlcw',
+                next: 'struktur-kontrol'
+            },
+            'struktur-kontrol': {
+                title: 'Struktur Kontrol',
+                icon: 'fa-random',
+                class: 'Kelas XI',
+                duration: '4 JP',
+                tag: 'Lanjut',
+                description: 'Struktur kontrol mengatur alur eksekusi program. Terdapat percabangan dan perulangan.',
+                content: `
+                    <p>Struktur kontrol adalah cara kita mengendalikan alur program. Tanpa struktur kontrol, program hanya akan berjalan dari atas ke bawah tanpa bisa mengambil keputusan.</p>
+                `,
+                competency: `
+                    <ul>
+                        <li>Memahami konsep percabangan If-Else</li>
+                        <li>Menguasai berbagai jenis perulangan</li>
+                        <li>Dapat memilih struktur kontrol yang tepat</li>
+                        <li>Mampu membuat program dengan logika kompleks</li>
+                    </ul>
+                `,
+                code: `
+<span class="comment"># Percabangan If-Else</span>
+nilai = <span class="string">85</span>
+<span class="keyword">if</span> nilai >= <span class="string">75</span>:
+    <span class="function">print</span>(<span class="string">"Lulus"</span>)
+<span class="keyword">else</span>:
+    <span class="function">print</span>(<span class="string">"Remedial"</span>)
+
+<span class="comment"># Perulangan For</span>
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="function">range</span>(<span class="string">5</span>):
+    <span class="function">print</span>(<span class="string">"Iterasi ke-"</span>, i)
+                `,
+                video: 'https://www.youtube.com/embed/6iF8Xb7Z3wQ',
+                next: 'fungsi-prosedur'
+            },
+            'fungsi-prosedur': {
+                title: 'Fungsi & Prosedur',
+                icon: 'fa-function',
+                class: 'Kelas XI',
+                duration: '4 JP',
+                tag: 'Inti',
+                description: 'Fungsi dan prosedur adalah blok kode yang dapat digunakan berulang kali untuk efisiensi.',
+                content: `
+                    <p>Fungsi dan prosedur membantu kita menulis kode yang lebih terorganisir, mudah dibaca, dan dapat digunakan kembali (reusable).</p>
+                `,
+                competency: `
+                    <ul>
+                        <li>Memahami perbedaan fungsi dan prosedur</li>
+                        <li>Dapat membuat fungsi dengan parameter</li>
+                        <li>Mengerti konsep return value</li>
+                        <li>Mampu menerapkan modularisasi dalam program</li>
+                    </ul>
+                `,
+                code: `
+<span class="comment"># Fungsi dengan return</span>
+<span class="keyword">def</span> <span class="function">tambah</span>(a, b):
+    <span class="keyword">return</span> a + b
+
+hasil = <span class="function">tambah</span>(<span class="string">5</span>, <span class="string">3</span>)
+<span class="function">print</span>(hasil)  <span class="comment"># Output: 8</span>
+                `,
+                video: 'https://www.youtube.com/embed/9Os0o3wzS_I',
+                next: 'pemrograman-web'
+            },
+            'pemrograman-web': {
+                title: 'Dasar Pemrograman Web',
+                icon: 'fa-laptop-code',
+                class: 'Kelas XI',
+                duration: '6 JP',
+                tag: 'Praktik',
+                description: 'Pemrograman web melibatkan HTML, CSS, dan JavaScript untuk membuat website interaktif.',
+                content: `
+                    <p>Teknologi web modern terdiri dari tiga pilar utama: HTML untuk struktur, CSS untuk tampilan, dan JavaScript untuk interaktivitas.</p>
+                `,
+                competency: `
+                    <ul>
+                        <li>Memahami struktur dasar HTML</li>
+                        <li>Menguasai CSS untuk styling</li>
+                        <li>Dapat membuat interaktivitas dengan JavaScript</li>
+                        <li>Mampu membuat website sederhana</li>
+                    </ul>
+                `,
+                code: `
+<span class="comment">&lt;!-- HTML --&gt;</span>
+&lt;<span class="keyword">button</span> <span class="function">onclick</span>=<span class="string">"klikSaya()"</span>&gt;Klik&lt;/<span class="keyword">button</span>&gt;
+
+<span class="comment">&lt;!-- JavaScript --&gt;</span>
+<span class="keyword">function</span> <span class="function">klikSaya</span>() {
+    <span class="function">alert</span>(<span class="string">"Tombol diklik!"</span>);
+}
+                `,
+                video: 'https://www.youtube.com/embed/UB1O30fR-EE',
+                next: 'struktur-data'
+            },
+            'struktur-data': {
+                title: 'Struktur Data Dasar',
+                icon: 'fa-database',
+                class: 'Kelas XII',
+                duration: '4 JP',
+                tag: 'Advanced',
+                description: 'Struktur data adalah cara menyimpan dan mengorganisir data agar dapat digunakan secara efisien.',
+                content: `
+                    <p>Memilih struktur data yang tepat sangat penting untuk performa program. Array dan List adalah struktur data paling dasar yang harus dikuasai.</p>
+                `,
+                competency: `
+                    <ul>
+                        <li>Memahami konsep struktur data</li>
+                        <li>Menguasai operasi pada Array dan List</li>
+                        <li>Dapat memilih struktur data yang sesuai</li>
+                        <li>Mengerti kompleksitas operasi dasar</li>
+                    </ul>
+                `,
+                code: `
+<span class="comment"># Array/List di Python</span>
+buah = [<span class="string">"Apel"</span>, <span class="string">"Jeruk"</span>, <span class="string">"Mangga"</span>]
+
+<span class="comment"># Akses elemen</span>
+<span class="function">print</span>(buah[<span class="string">0</span>])  <span class="comment"># Output: Apel</span>
+
+<span class="comment"># Tambah elemen</span>
+buah.<span class="function">append</span>(<span class="string">"Pisang"</span>)
+                `,
+                video: 'https://www.youtube.com/embed/RBSGKlAvoiM',
+                next: 'proyek-pemrograman'
+            },
+            'proyek-pemrograman': {
+                title: 'Proyek Pemrograman',
+                icon: 'fa-rocket',
+                class: 'Kelas XII',
+                duration: '8 JP',
+                tag: 'Proyek',
+                description: 'Proyek pemrograman menerapkan semua konsep yang telah dipelajari untuk membuat aplikasi nyata.',
+                content: `
+                    <p>Proyek akhir adalah kesempatan untuk menerapkan semua pengetahuan yang telah dipelajari. Menggunakan pendekatan Problem Based Learning (PBL).</p>
+                `,
+                competency: `
+                    <ul>
+                        <li>Mampu merancang aplikasi dari awal</li>
+                        <li>Dapat mengintegrasikan berbagai konsep</li>
+                        <li>Menguasai version control dasar</li>
+                        <li>Mampu presentasi dan dokumentasi proyek</li>
+                    </ul>
+                `,
+                code: `
+proyek-kalkulator/
+├── index.html
+├── style.css
+├── script.js
+└── README.md
+
+<span class="comment"># File utama: script.js</span>
+<span class="keyword">function</span> <span class="function">hitung</span>(a, b, operator) {
+    <span class="comment">// Logika kalkulasi</span>
+}
+                `,
+                video: 'https://www.youtube.com/embed/8gQHRePM2v8',
+                next: 'optimasi-algoritma'
+            },
+            'optimasi-algoritma': {
+                title: 'Optimasi Algoritma',
+                icon: 'fa-search',
+                class: 'Kelas XII',
+                duration: '4 JP',
+                tag: 'Analisis',
+                description: 'Optimasi algoritma bertujuan membuat program lebih efisien dalam penggunaan waktu dan memori.',
+                content: `
+                    <p>Optimasi adalah seni membuat program yang tidak hanya benar, tetapi juga efisien. Analisis kompleksitas membantu kita memilih solusi terbaik.</p>
+                `,
+                competency: `
+                    <ul>
+                        <li>Memahami konsep Time Complexity</li>
+                        <li>Mengerti Space Complexity</li>
+                        <li>Dapat menganalisis efisiensi algoritma</li>
+                        <li>Mampu melakukan code refactoring</li>
+                    </ul>
+                `,
+                code: `
+<span class="comment"># O(n) - Linear Search</span>
+<span class="keyword">for</span> item <span class="keyword">in</span> list:
+    <span class="keyword">if</span> item == target:
+        <span class="keyword">return</span> <span class="keyword">True</span>
+
+<span class="comment"># O(log n) - Binary Search</span>
+<span class="keyword">while</span> low <= high:
+    mid = (low + high) // <span class="string">2</span>
+    <span class="comment"># Lebih efisien!</span>
+                `,
+                video: 'https://www.youtube.com/embed/Mo33MjjMlyA',
+                next: null
+            }
+        };
+
+        // === NAVIGATION FUNCTIONS ===
+        
         // Mobile Menu Toggle
         function toggleMenu() {
             const navLinks = document.getElementById('navLinks');
@@ -795,18 +1460,105 @@
                 tabcontent[i].classList.remove("active");
             }
 
+            document.getElementById('tab-placeholder').style.display = 'none';
+
             tablinks = document.getElementsByClassName("tab-btn");
             for (i = 0; i < tablinks.length; i++) {
                 tablinks[i].className = tablinks[i].className.replace(" active", "");
             }
 
-            document.getElementById(className).style.display = "grid";
-            setTimeout(() => {
-                document.getElementById(className).classList.add("active");
-            }, 10);
-            
+            const selectedTab = document.getElementById(className);
+            selectedTab.style.display = "grid";
+            void selectedTab.offsetWidth;
+            selectedTab.classList.add("active");
             evt.currentTarget.className += " active";
         }
+
+        // Navigate to Detail Page
+        function navigateToDetail(materiId) {
+            const data = materiData[materiId];
+            if (!data) return;
+
+            // Update URL hash
+            window.location.hash = `materi/${materiId}`;
+
+            // Populate detail page
+            document.getElementById('detail-title').innerHTML = `<i class="fas ${data.icon}"></i> ${data.title}`;
+            document.getElementById('detail-description').textContent = data.description;
+            document.getElementById('detail-duration').textContent = data.duration;
+            document.getElementById('detail-class').textContent = data.class;
+            document.getElementById('detail-tag').textContent = data.tag;
+            document.getElementById('breadcrumb-current').textContent = data.title;
+            document.getElementById('detail-content-desc').innerHTML = data.content;
+            document.getElementById('detail-content-competency').innerHTML = data.competency;
+            document.getElementById('detail-content-code').innerHTML = `<div class="code-block">${data.code}</div>`;
+            document.getElementById('detail-video-frame').src = data.video;
+
+            // Setup next button
+            const nextBtn = document.getElementById('btn-next-material');
+            if (data.next) {
+                nextBtn.style.display = 'flex';
+                nextBtn.onclick = () => navigateToDetail(data.next);
+            } else {
+                nextBtn.style.display = 'none';
+            }
+
+            // Show detail page, hide main content
+            document.getElementById('main-content').style.display = 'none';
+            document.getElementById('detail-page').classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        // Show Home (Main Content)
+        function showHome() {
+            window.location.hash = '';
+            document.getElementById('detail-page').classList.remove('active');
+            document.getElementById('main-content').style.display = 'block';
+            
+            // Clear video to stop playback
+            document.getElementById('detail-video-frame').src = '';
+        }
+
+        // Next Material
+        function nextMaterial() {
+            const currentHash = window.location.hash;
+            const materiId = currentHash.split('/')[1];
+            const data = materiData[materiId];
+            
+            if (data && data.next) {
+                navigateToDetail(data.next);
+            }
+        }
+
+        // Handle Hash Change (Browser Back/Forward)
+        window.addEventListener('hashchange', function() {
+            const hash = window.location.hash;
+            
+            if (hash.startsWith('#materi/')) {
+                const materiId = hash.split('/')[1];
+                if (materiData[materiId]) {
+                    navigateToDetail(materiId);
+                } else {
+                    showHome();
+                }
+            } else {
+                showHome();
+            }
+        });
+
+        // Check hash on page load
+        window.addEventListener('DOMContentLoaded', function() {
+            const hash = window.location.hash;
+            
+            if (hash.startsWith('#materi/')) {
+                const materiId = hash.split('/')[1];
+                if (materiData[materiId]) {
+                    navigateToDetail(materiId);
+                }
+            }
+        });
 
         // Dark Mode Toggle
         function toggleTheme() {
@@ -818,7 +1570,6 @@
             html.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
             
-            // Update icon
             if (newTheme === 'dark') {
                 icon.classList.remove('fa-moon');
                 icon.classList.add('fa-sun');
