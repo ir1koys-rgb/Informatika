@@ -231,8 +231,6 @@
     }
     .module-card.completed { border-color: var(--secondary-green); }
     .module-card.completed .module-badge { background: var(--secondary-green); }
-    .module-card.locked { opacity: 0.7; }
-    .module-card.locked:hover { transform: none; cursor: not-allowed; }
     
     .module-header {
       padding: 1.5rem;
@@ -414,7 +412,7 @@
           <p>Pelajari konsep algoritma, flowchart, variabel, dan logika pemrograman melalui pendekatan interaktif yang menyenangkan.</p>
           
           <div class="class-stats">
-            <div class="stat-item"><i class="fas fa-book"></i> 4 Modul</div>
+            <div class="stat-item"><i class="fas fa-book-open"></i> 4 Modul</div>
             <div class="stat-item"><i class="fas fa-clock"></i> ± 24 JP</div>
             <div class="stat-item"><i class="fas fa-trophy"></i> 1 Proyek Akhir</div>
           </div>
@@ -439,13 +437,13 @@
     <div class="progress-container fade-in">
       <div class="progress-header">
         <h3><i class="fas fa-chart-line"></i> Progres Belajar Anda</h3>
-        <span id="progress-percent">75%</span>
+        <span id="progress-percent">0%</span>
       </div>
       <div class="progress-bar">
-        <div class="progress-fill" id="progress-fill" style="--progress: 75%"></div>
+        <div class="progress-fill" id="progress-fill" style="--progress: 0%"></div>
       </div>
       <p style="margin-top: 0.75rem; font-size: 0.9rem; color: var(--gray);">
-        <i class="fas fa-info-circle"></i> Selesaikan Modul 4 untuk mendapatkan sertifikat digital!
+        <i class="fas fa-info-circle"></i> Selesaikan setiap modul untuk meningkatkan progres belajar Anda!
       </p>
     </div>
   </div>
@@ -455,16 +453,16 @@
     <div class="container">
       <div class="text-center mb-3">
         <h2 style="font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem;">📚 Modul Pembelajaran</h2>
-        <p style="color: var(--gray);">Pilih modul untuk mulai belajar. Selesaikan secara berurutan untuk hasil terbaik.</p>
+        <p style="color: var(--gray);">Semua modul tersedia! Pilih dan akses materi sesuai kebutuhan belajar Anda.</p>
       </div>
       
       <div class="modules-grid">
         
-        <!-- 🔹 Modul 1: Algoritma Dasar [COMPLETED] -->
-        <article class="module-card completed fade-in" data-module="01" data-status="completed">
+        <!-- 🔹 Modul 1: Algoritma Dasar -->
+        <article class="module-card fade-in" data-module="01" data-status="available">
           <div class="module-header">
             <div class="module-number">1</div>
-            <span class="module-badge"><i class="fas fa-check"></i> Selesai</span>
+            <span class="module-badge popular"><i class="fas fa-fire"></i> Mulai Disini</span>
           </div>
           <div class="module-body">
             <h3>Konsep Dasar Algoritma</h3>
@@ -476,21 +474,21 @@
             </ul>
             <div class="module-footer">
               <div class="module-duration"><i class="fas fa-clock"></i> 6 JP</div>
-              <div class="module-progress-mini"><div class="fill" style="--fill: 100%"></div></div>
+              <div class="module-progress-mini"><div class="fill" style="--fill: 0%"></div></div>
             </div>
           </div>
           <div class="module-cta" style="padding: 0 1.5rem 1.5rem;">
-            <a href="modules/01-algoritma-dasar/index.html" class="btn btn-success">
-              <i class="fas fa-check"></i> Selesai
+            <a href="modules/01-algoritma-dasar/index.html" class="btn btn-primary">
+              <i class="fas fa-arrow-right"></i> Mulai Modul
             </a>
           </div>
         </article>
 
-        <!-- 🔹 Modul 2: Flowchart & Pseudocode [AVAILABLE] -->
+        <!-- 🔹 Modul 2: Flowchart & Pseudocode -->
         <article class="module-card fade-in" data-module="02" data-status="available">
           <div class="module-header">
             <div class="module-number">2</div>
-            <span class="module-badge new"><i class="fas fa-star"></i> Aktif</span>
+            <span class="module-badge"><i class="fas fa-project-diagram"></i> Visual</span>
           </div>
           <div class="module-body">
             <h3>Flowchart & Pseudocode</h3>
@@ -502,7 +500,7 @@
             </ul>
             <div class="module-footer">
               <div class="module-duration"><i class="fas fa-clock"></i> 6 JP</div>
-              <div class="module-progress-mini"><div class="fill" style="--fill: 100%"></div></div>
+              <div class="module-progress-mini"><div class="fill" style="--fill: 0%"></div></div>
             </div>
           </div>
           <div class="module-cta" style="padding: 0 1.5rem 1.5rem;">
@@ -512,11 +510,11 @@
           </div>
         </article>
 
-        <!-- 🔹 Modul 3: Variabel & Tipe Data [AVAILABLE] -->
+        <!-- 🔹 Modul 3: Variabel & Tipe Data -->
         <article class="module-card fade-in" data-module="03" data-status="available">
           <div class="module-header">
             <div class="module-number">3</div>
-            <span class="module-badge new"><i class="fas fa-bolt"></i> Siap</span>
+            <span class="module-badge"><i class="fas fa-database"></i> Data</span>
           </div>
           <div class="module-body">
             <h3>Variabel & Tipe Data</h3>
@@ -528,7 +526,7 @@
             </ul>
             <div class="module-footer">
               <div class="module-duration"><i class="fas fa-clock"></i> 6 JP</div>
-              <div class="module-progress-mini"><div class="fill" style="--fill: 100%"></div></div>
+              <div class="module-progress-mini"><div class="fill" style="--fill: 0%"></div></div>
             </div>
           </div>
           <div class="module-cta" style="padding: 0 1.5rem 1.5rem;">
@@ -538,11 +536,11 @@
           </div>
         </article>
 
-        <!-- 🔹 Modul 4: Percabangan & Perulangan [LOCKED] -->
-        <article class="module-card locked fade-in" data-module="04" data-status="locked">
+        <!-- 🔹 Modul 4: Percabangan & Perulangan -->
+        <article class="module-card fade-in" data-module="04" data-status="available">
           <div class="module-header">
             <div class="module-number">4</div>
-            <span class="module-badge">Proyek</span>
+            <span class="module-badge new"><i class="fas fa-rocket"></i> Proyek</span>
           </div>
           <div class="module-body">
             <h3>Percabangan & Perulangan</h3>
@@ -558,9 +556,9 @@
             </div>
           </div>
           <div class="module-cta" style="padding: 0 1.5rem 1.5rem;">
-            <button class="btn btn-outline" disabled title="Selesaikan Modul 3 terlebih dahulu">
-              <i class="fas fa-lock"></i> Terkunci
-            </button>
+            <a href="modules/04-percabangan-perulangan/index.html" class="btn btn-primary">
+              <i class="fas fa-arrow-right"></i> Mulai Modul
+            </a>
           </div>
         </article>
 
@@ -621,10 +619,10 @@
   <!-- 🔹 FINAL CTA -->
   <div class="container" style="margin: 3rem auto; text-align: center;">
     <div style="background: linear-gradient(135deg, var(--primary-blue), var(--accent-purple)); color: white; padding: 2.5rem; border-radius: var(--radius); max-width: 700px; margin: 0 auto;">
-      <h3 style="font-size: 1.75rem; margin-bottom: 1rem;"><i class="fas fa-lightbulb"></i> Lanjutkan ke Modul Terakhir!</h3>
-      <p style="margin-bottom: 1.5rem; opacity: 0.95;">Hanya satu langkah lagi untuk menyelesaikan Kelas X dan mendapatkan sertifikat digital Anda.</p>
-      <a href="modules/02-flowchart-pseudocode/index.html" class="btn btn-white" style="background: white; color: var(--primary-blue); font-weight: 600;">
-        <i class="fas fa-play"></i> Lanjut Belajar Sekarang
+      <h3 style="font-size: 1.75rem; margin-bottom: 1rem;"><i class="fas fa-lightbulb"></i> Siap Memulai Perjalanan Coding?</h3>
+      <p style="margin-bottom: 1.5rem; opacity: 0.95;">Setiap langkah kecil dalam belajar algoritma adalah investasi besar untuk masa depan digital Anda.</p>
+      <a href="modules/01-algoritma-dasar/index.html" class="btn btn-white" style="background: white; color: var(--primary-blue); font-weight: 600;">
+        <i class="fas fa-play"></i> Mulai Modul 1 Sekarang
       </a>
     </div>
   </div>
@@ -646,10 +644,8 @@
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       
-      // ===== 1. INISIALISASI PROGRES DEFAULT (Modul 1,2,3 selesai) =====
-      if (!localStorage.getItem('classX_progress')) {
-        localStorage.setItem('classX_progress', JSON.stringify(['01', '02', '03','04']));
-      }
+      // ===== 1. TIDAK ADA INISIALISASI LOCK - SEMUA MODUL TERBUKA =====
+      // Sistem kunci dihapus, siswa bebas mengakses semua modul
 
       // ===== 2. ANIMASI FADE-IN ON SCROLL =====
       const fadeElements = document.querySelectorAll('.fade-in');
@@ -662,7 +658,7 @@
       }, { threshold: 0.1 });
       fadeElements.forEach(el => observer.observe(el));
 
-      // ===== 3. PROGRESS TRACKER =====
+      // ===== 3. PROGRESS TRACKER (HANYA UNTUK TRACKING, BUKAN LOCK) =====
       function updateProgress() {
         const completedModules = JSON.parse(localStorage.getItem('classX_progress')) || [];
         const totalModules = 4;
@@ -672,14 +668,13 @@
         document.getElementById('progress-percent').textContent = `${percent}%`;
         document.getElementById('progress-fill').style.setProperty('--progress', `${percent}%`);
         
+        // Update tampilan modul (hanya untuk visual, tidak ada lock)
         document.querySelectorAll('.module-card').forEach(card => {
           const moduleNum = card.dataset.module;
           const isCompleted = completedModules.includes(moduleNum);
-          const isAvailable = parseInt(moduleNum) === 1 || completedModules.includes(String(parseInt(moduleNum) - 1));
           
           if (isCompleted) {
             card.classList.add('completed');
-            card.classList.remove('locked');
             const badge = card.querySelector('.module-badge');
             if (badge) {
               badge.innerHTML = '<i class="fas fa-check"></i> Selesai';
@@ -687,29 +682,14 @@
             }
             const cta = card.querySelector('.module-cta');
             if (cta) {
-              cta.innerHTML = `<a href="modules/${moduleNum}-modul/index.html" class="btn btn-success"><i class="fas fa-check"></i> Selesai</a>`;
+              cta.innerHTML = `<a href="modules/${moduleNum}-modul/index.html" class="btn btn-success"><i class="fas fa-check"></i> Ulangi Modul</a>`;
             }
             const miniFill = card.querySelector('.module-progress-mini .fill');
             if (miniFill) miniFill.style.setProperty('--fill', '100%');
-          } else if (isAvailable) {
-            card.classList.remove('locked', 'completed');
-            card.dataset.status = 'available';
-            const badge = card.querySelector('.module-badge');
-            if (badge && !badge.classList.contains('popular')) {
-              badge.innerHTML = '<i class="fas fa-bolt"></i> Siap';
-              badge.classList.add('new');
-            }
-            const cta = card.querySelector('.module-cta');
-            if (cta && !cta.querySelector('a.btn-primary')) {
-              cta.innerHTML = `<a href="modules/${moduleNum}-modul/index.html" class="btn btn-primary"><i class="fas fa-arrow-right"></i> Mulai Modul</a>`;
-            }
           } else {
-            card.classList.add('locked');
-            card.classList.remove('completed');
-            const cta = card.querySelector('.module-cta');
-            if (cta && !cta.querySelector('button[disabled]')) {
-              cta.innerHTML = `<button class="btn btn-outline" disabled title="Selesaikan Modul ${parseInt(moduleNum) - 1} terlebih dahulu"><i class="fas fa-lock"></i> Terkunci</button>`;
-            }
+            // Semua modul tetap accessible, tidak ada status locked
+            card.classList.remove('completed', 'locked');
+            card.dataset.status = 'available';
           }
         });
       }
@@ -728,7 +708,7 @@
         });
       });
 
-      // ===== 5. FUNGSI DEMO: Tandai Modul Selesai =====
+      // ===== 5. FUNGSI: Tandai Modul Selesai =====
       window.simpanProgres = function(moduleId) {
         let progress = JSON.parse(localStorage.getItem('classX_progress')) || [];
         if (!progress.includes(moduleId)) {
@@ -741,7 +721,7 @@
         return false;
       };
 
-      // ===== 6. RESET PROGRES (untuk testing) =====
+      // ===== 6. RESET PROGRES =====
       window.resetProgres = function() {
         localStorage.removeItem('classX_progress');
         location.reload();
