@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Modul 2: Flowchart & Pseudocode - Materi Pembelajaran Informatika Kelas X">
+  <title>Modul 2: Flowchart & Pseudocode | Kelas X Informatika</title>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  
+  <style>
+    /* ===== CSS VARIABLES (Shared with Parent Page) ===== */
+    :root {
+      --primary-blue: #2563eb;
+      --primary-blue-dark: #1d4ed8;
+      --secondary-green: #10b981;
+      --secondary-green-dark: #059669;
+      --accent-purple: #8b5cf6;
+      --dark: #1e293b;
+      --light: #f8fafc;
+      --gray: #64748b;
+      --white: #ffffff;
+      --shadow: 0 10px 30px -10px rgba(0,0,0,0.15);
+      --shadow-hover: 0 20px 40px -10px rgba(0,0,0,0.25);
+      --radius: 16px;
+      --transition: all 0.3s ease;
+    }
+
+    /* ===== RESET & BASE ===== */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--light);
+      color: var(--dark);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; display: block; border-radius: 12px; }
+    a { text-decoration: none; color: inherit; transition: var(--transition); }
+    a:hover { color: var(--primary-blue); }
+    ul { list-style: none; }
+
+    /* ===== UTILITIES ===== */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+    .section { padding: 3rem 0; }
+    .text-center { text-align: center; }
+    .mb-2 { margin-bottom: 2rem; }
+    .mb-3 { margin-bottom: 3rem; }
+    
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.35rem 0.85rem;
+      background: linear-gradient(135deg, var(--primary-blue), var(--accent-purple));
+      color: white;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+    
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.875rem 1.75rem;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: var(--transition);
+      border: none;
+      box-shadow: var(--shadow);
+    }
+    .btn:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); }
+    .btn-primary { background: var(--primary-blue); color: var(--white); }
+    .btn-primary:hover { background: var(--primary-blue-dark); }
+    .btn-success { background: var(--secondary-green); color: var(--white); }
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--primary-blue);
+      color: var(--primary-blue);
+    }
+    .btn-outline:hover { background: var(--primary-blue); color: var(--white); }
+    .btn-sm { padding: 0.5rem 1.25rem; font-size: 0.9rem; }
+
+    /* ===== BREADCRUMB ===== */
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1.25rem 0;
+      font-size: 0.95rem;
+      color: var(--gray);
+      flex-wrap: wrap;
+    }
+    .breadcrumb a { color: var(--primary-blue); font-weight: 500; }
+    .breadcrumb a:hover { color: var(--primary-blue-dark); }
+    .breadcrumb span { color: var(--dark); font-weight: 500; }
+    .breadcrumb i { font-size: 0.75rem; }
+
+    /* ===== MODULE HERO ===== */
+    .module-hero {
+      background: linear-gradient(135deg, #eff6ff 0%, #ecfdf5 100%);
+      padding: 2.5rem 0;
+      border-radius: 0 0 var(--radius) var(--radius);
+      margin-bottom: 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .module-hero::before {
+      content: '';
+      position: absolute;
+      width: 300px; height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(37,99,235,0.08) 0%, transparent 70%);
+      top: -80px; right: -80px;
+    }
+    .module-hero-content {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1.5rem;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+    .module-hero h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      background: linear-gradient(135deg, var(--dark), var(--primary-blue));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .module-hero p { color: var(--gray); font-size: 1.05rem; max-width: 600px; }
+    .module-meta {
+      display: flex;
+      gap: 1.25rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.9rem;
+      color: var(--gray);
+    }
+    .meta-item i { color: var(--secondary-green); }
+    .module-icon {
+      width: 100px; height: 100px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent-purple), #6366f1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 2.5rem;
+      box-shadow: var(--shadow);
+      flex-shrink: 0;
+    }
+
+    /* ===== CONTENT SECTIONS ===== */
+    .content-section {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow);
+      border-left: 4px solid var(--accent-purple);
+    }
+    .content-section h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--dark);
+    }
+    .content-section h3 {
+      font-size: 1.25rem;
+      margin: 1.5rem 0 0.75rem;
+      color: var(--accent-purple);
+    }
+    .content-section p { margin-bottom: 1rem; color: #334155; }
+    .content-section ul { margin: 0.75rem 0 1rem 1.5rem; }
+    .content-section li {
+      margin-bottom: 0.5rem;
+      padding-left: 0.5rem;
+      position: relative;
+    }
+    .content-section li::before {
+      content: '▹';
+      position: absolute;
+      left: -1rem;
+      color: var(--secondary-green);
+      font-weight: bold;
+    }
+
+    /* ===== FLOWCHART SYMBOLS GRID ===== */
+    .symbols-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    .symbol-card {
+      background: #f8fafc;
+      border-radius: 12px;
+      padding: 1.25rem;
+      text-align: center;
+      border: 2px solid #e2e8f0;
+      transition: var(--transition);
+    }
+    .symbol-card:hover {
+      border-color: var(--accent-purple);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow);
+    }
+    .symbol-shape {
+      width: 80px;
+      height: 60px;
+      margin: 0 auto 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--primary-blue), var(--accent-purple));
+      color: white;
+      font-weight: 600;
+      font-size: 0.8rem;
+      position: relative;
+    }
+    /* Shape variations */
+    .shape-terminator { border-radius: 30px; }
+    .shape-process { border-radius: 8px; }
+    .shape-decision { 
+      width: 70px; height: 70px;
+      clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .shape-input { 
+      border-radius: 8px;
+      transform: skewX(-15deg);
+    }
+    .shape-input span { transform: skewX(15deg); display: block; }
+    .shape-connector {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      border: 3px solid var(--primary-blue);
+      background: white;
+      color: var(--primary-blue);
+      font-size: 0.9rem;
+    }
+    .symbol-card h4 { font-size: 1rem; margin-bottom: 0.3rem; }
+    .symbol-card p { font-size: 0.85rem; color: var(--gray); margin: 0; }
+
+    /* ===== FLOWCHART EXAMPLE ===== */
+    .flowchart-example {
+      background: #1e293b;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin: 1rem 0;
+      overflow-x: auto;
+    }
+    .flowchart-diagram {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      min-width: 300px;
+    }
+    .fc-node {
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-align: center;
+      min-width: 120px;
+    }
+    .fc-start { background: #10b981; color: white; border-radius: 30px; }
+    .fc-process { background: #3b82f6; color: white; border-radius: 8px; }
+    .fc-decision { 
+      background: #f59e0b; color: white; 
+      clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+      width: 140px; height: 70px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .fc-end { background: #ef4444; color: white; border-radius: 30px; }
+    .fc-arrow {
+      color: #94a3b8;
+      font-size: 1.2rem;
+      margin: -0.25rem 0;
+    }
+    .fc-label {
+      font-size: 0.75rem;
+      color: #94a3b8;
+      background: #334155;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      margin: 0.25rem 0;
+    }
+
+    /* ===== PSEUDOCODE BOX ===== */
+    .pseudocode-box {
+      background: #1e293b;
+      border-radius: 12px;
+      padding: 1.25rem;
+      margin: 1rem 0;
+      border-left: 4px solid var(--accent-purple);
+    }
+    .pseudocode-box code {
+      display: block;
+      color: #e2e8f0;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      white-space: pre-wrap;
+    }
+    .pseudocode-box .keyword { color: #8b5cf6; font-weight: 600; }
+    .pseudocode-box .comment { color: #64748b; font-style: italic; }
+    .pseudocode-box .variable { color: #10b981; }
+    .pseudocode-box .operator { color: #f59e0b; }
+
+    /* ===== COMPARISON TABLE ===== */
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .comparison-table th {
+      background: linear-gradient(135deg, var(--primary-blue), var(--accent-purple));
+      color: white;
+      padding: 1rem;
+      text-align: left;
+      font-weight: 600;
+    }
+    .comparison-table td {
+      padding: 0.875rem 1rem;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .comparison-table tr:last-child td { border-bottom: none; }
+    .comparison-table tr:hover { background: #f8fafc; }
+
+    /* ===== ACTIVITY CARD ===== */
+    .activity-card {
+      background: linear-gradient(135deg, #fef3c7, #fff7ed);
+      border: 2px solid #f59e0b;
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    .activity-card h4 {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #b45309;
+      margin-bottom: 0.75rem;
+      font-size: 1.1rem;
+    }
+    .activity-card ol { margin-left: 1.5rem; margin-bottom: 1rem; }
+    .activity-card li { margin-bottom: 0.4rem; }
+
+    /* ===== QUIZ SECTION ===== */
+    .quiz-container {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 2rem;
+      box-shadow: var(--shadow);
+      margin: 2rem 0;
+    }
+    .quiz-question {
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .quiz-question:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .quiz-question h4 {
+      font-size: 1.1rem;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+    .quiz-options label {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      padding: 0.5rem 0;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .quiz-options label:hover { background: #f8fafc; border-radius: 8px; }
+    .quiz-options input { margin-top: 0.25rem; }
+    .quiz-feedback {
+      margin-top: 0.5rem;
+      padding: 0.75rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      display: none;
+    }
+    .quiz-feedback.correct {
+      background: #dcfce7;
+      color: #166534;
+      border: 1px solid #86efac;
+    }
+    .quiz-feedback.incorrect {
+      background: #fee2e2;
+      color: #991b1b;
+      border: 1px solid #fca5a5;
+    }
+
+    /* ===== DRAG DROP PRACTICE (Simple) ===== */
+    .practice-area {
+      background: #f1f5f9;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin: 1rem 0;
+    }
+    .practice-steps {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .step-chip {
+      background: white;
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      border: 2px dashed #cbd5e1;
+      cursor: grab;
+      transition: var(--transition);
+    }
+    .step-chip:hover { border-color: var(--primary-blue); }
+    .step-chip:active { cursor: grabbing; }
+    .practice-drop {
+      min-height: 150px;
+      background: white;
+      border: 2px dashed #94a3b8;
+      border-radius: 12px;
+      padding: 1rem;
+      margin-top: 0.5rem;
+    }
+    .practice-drop .dropped-step {
+      background: #eff6ff;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      margin-bottom: 0.5rem;
+      border-left: 3px solid var(--primary-blue);
+    }
+
+    /* ===== NAVIGATION FOOTER ===== */
+    .module-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem;
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin-top: 2rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .nav-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+    .nav-btn.prev { background: #f1f5f9; color: var(--dark); }
+    .nav-btn.prev:hover { background: #e2e8f0; }
+    .nav-btn.next { background: var(--primary-blue); color: white; }
+    .nav-btn.next:hover { background: var(--primary-blue-dark); }
+    .nav-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    /* ===== PROGRESS STEPS ===== */
+    .progress-steps {
+      display: flex;
+      justify-content: space-between;
+      margin: 2rem 0;
+      position: relative;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .progress-steps::before {
+      content: '';
+      position: absolute;
+      top: 12px;
+      left: 5%;
+      right: 5%;
+      height: 3px;
+      background: #e2e8f0;
+      z-index: 1;
+    }
+    .step {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 70px;
+    }
+    .step-number {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--white);
+      border: 3px solid #cbd5e1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 0.85rem;
+      margin-bottom: 0.4rem;
+      transition: var(--transition);
+    }
+    .step.active .step-number {
+      background: var(--accent-purple);
+      border-color: var(--accent-purple);
+      color: white;
+    }
+    .step.completed .step-number {
+      background: var(--secondary-green);
+      border-color: var(--secondary-green);
+      color: white;
+    }
+    .step-label {
+      font-size: 0.75rem;
+      text-align: center;
+      color: var(--gray);
+    }
+    .step.active .step-label { color: var(--accent-purple); font-weight: 500; }
+
+    /* ===== ANIMATIONS ===== */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(15px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .module-hero-content { grid-template-columns: 1fr; text-align: center; }
+      .module-icon { margin: 0 auto; }
+      .module-meta { justify-content: center; }
+      .content-section { padding: 1.5rem; }
+      .module-nav { flex-direction: column; }
+      .nav-btn { width: 100%; justify-content: center; }
+      .progress-steps::before { display: none; }
+      .step { width: auto; margin: 0 0.25rem; }
+      .fc-decision { width: 120px; height: 60px; font-size: 0.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 🔹 BREADCRUMB -->
+  <div class="container">
+    <nav class="breadcrumb">
+      <a href="../../../index.html"><i class="fas fa-home"></i> Beranda</a>
+      <i class="fas fa-chevron-right"></i>
+      <a href="../../kelas-x.html">Kelas X</a>
+      <i class="fas fa-chevron-right"></i>
+      <span>Modul 2: Flowchart & Pseudocode</span>
+    </nav>
+  </div>
+
+  <!-- 🔹 MODULE HERO -->
+  <header class="module-hero">
+    <div class="container">
+      <div class="module-hero-content">
+        <div>
+          <span class="badge"><i class="fas fa-book-open"></i> Modul 2 dari 4</span>
+          <h1>Flowchart & Pseudocode</h1>
+          <p>Visualisasikan algoritma menggunakan diagram alur (flowchart) dan notasi pseudocode standar untuk komunikasi yang lebih efektif.</p>
+          <div class="module-meta">
+            <div class="meta-item"><i class="fas fa-clock"></i> 6 JP (6 × 45 menit)</div>
+            <div class="meta-item"><i class="fas fa-diagram-project"></i> 2 Representasi</div>
+            <div class="meta-item"><i class="fas fa-star"></i> Level: Pemula → Menengah</div>
+          </div>
+        </div>
+        <div class="module-icon">
+          <i class="fas fa-diagram-project"></i>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- 🔹 PROGRESS STEPS -->
+  <div class="container">
+    <div class="progress-steps">
+      <div class="step" data-step="1">
+        <div class="step-number">1</div>
+        <span class="step-label">Flowchart</span>
+      </div>
+      <div class="step" data-step="2">
+        <div class="step-number">2</div>
+        <span class="step-label">Simbol</span>
+      </div>
+      <div class="step active" data-step="3">
+        <div class="step-number">3</div>
+        <span class="step-label">Pseudocode</span>
+      </div>
+      <div class="step" data-step="4">
+        <div class="step-number">4</div>
+        <span class="step-label">Konversi</span>
+      </div>
+      <div class="step" data-step="5">
+        <div class="step-number">5</div>
+        <span class="step-label">Latihan</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 🔹 MAIN CONTENT -->
+  <main class="container">
+    
+    <!-- Section 1: Pengantar Flowchart -->
+    <section class="content-section fade-in" id="step1">
+      <h2><i class="fas fa-diagram-project"></i> Apa Itu Flowchart?</h2>
+      <p><strong>Flowchart</strong> (diagram alur) adalah representasi visual dari algoritma menggunakan simbol-simbol grafis yang dihubungkan dengan panah untuk menunjukkan urutan proses.</p>
+      
+      <h3>🎯 Mengapa Belajar Flowchart?</h3>
+      <ul>
+        <li>✅ Memudahkan pemahaman alur logika program</li>
+        <li>✅ Membantu komunikasi antara programmer dan non-programmer</li>
+        <li>✅ Mempermudah deteksi kesalahan (debugging) sebelum coding</li>
+        <li>✅ Standar dokumentasi dalam pengembangan software</li>
+      </ul>
+
+      <div class="example-box" style="background: linear-gradient(135deg, rgba(139,92,246,0.1), rgba(37,99,235,0.1)); border-color: var(--accent-purple);">
+        <h4><i class="fas fa-lightbulb"></i> Analogi: Peta Perjalanan</h4>
+        <p>Flowchart seperti <strong>peta GPS</strong> untuk algoritma:</p>
+        <ul>
+          <li>📍 Simbol = Lokasi/titik penting (mulai, keputusan, akhir)</li>
+          <li>➡️ Panah = Jalan/rute yang harus dilalui</li>
+          <li>🔄 Percabangan = Pilihan belok kiri/kanan</li>
+        </ul>
+        <p><em>Dengan peta yang jelas, kita tidak akan tersesat dalam logika program!</em></p>
+      </div>
+    </section>
+
+    <!-- Section 2: Simbol-Simbol Flowchart -->
+    <section class="content-section fade-in" id="step2">
+      <h2><i class="fas fa-shapes"></i> Simbol-Simbol Flowchart Standar</h2>
+      <p>Berikut simbol-simbol utama yang wajib kamu ketahui:</p>
+      
+      <div class="symbols-grid">
+        <div class="symbol-card">
+          <div class="symbol-shape shape-terminator">START/END</div>
+          <h4>Terminator</h4>
+          <p>Menandai awal atau akhir algoritma</p>
+        </div>
+        <div class="symbol-card">
+          <div class="symbol-shape shape-process">PROSES</div>
+          <h4>Process</h4>
+          <p>Operasi/perhitungan: hitung, assign, ubah data</p>
+        </div>
+        <div class="symbol-card">
+          <div class="symbol-shape shape-decision">YA/TIDAK</div>
+          <h4>Decision</h4>
+          <p>Percabangan: keputusan berdasarkan kondisi (Ya/Tidak)</p>
+        </div>
+        <div class="symbol-card">
+          <div class="symbol-shape shape-input"><span>INPUT/OUTPUT</span></div>
+          <h4>Input/Output</h4>
+          <p>Membaca data atau menampilkan hasil</p>
+        </div>
+        <div class="symbol-card">
+          <div class="symbol-shape shape-connector">A</div>
+          <h4>Connector</h4>
+          <p>Menghubungkan bagian flowchart yang terpisah</p>
+        </div>
+        <div class="symbol-card">
+          <div class="symbol-shape shape-process" style="background: #64748b;">FLOW LINE</div>
+          <h4>Flow Line</h4>
+          <span style="font-size: 0.85rem; color: var(--gray);">Panah arah alur proses</span>
+        </div>
+      </div>
+
+      <h3>📐 Aturan Menggambar Flowchart</h3>
+      <ul>
+        <li>🔹 Alur dibaca dari <strong>atas ke bawah</strong> atau <strong>kiri ke kanan</strong></li>
+        <li>🔹 Setiap simbol dihubungkan dengan <strong>panah</strong>, bukan garis biasa</li>
+        <li>🔹 Simbol Decision memiliki <strong>minimal 2 keluaran</strong> (Ya/Tidak, True/False)</li>
+        <li>🔹 Hindari garis yang saling bersilangan; gunakan Connector jika perlu</li>
+        <li>🔹 Gunakan kata kerja singkat dan jelas di dalam simbol</li>
+      </ul>
+    </section>
+
+    <!-- Section 3: Pseudocode -->
+    <section class="content-section fade-in" id="step3">
+      <h2><i class="fas fa-code"></i> Pseudocode: Bahasa Semi-Formal</h2>
+      <p><strong>Pseudocode</strong> adalah cara menuliskan algoritma menggunakan campuran bahasa manusia dan struktur pemrograman, tanpa terikat syntax bahasa tertentu.</p>
+      
+      <h3>📝 Struktur Dasar Pseudocode</h3>
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th width="30%">Komponen</th>
+            <th>Penjelasan</th>
+            <th>Contoh</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>DEKLARASI</strong></td>
+            <td>Menyiapkan variabel yang akan digunakan</td>
+            <td><code>nama, umur : string</code></td>
+          </tr>
+          <tr>
+            <td><strong>INPUT</strong></td>
+            <td>Membaca data dari pengguna</td>
+            <td><code>Baca(nama)</code></td>
+          </tr>
+          <tr>
+            <td><strong>PROSES</strong></td>
+            <td>Operasi/perhitungan data</td>
+            <td><code>total ← harga × jumlah</code></td>
+          </tr>
+          <tr>
+            <td><strong>OUTPUT</strong></td>
+            <td>Menampilkan hasil ke pengguna</td>
+            <td><code>Tulis("Halo, ", nama)</code></td>
+          </tr>
+          <tr>
+            <td><strong>KONDISI</strong></td>
+            <td>Percabangan logika</td>
+            <td><code>Jika umur ≥ 17 maka ...</code></td>
+          </tr>
+          <tr>
+            <td><strong>PERULANGAN</strong></td>
+            <td>Mengulang proses</td>
+            <td><code>Untuk i ← 1 sampai 10 lakukan ...</code></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="pseudocode-box">
+        <h4 style="color: var(--accent-purple); margin-bottom: 0.75rem;"><i class="fas fa-file-code"></i> Contoh: Menghitung Luas Persegi Panjang</h4>
+        <code><span class="keyword">ALGORITMA</span> HitungLuasPersegiPanjang
+<span class="comment">// Deklarasi variabel</span>
+<span class="keyword">DEKLARASI</span>:
+  panjang, lebar, luas : <span class="variable">real</span>
+
+<span class="keyword">DESKRIPSI</span>:
+  <span class="comment">// Input</span>
+  <span class="keyword">Baca</span>(panjang)
+  <span class="keyword">Baca</span>(lebar)
+  
+  <span class="comment">// Proses</span>
+  luas <span class="operator">←</span> panjang <span class="operator">×</span> lebar
+  
+  <span class="comment">// Output</span>
+  <span class="keyword">Tulis</span>("Luas persegi panjang: ", luas)
+<span class="keyword">SELESAI</span></code>
+      </div>
+
+      <h3>💡 Tips Menulis Pseudocode yang Baik</h3>
+      <ul>
+        <li>Gunakan <strong>kata kunci konsisten</strong>: Baca, Tulis, Jika, Untuk, Mientras</li>
+        <li>Tulis <strong>satu perintah per baris</strong> agar mudah dibaca</li>
+        <li>Beri <strong>komentar</strong> (<code>//</code>) untuk penjelasan kompleks</li>
+        <li>Gunakan <strong>indentasi</strong> untuk blok kode (If, For, While)</li>
+        <li>Hindari syntax spesifik bahasa pemrograman (tidak ada <code>;</code>, <code>{}</code>, dll)</li>
+      </ul>
+    </section>
+
+    <!-- Section 4: Konversi Algoritma → Flowchart & Pseudocode -->
+    <section class="content-section fade-in" id="step4">
+      <h2><i class="fas fa-exchange-alt"></i> Konversi: Dari Ide ke Representasi</h2>
+      <p>Mari praktikkan konversi algoritma sederhana ke dalam 3 bentuk: deskripsi, flowchart, dan pseudocode.</p>
+      
+      <h3>🎯 Studi Kasus: Menentukan Bilangan Ganjil/Genap</h3>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 1.5rem 0;">
+        
+        <!-- Deskripsi -->
+        <div style="background: #f8fafc; padding: 1.25rem; border-radius: 12px; border-top: 4px solid var(--primary-blue);">
+          <h4 style="margin-bottom: 0.75rem;"><i class="fas fa-align-left"></i> Deskripsi Algoritma</h4>
+          <ol style="margin-left: 1.25rem; font-size: 0.95rem;">
+            <li>Mulai</li>
+            <li>Baca sebuah bilangan bulat <em>n</em></li>
+            <li>Hitung sisa bagi <em>n</em> dengan 2</li>
+            <li>Jika sisa = 0, maka bilangan genap</li>
+            <li>Jika sisa ≠ 0, maka bilangan ganjil</li>
+            <li>Tampilkan hasil</li>
+            <li>Selesai</li>
+          </ol>
+        </div>
+
+        <!-- Flowchart -->
+        <div style="background: #f8fafc; padding: 1.25rem; border-radius: 12px; border-top: 4px solid var(--accent-purple);">
+          <h4 style="margin-bottom: 0.75rem;"><i class="fas fa-diagram-project"></i> Flowchart</h4>
+          <div class="flowchart-diagram">
+            <div class="fc-node fc-start">START</div>
+            <div class="fc-arrow">↓</div>
+            <div class="fc-node fc-process">Baca n</div>
+            <div class="fc-arrow">↓</div>
+            <div class="fc-node fc-decision">n % 2 = 0?</div>
+            <div class="fc-label" style="align-self: flex-start; margin-left: -40px;">Ya</div>
+            <div class="fc-arrow">↓</div>
+            <div class="fc-node fc-process">"Genap"</div>
+            <div class="fc-arrow">↘</div>
+            <div class="fc-label" style="align-self: flex-end; margin-right: -40px;">Tidak</div>
+            <div class="fc-node fc-process">"Ganjil"</div>
+            <div class="fc-arrow">↙</div>
+            <div class="fc-arrow">↓</div>
+            <div class="fc-node fc-process">Tampilkan hasil</div>
+            <div class="fc-arrow">↓</div>
+            <div class="fc-node fc-end">END</div>
+          </div>
+        </div>
+
+        <!-- Pseudocode -->
+        <div style="background: #f8fafc; padding: 1.25rem; border-radius: 12px; border-top: 4px solid var(--secondary-green);">
+          <h4 style="margin-bottom: 0.75rem;"><i class="fas fa-code"></i> Pseudocode</h4>
+          <div class="pseudocode-box" style="background: white; border: 1px solid #e2e8f0;">
+            <code><span class="keyword">ALGORITMA</span> CekGanjilGenap
+<span class="keyword">DEKLARASI</span>:
+  n, sisa : <span class="variable">integer</span>
+
+<span class="keyword">DESKRIPSI</span>:
+  <span class="keyword">Baca</span>(n)
+  sisa <span class="operator">←</span> n <span class="operator">%</span> 2
+  
+  <span class="keyword">Jika</span> sisa <span class="operator">=</span> 0 <span class="keyword">maka</span>
+    <span class="keyword">Tulis</span>("Bilangan GENAP")
+  <span class="keyword">JikaTidak</span>
+    <span class="keyword">Tulis</span>("Bilangan GANJIL")
+  <span class="keyword">AkhirJika</span>
+<span class="keyword">SELESAI</span></code>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="activity-card">
+        <h4><i class="fas fa-pen-to-square"></i> Aktivitas: Konversi Mandiri</h4>
+        <p>Ubah algoritma berikut menjadi <strong>flowchart</strong> dan <strong>pseudocode</strong>:</p>
+        <p style="background: white; padding: 0.75rem; border-radius: 8px; margin: 0.5rem 0; font-family: monospace;">
+          "Hitung rata-rata dari 3 bilangan yang diinput pengguna"
+        </p>
+        <p><em>Gunakan kertas gambar atau aplikasi draw.io / Figma / PowerPoint!</em></p>
+      </div>
+    </section>
+
+    <!-- Section 5: Kuis & Latihan -->
+    <section class="quiz-container fade-in" id="step5">
+      <h2 style="margin-bottom: 1.5rem;"><i class="fas fa-clipboard-question"></i> Kuis Pemahaman</h2>
+      
+      <div class="quiz-question">
+        <h4><i class="fas fa-circle-question"></i> 1. Simbol belah ketupat dalam flowchart digunakan untuk?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q1" value="a"> a) Input data</label>
+          <label><input type="radio" name="q1" value="b"> b) Proses perhitungan</label>
+          <label><input type="radio" name="q1" value="c"> c) Keputusan/percabangan</label>
+          <label><input type="radio" name="q1" value="d"> d) Akhir program</label>
+        </div>
+        <div class="quiz-feedback" id="feedback1"></div>
+      </div>
+
+      <div class="quiz-question">
+        <h4><i class="fas fa-circle-question"></i> 2. Manakah penulisan pseudocode yang BENAR?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q2" value="a"> a) <code>if x > 5 { print("Besar") }</code></label>
+          <label><input type="radio" name="q2" value="b"> b) <code>Jika x > 5 maka Tulis("Besar") AkhirJika</code></label>
+          <label><input type="radio" name="q2" value="c"> c) <code>PRINT "Besar" WHEN x GREATER 5</code></label>
+          <label><input type="radio" name="q2" value="d"> d) <code>console.log(x > 5 ? "Besar" : "Kecil")</code></label>
+        </div>
+        <div class="quiz-feedback" id="feedback2"></div>
+      </div>
+
+      <div class="quiz-question">
+        <h4><i class="fas fa-circle-question"></i> 3. Dalam flowchart, panah berfungsi untuk?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q3" value="a"> a) Menghias diagram</label>
+          <label><input type="radio" name="q3" value="b"> b) Menunjukkan arah alur proses</label>
+          <label><input type="radio" name="q3" value="c"> c) Memisahkan simbol</label>
+          <label><input type="radio" name="q3" value="d"> d) Menandai kesalahan</label>
+        </div>
+        <div class="quiz-feedback" id="feedback3"></div>
+      </div>
+
+      <button class="btn btn-primary" onclick="checkQuiz()" style="margin-top: 1rem;">
+        <i class="fas fa-paper-plane"></i> Kirim Jawaban
+      </button>
+      <div id="quiz-result" style="margin-top: 1rem; font-weight: 600;"></div>
+    </section>
+
+    <!-- Section 6: Tugas & Refleksi -->
+    <section class="content-section fade-in">
+      <h2><i class="fas fa-tasks"></i> Tugas Mandiri</h2>
+      <p>Kerjakan tugas berikut dan kumpulkan melalui Google Classroom/LMS sekolah:</p>
+      
+      <div style="background: #f1f5f9; padding: 1.25rem; border-radius: 12px; margin: 1rem 0;">
+        <h4 style="margin-bottom: 0.75rem; color: var(--accent-purple);"><i class="fas fa-file-pen"></i> Tugas 2: Konversi Lengkap</h4>
+        <p>Pilih satu masalah berikut, lalu buat <strong>ketiga representasi</strong>-nya:</p>
+        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+          <li>🔢 Menentukan bilangan terbesar dari 2 input</li>
+          <li>💰 Menghitung total belanja dengan diskon 10% jika > Rp100.000</li>
+          <li>🎓 Menentukan kelulusan: nilai ≥ 75 = Lulus, < 75 = Remedial</li>
+        </ul>
+        <p style="margin-top: 0.75rem;"><strong>Format Pengumpulan:</strong></p>
+        <ol style="margin-left: 1.5rem; margin-top: 0.3rem; font-size: 0.95rem;">
+          <li>Deskripsi algoritma (5-7 langkah)</li>
+          <li>Flowchart (gambar jelas, simbol standar)</li>
+          <li>Pseudocode (struktur rapi, keyword konsisten)</li>
+        </ol>
+      </div>
+
+      <div style="background: #fef3c7; padding: 1.25rem; border-radius: 12px; margin: 1rem 0; border-left: 4px solid #f59e0b;">
+        <h4 style="margin-bottom: 0.75rem; color: #b45309;"><i class="fas fa-lightbulb"></i> Refleksi</h4>
+        <p>Jawab di buku catatan:</p>
+        <ol style="margin-left: 1.5rem; margin-top: 0.5rem;">
+          <li>Mana yang lebih mudah kamu pahami: flowchart atau pseudocode? Mengapa?</li>
+          <li>Apa kesulitan terbesar saat menggambar flowchart? Bagaimana mengatasinya?</li>
+          <li>Kapan sebaiknya menggunakan flowchart vs pseudocode dalam proyek nyata?</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Navigation Footer -->
+    <nav class="module-nav">
+      <a href="../01-algoritma-dasar/index.html" class="nav-btn prev">
+        <i class="fas fa-arrow-left"></i> Modul 1: Algoritma
+      </a>
+      <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+        <button class="nav-btn prev" onclick="markComplete()" id="completeBtn">
+          <i class="fas fa-check"></i> Tandai Selesai
+        </button>
+        <a href="../03-variabel-tipedata/index.html" class="nav-btn next" id="nextBtn" style="display: none;">
+          Lanjut Modul 3 <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+    </nav>
+
+  </main>
+
+  <!-- 🔹 FOOTER MINI -->
+  <footer style="background: var(--dark); color: #cbd5e1; padding: 2rem 0; margin-top: 3rem;">
+    <div class="container text-center">
+      <p style="margin-bottom: 0.5rem;"><strong>SMA Negeri 1 Cluring</strong> • Informatika Kelas X</p>
+      <p style="font-size: 0.9rem; opacity: 0.8;">© 2026 Tim Informatika. Materi ini dapat digunakan untuk pembelajaran non-komersial.</p>
+      <p style="margin-top: 1rem;">
+        <a href="../../../index.html" style="color: var(--secondary-green); margin: 0 0.5rem;"><i class="fas fa-home"></i> Beranda</a>
+        <a href="#" style="color: var(--secondary-green); margin: 0 0.5rem;"><i class="fas fa-download"></i> Download PDF</a>
+        <a href="#" style="color: var(--secondary-green); margin: 0 0.5rem;"><i class="fas fa-headset"></i> Butuh Bantuan?</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- 🔹 JAVASCRIPT -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      
+      // ===== 1. ANIMASI FADE-IN ON SCROLL =====
+      const fadeElements = document.querySelectorAll('.fade-in');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1 });
+      fadeElements.forEach(el => observer.observe(el));
+
+      // ===== 2. PROGRESS STEPS INTERACTION =====
+      const steps = document.querySelectorAll('.step');
+      const sections = ['step1', 'step2', 'step3', 'step4', 'step5'];
+      
+      window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(sectionId => {
+          const section = document.getElementById(sectionId);
+          if (section) {
+            const sectionTop = section.offsetTop - 100;
+            if (pageYOffset >= sectionTop) {
+              current = sectionId;
+            }
+          }
+        });
+        
+        steps.forEach(step => {
+          step.classList.remove('active');
+          if (step.dataset.step === current.replace('step', '')) {
+            step.classList.add('active');
+          }
+        });
+      });
+
+      // ===== 3. QUIZ FUNCTIONALITY =====
+      window.checkQuiz = function() {
+        const answers = {
+          q1: 'c',  // Decision symbol
+          q2: 'b',  // Pseudocode format
+          q3: 'b'   // Arrow function
+        };
+        let score = 0;
+        
+        // Question 1
+        const q1 = document.querySelector('input[name="q1"]:checked');
+        const fb1 = document.getElementById('feedback1');
+        if (q1) {
+          if (q1.value === answers.q1) {
+            fb1.textContent = '✅ Benar! Simbol belah ketupat = Decision (percabangan Ya/Tidak).';
+            fb1.className = 'quiz-feedback correct';
+            score++;
+          } else {
+            fb1.textContent = '❌ Simbol belah ketupat digunakan untuk keputusan/percabangan logika.';
+            fb1.className = 'quiz-feedback incorrect';
+          }
+          fb1.style.display = 'block';
+        }
+        
+        // Question 2
+        const q2 = document.querySelector('input[name="q2"]:checked');
+        const fb2 = document.getElementById('feedback2');
+        if (q2) {
+          if (q2.value === answers.q2) {
+            fb2.textContent = '✅ Benar! Pseudocode menggunakan kata kunci bahasa alami, bukan syntax programming.';
+            fb2.className = 'quiz-feedback correct';
+            score++;
+          } else {
+            fb2.textContent = '❌ Pseudocode tidak menggunakan syntax spesifik bahasa pemrograman ({}, ;, console.log).';
+            fb2.className = 'quiz-feedback incorrect';
+          }
+          fb2.style.display = 'block';
+        }
+        
+        // Question 3
+        const q3 = document.querySelector('input[name="q3"]:checked');
+        const fb3 = document.getElementById('feedback3');
+        if (q3) {
+          if (q3.value === answers.q3) {
+            fb3.textContent = '✅ Benar! Panah menunjukkan arah/urutan alur proses dalam flowchart.';
+            fb3.className = 'quiz-feedback correct';
+            score++;
+          } else {
+            fb3.textContent = '❌ Panah dalam flowchart berfungsi menunjukkan arah alur proses.';
+            fb3.className = 'quiz-feedback incorrect';
+          }
+          fb3.style.display = 'block';
+        }
+        
+        // Result
+        const result = document.getElementById('quiz-result');
+        result.textContent = `Skor Anda: ${score}/3 ${score === 3 ? '🎉 Luar biasa!' : score >= 2 ? '👍 Bagus!' : '📚 Pelajari lagi simbol & aturan pseudocode!'}`;
+        result.style.color = score === 3 ? 'var(--secondary-green)' : score >= 2 ? '#f59e0b' : '#ef4444';
+      };
+
+      // ===== 4. MARK MODULE AS COMPLETE =====
+      window.markComplete = function() {
+        // Simpan progres ke localStorage (simulasi)
+        let progress = JSON.parse(localStorage.getItem('classX_progress')) || [];
+        if (!progress.includes('02')) {
+          progress.push('02');
+          localStorage.setItem('classX_progress', JSON.stringify(progress));
+          
+          // Update UI
+          document.getElementById('completeBtn').innerHTML = '<i class="fas fa-check-circle"></i> Selesai!';
+          document.getElementById('completeBtn').disabled = true;
+          document.getElementById('completeBtn').style.background = 'var(--secondary-green)';
+          document.getElementById('nextBtn').style.display = 'flex';
+          
+          // Tampilkan notifikasi
+          alert('🎉 Selamat! Modul 2 ditandai selesai. Modul 3 telah terbuka!');
+          
+          // Update progress di dashboard parent (jika ada)
+          if (window.opener) {
+            try {
+              window.opener.updateProgress?.();
+            } catch(e) {}
+          }
+        }
+      };
+
+      // ===== 5. CHECK IF ALREADY COMPLETED =====
+      function checkCompletionStatus() {
+        const progress = JSON.parse(localStorage.getItem('classX_progress')) || [];
+        if (progress.includes('02')) {
+          document.getElementById('completeBtn').innerHTML = '<i class="fas fa-check-circle"></i> Selesai!';
+          document.getElementById('completeBtn').disabled = true;
+          document.getElementById('completeBtn').style.background = 'var(--secondary-green)';
+          document.getElementById('nextBtn').style.display = 'flex';
+        }
+      }
+      checkCompletionStatus();
+
+      // ===== 6. SMOOTH SCROLL FOR ANCHOR LINKS =====
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          const href = this.getAttribute('href');
+          if (href.startsWith('#') && href.length > 1) {
+            e.preventDefault();
+            const target = document.querySelector(href);
+            if (target) {
+              target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+          }
+        });
+      });
+
+    });
+  </script>
+</body>
+</html>
