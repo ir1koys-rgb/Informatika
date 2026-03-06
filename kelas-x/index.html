@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
   
   <style>
-    /* ===== CSS VARIABLES (Shared with Landing Page) ===== */
+    /* ===== CSS VARIABLES ===== */
     :root {
       --primary-blue: #2563eb;
       --primary-blue-dark: #1d4ed8;
@@ -45,11 +45,7 @@
     ul { list-style: none; }
 
     /* ===== UTILITIES ===== */
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
     .section { padding: 4rem 0; }
     .text-center { text-align: center; }
     .mb-2 { margin-bottom: 2rem; }
@@ -91,6 +87,7 @@
     }
     .btn-outline:hover { background: var(--primary-blue); color: var(--white); }
     .btn-sm { padding: 0.5rem 1.25rem; font-size: 0.9rem; }
+    .btn-white { background: white; color: var(--primary-blue); }
 
     /* ===== BREADCRUMB ===== */
     .breadcrumb {
@@ -101,11 +98,7 @@
       font-size: 0.95rem;
       color: var(--gray);
     }
-    .breadcrumb a {
-      color: var(--primary-blue);
-      font-weight: 500;
-      transition: var(--transition);
-    }
+    .breadcrumb a { color: var(--primary-blue); font-weight: 500; transition: var(--transition); }
     .breadcrumb a:hover { color: var(--primary-blue-dark); }
     .breadcrumb span { color: var(--dark); font-weight: 500; }
     .breadcrumb i { font-size: 0.8rem; }
@@ -164,10 +157,7 @@
       color: var(--gray);
     }
     .stat-item i { color: var(--secondary-green); }
-    .class-header-visual {
-      display: flex;
-      justify-content: center;
-    }
+    .class-header-visual { display: flex; justify-content: center; }
     .class-header-visual .badge-large {
       width: 180px;
       height: 180px;
@@ -240,9 +230,7 @@
       border-color: var(--primary-blue);
     }
     .module-card.completed { border-color: var(--secondary-green); }
-    .module-card.completed .module-badge {
-      background: var(--secondary-green);
-    }
+    .module-card.completed .module-badge { background: var(--secondary-green); }
     .module-card.locked { opacity: 0.7; }
     .module-card.locked:hover { transform: none; cursor: not-allowed; }
     
@@ -278,20 +266,9 @@
     .module-badge.popular { background: linear-gradient(135deg, #ec4899, #db2777); }
     
     .module-body { padding: 1.5rem; }
-    .module-body h3 {
-      font-size: 1.3rem;
-      margin-bottom: 0.75rem;
-      font-weight: 600;
-    }
-    .module-body p {
-      color: var(--gray);
-      font-size: 0.95rem;
-      margin-bottom: 1.25rem;
-      min-height: 60px;
-    }
-    .module-topics {
-      margin-bottom: 1.25rem;
-    }
+    .module-body h3 { font-size: 1.3rem; margin-bottom: 0.75rem; font-weight: 600; }
+    .module-body p { color: var(--gray); font-size: 0.95rem; margin-bottom: 1.25rem; min-height: 60px; }
+    .module-topics { margin-bottom: 1.25rem; }
     .module-topics li {
       display: flex;
       align-items: center;
@@ -357,11 +334,7 @@
       align-items: center;
       gap: 0.5rem;
     }
-    .featured-project p {
-      color: #cbd5e1;
-      margin-bottom: 1.5rem;
-      font-size: 1.05rem;
-    }
+    .featured-project p { color: #cbd5e1; margin-bottom: 1.5rem; font-size: 1.05rem; }
     .project-preview {
       background: rgba(255,255,255,0.1);
       border-radius: 12px;
@@ -369,11 +342,7 @@
       text-align: center;
       border: 1px solid rgba(255,255,255,0.2);
     }
-    .project-preview i {
-      font-size: 3rem;
-      color: var(--secondary-green);
-      margin-bottom: 1rem;
-    }
+    .project-preview i { font-size: 3rem; color: var(--secondary-green); margin-bottom: 1rem; }
     .project-preview p { font-size: 0.95rem; opacity: 0.9; }
 
     /* ===== RESOURCES SECTION ===== */
@@ -392,24 +361,10 @@
       transition: var(--transition);
       border: 2px solid transparent;
     }
-    .resource-card:hover {
-      border-color: var(--primary-blue);
-      transform: translateY(-3px);
-    }
-    .resource-card i {
-      font-size: 2rem;
-      color: var(--primary-blue);
-      margin-bottom: 0.75rem;
-    }
-    .resource-card h4 {
-      font-size: 1.05rem;
-      margin-bottom: 0.5rem;
-      font-weight: 600;
-    }
-    .resource-card p {
-      color: var(--gray);
-      font-size: 0.9rem;
-    }
+    .resource-card:hover { border-color: var(--primary-blue); transform: translateY(-3px); }
+    .resource-card i { font-size: 2rem; color: var(--primary-blue); margin-bottom: 0.75rem; }
+    .resource-card h4 { font-size: 1.05rem; margin-bottom: 0.5rem; font-weight: 600; }
+    .resource-card p { color: var(--gray); font-size: 0.9rem; }
 
     /* ===== ANIMATIONS ===== */
     .fade-in {
@@ -417,15 +372,11 @@
       transform: translateY(20px);
       transition: opacity 0.6s ease, transform 0.6s ease;
     }
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
 
     /* ===== RESPONSIVE ===== */
     @media (max-width: 992px) {
-      .class-header-content,
-      .featured-project {
+      .class-header-content, .featured-project {
         grid-template-columns: 1fr;
         text-align: center;
       }
@@ -488,13 +439,13 @@
     <div class="progress-container fade-in">
       <div class="progress-header">
         <h3><i class="fas fa-chart-line"></i> Progres Belajar Anda</h3>
-        <span id="progress-percent">0%</span>
+        <span id="progress-percent">75%</span>
       </div>
       <div class="progress-bar">
-        <div class="progress-fill" id="progress-fill"></div>
+        <div class="progress-fill" id="progress-fill" style="--progress: 75%"></div>
       </div>
       <p style="margin-top: 0.75rem; font-size: 0.9rem; color: var(--gray);">
-        <i class="fas fa-info-circle"></i> Selesaikan setiap modul untuk membuka materi berikutnya dan dapatkan sertifikat digital!
+        <i class="fas fa-info-circle"></i> Selesaikan Modul 4 untuk mendapatkan sertifikat digital!
       </p>
     </div>
   </div>
@@ -509,11 +460,11 @@
       
       <div class="modules-grid">
         
-        <!-- 🔹 Modul 1: Algoritma Dasar -->
-        <article class="module-card fade-in" data-module="01" data-status="available">
+        <!-- 🔹 Modul 1: Algoritma Dasar [COMPLETED] -->
+        <article class="module-card completed fade-in" data-module="01" data-status="completed">
           <div class="module-header">
             <div class="module-number">1</div>
-            <span class="module-badge popular"><i class="fas fa-fire"></i> Populer</span>
+            <span class="module-badge"><i class="fas fa-check"></i> Selesai</span>
           </div>
           <div class="module-body">
             <h3>Konsep Dasar Algoritma</h3>
@@ -525,21 +476,21 @@
             </ul>
             <div class="module-footer">
               <div class="module-duration"><i class="fas fa-clock"></i> 6 JP</div>
-              <div class="module-progress-mini"><div class="fill" style="--fill: 0%"></div></div>
+              <div class="module-progress-mini"><div class="fill" style="--fill: 100%"></div></div>
             </div>
           </div>
           <div class="module-cta" style="padding: 0 1.5rem 1.5rem;">
-            <a href="modules/01-algoritma-dasar/index.html" class="btn btn-primary">
-              <i class="fas fa-arrow-right"></i> Mulai Modul
+            <a href="modules/01-algoritma-dasar/index.html" class="btn btn-success">
+              <i class="fas fa-check"></i> Selesai
             </a>
           </div>
         </article>
 
-        <!-- 🔹 Modul 2: Flowchart & Pseudocode -->
-        <article class="module-card fade-in" data-module="02" data-status="locked">
+        <!-- 🔹 Modul 2: Flowchart & Pseudocode [AVAILABLE] -->
+        <article class="module-card fade-in" data-module="02" data-status="available">
           <div class="module-header">
             <div class="module-number">2</div>
-            <span class="module-badge new"><i class="fas fa-star"></i> Baru</span>
+            <span class="module-badge new"><i class="fas fa-star"></i> Aktif</span>
           </div>
           <div class="module-body">
             <h3>Flowchart & Pseudocode</h3>
@@ -551,21 +502,21 @@
             </ul>
             <div class="module-footer">
               <div class="module-duration"><i class="fas fa-clock"></i> 6 JP</div>
-              <div class="module-progress-mini"><div class="fill" style="--fill: 0%"></div></div>
+              <div class="module-progress-mini"><div class="fill" style="--fill: 100%"></div></div>
             </div>
           </div>
           <div class="module-cta" style="padding: 0 1.5rem 1.5rem;">
-            <button class="btn btn-outline" disabled title="Selesaikan Modul 1 terlebih dahulu">
-              <i class="fas fa-lock"></i> Terkunci
-            </button>
+            <a href="modules/02-flowchart-pseudocode/index.html" class="btn btn-primary">
+              <i class="fas fa-arrow-right"></i> Mulai Modul
+            </a>
           </div>
         </article>
 
-        <!-- 🔹 Modul 3: Variabel & Tipe Data -->
-        <article class="module-card fade-in" data-module="03" data-status="locked">
+        <!-- 🔹 Modul 3: Variabel & Tipe Data [AVAILABLE] -->
+        <article class="module-card fade-in" data-module="03" data-status="available">
           <div class="module-header">
             <div class="module-number">3</div>
-            <span class="module-badge">Menyusul</span>
+            <span class="module-badge new"><i class="fas fa-bolt"></i> Siap</span>
           </div>
           <div class="module-body">
             <h3>Variabel & Tipe Data</h3>
@@ -577,18 +528,18 @@
             </ul>
             <div class="module-footer">
               <div class="module-duration"><i class="fas fa-clock"></i> 6 JP</div>
-              <div class="module-progress-mini"><div class="fill" style="--fill: 0%"></div></div>
+              <div class="module-progress-mini"><div class="fill" style="--fill: 100%"></div></div>
             </div>
           </div>
           <div class="module-cta" style="padding: 0 1.5rem 1.5rem;">
-            <button class="btn btn-outline" disabled title="Selesaikan Modul 2 terlebih dahulu">
-              <i class="fas fa-lock"></i> Terkunci
-            </button>
+            <a href="modules/03-variabel-tipe-data/index.html" class="btn btn-primary">
+              <i class="fas fa-arrow-right"></i> Mulai Modul
+            </a>
           </div>
         </article>
 
-        <!-- 🔹 Modul 4: Percabangan & Perulangan -->
-        <article class="module-card fade-in" data-module="04" data-status="locked">
+        <!-- 🔹 Modul 4: Percabangan & Perulangan [LOCKED] -->
+        <article class="module-card locked fade-in" data-module="04" data-status="locked">
           <div class="module-header">
             <div class="module-number">4</div>
             <span class="module-badge">Proyek</span>
@@ -670,10 +621,10 @@
   <!-- 🔹 FINAL CTA -->
   <div class="container" style="margin: 3rem auto; text-align: center;">
     <div style="background: linear-gradient(135deg, var(--primary-blue), var(--accent-purple)); color: white; padding: 2.5rem; border-radius: var(--radius); max-width: 700px; margin: 0 auto;">
-      <h3 style="font-size: 1.75rem; margin-bottom: 1rem;"><i class="fas fa-lightbulb"></i> Siap Memulai Perjalanan Coding?</h3>
-      <p style="margin-bottom: 1.5rem; opacity: 0.95;">Setiap langkah kecil dalam belajar algoritma adalah investasi besar untuk masa depan digital Anda.</p>
-      <a href="modules/01-algoritma-dasar/index.html" class="btn btn-white" style="background: white; color: var(--primary-blue); font-weight: 600;">
-        <i class="fas fa-play"></i> Mulai Modul 1 Sekarang
+      <h3 style="font-size: 1.75rem; margin-bottom: 1rem;"><i class="fas fa-lightbulb"></i> Lanjutkan ke Modul Terakhir!</h3>
+      <p style="margin-bottom: 1.5rem; opacity: 0.95;">Hanya satu langkah lagi untuk menyelesaikan Kelas X dan mendapatkan sertifikat digital Anda.</p>
+      <a href="modules/02-flowchart-pseudocode/index.html" class="btn btn-white" style="background: white; color: var(--primary-blue); font-weight: 600;">
+        <i class="fas fa-play"></i> Lanjut Belajar Sekarang
       </a>
     </div>
   </div>
@@ -691,11 +642,16 @@
     </div>
   </footer>
 
-  <!-- 🔹 JAVASCRIPT: Progress & Animations -->
+  <!-- 🔹 JAVASCRIPT -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       
-      // ===== 1. ANIMASI FADE-IN ON SCROLL =====
+      // ===== 1. INISIALISASI PROGRES DEFAULT (Modul 1,2,3 selesai) =====
+      if (!localStorage.getItem('classX_progress')) {
+        localStorage.setItem('classX_progress', JSON.stringify(['01', '02', '03']));
+      }
+
+      // ===== 2. ANIMASI FADE-IN ON SCROLL =====
       const fadeElements = document.querySelectorAll('.fade-in');
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -706,19 +662,16 @@
       }, { threshold: 0.1 });
       fadeElements.forEach(el => observer.observe(el));
 
-      // ===== 2. PROGRESS TRACKER (Simulasi dengan localStorage) =====
+      // ===== 3. PROGRESS TRACKER =====
       function updateProgress() {
-        // Ambil data progres dari localStorage (simulasi)
         const completedModules = JSON.parse(localStorage.getItem('classX_progress')) || [];
         const totalModules = 4;
         const completedCount = completedModules.length;
         const percent = Math.round((completedCount / totalModules) * 100);
         
-        // Update UI
         document.getElementById('progress-percent').textContent = `${percent}%`;
         document.getElementById('progress-fill').style.setProperty('--progress', `${percent}%`);
         
-        // Update status modul
         document.querySelectorAll('.module-card').forEach(card => {
           const moduleNum = card.dataset.module;
           const isCompleted = completedModules.includes(moduleNum);
@@ -726,73 +679,56 @@
           
           if (isCompleted) {
             card.classList.add('completed');
-            card.querySelector('.module-cta .btn').innerHTML = '<i class="fas fa-check"></i> Selesai';
-            card.querySelector('.module-cta .btn').classList.replace('btn-primary', 'btn-success');
-          } else if (isAvailable) {
-            card.dataset.status = 'available';
             card.classList.remove('locked');
-            card.querySelector('.module-cta button')?.remove(); // Hapus tombol locked jika ada
-            // Pastikan tombol start ada
-            if (!card.querySelector('.module-cta a')) {
-              const btn = document.createElement('a');
-              btn.href = `modules/${moduleNum}-modul/index.html`;
-              btn.className = 'btn btn-primary';
-              btn.innerHTML = '<i class="fas fa-arrow-right"></i> Mulai Modul';
-              btn.style.width = '100%';
-              btn.style.justifyContent = 'center';
-              card.querySelector('.module-cta').appendChild(btn);
+            const badge = card.querySelector('.module-badge');
+            if (badge) {
+              badge.innerHTML = '<i class="fas fa-check"></i> Selesai';
+              badge.style.background = 'var(--secondary-green)';
+            }
+            const cta = card.querySelector('.module-cta');
+            if (cta) {
+              cta.innerHTML = `<a href="modules/${moduleNum}-modul/index.html" class="btn btn-success"><i class="fas fa-check"></i> Selesai</a>`;
+            }
+            const miniFill = card.querySelector('.module-progress-mini .fill');
+            if (miniFill) miniFill.style.setProperty('--fill', '100%');
+          } else if (isAvailable) {
+            card.classList.remove('locked', 'completed');
+            card.dataset.status = 'available';
+            const badge = card.querySelector('.module-badge');
+            if (badge && !badge.classList.contains('popular')) {
+              badge.innerHTML = '<i class="fas fa-bolt"></i> Siap';
+              badge.classList.add('new');
+            }
+            const cta = card.querySelector('.module-cta');
+            if (cta && !cta.querySelector('a.btn-primary')) {
+              cta.innerHTML = `<a href="modules/${moduleNum}-modul/index.html" class="btn btn-primary"><i class="fas fa-arrow-right"></i> Mulai Modul</a>`;
             }
           } else {
             card.classList.add('locked');
-            // Pastikan tombol locked ada
-            if (!card.querySelector('.module-cta button')) {
-              const btn = document.createElement('button');
-              btn.className = 'btn btn-outline';
-              btn.disabled = true;
-              btn.title = `Selesaikan Modul ${parseInt(moduleNum) - 1} terlebih dahulu`;
-              btn.innerHTML = '<i class="fas fa-lock"></i> Terkunci';
-              btn.style.width = '100%';
-              card.querySelector('.module-cta').appendChild(btn);
+            card.classList.remove('completed');
+            const cta = card.querySelector('.module-cta');
+            if (cta && !cta.querySelector('button[disabled]')) {
+              cta.innerHTML = `<button class="btn btn-outline" disabled title="Selesaikan Modul ${parseInt(moduleNum) - 1} terlebih dahulu"><i class="fas fa-lock"></i> Terkunci</button>`;
             }
-          }
-          
-          // Update mini progress bar
-          const miniFill = card.querySelector('.module-progress-mini .fill');
-          if (isCompleted) {
-            miniFill.style.setProperty('--fill', '100%');
           }
         });
       }
       
-      // Jalankan update progress
       updateProgress();
 
-      // ===== 3. INTERAKSI: Tandai Modul Selesai (Demo) =====
-      // Di produksi, ini akan terhubung ke backend/LMS
-      document.querySelectorAll('.module-cta a[href*="01"]').forEach(btn => {
-        btn.addEventListener('click', function(e) {
-          // Simulasi: saat user klik mulai modul 1, tandai sebagai completed setelah selesai
-          // Ini hanya demo - di real app, status update setelah kuis/proyek selesai
-          console.log('Memulai Modul 1...');
-        });
-      });
-
-      // ===== 4. SMOOTH SCROLL UNTUK ANCHOR LINKS =====
+      // ===== 4. SMOOTH SCROLL =====
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
           const href = this.getAttribute('href');
           if (href.startsWith('#') && href.length > 1) {
             e.preventDefault();
             const target = document.querySelector(href);
-            if (target) {
-              target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
+            if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
           }
         });
       });
 
-      // ===== 5. CONTOH: Simpan Progres (untuk demo) =====
-      // Cara pakai: console.log(simpanProgres('01')) di browser console
+      // ===== 5. FUNGSI DEMO: Tandai Modul Selesai =====
       window.simpanProgres = function(moduleId) {
         let progress = JSON.parse(localStorage.getItem('classX_progress')) || [];
         if (!progress.includes(moduleId)) {
@@ -803,6 +739,12 @@
           return true;
         }
         return false;
+      };
+
+      // ===== 6. RESET PROGRES (untuk testing) =====
+      window.resetProgres = function() {
+        localStorage.removeItem('classX_progress');
+        location.reload();
       };
 
     });
