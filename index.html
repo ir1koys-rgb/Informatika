@@ -1,1699 +1,1517 @@
 <!DOCTYPE html>
 <html lang="id" data-theme="light">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Algorithm - Media Ajar Coding Berbasis Web</title>
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- AOS Animation Library -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
-    <style>
-        /* ========================================
-           CSS VARIABLES & THEME CONFIGURATION
-           ======================================== */
-        :root {
-            /* Light Theme */
-            --primary: #6366f1;
-            --primary-dark: #4f46e5;
-            --secondary: #06b6d4;
-            --accent: #f43f5e;
-            --success: #10b981;
-            --warning: #f59e0b;
-            --danger: #ef4444;
-            
-            --bg-primary: #ffffff;
-            --bg-secondary: #f8fafc;
-            --bg-tertiary: #f1f5f9;
-            --bg-glass: rgba(255, 255, 255, 0.7);
-            
-            --text-primary: #0f172a;
-            --text-secondary: #475569;
-            --text-muted: #94a3b8;
-            --text-inverse: #ffffff;
-            
-            --border: #e2e8f0;
-            --border-glass: rgba(226, 232, 240, 0.5);
-            
-            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
-            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
-            --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
-            --shadow-glow: 0 0 40px rgba(99, 102, 241, 0.3);
-            
-            --gradient-primary: linear-gradient(135deg, #6366f1 0%, #06b6d4 100%);
-            --gradient-secondary: linear-gradient(135deg, #f43f5e 0%, #f59e0b 100%);
-            --gradient-dark: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-            
-            --radius-sm: 8px;
-            --radius-md: 12px;
-            --radius-lg: 16px;
-            --radius-xl: 24px;
-            --radius-full: 9999px;
-            
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        [data-theme="dark"] {
-            /* Dark Theme */
-            --bg-primary: #0f172a;
-            --bg-secondary: #1e293b;
-            --bg-tertiary: #334155;
-            --bg-glass: rgba(15, 23, 42, 0.7);
-            
-            --text-primary: #f8fafc;
-            --text-secondary: #cbd5e1;
-            --text-muted: #64748b;
-            
-            --border: #334155;
-            --border-glass: rgba(51, 65, 85, 0.5);
-            
-            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
-            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4);
-            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.4);
-            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.5);
-            --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.6);
-            --shadow-glow: 0 0 40px rgba(99, 102, 241, 0.5);
-        }
-
-        /* ========================================
-           GLOBAL STYLES
-           ======================================== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 80px;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.6;
-            overflow-x: hidden;
-            transition: var(--transition);
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-weight: 700;
-            line-height: 1.2;
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        section {
-            padding: 100px 0;
-            position: relative;
-        }
-
-        /* ========================================
-           ANIMATED BACKGROUND
-           ======================================== */
-        .animated-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            overflow: hidden;
-        }
-
-        .animated-bg::before {
-            content: '';
-            position: absolute;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
-            top: -200px;
-            right: -200px;
-            animation: float 15s ease-in-out infinite;
-        }
-
-        .animated-bg::after {
-            content: '';
-            position: absolute;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(6, 182, 212, 0.15) 0%, transparent 70%);
-            bottom: -150px;
-            left: -150px;
-            animation: float 20s ease-in-out infinite reverse;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            25% { transform: translate(30px, 30px) rotate(5deg); }
-            50% { transform: translate(-20px, 40px) rotate(-5deg); }
-            75% { transform: translate(40px, -20px) rotate(3deg); }
-        }
-
-        /* ========================================
-           NAVBAR
-           ======================================== */
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 20px 0;
-            z-index: 1000;
-            transition: var(--transition);
-        }
-
-        .navbar.scrolled {
-            background: var(--bg-glass);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            padding: 15px 0;
-            border-bottom: 1px solid var(--border-glass);
-        }
-
-        .navbar-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            text-decoration: none;
-        }
-
-        .logo-icon {
-            width: 45px;
-            height: 45px;
-            background: var(--gradient-primary);
-            border-radius: var(--radius-md);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.3rem;
-            box-shadow: var(--shadow-glow);
-        }
-
-        .nav-menu {
-            display: flex;
-            align-items: center;
-            gap: 40px;
-            list-style: none;
-        }
-
-        .nav-link {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.95rem;
-            position: relative;
-            padding: 8px 0;
-            transition: var(--transition);
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--gradient-primary);
-            transition: var(--transition);
-        }
-
-        .nav-link:hover {
-            color: var(--primary);
-        }
-
-        .nav-link:hover::after {
-            width: 100%;
-        }
-
-        .nav-actions {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .theme-toggle {
-            width: 45px;
-            height: 45px;
-            border-radius: var(--radius-full);
-            border: 1px solid var(--border);
-            background: var(--bg-secondary);
-            color: var(--text-primary);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition);
-        }
-
-        .theme-toggle:hover {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
-            transform: rotate(180deg);
-        }
-
-        .mobile-toggle {
-            display: none;
-            font-size: 1.5rem;
-            color: var(--text-primary);
-            background: none;
-            border: none;
-            cursor: pointer;
-        }
-
-        /* ========================================
-           HERO SECTION
-           ======================================== */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding-top: 80px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1.2fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 16px;
-            background: var(--bg-tertiary);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-full);
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: var(--text-secondary);
-            margin-bottom: 24px;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
-        }
-
-        .hero-title {
-            font-size: 4rem;
-            font-weight: 800;
-            margin-bottom: 24px;
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            line-height: 1.1;
-        }
-
-        .hero-subtitle {
-            font-size: 1.25rem;
-            color: var(--text-secondary);
-            margin-bottom: 40px;
-            max-width: 600px;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 16px 32px;
-            border-radius: var(--radius-full);
-            font-weight: 600;
-            text-decoration: none;
-            transition: var(--transition);
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-        }
-
-        .btn-primary {
-            background: var(--gradient-primary);
-            color: white;
-            box-shadow: var(--shadow-glow);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 0 60px rgba(99, 102, 241, 0.5);
-        }
-
-        .btn-secondary {
-            background: var(--bg-secondary);
-            color: var(--text-primary);
-            border: 1px solid var(--border);
-        }
-
-        .btn-secondary:hover {
-            background: var(--bg-tertiary);
-            transform: translateY(-3px);
-        }
-
-        .hero-visual {
-            position: relative;
-        }
-
-        .hero-card {
-            background: var(--bg-glass);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--border-glass);
-            border-radius: var(--radius-xl);
-            padding: 40px;
-            box-shadow: var(--shadow-2xl);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: var(--gradient-primary);
-        }
-
-        .code-preview {
-            background: var(--bg-tertiary);
-            border-radius: var(--radius-md);
-            padding: 20px;
-            font-family: 'Courier New', monospace;
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            margin-bottom: 20px;
-        }
-
-        .code-line {
-            display: block;
-            margin-bottom: 8px;
-        }
-
-        .code-keyword { color: var(--primary); }
-        .code-string { color: var(--success); }
-        .code-comment { color: var(--text-muted); }
-
-        .hero-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin-top: 30px;
-        }
-
-        .stat-item {
-            text-align: center;
-            padding: 20px;
-            background: var(--bg-secondary);
-            border-radius: var(--radius-lg);
-            border: 1px solid var(--border);
-        }
-
-        .stat-number {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--primary);
-            display: block;
-        }
-
-        .stat-label {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-        }
-
-        /* ========================================
-           ABOUT SECTION
-           ======================================== */
-        .about {
-            background: var(--bg-secondary);
-        }
-
-        .section-header {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 60px;
-        }
-
-        .section-tag {
-            display: inline-block;
-            padding: 8px 20px;
-            background: var(--primary);
-            color: white;
-            border-radius: var(--radius-full);
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 16px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .section-title {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            color: var(--text-primary);
-        }
-
-        .section-desc {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .about-content h3 {
-            font-size: 2rem;
-            margin-bottom: 24px;
-            color: var(--text-primary);
-        }
-
-        .about-content p {
-            color: var(--text-secondary);
-            margin-bottom: 20px;
-            text-align: justify;
-        }
-
-        .about-features {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            margin-top: 40px;
-        }
-
-        .feature-box {
-            display: flex;
-            align-items: flex-start;
-            gap: 15px;
-            padding: 20px;
-            background: var(--bg-primary);
-            border-radius: var(--radius-lg);
-            border: 1px solid var(--border);
-            transition: var(--transition);
-        }
-
-        .feature-box:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary);
-            box-shadow: var(--shadow-md);
-        }
-
-        .feature-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--gradient-primary);
-            border-radius: var(--radius-md);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.2rem;
-            flex-shrink: 0;
-        }
-
-        .feature-text h4 {
-            font-size: 1.1rem;
-            margin-bottom: 8px;
-            color: var(--text-primary);
-        }
-
-        .feature-text p {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            margin: 0;
-            text-align: left;
-        }
-
-        .about-visual {
-            position: relative;
-        }
-
-        .about-image-wrapper {
-            background: var(--gradient-primary);
-            border-radius: var(--radius-xl);
-            padding: 40px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .about-image-wrapper::before {
-            content: '';
-            position: absolute;
-            width: 200px;
-            height: 200px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 50%;
-            top: -50px;
-            right: -50px;
-        }
-
-        .about-icon {
-            font-size: 10rem;
-            color: rgba(255,255,255,0.2);
-            display: block;
-            text-align: center;
-        }
-
-        /* ========================================
-           CURRICULUM SECTION
-           ======================================== */
-        .curriculum {
-            background: var(--bg-primary);
-        }
-
-        .class-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-        }
-
-        .class-card {
-            background: var(--bg-secondary);
-            border-radius: var(--radius-xl);
-            overflow: hidden;
-            border: 1px solid var(--border);
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .class-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-xl);
-            border-color: var(--primary);
-        }
-
-        .class-card-header {
-            padding: 40px 30px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .class-card-header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0.1;
-        }
-
-        .class-card-x .class-card-header { background: var(--success); }
-        .class-card-xi .class-card-header { background: var(--warning); }
-        .class-card-xii .class-card-header { background: var(--danger); }
-
-        .class-card-x .class-card-header::before { background: white; }
-        .class-card-xi .class-card-header::before { background: white; }
-        .class-card-xii .class-card-header::before { background: white; }
-
-        .class-icon {
-            font-size: 3.5rem;
-            color: white;
-            margin-bottom: 20px;
-            display: block;
-        }
-
-        .class-title {
-            font-size: 2rem;
-            color: white;
-            margin-bottom: 8px;
-            display: block;
-        }
-
-        .class-subtitle {
-            color: rgba(255,255,255,0.9);
-            font-size: 0.95rem;
-            display: block;
-        }
-
-        .class-card-body {
-            padding: 30px;
-        }
-
-        .class-description {
-            color: var(--text-secondary);
-            margin-bottom: 25px;
-            font-size: 0.95rem;
-        }
-
-        .class-topics {
-            list-style: none;
-            margin-bottom: 30px;
-        }
-
-        .class-topics li {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px 0;
-            border-bottom: 1px solid var(--border);
-            color: var(--text-primary);
-            font-size: 0.95rem;
-        }
-
-        .class-topics li:last-child {
-            border-bottom: none;
-        }
-
-        .class-topics li i {
-            color: var(--primary);
-            font-size: 1rem;
-        }
-
-        .btn-class {
-            display: block;
-            width: 100%;
-            padding: 16px;
-            text-align: center;
-            border-radius: var(--radius-md);
-            text-decoration: none;
-            font-weight: 600;
-            color: white;
-            transition: var(--transition);
-        }
-
-        .btn-class-x { background: var(--success); }
-        .btn-class-xi { background: var(--warning); }
-        .btn-class-xii { background: var(--danger); }
-
-        .btn-class:hover {
-            opacity: 0.9;
-            transform: scale(1.02);
-        }
-
-        /* ========================================
-           BENEFITS SECTION
-           ======================================== */
-        .benefits {
-            background: var(--bg-secondary);
-        }
-
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .benefit-card {
-            background: var(--bg-primary);
-            padding: 40px 30px;
-            border-radius: var(--radius-xl);
-            text-align: center;
-            border: 1px solid var(--border);
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .benefit-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: var(--gradient-primary);
-            transform: scaleX(0);
-            transition: var(--transition);
-        }
-
-        .benefit-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .benefit-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-xl);
-        }
-
-        .benefit-icon-wrapper {
-            width: 80px;
-            height: 80px;
-            background: var(--gradient-primary);
-            border-radius: var(--radius-full);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 24px;
-            color: white;
-            font-size: 2rem;
-            box-shadow: var(--shadow-glow);
-        }
-
-        .benefit-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 16px;
-            color: var(--text-primary);
-        }
-
-        .benefit-card p {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            line-height: 1.7;
-        }
-
-        /* ========================================
-           IMPACT SECTION
-           ======================================== */
-        .impact {
-            background: var(--gradient-primary);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .impact::before {
-            content: '';
-            position: absolute;
-            width: 400px;
-            height: 400px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 50%;
-            top: -200px;
-            right: -200px;
-        }
-
-        .impact::after {
-            content: '';
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 50%;
-            bottom: -150px;
-            left: -150px;
-        }
-
-        .impact .section-title,
-        .impact .section-desc {
-            color: white;
-        }
-
-        .impact .section-desc {
-            opacity: 0.9;
-        }
-
-        .impact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 30px;
-            margin-top: 60px;
-        }
-
-        .impact-card {
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            padding: 40px 30px;
-            border-radius: var(--radius-xl);
-            text-align: center;
-            border: 1px solid rgba(255,255,255,0.2);
-            transition: var(--transition);
-        }
-
-        .impact-card:hover {
-            background: rgba(255,255,255,0.2);
-            transform: translateY(-5px);
-        }
-
-        .impact-number {
-            font-size: 3.5rem;
-            font-weight: 800;
-            color: white;
-            display: block;
-            margin-bottom: 10px;
-            font-family: 'Space Grotesk', sans-serif;
-        }
-
-        .impact-label {
-            color: rgba(255,255,255,0.9);
-            font-size: 1rem;
-            font-weight: 500;
-        }
-
-        /* ========================================
-           FOOTER
-           ======================================== */
-        .footer {
-            background: var(--bg-primary);
-            padding: 80px 0 40px;
-            border-top: 1px solid var(--border);
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 60px;
-            margin-bottom: 60px;
-        }
-
-        .footer-brand .logo {
-            margin-bottom: 20px;
-        }
-
-        .footer-brand p {
-            color: var(--text-secondary);
-            margin-bottom: 24px;
-            font-size: 0.95rem;
-            line-height: 1.7;
-        }
-
-        .footer-contact {
-            list-style: none;
-        }
-
-        .footer-contact li {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            margin-bottom: 16px;
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-        }
-
-        .footer-contact li i {
-            color: var(--primary);
-            margin-top: 4px;
-        }
-
-        .footer-title {
-            font-size: 1.2rem;
-            margin-bottom: 24px;
-            color: var(--text-primary);
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-
-        .footer-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: var(--transition);
-            font-size: 0.95rem;
-        }
-
-        .footer-links a:hover {
-            color: var(--primary);
-            padding-left: 5px;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 12px;
-            margin-top: 24px;
-        }
-
-        .social-link {
-            width: 45px;
-            height: 45px;
-            background: var(--bg-secondary);
-            border-radius: var(--radius-md);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-primary);
-            text-decoration: none;
-            transition: var(--transition);
-            border: 1px solid var(--border);
-        }
-
-        .social-link:hover {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
-            transform: translateY(-3px);
-        }
-
-        .footer-bottom {
-            padding-top: 40px;
-            border-top: 1px solid var(--border);
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        /* ========================================
-           SCROLL TO TOP
-           ======================================== */
-        .scroll-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
-            background: var(--gradient-primary);
-            border-radius: var(--radius-full);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            cursor: pointer;
-            opacity: 0;
-            visibility: hidden;
-            transition: var(--transition);
-            box-shadow: var(--shadow-glow);
-            z-index: 999;
-            border: none;
-        }
-
-        .scroll-top.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .scroll-top:hover {
-            transform: translateY(-5px);
-        }
-
-        /* ========================================
-           RESPONSIVE DESIGN
-           ======================================== */
-        @media (max-width: 1200px) {
-            .hero-title {
-                font-size: 3.5rem;
-            }
-            
-            .footer-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 992px) {
-            .hero-grid {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            
-            .hero-subtitle {
-                margin: 0 auto 40px;
-            }
-            
-            .hero-buttons {
-                justify-content: center;
-            }
-            
-            .hero-visual {
-                max-width: 600px;
-                margin: 0 auto;
-            }
-            
-            .about-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .about-visual {
-                order: -1;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .nav-menu {
-                position: fixed;
-                top: 80px;
-                left: 0;
-                width: 100%;
-                background: var(--bg-primary);
-                flex-direction: column;
-                padding: 30px;
-                gap: 20px;
-                border-bottom: 1px solid var(--border);
-                transform: translateY(-100%);
-                opacity: 0;
-                visibility: hidden;
-                transition: var(--transition);
-            }
-            
-            .nav-menu.active {
-                transform: translateY(0);
-                opacity: 1;
-                visibility: visible;
-            }
-            
-            .mobile-toggle {
-                display: block;
-            }
-            
-            .hero-title {
-                font-size: 2.5rem;
-            }
-            
-            .section-title {
-                font-size: 2.2rem;
-            }
-            
-            .class-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-            
-            .hero-stats {
-                grid-template-columns: 1fr;
-            }
-            
-            .about-features {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero-title {
-                font-size: 2rem;
-            }
-            
-            .btn {
-                width: 100%;
-                justify-content: center;
-            }
-            
-            .hero-buttons {
-                flex-direction: column;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Algorithm - Media Ajar Coding Berbasis Web</title>
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<!-- AOS Animation Library -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<style>
+/* ========================================
+CSS VARIABLES & THEME CONFIGURATION
+======================================== */
+:root {
+/* Light Theme */
+--primary: #6366f1;
+--primary-dark: #4f46e5;
+--secondary: #06b6d4;
+--accent: #f43f5e;
+--success: #10b981;
+--warning: #f59e0b;
+--danger: #ef4444;
+--bg-primary: #ffffff;
+--bg-secondary: #f8fafc;
+--bg-tertiary: #f1f5f9;
+--bg-glass: rgba(255, 255, 255, 0.7);
+--text-primary: #0f172a;
+--text-secondary: #475569;
+--text-muted: #94a3b8;
+--text-inverse: #ffffff;
+--border: #e2e8f0;
+--border-glass: rgba(226, 232, 240, 0.5);
+--shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+--shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+--shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+--shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+--shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+--shadow-glow: 0 0 40px rgba(99, 102, 241, 0.3);
+--gradient-primary: linear-gradient(135deg, #6366f1 0%, #06b6d4 100%);
+--gradient-secondary: linear-gradient(135deg, #f43f5e 0%, #f59e0b 100%);
+--gradient-dark: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+--radius-sm: 8px;
+--radius-md: 12px;
+--radius-lg: 16px;
+--radius-xl: 24px;
+--radius-full: 9999px;
+--transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+[data-theme="dark"] {
+/* Dark Theme */
+--bg-primary: #0f172a;
+--bg-secondary: #1e293b;
+--bg-tertiary: #334155;
+--bg-glass: rgba(15, 23, 42, 0.7);
+--text-primary: #f8fafc;
+--text-secondary: #cbd5e1;
+--text-muted: #64748b;
+--border: #334155;
+--border-glass: rgba(51, 65, 85, 0.5);
+--shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+--shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4);
+--shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.4);
+--shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.5);
+--shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.6);
+--shadow-glow: 0 0 40px rgba(99, 102, 241, 0.5);
+}
+/* ========================================
+GLOBAL STYLES
+======================================== */
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+html {
+scroll-behavior: smooth;
+scroll-padding-top: 80px;
+}
+body {
+font-family: 'Inter', sans-serif;
+background: var(--bg-primary);
+color: var(--text-primary);
+line-height: 1.6;
+overflow-x: hidden;
+transition: var(--transition);
+}
+h1, h2, h3, h4, h5, h6 {
+font-family: 'Space Grotesk', sans-serif;
+font-weight: 700;
+line-height: 1.2;
+}
+.container {
+max-width: 1400px;
+margin: 0 auto;
+padding: 0 24px;
+}
+section {
+padding: 100px 0;
+position: relative;
+}
+/* ========================================
+ANIMATED BACKGROUND
+======================================== */
+.animated-bg {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+z-index: -1;
+overflow: hidden;
+}
+.animated-bg::before {
+content: '';
+position: absolute;
+width: 600px;
+height: 600px;
+background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+top: -200px;
+right: -200px;
+animation: float 15s ease-in-out infinite;
+}
+.animated-bg::after {
+content: '';
+position: absolute;
+width: 500px;
+height: 500px;
+background: radial-gradient(circle, rgba(6, 182, 212, 0.15) 0%, transparent 70%);
+bottom: -150px;
+left: -150px;
+animation: float 20s ease-in-out infinite reverse;
+}
+@keyframes float {
+0%, 100% { transform: translate(0, 0) rotate(0deg); }
+25% { transform: translate(30px, 30px) rotate(5deg); }
+50% { transform: translate(-20px, 40px) rotate(-5deg); }
+75% { transform: translate(40px, -20px) rotate(3deg); }
+}
+/* ========================================
+NAVBAR
+======================================== */
+.navbar {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+padding: 20px 0;
+z-index: 1000;
+transition: var(--transition);
+}
+.navbar.scrolled {
+background: var(--bg-glass);
+backdrop-filter: blur(20px);
+-webkit-backdrop-filter: blur(20px);
+padding: 15px 0;
+border-bottom: 1px solid var(--border-glass);
+}
+.navbar-container {
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+.logo {
+display: flex;
+align-items: center;
+gap: 12px;
+font-family: 'Space Grotesk', sans-serif;
+font-size: 1.5rem;
+font-weight: 700;
+color: var(--text-primary);
+text-decoration: none;
+}
+.logo-icon {
+width: 45px;
+height: 45px;
+background: var(--gradient-primary);
+border-radius: var(--radius-md);
+display: flex;
+align-items: center;
+justify-content: center;
+color: white;
+font-size: 1.3rem;
+box-shadow: var(--shadow-glow);
+}
+.nav-menu {
+display: flex;
+align-items: center;
+gap: 40px;
+list-style: none;
+}
+.nav-link {
+color: var(--text-secondary);
+text-decoration: none;
+font-weight: 500;
+font-size: 0.95rem;
+position: relative;
+padding: 8px 0;
+transition: var(--transition);
+}
+.nav-link::after {
+content: '';
+position: absolute;
+bottom: 0;
+left: 0;
+width: 0;
+height: 2px;
+background: var(--gradient-primary);
+transition: var(--transition);
+}
+.nav-link:hover {
+color: var(--primary);
+}
+.nav-link:hover::after {
+width: 100%;
+}
+.nav-actions {
+display: flex;
+align-items: center;
+gap: 15px;
+}
+.theme-toggle {
+width: 45px;
+height: 45px;
+border-radius: var(--radius-full);
+border: 1px solid var(--border);
+background: var(--bg-secondary);
+color: var(--text-primary);
+cursor: pointer;
+display: flex;
+align-items: center;
+justify-content: center;
+transition: var(--transition);
+}
+.theme-toggle:hover {
+background: var(--primary);
+color: white;
+border-color: var(--primary);
+transform: rotate(180deg);
+}
+.mobile-toggle {
+display: none;
+font-size: 1.5rem;
+color: var(--text-primary);
+background: none;
+border: none;
+cursor: pointer;
+}
+/* ========================================
+HERO SECTION
+======================================== */
+.hero {
+min-height: 100vh;
+display: flex;
+align-items: center;
+padding-top: 80px;
+position: relative;
+overflow: hidden;
+}
+.hero-grid {
+display: grid;
+grid-template-columns: 1.2fr 1fr;
+gap: 60px;
+align-items: center;
+}
+.hero-badge {
+display: inline-flex;
+align-items: center;
+gap: 8px;
+padding: 8px 16px;
+background: var(--bg-tertiary);
+border: 1px solid var(--border);
+border-radius: var(--radius-full);
+font-size: 0.85rem;
+font-weight: 500;
+color: var(--text-secondary);
+margin-bottom: 24px;
+animation: pulse 2s infinite;
+}
+@keyframes pulse {
+0%, 100% { opacity: 1; }
+50% { opacity: 0.7; }
+}
+.hero-title {
+font-size: 4rem;
+font-weight: 800;
+margin-bottom: 24px;
+background: var(--gradient-primary);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+line-height: 1.1;
+}
+.hero-subtitle {
+font-size: 1.25rem;
+color: var(--text-secondary);
+margin-bottom: 40px;
+max-width: 600px;
+}
+.hero-buttons {
+display: flex;
+gap: 16px;
+flex-wrap: wrap;
+}
+.btn {
+display: inline-flex;
+align-items: center;
+gap: 10px;
+padding: 16px 32px;
+border-radius: var(--radius-full);
+font-weight: 600;
+text-decoration: none;
+transition: var(--transition);
+border: none;
+cursor: pointer;
+font-size: 1rem;
+}
+.btn-primary {
+background: var(--gradient-primary);
+color: white;
+box-shadow: var(--shadow-glow);
+}
+.btn-primary:hover {
+transform: translateY(-3px);
+box-shadow: 0 0 60px rgba(99, 102, 241, 0.5);
+}
+.btn-secondary {
+background: var(--bg-secondary);
+color: var(--text-primary);
+border: 1px solid var(--border);
+}
+.btn-secondary:hover {
+background: var(--bg-tertiary);
+transform: translateY(-3px);
+}
+.hero-visual {
+position: relative;
+}
+.hero-card {
+background: var(--bg-glass);
+backdrop-filter: blur(20px);
+-webkit-backdrop-filter: blur(20px);
+border: 1px solid var(--border-glass);
+border-radius: var(--radius-xl);
+padding: 40px;
+box-shadow: var(--shadow-2xl);
+position: relative;
+overflow: hidden;
+}
+.hero-card::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 4px;
+background: var(--gradient-primary);
+}
+.code-preview {
+background: var(--bg-tertiary);
+border-radius: var(--radius-md);
+padding: 20px;
+font-family: 'Courier New', monospace;
+font-size: 0.9rem;
+color: var(--text-secondary);
+margin-bottom: 20px;
+}
+.code-line {
+display: block;
+margin-bottom: 8px;
+}
+.code-keyword { color: var(--primary); }
+.code-string { color: var(--success); }
+.code-comment { color: var(--text-muted); }
+.hero-stats {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 20px;
+margin-top: 30px;
+}
+.stat-item {
+text-align: center;
+padding: 20px;
+background: var(--bg-secondary);
+border-radius: var(--radius-lg);
+border: 1px solid var(--border);
+}
+.stat-number {
+font-size: 2rem;
+font-weight: 700;
+color: var(--primary);
+display: block;
+}
+.stat-label {
+font-size: 0.85rem;
+color: var(--text-muted);
+}
+/* ========================================
+ABOUT SECTION
+======================================== */
+.about {
+background: var(--bg-secondary);
+}
+.section-header {
+text-align: center;
+max-width: 800px;
+margin: 0 auto 60px;
+}
+.section-tag {
+display: inline-block;
+padding: 8px 20px;
+background: var(--primary);
+color: white;
+border-radius: var(--radius-full);
+font-size: 0.85rem;
+font-weight: 600;
+margin-bottom: 16px;
+text-transform: uppercase;
+letter-spacing: 1px;
+}
+.section-title {
+font-size: 3rem;
+margin-bottom: 20px;
+color: var(--text-primary);
+}
+.section-desc {
+font-size: 1.1rem;
+color: var(--text-secondary);
+}
+.about-grid {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 60px;
+align-items: center;
+}
+.about-content h3 {
+font-size: 2rem;
+margin-bottom: 24px;
+color: var(--text-primary);
+}
+.about-content p {
+color: var(--text-secondary);
+margin-bottom: 20px;
+text-align: justify;
+}
+.about-features {
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 20px;
+margin-top: 40px;
+}
+.feature-box {
+display: flex;
+align-items: flex-start;
+gap: 15px;
+padding: 20px;
+background: var(--bg-primary);
+border-radius: var(--radius-lg);
+border: 1px solid var(--border);
+transition: var(--transition);
+}
+.feature-box:hover {
+transform: translateY(-5px);
+border-color: var(--primary);
+box-shadow: var(--shadow-md);
+}
+.feature-icon {
+width: 50px;
+height: 50px;
+background: var(--gradient-primary);
+border-radius: var(--radius-md);
+display: flex;
+align-items: center;
+justify-content: center;
+color: white;
+font-size: 1.2rem;
+flex-shrink: 0;
+}
+.feature-text h4 {
+font-size: 1.1rem;
+margin-bottom: 8px;
+color: var(--text-primary);
+}
+.feature-text p {
+font-size: 0.9rem;
+color: var(--text-muted);
+margin: 0;
+text-align: left;
+}
+.about-visual {
+position: relative;
+}
+.about-image-wrapper {
+background: var(--gradient-primary);
+border-radius: var(--radius-xl);
+padding: 40px;
+position: relative;
+overflow: hidden;
+}
+.about-image-wrapper::before {
+content: '';
+position: absolute;
+width: 200px;
+height: 200px;
+background: rgba(255,255,255,0.1);
+border-radius: 50%;
+top: -50px;
+right: -50px;
+}
+.about-icon {
+font-size: 10rem;
+color: rgba(255,255,255,0.2);
+display: block;
+text-align: center;
+}
+/* ========================================
+CURRICULUM SECTION
+======================================== */
+.curriculum {
+background: var(--bg-primary);
+}
+.class-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+gap: 30px;
+}
+.class-card {
+background: var(--bg-secondary);
+border-radius: var(--radius-xl);
+overflow: hidden;
+border: 1px solid var(--border);
+transition: var(--transition);
+position: relative;
+}
+.class-card:hover {
+transform: translateY(-10px);
+box-shadow: var(--shadow-xl);
+border-color: var(--primary);
+}
+.class-card-header {
+padding: 40px 30px;
+position: relative;
+overflow: hidden;
+}
+.class-card-header::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+opacity: 0.1;
+}
+.class-card-x .class-card-header { background: var(--success); }
+.class-card-xi .class-card-header { background: var(--warning); }
+.class-card-xii .class-card-header { background: var(--danger); }
+.class-card-x .class-card-header::before { background: white; }
+.class-card-xi .class-card-header::before { background: white; }
+.class-card-xii .class-card-header::before { background: white; }
+.class-icon {
+font-size: 3.5rem;
+color: white;
+margin-bottom: 20px;
+display: block;
+}
+.class-title {
+font-size: 2rem;
+color: white;
+margin-bottom: 8px;
+display: block;
+}
+.class-subtitle {
+color: rgba(255,255,255,0.9);
+font-size: 0.95rem;
+display: block;
+}
+.class-card-body {
+padding: 30px;
+}
+.class-description {
+color: var(--text-secondary);
+margin-bottom: 25px;
+font-size: 0.95rem;
+}
+.class-topics {
+list-style: none;
+margin-bottom: 30px;
+}
+.class-topics li {
+display: flex;
+align-items: center;
+gap: 12px;
+padding: 12px 0;
+border-bottom: 1px solid var(--border);
+color: var(--text-primary);
+font-size: 0.95rem;
+}
+.class-topics li:last-child {
+border-bottom: none;
+}
+.class-topics li i {
+color: var(--primary);
+font-size: 1rem;
+}
+.btn-class {
+display: block;
+width: 100%;
+padding: 16px;
+text-align: center;
+border-radius: var(--radius-md);
+text-decoration: none;
+font-weight: 600;
+color: white;
+transition: var(--transition);
+}
+.btn-class-x { background: var(--success); }
+.btn-class-xi { background: var(--warning); }
+.btn-class-xii { background: var(--danger); }
+.btn-class:hover {
+opacity: 0.9;
+transform: scale(1.02);
+}
+/* ========================================
+BENEFITS SECTION
+======================================== */
+.benefits {
+background: var(--bg-secondary);
+}
+.benefits-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+gap: 30px;
+}
+.benefit-card {
+background: var(--bg-primary);
+padding: 40px 30px;
+border-radius: var(--radius-xl);
+text-align: center;
+border: 1px solid var(--border);
+transition: var(--transition);
+position: relative;
+overflow: hidden;
+}
+.benefit-card::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 4px;
+background: var(--gradient-primary);
+transform: scaleX(0);
+transition: var(--transition);
+}
+.benefit-card:hover::before {
+transform: scaleX(1);
+}
+.benefit-card:hover {
+transform: translateY(-10px);
+box-shadow: var(--shadow-xl);
+}
+.benefit-icon-wrapper {
+width: 80px;
+height: 80px;
+background: var(--gradient-primary);
+border-radius: var(--radius-full);
+display: flex;
+align-items: center;
+justify-content: center;
+margin: 0 auto 24px;
+color: white;
+font-size: 2rem;
+box-shadow: var(--shadow-glow);
+}
+.benefit-card h3 {
+font-size: 1.5rem;
+margin-bottom: 16px;
+color: var(--text-primary);
+}
+.benefit-card p {
+color: var(--text-secondary);
+font-size: 0.95rem;
+line-height: 1.7;
+}
+/* ========================================
+IMPACT SECTION
+======================================== */
+.impact {
+background: var(--gradient-primary);
+position: relative;
+overflow: hidden;
+}
+.impact::before {
+content: '';
+position: absolute;
+width: 400px;
+height: 400px;
+background: rgba(255,255,255,0.1);
+border-radius: 50%;
+top: -200px;
+right: -200px;
+}
+.impact::after {
+content: '';
+position: absolute;
+width: 300px;
+height: 300px;
+background: rgba(255,255,255,0.1);
+border-radius: 50%;
+bottom: -150px;
+left: -150px;
+}
+.impact .section-title,
+.impact .section-desc {
+color: white;
+}
+.impact .section-desc {
+opacity: 0.9;
+}
+.impact-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+gap: 30px;
+margin-top: 60px;
+}
+.impact-card {
+background: rgba(255,255,255,0.1);
+backdrop-filter: blur(10px);
+-webkit-backdrop-filter: blur(10px);
+padding: 40px 30px;
+border-radius: var(--radius-xl);
+text-align: center;
+border: 1px solid rgba(255,255,255,0.2);
+transition: var(--transition);
+}
+.impact-card:hover {
+background: rgba(255,255,255,0.2);
+transform: translateY(-5px);
+}
+.impact-number {
+font-size: 3.5rem;
+font-weight: 800;
+color: white;
+display: block;
+margin-bottom: 10px;
+font-family: 'Space Grotesk', sans-serif;
+}
+.impact-label {
+color: rgba(255,255,255,0.9);
+font-size: 1rem;
+font-weight: 500;
+}
+/* ========================================
+FOOTER
+======================================== */
+.footer {
+background: var(--bg-primary);
+padding: 80px 0 40px;
+border-top: 1px solid var(--border);
+}
+.footer-grid {
+display: grid;
+grid-template-columns: 2fr 1fr 1fr 1fr;
+gap: 60px;
+margin-bottom: 60px;
+}
+.footer-brand .logo {
+margin-bottom: 20px;
+}
+.footer-brand p {
+color: var(--text-secondary);
+margin-bottom: 24px;
+font-size: 0.95rem;
+line-height: 1.7;
+}
+.footer-contact {
+list-style: none;
+}
+.footer-contact li {
+display: flex;
+align-items: flex-start;
+gap: 12px;
+margin-bottom: 16px;
+color: var(--text-secondary);
+font-size: 0.95rem;
+}
+.footer-contact li i {
+color: var(--primary);
+margin-top: 4px;
+}
+.footer-title {
+font-size: 1.2rem;
+margin-bottom: 24px;
+color: var(--text-primary);
+}
+.footer-links {
+list-style: none;
+}
+.footer-links li {
+margin-bottom: 12px;
+}
+.footer-links a {
+color: var(--text-secondary);
+text-decoration: none;
+transition: var(--transition);
+font-size: 0.95rem;
+}
+.footer-links a:hover {
+color: var(--primary);
+padding-left: 5px;
+}
+.social-links {
+display: flex;
+gap: 12px;
+margin-top: 24px;
+}
+.social-link {
+width: 45px;
+height: 45px;
+background: var(--bg-secondary);
+border-radius: var(--radius-md);
+display: flex;
+align-items: center;
+justify-content: center;
+color: var(--text-primary);
+text-decoration: none;
+transition: var(--transition);
+border: 1px solid var(--border);
+}
+.social-link:hover {
+background: var(--primary);
+color: white;
+border-color: var(--primary);
+transform: translateY(-3px);
+}
+.footer-bottom {
+padding-top: 40px;
+border-top: 1px solid var(--border);
+text-align: center;
+color: var(--text-muted);
+font-size: 0.9rem;
+}
+/* ========================================
+SCROLL TO TOP
+======================================== */
+.scroll-top {
+position: fixed;
+bottom: 30px;
+right: 30px;
+width: 50px;
+height: 50px;
+background: var(--gradient-primary);
+border-radius: var(--radius-full);
+display: flex;
+align-items: center;
+justify-content: center;
+color: white;
+cursor: pointer;
+opacity: 0;
+visibility: hidden;
+transition: var(--transition);
+box-shadow: var(--shadow-glow);
+z-index: 999;
+border: none;
+}
+.scroll-top.visible {
+opacity: 1;
+visibility: visible;
+}
+.scroll-top:hover {
+transform: translateY(-5px);
+}
+/* ========================================
+RESPONSIVE DESIGN
+======================================== */
+@media (max-width: 1200px) {
+.hero-title {
+font-size: 3.5rem;
+}
+.footer-grid {
+grid-template-columns: repeat(2, 1fr);
+}
+}
+@media (max-width: 992px) {
+.hero-grid {
+grid-template-columns: 1fr;
+text-align: center;
+}
+.hero-subtitle {
+margin: 0 auto 40px;
+}
+.hero-buttons {
+justify-content: center;
+}
+.hero-visual {
+max-width: 600px;
+margin: 0 auto;
+}
+.about-grid {
+grid-template-columns: 1fr;
+}
+.about-visual {
+order: -1;
+}
+}
+@media (max-width: 768px) {
+.nav-menu {
+position: fixed;
+top: 80px;
+left: 0;
+width: 100%;
+background: var(--bg-primary);
+flex-direction: column;
+padding: 30px;
+gap: 20px;
+border-bottom: 1px solid var(--border);
+transform: translateY(-100%);
+opacity: 0;
+visibility: hidden;
+transition: var(--transition);
+}
+.nav-menu.active {
+transform: translateY(0);
+opacity: 1;
+visibility: visible;
+}
+.mobile-toggle {
+display: block;
+}
+.hero-title {
+font-size: 2.5rem;
+}
+.section-title {
+font-size: 2.2rem;
+}
+.class-grid {
+grid-template-columns: 1fr;
+}
+.footer-grid {
+grid-template-columns: 1fr;
+gap: 40px;
+}
+.hero-stats {
+grid-template-columns: 1fr;
+}
+.about-features {
+grid-template-columns: 1fr;
+}
+}
+@media (max-width: 480px) {
+.hero-title {
+font-size: 2rem;
+}
+.btn {
+width: 100%;
+justify-content: center;
+}
+.hero-buttons {
+flex-direction: column;
+}
+}
+</style>
 </head>
 <body>
+<!-- Animated Background -->
+<div class="animated-bg"></div>
 
-    <!-- Animated Background -->
-    <div class="animated-bg"></div>
+<!-- Navbar -->
+<nav class="navbar" id="navbar">
+<div class="container navbar-container">
+<a href="#" class="logo">
+<div class="logo-icon">
+<i class="fas fa-code"></i>
+</div>
+<span>Smart Algorithm</span>
+</a>
+<ul class="nav-menu" id="navMenu">
+<li><a href="#about" class="nav-link">Tentang</a></li>
+<li><a href="kelas-x.html" class="nav-link" style="color: var(--success);">Kelas X</a></li>
+<li><a href="kelas-xi.html" class="nav-link" style="color: var(--warning);">Kelas XI</a></li>
+<li><a href="kelas-xii.html" class="nav-link" style="color: var(--danger);">Kelas XII</a></li>
+<li><a href="#benefits" class="nav-link">Manfaat</a></li>
+<li><a href="#contact" class="nav-link">Kontak</a></li>
+</ul>
+<div class="nav-actions">
+<button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">
+<i class="fas fa-moon"></i>
+</button>
+<button class="mobile-toggle" id="mobileToggle" aria-label="Mobile Menu">
+<i class="fas fa-bars"></i>
+</button>
+</div>
+</div>
+</nav>
 
-    <!-- Navbar -->
-    <nav class="navbar" id="navbar">
-        <div class="container navbar-container">
-            <a href="#" class="logo">
-                <div class="logo-icon">
-                    <i class="fas fa-code"></i>
-                </div>
-                <span>Smart Algorithm</span>
-            </a>
-            
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="#about" class="nav-link">Tentang</a></li>
-                <li><a href="#kelas-x" class="nav-link" style="color: var(--success);">Kelas X</a></li>
-                <li><a href="#kelas-xi" class="nav-link" style="color: var(--warning);">Kelas XI</a></li>
-                <li><a href="#kelas-xii" class="nav-link" style="color: var(--danger);">Kelas XII</a></li>
-                <li><a href="#benefits" class="nav-link">Manfaat</a></li>
-                <li><a href="#contact" class="nav-link">Kontak</a></li>
-            </ul>
-            
-            <div class="nav-actions">
-                <button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">
-                    <i class="fas fa-moon"></i>
-                </button>
-                <button class="mobile-toggle" id="mobileToggle" aria-label="Mobile Menu">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
-        </div>
-    </nav>
+<!-- Hero Section -->
+<section class="hero" id="home">
+<div class="container">
+<div class="hero-grid">
+<div class="hero-content" data-aos="fade-right" data-aos-duration="1000">
+<div class="hero-badge">
+<i class="fas fa-award"></i>
+<span>Inovasi Pembelajaran Informatika 2024</span>
+</div>
+<h1 class="hero-title">Media Ajar Coding<br>Berbasis Web</h1>
+<p class="hero-subtitle">
+Platform pembelajaran algoritma dan pemrograman yang interaktif, fleksibel,
+dan mudah diakses untuk siswa SMA Negeri 1 Cluring (Kelas X, XI, dan XII).
+</p>
+<div class="hero-buttons">
+<a href="#curriculum" class="btn btn-primary">
+<i class="fas fa-rocket"></i>
+Mulai Belajar
+</a>
+<a href="#about" class="btn btn-secondary">
+<i class="fas fa-info-circle"></i>
+Pelajari Lebih Lanjut
+</a>
+</div>
+</div>
+<div class="hero-visual" data-aos="fade-left" data-aos-duration="1000">
+<div class="hero-card">
+<div class="code-preview">
+<span class="code-line"><span class="code-keyword">function</span> <span class="code-string">smartAlgorithm</span>() {</span>
+<span class="code-line">&nbsp;&nbsp;<span class="code-keyword">const</span> student = <span class="code-string">"SMA N 1 Cluring"</span>;</span>
+<span class="code-line">&nbsp;&nbsp;<span class="code-keyword">return</span> <span class="code-string">"Belajar Coding Jadi Mudah!"</span>;</span>
+<span class="code-line">}</span>
+<span class="code-line"><span class="code-comment">// Ready to learn!</span></span>
+</div>
+<div class="hero-stats">
+<div class="stat-item">
+<span class="stat-number">3</span>
+<span class="stat-label">Jenjang Kelas</span>
+</div>
+<div class="stat-item">
+<span class="stat-number">6+</span>
+<span class="stat-label">Materi Utama</span>
+</div>
+<div class="stat-item">
+<span class="stat-number">24/7</span>
+<span class="stat-label">Akses Online</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="container">
-            <div class="hero-grid">
-                <div class="hero-content" data-aos="fade-right" data-aos-duration="1000">
-                    <div class="hero-badge">
-                        <i class="fas fa-award"></i>
-                        <span>Inovasi Pembelajaran Informatika 2024</span>
-                    </div>
-                    <h1 class="hero-title">Media Ajar Coding<br>Berbasis Web</h1>
-                    <p class="hero-subtitle">
-                        Platform pembelajaran algoritma dan pemrograman yang interaktif, fleksibel, 
-                        dan mudah diakses untuk siswa SMA Negeri 1 Cluring (Kelas X, XI, dan XII).
-                    </p>
-                    <div class="hero-buttons">
-                        <a href="#curriculum" class="btn btn-primary">
-                            <i class="fas fa-rocket"></i>
-                            Mulai Belajar
-                        </a>
-                        <a href="#about" class="btn btn-secondary">
-                            <i class="fas fa-info-circle"></i>
-                            Pelajari Lebih Lanjut
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="hero-visual" data-aos="fade-left" data-aos-duration="1000">
-                    <div class="hero-card">
-                        <div class="code-preview">
-                            <span class="code-line"><span class="code-keyword">function</span> <span class="code-string">smartAlgorithm</span>() {</span>
-                            <span class="code-line">&nbsp;&nbsp;<span class="code-keyword">const</span> student = <span class="code-string">"SMA N 1 Cluring"</span>;</span>
-                            <span class="code-line">&nbsp;&nbsp;<span class="code-keyword">return</span> <span class="code-string">"Belajar Coding Jadi Mudah!"</span>;</span>
-                            <span class="code-line">}</span>
-                            <span class="code-line"><span class="code-comment">// Ready to learn!</span></span>
-                        </div>
-                        
-                        <div class="hero-stats">
-                            <div class="stat-item">
-                                <span class="stat-number">3</span>
-                                <span class="stat-label">Jenjang Kelas</span>
-                            </div>
-                            <div class="stat-item">
-                                <span class="stat-number">6+</span>
-                                <span class="stat-label">Materi Utama</span>
-                            </div>
-                            <div class="stat-item">
-                                <span class="stat-number">24/7</span>
-                                <span class="stat-label">Akses Online</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- About Section -->
+<section class="about" id="about">
+<div class="container">
+<div class="section-header" data-aos="fade-up" data-aos-duration="1000">
+<span class="section-tag">Tentang Inovasi</span>
+<h2 class="section-title">Smart Algorithm</h2>
+<p class="section-desc">
+Membangun fondasi berpikir komputasional di era Revolusi Industri 4.0 dan Society 5.0
+</p>
+</div>
+<div class="about-grid">
+<div class="about-content" data-aos="fade-right" data-aos-duration="1000">
+<h3>Media Ajar Berbasis Web untuk Pembelajaran Algoritma</h3>
+<p>
+<strong>Smart Algorithm</strong> merupakan media ajar berbasis web yang dirancang sebagai
+Learning Management System (LMS) sederhana untuk pembelajaran algoritma dan pemrograman.
+Platform ini memuat materi digital, video pembelajaran, contoh kode program, latihan interaktif,
+serta evaluasi berbasis kuis online.
+</p>
+<p>
+Metode yang digunakan adalah <strong>Blended Learning</strong> dengan pendekatan
+<strong>Problem Based Learning (PBL)</strong>, di mana siswa mempelajari konsep melalui
+permasalahan nyata dan praktik langsung.
+</p>
+<p>
+<strong>Sasaran:</strong> Peserta didik Kelas X, XI, dan XII SMA Negeri 1 Cluring pada
+mata pelajaran Informatika, khususnya materi Algoritma dan Pemrograman.
+</p>
+<div class="about-features">
+<div class="feature-box">
+<div class="feature-icon">
+<i class="fas fa-laptop-code"></i>
+</div>
+<div class="feature-text">
+<h4>Blended Learning</h4>
+<p>Kombinasi pembelajaran tatap muka dan online</p>
+</div>
+</div>
+<div class="feature-box">
+<div class="feature-icon">
+<i class="fas fa-puzzle-piece"></i>
+</div>
+<div class="feature-text">
+<h4>Problem Based</h4>
+<p>Belajar melalui permasalahan nyata</p>
+</div>
+</div>
+<div class="feature-box">
+<div class="feature-icon">
+<i class="fas fa-chart-line"></i>
+</div>
+<div class="feature-text">
+<h4>Interaktif</h4>
+<p>Materi dengan latihan praktik langsung</p>
+</div>
+</div>
+<div class="feature-box">
+<div class="feature-icon">
+<i class="fas fa-clock"></i>
+</div>
+<div class="feature-text">
+<h4>Fleksibel</h4>
+<p>Akses kapan saja dan di mana saja</p>
+</div>
+</div>
+</div>
+</div>
+<div class="about-visual" data-aos="fade-left" data-aos-duration="1000">
+<div class="about-image-wrapper">
+<i class="fas fa-graduation-cap about-icon"></i>
+</div>
+</div>
+</div>
+</div>
+</section>
 
-    <!-- About Section -->
-    <section class="about" id="about">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up" data-aos-duration="1000">
-                <span class="section-tag">Tentang Inovasi</span>
-                <h2 class="section-title">Smart Algorithm</h2>
-                <p class="section-desc">
-                    Membangun fondasi berpikir komputasional di era Revolusi Industri 4.0 dan Society 5.0
-                </p>
-            </div>
-            
-            <div class="about-grid">
-                <div class="about-content" data-aos="fade-right" data-aos-duration="1000">
-                    <h3>Media Ajar Berbasis Web untuk Pembelajaran Algoritma</h3>
-                    <p>
-                        <strong>Smart Algorithm</strong> merupakan media ajar berbasis web yang dirancang sebagai 
-                        Learning Management System (LMS) sederhana untuk pembelajaran algoritma dan pemrograman. 
-                        Platform ini memuat materi digital, video pembelajaran, contoh kode program, latihan interaktif, 
-                        serta evaluasi berbasis kuis online.
-                    </p>
-                    <p>
-                        Metode yang digunakan adalah <strong>Blended Learning</strong> dengan pendekatan 
-                        <strong>Problem Based Learning (PBL)</strong>, di mana siswa mempelajari konsep melalui 
-                        permasalahan nyata dan praktik langsung.
-                    </p>
-                    <p>
-                        <strong>Sasaran:</strong> Peserta didik Kelas X, XI, dan XII SMA Negeri 1 Cluring pada 
-                        mata pelajaran Informatika, khususnya materi Algoritma dan Pemrograman.
-                    </p>
-                    
-                    <div class="about-features">
-                        <div class="feature-box">
-                            <div class="feature-icon">
-                                <i class="fas fa-laptop-code"></i>
-                            </div>
-                            <div class="feature-text">
-                                <h4>Blended Learning</h4>
-                                <p>Kombinasi pembelajaran tatap muka dan online</p>
-                            </div>
-                        </div>
-                        <div class="feature-box">
-                            <div class="feature-icon">
-                                <i class="fas fa-puzzle-piece"></i>
-                            </div>
-                            <div class="feature-text">
-                                <h4>Problem Based</h4>
-                                <p>Belajar melalui permasalahan nyata</p>
-                            </div>
-                        </div>
-                        <div class="feature-box">
-                            <div class="feature-icon">
-                                <i class="fas fa-chart-line"></i>
-                            </div>
-                            <div class="feature-text">
-                                <h4>Interaktif</h4>
-                                <p>Materi dengan latihan praktik langsung</p>
-                            </div>
-                        </div>
-                        <div class="feature-box">
-                            <div class="feature-icon">
-                                <i class="fas fa-clock"></i>
-                            </div>
-                            <div class="feature-text">
-                                <h4>Fleksibel</h4>
-                                <p>Akses kapan saja dan di mana saja</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="about-visual" data-aos="fade-left" data-aos-duration="1000">
-                    <div class="about-image-wrapper">
-                        <i class="fas fa-graduation-cap about-icon"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- Curriculum Section -->
+<section class="curriculum" id="curriculum">
+<div class="container">
+<div class="section-header" data-aos="fade-up" data-aos-duration="1000">
+<span class="section-tag">Kurikulum</span>
+<h2 class="section-title">Materi Berjenjang</h2>
+<p class="section-desc">
+Pilih materi pembelajaran sesuai dengan jenjang kelas Anda
+</p>
+</div>
+<div class="class-grid">
+<!-- Kelas X -->
+<div class="class-card class-card-x" id="kelas-x" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1000">
+<div class="class-card-header">
+<i class="fas fa-seedling class-icon"></i>
+<span class="class-title">KELAS X</span>
+<span class="class-subtitle">Fondasi Berpikir Komputasional</span>
+</div>
+<div class="class-card-body">
+<p class="class-description">
+Fokus pada pemahaman dasar logika dan algoritma sebelum masuk ke kode program.
+</p>
+<ul class="class-topics">
+<li><i class="fas fa-check-circle"></i> Konsep Dasar Algoritma</li>
+<li><i class="fas fa-check-circle"></i> Flowchart & Diagram Alir</li>
+<li><i class="fas fa-check-circle"></i> Pseudocode Dasar</li>
+<li><i class="fas fa-check-circle"></i> Pengenalan Variabel</li>
+<li><i class="fas fa-check-circle"></i> Logika Dasar Komputer</li>
+</ul>
+<a href="kelas-x.html" class="btn-class btn-class-x">
+<i class="fas fa-play-circle"></i> Akses Materi Kelas X
+</a>
+</div>
+</div>
 
-    <!-- Curriculum Section -->
-    <section class="curriculum" id="curriculum">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up" data-aos-duration="1000">
-                <span class="section-tag">Kurikulum</span>
-                <h2 class="section-title">Materi Berjenjang</h2>
-                <p class="section-desc">
-                    Pilih materi pembelajaran sesuai dengan jenjang kelas Anda
-                </p>
-            </div>
-            
-            <div class="class-grid">
-                <!-- Kelas X -->
-                <div class="class-card class-card-x" id="kelas-x" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1000">
-                    <div class="class-card-header">
-                        <i class="fas fa-seedling class-icon"></i>
-                        <span class="class-title">KELAS X</span>
-                        <span class="class-subtitle">Fondasi Berpikir Komputasional</span>
-                    </div>
-                    <div class="class-card-body">
-                        <p class="class-description">
-                            Fokus pada pemahaman dasar logika dan algoritma sebelum masuk ke kode program.
-                        </p>
-                        <ul class="class-topics">
-                            <li><i class="fas fa-check-circle"></i> Konsep Dasar Algoritma</li>
-                            <li><i class="fas fa-check-circle"></i> Flowchart & Diagram Alir</li>
-                            <li><i class="fas fa-check-circle"></i> Pseudocode Dasar</li>
-                            <li><i class="fas fa-check-circle"></i> Pengenalan Variabel</li>
-                            <li><i class="fas fa-check-circle"></i> Logika Dasar Komputer</li>
-                        </ul>
-                        <a href="kelas-x.html" class="btn-class btn-class-x">
-                            <i class="fas fa-play-circle"></i> Akses Materi Kelas X
-                        </a>
-                    </div>
-                </div>
+<!-- Kelas XI -->
+<div class="class-card class-card-xi" id="kelas-xi" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
+<div class="class-card-header">
+<i class="fas fa-layer-group class-icon"></i>
+<span class="class-title">KELAS XI</span>
+<span class="class-subtitle">Struktur & Logika Pemrograman</span>
+</div>
+<div class="class-card-body">
+<p class="class-description">
+Mendalami struktur kontrol dan penerapan logika dalam bahasa pemrograman.
+</p>
+<ul class="class-topics">
+<li><i class="fas fa-check-circle"></i> Struktur Percabangan (If-Else)</li>
+<li><i class="fas fa-check-circle"></i> Struktur Perulangan (Looping)</li>
+<li><i class="fas fa-check-circle"></i> Tipe Data & Operator</li>
+<li><i class="fas fa-check-circle"></i> Array & Struktur Data</li>
+<li><i class="fas fa-check-circle"></i> Latihan Soal Interaktif</li>
+</ul>
+<a href="kelas-xi.html" class="btn-class btn-class-xi">
+<i class="fas fa-play-circle"></i> Akses Materi Kelas XI
+</a>
+</div>
+</div>
 
-                <!-- Kelas XI -->
-                <div class="class-card class-card-xi" id="kelas-xi" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
-                    <div class="class-card-header">
-                        <i class="fas fa-layer-group class-icon"></i>
-                        <span class="class-title">KELAS XI</span>
-                        <span class="class-subtitle">Struktur & Logika Pemrograman</span>
-                    </div>
-                    <div class="class-card-body">
-                        <p class="class-description">
-                            Mendalami struktur kontrol dan penerapan logika dalam bahasa pemrograman.
-                        </p>
-                        <ul class="class-topics">
-                            <li><i class="fas fa-check-circle"></i> Struktur Percabangan (If-Else)</li>
-                            <li><i class="fas fa-check-circle"></i> Struktur Perulangan (Looping)</li>
-                            <li><i class="fas fa-check-circle"></i> Tipe Data & Operator</li>
-                            <li><i class="fas fa-check-circle"></i> Array & Struktur Data</li>
-                            <li><i class="fas fa-check-circle"></i> Latihan Soal Interaktif</li>
-                        </ul>
-                        <a href="#" class="btn-class btn-class-xi">
-                            <i class="fas fa-play-circle"></i> Akses Materi Kelas XI
-                        </a>
-                    </div>
-                </div>
+<!-- Kelas XII -->
+<div class="class-card class-card-xii" id="kelas-xii" data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
+<div class="class-card-header">
+<i class="fas fa-graduation-cap class-icon"></i>
+<span class="class-title">KELAS XII</span>
+<span class="class-subtitle">Implementasi & Proyek Web</span>
+</div>
+<div class="class-card-body">
+<p class="class-description">
+Penerapan nyata melalui pembuatan program berbasis web dan proyek akhir.
+</p>
+<ul class="class-topics">
+<li><i class="fas fa-check-circle"></i> Dasar Pemrograman Web (HTML)</li>
+<li><i class="fas fa-check-circle"></i> Interaktivitas (JavaScript)</li>
+<li><i class="fas fa-check-circle"></i> Integrasi Algoritma ke Web</li>
+<li><i class="fas fa-check-circle"></i> Proyek Akhir Coding</li>
+<li><i class="fas fa-check-circle"></i> Persiapan Uji Kompetensi</li>
+</ul>
+<a href="kelas-xii.html" class="btn-class btn-class-xii">
+<i class="fas fa-play-circle"></i> Akses Materi Kelas XII
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
 
-                <!-- Kelas XII -->
-                <div class="class-card class-card-xii" id="kelas-xii" data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
-                    <div class="class-card-header">
-                        <i class="fas fa-graduation-cap class-icon"></i>
-                        <span class="class-title">KELAS XII</span>
-                        <span class="class-subtitle">Implementasi & Proyek Web</span>
-                    </div>
-                    <div class="class-card-body">
-                        <p class="class-description">
-                            Penerapan nyata melalui pembuatan program berbasis web dan proyek akhir.
-                        </p>
-                        <ul class="class-topics">
-                            <li><i class="fas fa-check-circle"></i> Dasar Pemrograman Web (HTML)</li>
-                            <li><i class="fas fa-check-circle"></i> Interaktivitas (JavaScript)</li>
-                            <li><i class="fas fa-check-circle"></i> Integrasi Algoritma ke Web</li>
-                            <li><i class="fas fa-check-circle"></i> Proyek Akhir Coding</li>
-                            <li><i class="fas fa-check-circle"></i> Persiapan Uji Kompetensi</li>
-                        </ul>
-                        <a href="#" class="btn-class btn-class-xii">
-                            <i class="fas fa-play-circle"></i> Akses Materi Kelas XII
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- Benefits Section -->
+<section class="benefits" id="benefits">
+<div class="container">
+<div class="section-header" data-aos="fade-up" data-aos-duration="1000">
+<span class="section-tag">Manfaat</span>
+<h2 class="section-title">Dampak Positif</h2>
+<p class="section-desc">
+Manfaat inovasi bagi seluruh pemangku kepentingan
+</p>
+</div>
+<div class="benefits-grid">
+<div class="benefit-card" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1000">
+<div class="benefit-icon-wrapper">
+<i class="fas fa-user-graduate"></i>
+</div>
+<h3>Bagi Siswa</h3>
+<p>
+Mempermudah pemahaman konsep algoritma melalui materi interaktif
+dan latihan praktik mandiri.
+</p>
+</div>
+<div class="benefit-card" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
+<div class="benefit-icon-wrapper">
+<i class="fas fa-chalkboard-teacher"></i>
+</div>
+<h3>Bagi Guru</h3>
+<p>
+Membantu proses penyampaian materi dan evaluasi hasil belajar
+secara lebih efektif.
+</p>
+</div>
+<div class="benefit-card" data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
+<div class="benefit-icon-wrapper">
+<i class="fas fa-school"></i>
+</div>
+<h3>Bagi Sekolah</h3>
+<p>
+Mendukung transformasi digital pembelajaran dan mewujudkan
+model blended learning.
+</p>
+</div>
+<div class="benefit-card" data-aos="fade-up" data-aos-delay="400" data-aos-duration="1000">
+<div class="benefit-icon-wrapper">
+<i class="fas fa-sync-alt"></i>
+</div>
+<h3>Bagi Pembelajaran</h3>
+<p>
+Mewujudkan model blended learning yang adaptif, inovatif,
+dan berkelanjutan.
+</p>
+</div>
+</div>
+</div>
+</section>
 
-    <!-- Benefits Section -->
-    <section class="benefits" id="benefits">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up" data-aos-duration="1000">
-                <span class="section-tag">Manfaat</span>
-                <h2 class="section-title">Dampak Positif</h2>
-                <p class="section-desc">
-                    Manfaat inovasi bagi seluruh pemangku kepentingan
-                </p>
-            </div>
-            
-            <div class="benefits-grid">
-                <div class="benefit-card" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1000">
-                    <div class="benefit-icon-wrapper">
-                        <i class="fas fa-user-graduate"></i>
-                    </div>
-                    <h3>Bagi Siswa</h3>
-                    <p>
-                        Mempermudah pemahaman konsep algoritma melalui materi interaktif 
-                        dan latihan praktik mandiri.
-                    </p>
-                </div>
-                
-                <div class="benefit-card" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
-                    <div class="benefit-icon-wrapper">
-                        <i class="fas fa-chalkboard-teacher"></i>
-                    </div>
-                    <h3>Bagi Guru</h3>
-                    <p>
-                        Membantu proses penyampaian materi dan evaluasi hasil belajar 
-                        secara lebih efektif.
-                    </p>
-                </div>
-                
-                <div class="benefit-card" data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
-                    <div class="benefit-icon-wrapper">
-                        <i class="fas fa-school"></i>
-                    </div>
-                    <h3>Bagi Sekolah</h3>
-                    <p>
-                        Mendukung transformasi digital pembelajaran dan mewujudkan 
-                        model blended learning.
-                    </p>
-                </div>
-                
-                <div class="benefit-card" data-aos="fade-up" data-aos-delay="400" data-aos-duration="1000">
-                    <div class="benefit-icon-wrapper">
-                        <i class="fas fa-sync-alt"></i>
-                    </div>
-                    <h3>Bagi Pembelajaran</h3>
-                    <p>
-                        Mewujudkan model blended learning yang adaptif, inovatif, 
-                        dan berkelanjutan.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- Impact Section -->
+<section class="impact" id="impact">
+<div class="container">
+<div class="section-header" data-aos="fade-up" data-aos-duration="1000">
+<span class="section-tag" style="background: rgba(255,255,255,0.2);">Target</span>
+<h2 class="section-title">Indikator Keberhasilan</h2>
+<p class="section-desc">
+Capaian yang diharapkan dari implementasi Smart Algorithm
+</p>
+</div>
+<div class="impact-grid">
+<div class="impact-card" data-aos="zoom-in" data-aos-delay="100" data-aos-duration="1000">
+<span class="impact-number">≥ 80%</span>
+<span class="impact-label">Partisipasi Aktif Siswa</span>
+</div>
+<div class="impact-card" data-aos="zoom-in" data-aos-delay="200" data-aos-duration="1000">
+<span class="impact-number">15%</span>
+<span class="impact-label">Peningkatan Nilai Rata-rata</span>
+</div>
+<div class="impact-card" data-aos="zoom-in" data-aos-delay="300" data-aos-duration="1000">
+<span class="impact-number">100%</span>
+<span class="impact-label">Akses Fleksibel (Anywhere)</span>
+</div>
+<div class="impact-card" data-aos="zoom-in" data-aos-delay="400" data-aos-duration="1000">
+<span class="impact-number">24/7</span>
+<span class="impact-label">Ketersediaan Materi</span>
+</div>
+</div>
+</div>
+</section>
 
-    <!-- Impact Section -->
-    <section class="impact" id="impact">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up" data-aos-duration="1000">
-                <span class="section-tag" style="background: rgba(255,255,255,0.2);">Target</span>
-                <h2 class="section-title">Indikator Keberhasilan</h2>
-                <p class="section-desc">
-                    Capaian yang diharapkan dari implementasi Smart Algorithm
-                </p>
-            </div>
-            
-            <div class="impact-grid">
-                <div class="impact-card" data-aos="zoom-in" data-aos-delay="100" data-aos-duration="1000">
-                    <span class="impact-number">≥ 80%</span>
-                    <span class="impact-label">Partisipasi Aktif Siswa</span>
-                </div>
-                <div class="impact-card" data-aos="zoom-in" data-aos-delay="200" data-aos-duration="1000">
-                    <span class="impact-number">15%</span>
-                    <span class="impact-label">Peningkatan Nilai Rata-rata</span>
-                </div>
-                <div class="impact-card" data-aos="zoom-in" data-aos-delay="300" data-aos-duration="1000">
-                    <span class="impact-number">100%</span>
-                    <span class="impact-label">Akses Fleksibel (Anywhere)</span>
-                </div>
-                <div class="impact-card" data-aos="zoom-in" data-aos-delay="400" data-aos-duration="1000">
-                    <span class="impact-number">24/7</span>
-                    <span class="impact-label">Ketersediaan Materi</span>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- Footer -->
+<footer class="footer" id="contact">
+<div class="container">
+<div class="footer-grid">
+<div class="footer-brand">
+<a href="#" class="logo">
+<div class="logo-icon">
+<i class="fas fa-code"></i>
+</div>
+<span>Smart Algorithm</span>
+</a>
+<p>
+Media ajar coding berbasis web untuk pembelajaran algoritma dan
+pemrograman di SMA Negeri 1 Cluring.
+</p>
+<ul class="footer-contact">
+<li>
+<i class="fas fa-map-marker-alt"></i>
+<span>Jalan H. Huzaini, Benculuk – Cluring 68482</span>
+</li>
+<li>
+<i class="fas fa-phone"></i>
+<span>(0333) 397306</span>
+</li>
+<li>
+<i class="fas fa-user"></i>
+<span>Muchamad Irwan Maulana, S.Kom</span>
+</li>
+</ul>
+<div class="social-links">
+<a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+<a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+<a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+<a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+</div>
+</div>
+<div class="footer-col">
+<h4 class="footer-title">Tautan</h4>
+<ul class="footer-links">
+<li><a href="#about">Tentang</a></li>
+<li><a href="#curriculum">Materi</a></li>
+<li><a href="#benefits">Manfaat</a></li>
+<li><a href="#impact">Dampak</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h4 class="footer-title">Kelas</h4>
+<ul class="footer-links">
+<li><a href="kelas-x.html" style="color: var(--success);">Kelas X</a></li>
+<li><a href="kelas-xi.html" style="color: var(--warning);">Kelas XI</a></li>
+<li><a href="kelas-xii.html" style="color: var(--danger);">Kelas XII</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h4 class="footer-title">Akses</h4>
+<ul class="footer-links">
+<li><i class="fas fa-clock" style="color: var(--primary); margin-right: 8px;"></i> Senin - Jumat: 07.00 - 15.00</li>
+<li><i class="fas fa-globe" style="color: var(--primary); margin-right: 8px;"></i> Online: 24 Jam / 7 Hari</li>
+<li><i class="fas fa-server" style="color: var(--primary); margin-right: 8px;"></i> Server: Selalu Aktif</li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">
+<p>&copy; 2024 Smart Algorithm Innovation. All Rights Reserved.</p>
+<p style="margin-top: 10px;">Developed by Muchamad Irwan Maulana, S.Kom - SMA Negeri 1 Cluring</p>
+</div>
+</div>
+</footer>
 
-    <!-- Footer -->
-    <footer class="footer" id="contact">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <a href="#" class="logo">
-                        <div class="logo-icon">
-                            <i class="fas fa-code"></i>
-                        </div>
-                        <span>Smart Algorithm</span>
-                    </a>
-                    <p>
-                        Media ajar coding berbasis web untuk pembelajaran algoritma dan 
-                        pemrograman di SMA Negeri 1 Cluring.
-                    </p>
-                    <ul class="footer-contact">
-                        <li>
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Jalan H. Huzaini, Benculuk – Cluring 68482</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-phone"></i>
-                            <span>(0333) 397306</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-user"></i>
-                            <span>Muchamad Irwan Maulana, S.Kom</span>
-                        </li>
-                    </ul>
-                    <div class="social-links">
-                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                
-                <div class="footer-col">
-                    <h4 class="footer-title">Tautan</h4>
-                    <ul class="footer-links">
-                        <li><a href="#about">Tentang</a></li>
-                        <li><a href="#curriculum">Materi</a></li>
-                        <li><a href="#benefits">Manfaat</a></li>
-                        <li><a href="#impact">Dampak</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h4 class="footer-title">Kelas</h4>
-                    <ul class="footer-links">
-                        <li><a href="#kelas-x" style="color: var(--success);">Kelas X</a></li>
-                        <li><a href="#kelas-xi" style="color: var(--warning);">Kelas XI</a></li>
-                        <li><a href="#kelas-xii" style="color: var(--danger);">Kelas XII</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h4 class="footer-title">Akses</h4>
-                    <ul class="footer-links">
-                        <li><i class="fas fa-clock" style="color: var(--primary); margin-right: 8px;"></i> Senin - Jumat: 07.00 - 15.00</li>
-                        <li><i class="fas fa-globe" style="color: var(--primary); margin-right: 8px;"></i> Online: 24 Jam / 7 Hari</li>
-                        <li><i class="fas fa-server" style="color: var(--primary); margin-right: 8px;"></i> Server: Selalu Aktif</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2024 Smart Algorithm Innovation. All Rights Reserved.</p>
-                <p style="margin-top: 10px;">Developed by Muchamad Irwan Maulana, S.Kom - SMA Negeri 1 Cluring</p>
-            </div>
-        </div>
-    </footer>
+<!-- Scroll to Top Button -->
+<button class="scroll-top" id="scrollTop" aria-label="Scroll to Top">
+<i class="fas fa-arrow-up"></i>
+</button>
 
-    <!-- Scroll to Top Button -->
-    <button class="scroll-top" id="scrollTop" aria-label="Scroll to Top">
-        <i class="fas fa-arrow-up"></i>
-    </button>
+<!-- AOS Animation Library -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+// Initialize AOS Animation
+AOS.init({
+duration: 1000,
+easing: 'ease-in-out',
+once: true,
+offset: 100
+});
 
-    <!-- AOS Animation Library -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    
-    <script>
-        // Initialize AOS Animation
-        AOS.init({
-            duration: 1000,
-            easing: 'ease-in-out',
-            once: true,
-            offset: 100
-        });
+// Theme Toggle
+const themeToggle = document.getElementById('themeToggle');
+const themeIcon = themeToggle.querySelector('i');
+const html = document.documentElement;
 
-        // Theme Toggle
-        const themeToggle = document.getElementById('themeToggle');
-        const themeIcon = themeToggle.querySelector('i');
-        const html = document.documentElement;
+// Check for saved theme preference
+const savedTheme = localStorage.getItem('theme') || 'light';
+html.setAttribute('data-theme', savedTheme);
+updateThemeUI(savedTheme);
 
-        // Check for saved theme preference
-        const savedTheme = localStorage.getItem('theme') || 'light';
-        html.setAttribute('data-theme', savedTheme);
-        updateThemeUI(savedTheme);
+themeToggle.addEventListener('click', () => {
+const currentTheme = html.getAttribute('data-theme');
+const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+html.setAttribute('data-theme', newTheme);
+localStorage.setItem('theme', newTheme);
+updateThemeUI(newTheme);
+});
 
-        themeToggle.addEventListener('click', () => {
-            const currentTheme = html.getAttribute('data-theme');
-            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-            
-            html.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            updateThemeUI(newTheme);
-        });
+function updateThemeUI(theme) {
+if (theme === 'dark') {
+themeIcon.classList.remove('fa-moon');
+themeIcon.classList.add('fa-sun');
+} else {
+themeIcon.classList.remove('fa-sun');
+themeIcon.classList.add('fa-moon');
+}
+}
 
-        function updateThemeUI(theme) {
-            if (theme === 'dark') {
-                themeIcon.classList.remove('fa-moon');
-                themeIcon.classList.add('fa-sun');
-            } else {
-                themeIcon.classList.remove('fa-sun');
-                themeIcon.classList.add('fa-moon');
-            }
-        }
+// Mobile Menu Toggle
+const mobileToggle = document.getElementById('mobileToggle');
+const navMenu = document.getElementById('navMenu');
+const mobileIcon = mobileToggle.querySelector('i');
 
-        // Mobile Menu Toggle
-        const mobileToggle = document.getElementById('mobileToggle');
-        const navMenu = document.getElementById('navMenu');
-        const mobileIcon = mobileToggle.querySelector('i');
+mobileToggle.addEventListener('click', () => {
+navMenu.classList.toggle('active');
+mobileIcon.classList.toggle('fa-bars');
+mobileIcon.classList.toggle('fa-times');
+});
 
-        mobileToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            mobileIcon.classList.toggle('fa-bars');
-            mobileIcon.classList.toggle('fa-times');
-        });
+// Close mobile menu when clicking a link
+document.querySelectorAll('.nav-link').forEach(link => {
+link.addEventListener('click', () => {
+navMenu.classList.remove('active');
+mobileIcon.classList.remove('fa-times');
+mobileIcon.classList.add('fa-bars');
+});
+});
 
-        // Close mobile menu when clicking a link
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-                mobileIcon.classList.remove('fa-times');
-                mobileIcon.classList.add('fa-bars');
-            });
-        });
+// Navbar Scroll Effect
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+if (window.scrollY > 50) {
+navbar.classList.add('scrolled');
+} else {
+navbar.classList.remove('scrolled');
+}
+});
 
-        // Navbar Scroll Effect
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
+// Scroll to Top Button
+const scrollTop = document.getElementById('scrollTop');
+window.addEventListener('scroll', () => {
+if (window.scrollY > 500) {
+scrollTop.classList.add('visible');
+} else {
+scrollTop.classList.remove('visible');
+}
+});
 
-        // Scroll to Top Button
-        const scrollTop = document.getElementById('scrollTop');
-        
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 500) {
-                scrollTop.classList.add('visible');
-            } else {
-                scrollTop.classList.remove('visible');
-            }
-        });
+scrollTop.addEventListener('click', () => {
+window.scrollTo({
+top: 0,
+behavior: 'smooth'
+});
+});
 
-        scrollTop.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
+// Smooth Scroll for Anchor Links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+anchor.addEventListener('click', function(e) {
+e.preventDefault();
+const target = document.querySelector(this.getAttribute('href'));
+if (target) {
+target.scrollIntoView({
+behavior: 'smooth',
+block: 'start'
+});
+}
+});
+});
 
-        // Smooth Scroll for Anchor Links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
+// Counter Animation for Impact Section
+const impactNumbers = document.querySelectorAll('.impact-number');
+const animateCounter = (element) => {
+const target = element.textContent;
+const isPercentage = target.includes('%');
+const isNumber = target.includes('/');
+const numericValue = parseInt(target.replace(/[^0-9]/g, ''));
+let current = 0;
+const increment = numericValue / 50;
+const updateCounter = () => {
+if (current < numericValue) {
+current += increment;
+if (isPercentage) {
+element.textContent = '≥ ' + Math.ceil(current) + '%';
+} else if (isNumber) {
+element.textContent = Math.ceil(current) + '/7';
+} else {
+element.textContent = Math.ceil(current) + '%';
+}
+requestAnimationFrame(updateCounter);
+} else {
+element.textContent = target;
+}
+};
+updateCounter();
+};
 
-        // Counter Animation for Impact Section
-        const impactNumbers = document.querySelectorAll('.impact-number');
-        
-        const animateCounter = (element) => {
-            const target = element.textContent;
-            const isPercentage = target.includes('%');
-            const isNumber = target.includes('/');
-            const numericValue = parseInt(target.replace(/[^0-9]/g, ''));
-            
-            let current = 0;
-            const increment = numericValue / 50;
-            
-            const updateCounter = () => {
-                if (current < numericValue) {
-                    current += increment;
-                    if (isPercentage) {
-                        element.textContent = '≥ ' + Math.ceil(current) + '%';
-                    } else if (isNumber) {
-                        element.textContent = Math.ceil(current) + '/7';
-                    } else {
-                        element.textContent = Math.ceil(current) + '%';
-                    }
-                    requestAnimationFrame(updateCounter);
-                } else {
-                    element.textContent = target;
-                }
-            };
-            
-            updateCounter();
-        };
+// Trigger counter animation when impact section is visible
+const impactSection = document.querySelector('.impact');
+const observer = new IntersectionObserver((entries) => {
+entries.forEach(entry => {
+if (entry.isIntersecting) {
+impactNumbers.forEach(animateCounter);
+observer.unobserve(entry.target);
+}
+});
+}, { threshold: 0.5 });
 
-        // Trigger counter animation when impact section is visible
-        const impactSection = document.querySelector('.impact');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    impactNumbers.forEach(animateCounter);
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.5 });
-
-        observer.observe(impactSection);
-    </script>
+observer.observe(impactSection);
+</script>
 </body>
 </html>
