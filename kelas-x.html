@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Materi Kelas X - Smart Algorithm</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #10b981;
+      --primary-dark: #059669;
+      --secondary: #06b6d4;
+      --accent: #f59e0b;
+      --bg-primary: #ffffff;
+      --bg-secondary: #f8fafc;
+      --bg-code: #1e293b;
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --text-light: #f8fafc;
+      --border: #e2e8f0;
+      --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+      --radius: 12px;
+      --transition: all 0.3s ease;
+    }
+    [data-theme="dark"] {
+      --bg-primary: #0f172a;
+      --bg-secondary: #1e293b;
+      --text-primary: #f8fafc;
+      --text-secondary: #cbd5e1;
+      --border: #334155;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.7;
+      transition: var(--transition);
+    }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    
+    /* Header */
+    .page-header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      color: white;
+      padding: 60px 0 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-header::before {
+      content: '';
+      position: absolute;
+      width: 300px; height: 300px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      top: -100px; right: -50px;
+    }
+    .header-content {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      position: relative;
+      z-index: 1;
+    }
+    .back-btn {
+      background: rgba(255,255,255,0.2);
+      border: none;
+      color: white;
+      width: 45px; height: 45px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+      text-decoration: none;
+    }
+    .back-btn:hover {
+      background: rgba(255,255,255,0.3);
+      transform: translateX(-3px);
+    }
+    .header-text h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .header-text p {
+      opacity: 0.9;
+      font-size: 1.05rem;
+    }
+    .level-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.2);
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      margin-top: 12px;
+    }
+
+    /* Navigation Tabs */
+    .topic-nav {
+      background: var(--bg-secondary);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 0;
+    }
+    .topic-tabs {
+      display: flex;
+      gap: 4px;
+      overflow-x: auto;
+      padding: 12px 0;
+      scrollbar-width: none;
+    }
+    .topic-tabs::-webkit-scrollbar { display: none; }
+    .tab-btn {
+      padding: 12px 20px;
+      background: none;
+      border: none;
+      color: var(--text-secondary);
+      font-weight: 500;
+      cursor: pointer;
+      border-radius: var(--radius);
+      transition: var(--transition);
+      white-space: nowrap;
+      font-size: 0.95rem;
+    }
+    .tab-btn:hover {
+      background: var(--bg-primary);
+      color: var(--primary);
+    }
+    .tab-btn.active {
+      background: var(--primary);
+      color: white;
+    }
+
+    /* Content Sections */
+    .topic-section {
+      display: none;
+      padding: 40px 0;
+      animation: fadeIn 0.4s ease;
+    }
+    .topic-section.active { display: block; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      margin-bottom: 16px;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-title i {
+      color: var(--primary);
+      font-size: 1.5rem;
+    }
+    .section-intro {
+      background: var(--bg-secondary);
+      padding: 24px;
+      border-radius: var(--radius);
+      border-left: 4px solid var(--primary);
+      margin-bottom: 30px;
+    }
+
+    /* Content Cards */
+    .content-card {
+      background: var(--bg-secondary);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-bottom: 24px;
+      border: 1px solid var(--border);
+      transition: var(--transition);
+    }
+    .content-card:hover {
+      border-color: var(--primary);
+      box-shadow: var(--shadow);
+    }
+    .content-card h4 {
+      font-size: 1.2rem;
+      margin-bottom: 12px;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .content-card h4 i { color: var(--accent); }
+
+    /* Code Blocks */
+    .code-block {
+      background: var(--bg-code);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin: 16px 0;
+      overflow-x: auto;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      color: var(--text-light);
+      border: 1px solid #334155;
+    }
+    .code-keyword { color: #c678dd; }
+    .code-string { color: #98c379; }
+    .code-comment { color: #5c6370; font-style: italic; }
+    .code-function { color: #61afef; }
+
+    /* Flowchart Box */
+    .flowchart-box {
+      background: var(--bg-primary);
+      border: 2px dashed var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      text-align: center;
+      margin: 20px 0;
+    }
+    .flowchart-shape {
+      display: inline-block;
+      padding: 12px 24px;
+      margin: 8px;
+      border-radius: 8px;
+      background: var(--primary);
+      color: white;
+      font-weight: 500;
+    }
+    .flowchart-shape.decision {
+      background: var(--accent);
+      clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+      padding: 20px 30px;
+    }
+    .flowchart-arrow {
+      font-size: 1.5rem;
+      color: var(--text-muted);
+      display: block;
+      margin: 8px 0;
+    }
+
+    /* Interactive Elements */
+    .quiz-box {
+      background: linear-gradient(135deg, rgba(16,185,129,0.1) 0%, rgba(6,182,212,0.1) 100%);
+      border: 1px solid var(--primary);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin: 24px 0;
+    }
+    .quiz-question {
+      font-weight: 600;
+      margin-bottom: 16px;
+      font-size: 1.1rem;
+    }
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .quiz-option {
+      padding: 12px 16px;
+      background: var(--bg-primary);
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .quiz-option:hover {
+      border-color: var(--primary);
+      background: var(--bg-secondary);
+    }
+    .quiz-option.correct {
+      border-color: var(--primary);
+      background: rgba(16,185,129,0.1);
+    }
+    .quiz-option.incorrect {
+      border-color: #ef4444;
+      background: rgba(239,68,68,0.1);
+    }
+    .quiz-feedback {
+      margin-top: 16px;
+      padding: 12px;
+      border-radius: 8px;
+      display: none;
+      font-weight: 500;
+    }
+    .quiz-feedback.show { display: block; }
+    .quiz-feedback.correct {
+      background: rgba(16,185,129,0.2);
+      color: #047857;
+    }
+    .quiz-feedback.incorrect {
+      background: rgba(239,68,68,0.2);
+      color: #b91c1c;
+    }
+
+    /* Practice Area */
+    .practice-area {
+      background: var(--bg-secondary);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin: 24px 0;
+    }
+    .practice-input {
+      width: 100%;
+      padding: 12px 16px;
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      font-size: 1rem;
+      margin: 12px 0;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .practice-input:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+    .btn-run {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: var(--transition);
+    }
+    .btn-run:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+    .output-box {
+      margin-top: 16px;
+      padding: 16px;
+      background: var(--bg-code);
+      border-radius: 8px;
+      color: var(--text-light);
+      font-family: 'JetBrains Mono', monospace;
+      min-height: 60px;
+      display: none;
+    }
+    .output-box.show { display: block; }
+
+    /* Progress & Navigation */
+    .progress-bar {
+      background: var(--bg-secondary);
+      border-radius: 20px;
+      height: 8px;
+      margin: 20px 0;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: var(--gradient-primary, linear-gradient(90deg, var(--primary), var(--secondary)));
+      width: 0%;
+      transition: width 0.5s ease;
+      border-radius: 20px;
+    }
+    .section-nav {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 40px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+    }
+    .nav-btn {
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: var(--transition);
+      text-decoration: none;
+      border: 2px solid var(--border);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+    }
+    .nav-btn.primary {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+    .nav-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+
+    /* Tips Box */
+    .tip-box {
+      background: linear-gradient(135deg, rgba(245,158,11,0.15) 0%, rgba(234,179,8,0.1) 100%);
+      border-left: 4px solid var(--accent);
+      padding: 16px 20px;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      margin: 20px 0;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+    .tip-box i {
+      color: var(--accent);
+      font-size: 1.2rem;
+      margin-top: 2px;
+    }
+
+    /* Footer */
+    .page-footer {
+      background: var(--bg-secondary);
+      padding: 30px 0;
+      text-align: center;
+      border-top: 1px solid var(--border);
+      margin-top: 40px;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .header-content { flex-direction: column; text-align: center; }
+      .header-text h1 { font-size: 1.8rem; }
+      .section-title { font-size: 1.5rem; }
+      .topic-tabs { padding: 8px 12px; }
+      .tab-btn { padding: 10px 16px; font-size: 0.9rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Page Header -->
+  <header class="page-header">
+    <div class="container">
+      <div class="header-content">
+        <a href="index.html" class="back-btn" title="Kembali ke Beranda">
+          <i class="fas fa-arrow-left"></i>
+        </a>
+        <div class="header-text">
+          <h1><i class="fas fa-seedling"></i> Materi Kelas X</h1>
+          <p>Fondasi Berpikir Komputasional</p>
+          <div class="level-badge">
+            <i class="fas fa-star"></i>
+            <span>Tingkat Pemula • 5 Modul Pembelajaran</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Topic Navigation -->
+  <nav class="topic-nav">
+    <div class="container">
+      <div class="topic-tabs">
+        <button class="tab-btn active" data-target="modul1">📋 Konsep Dasar Algoritma</button>
+        <button class="tab-btn" data-target="modul2">🔀 Flowchart & Diagram</button>
+        <button class="tab-btn" data-target="modul3">✍️ Pseudocode Dasar</button>
+        <button class="tab-btn" data-target="modul4">📦 Pengenalan Variabel</button>
+        <button class="tab-btn" data-target="modul5">🧠 Logika Dasar Komputer</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="container">
+
+    <!-- Modul 1: Konsep Dasar Algoritma -->
+    <section id="modul1" class="topic-section active">
+      <h2 class="section-title"><i class="fas fa-list-ol"></i> Konsep Dasar Algoritma</h2>
+      
+      <div class="section-intro">
+        <strong>Apa itu Algoritma?</strong><br>
+        Algoritma adalah urutan langkah-langkah logis dan sistematis untuk menyelesaikan suatu masalah. 
+        Seperti resep masakan: ada bahan, langkah, dan hasil akhir yang diharapkan.
+      </div>
+
+      <div class="content-card">
+        <h4><i class="fas fa-lightbulb"></i> Karakteristik Algoritma yang Baik</h4>
+        <ul style="padding-left: 24px; margin-top: 12px;">
+          <li><strong>Input:</strong> Memiliki data masukan</li>
+          <li><strong>Proses:</strong> Langkah-langkah jelas dan terurut</li>
+          <li><strong>Output:</strong> Menghasilkan keluaran yang diharapkan</li>
+          <li><strong>Definiteness:</strong> Setiap langkah tidak ambigu</li>
+          <li><strong>Finiteness:</strong> Berakhir setelah sejumlah langkah</li>
+        </ul>
+      </div>
+
+      <div class="content-card">
+        <h4><i class="fas fa-code"></i> Contoh Algoritma Sederhana</h4>
+        <p><strong>Masalah:</strong> Menentukan apakah sebuah bilangan genap atau ganjil</p>
+        
+        <div class="code-block">
+<span class="code-comment">// Algoritma: Cek Bilangan Genap/Ganjil</span>
+<span class="code-keyword">START</span>
+  <span class="code-keyword">INPUT</span> angka
+  <span class="code-keyword">IF</span> angka MOD 2 = 0 <span class="code-keyword">THEN</span>
+    <span class="code-keyword">PRINT</span> <span class="code-string">"Genap"</span>
+  <span class="code-keyword">ELSE</span>
+    <span class="code-keyword">PRINT</span> <span class="code-string">"Ganjil"</span>
+  <span class="code-keyword">END IF</span>
+<span class="code-keyword">END</span>
+        </div>
+      </div>
+
+      <div class="tip-box">
+        <i class="fas fa-lightbulb"></i>
+        <div>
+          <strong>Tips Belajar:</strong> Mulailah dengan masalah sehari-hari! 
+          Coba buat algoritma untuk "membuat teh" atau "berangkat ke sekolah". 
+          Ini membantu memahami konsep sebelum masuk ke kode.
+        </div>
+      </div>
+
+      <div class="quiz-box">
+        <div class="quiz-question">❓ Manakah yang BUKAN karakteristik algoritma?</div>
+        <div class="quiz-options">
+          <div class="quiz-option" data-correct="false">A) Memiliki langkah yang jelas</div>
+          <div class="quiz-option" data-correct="false">B) Berakhir setelah sejumlah langkah</div>
+          <div class="quiz-option" data-correct="true">C) Dapat memiliki langkah yang tidak terbatas</div>
+          <div class="quiz-option" data-correct="false">D) Menghasilkan output</div>
+        </div>
+        <div class="quiz-feedback"></div>
+      </div>
+
+      <div class="progress-bar">
+        <div class="progress-fill" id="progress-modul1" style="width: 0%"></div>
+      </div>
+
+      <div class="section-nav">
+        <span></span>
+        <button class="nav-btn primary" onclick="nextModule('modul2')">
+          Lanjut ke Flowchart <i class="fas fa-arrow-right"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- Modul 2: Flowchart & Diagram Alir -->
+    <section id="modul2" class="topic-section">
+      <h2 class="section-title"><i class="fas fa-project-diagram"></i> Flowchart & Diagram Alir</h2>
+      
+      <div class="section-intro">
+        <strong>Apa itu Flowchart?</strong><br>
+        Flowchart adalah representasi visual dari algoritma menggunakan simbol-simbol standar. 
+        Membantu memahami alur logika program sebelum menulis kode.
+      </div>
+
+      <div class="content-card">
+        <h4><i class="fas fa-shapes"></i> Simbol-Simbol Utama Flowchart</h4>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 16px;">
+          <div style="text-align: center;">
+            <div style="width: 60px; height: 40px; background: var(--primary); border-radius: 8px; margin: 0 auto 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.8rem;">Start/End</div>
+            <small>Terminal</small>
+          </div>
+          <div style="text-align: center;">
+            <div style="width: 60px; height: 50px; background: var(--secondary); border-radius: 4px; margin: 0 auto 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.8rem;">Proses</div>
+            <small>Process</small>
+          </div>
+          <div style="text-align: center;">
+            <div style="width: 0; height: 0; border-left: 30px solid transparent; border-right: 30px solid transparent; border-bottom: 50px solid var(--accent); margin: 0 auto 8px; position: relative;"></div>
+            <small style="position: absolute; margin-top: 60px; margin-left: -25px; color: white; font-weight: 500;">Keputusan</small>
+            <small style="margin-top: 15px; display: block;">Decision</small>
+          </div>
+          <div style="text-align: center;">
+            <div style="width: 60px; height: 40px; background: #64748b; border-radius: 4px 4px 0 0; margin: 0 auto 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.8rem;">Input/Output</div>
+            <small>Parallelogram</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="flowchart-box">
+        <p style="margin-bottom: 16px; font-weight: 500;">Contoh: Flowchart Cek Bilangan Genap</p>
+        <div class="flowchart-shape">START</div>
+        <div class="flowchart-arrow">↓</div>
+        <div class="flowchart-shape" style="background: #64748b;">Input: angka</div>
+        <div class="flowchart-arrow">↓</div>
+        <div class="flowchart-shape decision">angka % 2 == 0?</div>
+        <div class="flowchart-arrow">↓</div>
+        <div style="display: flex; justify-content: center; gap: 40px; margin: 16px 0;">
+          <div style="text-align: center;">
+            <span style="color: var(--primary); font-weight: 500;">Ya</span><br>
+            <div class="flowchart-shape" style="background: var(--success); margin-top: 8px;">Print "Genap"</div>
+          </div>
+          <div style="text-align: center;">
+            <span style="color: var(--danger); font-weight: 500;">Tidak</span><br>
+            <div class="flowchart-shape" style="background: var(--danger); margin-top: 8px;">Print "Ganjil"</div>
+          </div>
+        </div>
+        <div class="flowchart-arrow">↓</div>
+        <div class="flowchart-shape">END</div>
+      </div>
+
+      <div class="practice-area">
+        <h4><i class="fas fa-pen"></i> Latihan: Buat Flowchart Sederhana</h4>
+        <p style="margin-bottom: 16px;">Deskripsikan langkah untuk algoritma: <strong>"Menentukan lulus/tidak lulus"</strong> dengan nilai minimal 75.</p>
+        <textarea class="practice-input" rows="4" placeholder="Contoh:&#10;1. START&#10;2. Input nilai&#10;3. Jika nilai >= 75 maka..."></textarea>
+        <button class="btn-run" onclick="checkFlowchart()">
+          <i class="fas fa-check"></i> Cek Jawaban
+        </button>
+        <div class="output-box" id="flowchart-output"></div>
+      </div>
+
+      <div class="section-nav">
+        <button class="nav-btn" onclick="prevModule('modul1')">
+          <i class="fas fa-arrow-left"></i> Kembali
+        </button>
+        <button class="nav-btn primary" onclick="nextModule('modul3')">
+          Lanjut ke Pseudocode <i class="fas fa-arrow-right"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- Modul 3: Pseudocode Dasar -->
+    <section id="modul3" class="topic-section">
+      <h2 class="section-title"><i class="fas fa-file-code"></i> Pseudocode Dasar</h2>
+      
+      <div class="section-intro">
+        <strong>Apa itu Pseudocode?</strong><br>
+        Pseudocode adalah cara menuliskan algoritma menggunakan bahasa yang mirip kode program, 
+        tetapi lebih mudah dibaca manusia. Tidak terikat sintaks bahasa pemrograman tertentu.
+      </div>
+
+      <div class="content-card">
+        <h4><i class="fas fa-keyboard"></i> Struktur Dasar Pseudocode</h4>
+        <div class="code-block">
+<span class="code-comment">// 1. Deklarasi</span>
+<span class="code-keyword">DECLARE</span> nama_variabel <span class="code-keyword">AS</span> tipe_data
+
+<span class="code-comment">// 2. Input</span>
+<span class="code-keyword">INPUT</span> nama_variabel
+
+<span class="code-comment">// 3. Proses</span>
+<span class="code-keyword">SET</span> hasil = nilai1 + nilai2
+
+<span class="code-comment">// 4. Output</span>
+<span class="code-keyword">PRINT</span> <span class="code-string">"Hasil: "</span>, hasil
+        </div>
+      </div>
+
+      <div class="content-card">
+        <h4><i class="fas fa-exchange-alt"></i> Perbandingan: Algoritma vs Pseudocode vs Kode</h4>
+        <table style="width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 0.9rem;">
+          <tr style="background: var(--bg-primary);">
+            <th style="padding: 12px; text-align: left; border: 1px solid var(--border);">Algoritma</th>
+            <th style="padding:  12px; text-align: left; border: 1px solid var(--border);">Pseudocode</th>
+            <th style="padding: 12px; text-align: left; border: 1px solid var(--border);">Kode Python</th>
+          </tr>
+          <tr>
+            <td style="padding: 12px; border: 1px solid var(--border);">1. Mulai<br>2. Input A, B<br>3. Hitung C = A+B<br>4. Tampilkan C<br>5. Selesai</td>
+            <td style="padding: 12px; border: 1px solid var(--border);"><span class="code-keyword">INPUT</span> A, B<br><span class="code-keyword">SET</span> C = A + B<br><span class="code-keyword">PRINT</span> C</td>
+            <td style="padding: 12px; border: 1px solid var(--border); font-family: 'JetBrains Mono', monospace;">a = int(input())<br>b = int(input())<br>c = a + b<br>print(c)</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="practice-area">
+        <h4><i class="fas fa-play-circle"></i> Coba Tulis Pseudocode!</h4>
+        <p style="margin-bottom: 12px;"><strong>Tugas:</strong> Buat pseudocode untuk menghitung luas persegi panjang.</p>
+        <textarea class="practice-input" id="pseudocode-input" rows="5" placeholder="Tulis pseudocode Anda di sini...&#10;Contoh:&#10;INPUT panjang, lebar&#10;SET luas = panjang * lebar&#10;PRINT luas"></textarea>
+        <button class="btn-run" onclick="checkPseudocode()">
+          <i class="fas fa-rocket"></i> Jalankan Pengecekan
+        </button>
+        <div class="output-box" id="pseudocode-output"></div>
+      </div>
+
+      <div class="tip-box">
+        <i class="fas fa-lightbulb"></i>
+        <div>
+          <strong>Best Practice:</strong> Gunakan kata kunci konsisten (INPUT, OUTPUT, IF, THEN, ELSE, WHILE, FOR). 
+          Indentasi membantu membaca struktur logika, meski pseudocode tidak mewajibkannya.
+        </div>
+      </div>
+
+      <div class="section-nav">
+        <button class="nav-btn" onclick="prevModule('modul2')">
+          <i class="fas fa-arrow-left"></i> Kembali
+        </button>
+        <button class="nav-btn primary" onclick="nextModule('modul4')">
+          Lanjut ke Variabel <i class="fas fa-arrow-right"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- Modul 4: Pengenalan Variabel -->
+    <section id="modul4" class="topic-section">
+      <h2 class="section-title"><i class="fas fa-box-open"></i> Pengenalan Variabel</h2>
+      
+      <div class="section-intro">
+        <strong>Apa itu Variabel?</strong><br>
+        Variabel adalah "wadah" untuk menyimpan data dalam program. Seperti kotak berlabel 
+        yang bisa kita isi, ubah, dan ambil nilainya kapan saja.
+      </div>
+
+      <div class="content-card">
+        <h4><i class="fas fa-tag"></i> Aturan Penamaan Variabel</h4>
+        <ul style="padding-left: 24px; margin-top: 12px;">
+          <li>✅ Harus dimulai dengan huruf atau underscore (<code>_</code>)</li>
+          <li>✅ Boleh mengandung huruf, angka, dan underscore</li>
+          <li>✅ Case-sensitive: <code>nama</code> ≠ <code>Nama</code></li>
+          <li>❌ Tidak boleh pakai spasi atau simbol khusus (<code>@</code>, <code>#</code>, <code>$</code>)</li>
+          <li>❌ Tidak boleh menggunakan <em>reserved words</em> seperti <code>if</code>, <code>for</code>, <code>while</code></li>
+        </ul>
+      </div>
+
+      <div class="content-card">
+        <h4><i class="fas fa-database"></i> Tipe Data Dasar</h4>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-top: 16px;">
+          <div style="background: var(--bg-primary); padding: 16px; border-radius: 8px; border: 1px solid var(--border);">
+            <strong style="color: var(--primary);">Integer</strong><br>
+            <small>Angka bulat</small><br>
+            <code style="display: block; margin-top: 8px; background: var(--bg-code); padding: 4px 8px; border-radius: 4px;">umur = 17</code>
+          </div>
+          <div style="background: var(--bg-primary); padding: 16px; border-radius: 8px; border: 1px solid var(--border);">
+            <strong style="color: var(--secondary);">Float</strong><br>
+            <small>Angka desimal</small><br>
+            <code style="display: block; margin-top: 8px; background: var(--bg-code); padding: 4px 8px; border-radius: 4px;">tinggi = 165.5</code>
+          </div>
+          <div style="background: var(--bg-primary); padding: 16px; border-radius: 8px; border: 1px solid var(--border);">
+            <strong style="color: var(--accent);">String</strong><br>
+            <small>Teks/kata</small><br>
+            <code style="display: block; margin-top: 8px; background: var(--bg-code); padding: 4px 8px; border-radius: 4px;">nama = "Budi"</code>
+          </div>
+          <div style="background: var(--bg-primary); padding: 16px; border-radius: 8px; border: 1px solid var(--border);">
+            <strong style="color: var(--success);">Boolean</strong><br>
+            <small>True / False</small><br>
+            <code style="display: block; margin-top: 8px; background: var(--bg-code); padding: 4px 8px; border-radius: 4px;">lulus = true</code>
+          </div>
+        </div>
+      </div>
+
+      <div class="practice-area">
+        <h4><i class="fas fa-code"></i> Latihan: Deklarasi Variabel</h4>
+        <p style="margin-bottom: 12px;">Buat 3 variabel untuk menyimpan: <strong>nama siswa</strong>, <strong>nilai ujian</strong>, dan <strong>status kelulusan</strong>.</p>
+        <textarea class="practice-input" id="variable-input" rows="4" placeholder="Contoh:&#10;nama_siswa = &quot;Siti&quot;&#10;nilai_ujian = 85.5&#10;status_lulus = true"></textarea>
+        <button class="btn-run" onclick="checkVariables()">
+          <i class="fas fa-check-circle"></i> Validasi
+        </button>
+        <div class="output-box" id="variable-output"></div>
+      </div>
+
+      <div class="quiz-box">
+        <div class="quiz-question">❓ Manakah penamaan variabel yang <strong>VALID</strong>?</div>
+        <div class="quiz-options">
+          <div class="quiz-option" data-correct="false">A) 1nama</div>
+          <div class="quiz-option" data-correct="true">B) nama_lengkap</div>
+          <div class="quiz-option" data-correct="false">C) nama siswa</div>
+          <div class="quiz-option" data-correct="false">D) if</div>
+        </div>
+        <div class="quiz-feedback"></div>
+      </div>
+
+      <div class="section-nav">
+        <button class="nav-btn" onclick="prevModule('modul3')">
+          <i class="fas fa-arrow-left"></i> Kembali
+        </button>
+        <button class="nav-btn primary" onclick="nextModule('modul5')">
+          Lanjut ke Logika <i class="fas fa-arrow-right"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- Modul 5: Logika Dasar Komputer -->
+    <section id="modul5" class="topic-section">
+      <h2 class="section-title"><i class="fas fa-brain"></i> Logika Dasar Komputer</h2>
+      
+      <div class="section-intro">
+        <strong>Logika Boolean</strong><br>
+        Komputer bekerja dengan logika biner: <strong>TRUE (1)</strong> atau <strong>FALSE (0)</strong>. 
+        Operator logika membantu menggabungkan kondisi untuk pengambilan keputusan.
+      </div>
+
+      <div class="content-card">
+        <h4><i class="fas fa-toggle-on"></i> Operator Logika Utama</h4>
+        <table style="width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 0.95rem;">
+          <tr style="background: var(--bg-primary);">
+            <th style="padding: 12px; text-align: left; border: 1px solid var(--border);">Operator</th>
+            <th style="padding: 12px; text-align: left; border: 1px solid var(--border);">Simbol</th>
+            <th style="padding: 12px; text-align: left; border: 1px solid var(--border);">Contoh</th>
+            <th style="padding: 12px; text-align: left; border: 1px solid var(--border);">Hasil</th>
+          </tr>
+          <tr>
+            <td style="padding: 12px; border: 1px solid var(--border);"><strong>AND</strong></td>
+            <td style="padding: 12px; border: 1px solid var(--border);"><code>&&</code> atau <code>AND</code></td>
+            <td style="padding: 12px; border: 1px solid var(--border);"><code>nilai >= 75 AND hadir = true</code></td>
+            <td style="padding: 12px; border: 1px solid var(--border);">True jika <em>keduanya</em> benar</td>
+          </tr>
+          <tr>
+            <td style="padding: 12px; border: 1px solid var(--border);"><strong>OR</strong></td>
+            <td style="padding: 12px; border: 1px solid var(--border);"><code>||</code> atau <code>OR</code></td>
+            <td style="padding: 12px; border: 1px solid var(--border);"><code>tugas_selesai OR ujian_lulus</code></td>
+            <td style="padding: 12px; border: 1px solid var(--border);">True jika <em>salah satu</em> benar</td>
+          </tr>
+          <tr>
+            <td style="padding: 12px; border: 1px solid var(--border);"><strong>NOT</strong></td>
+            <td style="padding: 12px; border: 1px solid var(--border);"><code>!</code> atau <code>NOT</code></td>
+            <td style="padding: 12px; border: 1px solid var(--border);"><code>NOT (nilai < 60)</code></td>
+            <td style="padding: 12px; border: 1px solid var(--border);">Membalik nilai (True → False)</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="content-card">
+        <h4><i class="fas fa-code-branch"></i> Struktur Percabangan Sederhana</h4>
+        <div class="code-block">
+<span class="code-comment">// Contoh: Menentukan kategori nilai</span>
+<span class="code-keyword">INPUT</span> nilai
+
+<span class="code-keyword">IF</span> nilai >= 90 <span class="code-keyword">THEN</span>
+  <span class="code-keyword">PRINT</span> <span class="code-string">"Sangat Baik"</span>
+<span class="code-keyword">ELSE IF</span> nilai >= 75 <span class="code-keyword">THEN</span>
+  <span class="code-keyword">PRINT</span> <span class="code-string">"Baik"</span>
+<span class="code-keyword">ELSE IF</span> nilai >= 60 <span class="code-keyword">THEN</span>
+  <span class="code-keyword">PRINT</span> <span class="code-string">"Cukup"</span>
+<span class="code-keyword">ELSE</span>
+  <span class="code-keyword">PRINT</span> <span class="code-string">"Perlu Belajar Lagi"</span>
+<span class="code-keyword">END IF</span>
+        </div>
+      </div>
+
+      <div class="practice-area">
+        <h4><i class="fas fa-gamepad"></i> Mini Challenge: Login Sederhana</h4>
+        <p style="margin-bottom: 12px;">Lengkapi logika berikut: User bisa login jika <strong>username = "admin"</strong> DAN <strong>password = "12345"</strong>.</p>
+        <div class="code-block" style="background: var(--bg-secondary); color: var(--text-primary); border-color: var(--border);">
+<span class="code-keyword">INPUT</span> username, password<br><br>
+<span class="code-keyword">IF</span> <span id="logic-blank" style="background: var(--accent); color: white; padding: 2px 8px; border-radius: 4px; cursor: pointer;" onclick="fillLogic()">[LENGKAPI KONDISI]</span> <span class="code-keyword">THEN</span><br>
+&nbsp;&nbsp;<span class="code-keyword">PRINT</span> <span class="code-string">"Login Berhasil!"</span><br>
+<span class="code-keyword">ELSE</span><br>
+&nbsp;&nbsp;<span class="code-keyword">PRINT</span> <span class="code-string">"Login Gagal!"</span><br>
+<span class="code-keyword">END IF</span>
+        </div>
+        <button class="btn-run" onclick="checkLogic()">
+          <i class="fas fa-bolt"></i> Cek Logika
+        </button>
+        <div class="output-box" id="logic-output"></div>
+      </div>
+
+      <div class="tip-box">
+        <i class="fas fa-award"></i>
+        <div>
+          <strong>🎉 Selamat!</strong> Anda telah menyelesaikan semua modul Kelas X! 
+          Lanjutkan ke <a href="#" style="color: var(--primary); font-weight: 600;" onclick="showCompletion()">Sertifikat Penyelesaian</a> atau eksplor materi Kelas XI.
+        </div>
+      </div>
+
+      <div class="section-nav">
+        <button class="nav-btn" onclick="prevModule('modul4')">
+          <i class="fas fa-arrow-left"></i> Kembali
+        </button>
+        <a href="#" class="nav-btn primary" onclick="showCompletion(); return false;">
+          <i class="fas fa-certificate"></i> Selesaikan Modul
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Completion Modal -->
+  <div id="completion-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 1000; align-items: center; justify-content: center; padding: 20px;">
+    <div style="background: var(--bg-primary); border-radius: 20px; padding: 40px; max-width: 500px; width: 100%; text-align: center; box-shadow: 0 20px 40px rgba(0,0,0,0.3);">
+      <div style="width: 80px; height: 80px; background: linear-gradient(135deg, var(--primary), var(--secondary)); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; color: white; font-size: 2rem;">
+        <i class="fas fa-trophy"></i>
+      </div>
+      <h3 style="font-size: 1.8rem; margin-bottom: 12px; color: var(--text-primary);">🎉 Selamat!</h3>
+      <p style="color: var(--text-secondary); margin-bottom: 24px;">
+        Anda telah menyelesaikan semua materi <strong>Kelas X - Fondasi Berpikir Komputasional</strong>!
+      </p>
+      <div style="background: var(--bg-secondary); padding: 20px; border-radius: 12px; margin-bottom: 24px;">
+        <div style="display: flex; justify-content: space-around; text-align: center;">
+          <div>
+            <div style="font-size: 1.5rem; font-weight: 700; color: var(--primary);">5/5</div>
+            <small style="color: var(--text-muted);">Modul Selesai</small>
+          </div>
+          <div>
+            <div style="font-size: 1.5rem; font-weight: 700; color: var(--success);">100%</div>
+            <small style="color: var(--text-muted);">Progress</small>
+          </div>
+          <div>
+            <div style="font-size: 1.5rem; font-weight: 700; color: var(--accent);">⭐</div>
+            <small style="color: var(--text-muted);">Sertifikat</small>
+          </div>
+        </div>
+      </div>
+      <button class="btn-run" style="width: 100%; justify-content: center;" onclick="closeModal()">
+        <i class="fas fa-home"></i> Kembali ke Beranda
+      </button>
+    </div>
+  </div>
+
+  <!-- Page Footer -->
+  <footer class="page-footer">
+    <div class="container">
+      <p><strong>Smart Algorithm</strong> • Media Ajar Coding Berbasis Web</p>
+      <p style="margin-top: 8px;">SMA Negeri 1 Cluring • Muchamad Irwan Maulana, S.Kom</p>
+      <p style="margin-top: 16px; font-size: 0.85rem;">
+        <i class="fas fa-sync-alt"></i> Materi diperbarui: Maret 2024 • 
+        <a href="#" style="color: var(--primary); text-decoration: none;">Laporkan Masalah</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // Tab Navigation
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Remove active class from all
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.topic-section').forEach(s => s.classList.remove('active'));
+        
+        // Add active to clicked
+        btn.classList.add('active');
+        document.getElementById(btn.dataset.target).classList.add('active');
+        
+        // Update progress if returning to completed module
+        updateProgress(btn.dataset.target);
+      });
+    });
+
+    // Module Navigation
+    function nextModule(targetId) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.topic-section').forEach(s => s.classList.remove('active'));
+      
+      document.querySelector(`[data-target="${targetId}"]`).classList.add('active');
+      document.getElementById(targetId).classList.add('active');
+      
+      // Auto-scroll to top
+      window.scrollTo({ top: 200, behavior: 'smooth' });
+      updateProgress(targetId);
+    }
+
+    function prevModule(targetId) {
+      nextModule(targetId);
+    }
+
+    function updateProgress(moduleId) {
+      const progress = document.getElementById(`progress-${moduleId}`);
+      if (progress) {
+        // Simulate progress based on interactions (simplified)
+        progress.style.width = '100%';
+      }
+    }
+
+    // Quiz Functionality
+    document.querySelectorAll('.quiz-option').forEach(option => {
+      option.addEventListener('click', function() {
+        const parent = this.closest('.quiz-box');
+        const feedback = parent.querySelector('.quiz-feedback');
+        const isCorrect = this.dataset.correct === 'true';
+        
+        // Reset options
+        parent.querySelectorAll('.quiz-option').forEach(opt => {
+          opt.classList.remove('correct', 'incorrect');
+        });
+        
+        // Show result
+        this.classList.add(isCorrect ? 'correct' : 'incorrect');
+        feedback.textContent = isCorrect ? 
+          '✅ Benar! Lanjutkan ke materi berikutnya.' : 
+          '❌ Kurang tepat. Coba perhatikan kembali karakteristik algoritma.';
+        feedback.className = `quiz-feedback show ${isCorrect ? 'correct' : 'incorrect'}`;
+      });
+    });
+
+    // Practice Checks (simplified validation)
+    function checkFlowchart() {
+      const input = document.querySelector('#modul2 .practice-input').value.toLowerCase();
+      const output = document.getElementById('flowchart-output');
+      
+      if (input.includes('nilai') && input.includes('75') && (input.includes('if') || input.includes('jika'))) {
+        output.textContent = '✅ Bagus! Alur logika Anda sudah benar. Flowchart bisa divisualisasikan dari deskripsi ini.';
+        output.className = 'output-box show';
+      } else {
+        output.textContent = '💡 Tips: Pastikan ada: (1) input nilai, (2) kondisi perbandingan dengan 75, (3) dua kemungkinan output.';
+        output.className = 'output-box show';
+      }
+    }
+
+    function checkPseudocode() {
+      const input = document.getElementById('pseudocode-input').value;
+      const output = document.getElementById('pseudocode-output');
+      
+      const hasInput = /INPUT|input|masukkan/i.test(input);
+      const hasProcess = /[\*=]|kali|multiply|\*/.test(input);
+      const hasOutput = /PRINT|print|tampilkan|output/i.test(input);
+      
+      if (hasInput && hasProcess && hasOutput) {
+        output.textContent = '🎉 Excellent! Pseudocode Anda memiliki struktur lengkap: INPUT → PROSES → OUTPUT';
+        output.className = 'output-box show';
+      } else {
+        output.textContent = '📝 Periksa kembali: Pastikan ada INPUT (panjang, lebar), PROSES (perkalian), dan OUTPUT (hasil luas).';
+        output.className = 'output-box show';
+      }
+    }
+
+    function checkVariables() {
+      const input = document.getElementById('variable-input').value;
+      const output = document.getElementById('variable-output');
+      
+      // Simple validation
+      const hasString = /["'].*["']/.test(input);
+      const hasNumber = /\d+\.?\d*/.test(input);
+      const hasBoolean = /true|false/i.test(input);
+      
+      if (hasString && hasNumber && hasBoolean) {
+        output.textContent = '✅ Perfect! Anda menggunakan 3 tipe data berbeda dengan benar.';
+        output.className = 'output-box show';
+      } else {
+        output.textContent = '🎯 Coba tambahkan: string (teks dalam kutip), number (angka), dan boolean (true/false).';
+        output.className = 'output-box show';
+      }
+    }
+
+    function fillLogic() {
+      const blank = document.getElementById('logic-blank');
+      blank.textContent = 'username == "admin" AND password == "12345"';
+      blank.style.background = 'var(--success)';
+      blank.style.cursor = 'default';
+      blank.onclick = null;
+    }
+
+    function checkLogic() {
+      const condition = document.getElementById('logic-blank').textContent;
+      const output = document.getElementById('logic-output');
+      
+      if (condition.includes('AND') && condition.includes('admin') && condition.includes('12345')) {
+        output.textContent = '🔐 Login Berhasil! Logika AND memastikan kedua kondisi harus terpenuhi.';
+        output.className = 'output-box show';
+      } else {
+        output.textContent = '⚠️ Pastikan menggunakan operator AND dan membandingkan dengan nilai yang tepat.';
+        output.className = 'output-box show';
+      }
+    }
+
+    // Completion Modal
+    function showCompletion() {
+      document.getElementById('completion-modal').style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('completion-modal').style.display = 'none';
+      // Redirect to home (adjust path as needed)
+      window.location.href = 'index.html';
+    }
+
+    // Close modal when clicking outside
+    document.getElementById('completion-modal').addEventListener('click', function(e) {
+      if (e.target === this) closeModal();
+    });
+
+    // Theme toggle (basic implementation)
+    const themeToggle = document.createElement('button');
+    themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+    themeToggle.style.cssText = 'position: fixed; bottom: 24px; right: 24px; width: 50px; height: 50px; border-radius: 50%; background: var(--primary); color: white; border: none; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.2); z-index: 999; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;';
+    themeToggle.onclick = () => {
+      const html = document.documentElement;
+      const current = html.getAttribute('data-theme');
+      const next = current === 'light' ? 'dark' : 'light';
+      html.setAttribute('data-theme', next);
+      themeToggle.innerHTML = next === 'light' ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
+      localStorage.setItem('theme', next);
+    };
+    document.body.appendChild(themeToggle);
+
+    // Load saved theme
+    if (localStorage.getItem('theme') === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+    }
+  </script>
+</body>
+</html>
