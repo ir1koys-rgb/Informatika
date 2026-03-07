@@ -1,0 +1,2056 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Materi Kelas XII - Smart Algorithm</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #ef4444;
+      --primary-dark: #dc2626;
+      --secondary: #f87171;
+      --accent: #f43f5e;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --bg-primary: #ffffff;
+      --bg-secondary: #f8fafc;
+      --bg-code: #1e293b;
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --text-muted: #64748b;
+      --text-light: #f8fafc;
+      --border: #e2e8f0;
+      --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+      --radius: 12px;
+      --transition: all 0.3s ease;
+    }
+    [data-theme="dark"] {
+      --bg-primary: #0f172a;
+      --bg-secondary: #1e293b;
+      --text-primary: #f8fafc;
+      --text-secondary: #cbd5e1;
+      --border: #334155;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.8;
+      transition: var(--transition);
+    }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    
+    /* Header */
+    .page-header {
+      background: linear-gradient(135deg, var(--danger) 0%, var(--accent) 100%);
+      color: white;
+      padding: 60px 0 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-header::before {
+      content: '';
+      position: absolute;
+      width: 300px; height: 300px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      top: -100px; right: -50px;
+    }
+    .header-content {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      position: relative;
+      z-index: 1;
+    }
+    .back-btn {
+      background: rgba(255,255,255,0.2);
+      border: none;
+      color: white;
+      width: 45px; height: 45px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+      text-decoration: none;
+    }
+    .back-btn:hover {
+      background: rgba(255,255,255,0.3);
+      transform: translateX(-3px);
+    }
+    .header-text h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .header-text p {
+      opacity: 0.9;
+      font-size: 1.05rem;
+    }
+    .level-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.2);
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      margin-top: 12px;
+    }
+    .overall-score {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.95);
+      color: #b91c1c;
+      padding: 10px 20px;
+      border-radius: 20px;
+      font-weight: 700;
+      margin-top: 12px;
+      margin-left: 12px;
+    }
+
+    /* Navigation Tabs */
+    .topic-nav {
+      background: var(--bg-secondary);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 0;
+    }
+    .topic-tabs {
+      display: flex;
+      gap: 4px;
+      overflow-x: auto;
+      padding: 12px 0;
+      scrollbar-width: none;
+    }
+    .topic-tabs::-webkit-scrollbar { display: none; }
+    .tab-btn {
+      padding: 12px 20px;
+      background: none;
+      border: none;
+      color: var(--text-secondary);
+      font-weight: 500;
+      cursor: pointer;
+      border-radius: var(--radius);
+      transition: var(--transition);
+      white-space: nowrap;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .tab-btn:hover {
+      background: var(--bg-primary);
+      color: var(--danger);
+    }
+    .tab-btn.active {
+      background: var(--danger);
+      color: white;
+    }
+    .tab-badge {
+      background: rgba(255,255,255,0.3);
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-size: 0.75rem;
+    }
+
+    /* Content Sections */
+    .topic-section {
+      display: none;
+      padding: 40px 0;
+      animation: fadeIn 0.4s ease;
+    }
+    .topic-section.active { display: block; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      margin-bottom: 16px;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-title i { color: var(--danger); font-size: 1.5rem; }
+
+    /* Enhanced Content Styles */
+    .content-intro {
+      background: linear-gradient(135deg, rgba(239,68,68,0.1) 0%, rgba(244,63,94,0.1) 100%);
+      border-left: 4px solid var(--danger);
+      padding: 24px;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      margin: 24px 0;
+      font-size: 1.05rem;
+    }
+    .content-intro strong { color: #b91c1c; }
+
+    .content-card {
+      background: var(--bg-secondary);
+      border-radius: var(--radius);
+      padding: 28px;
+      margin-bottom: 24px;
+      border: 1px solid var(--border);
+      transition: var(--transition);
+    }
+    .content-card:hover {
+      border-color: var(--danger);
+      box-shadow: var(--shadow);
+    }
+    .content-card h4 {
+      font-size: 1.3rem;
+      margin: 24px 0 16px;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--border);
+    }
+    .content-card h4 i { color: var(--accent); }
+    .content-card p {
+      margin-bottom: 16px;
+      text-align: justify;
+      color: var(--text-secondary);
+    }
+    .content-card ul {
+      padding-left: 24px;
+      margin: 16px 0;
+    }
+    .content-card li {
+      margin-bottom: 10px;
+      color: var(--text-secondary);
+    }
+    .content-card li strong { color: var(--text-primary); }
+
+    /* Code Blocks */
+    .code-block {
+      background: var(--bg-code);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin: 16px 0;
+      overflow-x: auto;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      color: var(--text-light);
+      border: 1px solid #334155;
+    }
+    .code-tag { color: #f472b6; }
+    .code-attr { color: #93c5fd; }
+    .code-value { color: #98c379; }
+    .code-comment { color: #5c6370; font-style: italic; }
+    .code-selector { color: #e5c07b; }
+    .code-property { color: #61afef; }
+
+    /* Live Editor - WORKING SIMULATOR */
+    .live-editor {
+      background: var(--bg-secondary);
+      border-radius: var(--radius);
+      border: 2px solid var(--border);
+      overflow: hidden;
+      margin: 24px 0;
+    }
+    .editor-header {
+      background: var(--bg-tertiary, #f1f5f9);
+      padding: 12px 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .editor-title {
+      font-weight: 600;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .editor-title i { color: var(--danger); }
+    .btn-run {
+      background: var(--success);
+      color: white;
+      border: none;
+      padding: 8px 20px;
+      border-radius: var(--radius);
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: var(--transition);
+    }
+    .btn-run:hover {
+      background: #059669;
+      transform: translateY(-2px);
+    }
+    .btn-clear {
+      background: var(--danger);
+      color: white;
+      border: none;
+      padding: 8px 20px;
+      border-radius: var(--radius);
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: var(--transition);
+      margin-left: 8px;
+    }
+    .btn-clear:hover {
+      background: #dc2626;
+      transform: translateY(-2px);
+    }
+    .editor-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+    .editor-pane {
+      padding: 20px;
+    }
+    .editor-pane-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      display: block;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .code-textarea {
+      width: 100%;
+      min-height: 300px;
+      background: var(--bg-code);
+      color: var(--text-light);
+      border: 1px solid #334155;
+      border-radius: var(--radius);
+      padding: 16px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      resize: vertical;
+      line-height: 1.6;
+    }
+    .code-textarea:focus {
+      outline: none;
+      border-color: var(--danger);
+    }
+    .output-pane {
+      background: var(--bg-primary);
+      border-left: 1px solid var(--border);
+    }
+    .preview-frame {
+      width: 100%;
+      height: 300px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      overflow: auto;
+    }
+
+    /* Step Explanation */
+    .step-explanation {
+      background: var(--bg-secondary);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin: 24px 0;
+    }
+    .step-explanation h5 {
+      color: var(--text-primary);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .step-list {
+      counter-reset: step;
+      list-style: none;
+      padding-left: 0;
+    }
+    .step-list li {
+      counter-increment: step;
+      padding-left: 40px;
+      position: relative;
+      margin-bottom: 16px;
+      color: var(--text-secondary);
+    }
+    .step-list li::before {
+      content: counter(step);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 28px;
+      height: 28px;
+      background: var(--danger);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    /* Tips & Notes */
+    .tip-box {
+      background: linear-gradient(135deg, rgba(244,63,94,0.15) 0%, rgba(239,68,68,0.1) 100%);
+      border-left: 4px solid var(--accent);
+      padding: 20px;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      margin: 24px 0;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .tip-box i {
+      color: var(--accent);
+      font-size: 1.3rem;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+    .tip-box strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--text-primary);
+    }
+
+    .note-box {
+      background: rgba(6,182,212,0.1);
+      border-left: 4px solid var(--secondary);
+      padding: 16px 20px;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      margin: 20px 0;
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+    }
+    .note-box strong { color: var(--text-primary); }
+
+    /* Quiz Section */
+    .quiz-container {
+      margin-top: 40px;
+      padding: 32px;
+      background: linear-gradient(135deg, rgba(239,68,68,0.05) 0%, rgba(244,63,94,0.05) 100%);
+      border: 2px solid var(--border);
+      border-radius: var(--radius);
+      position: relative;
+    }
+    .quiz-container::before {
+      content: '📝 KUIS INTERAKTIF';
+      position: absolute;
+      top: -12px;
+      left: 24px;
+      background: var(--danger);
+      color: white;
+      padding: 4px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+    .quiz-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .quiz-score-display {
+      background: var(--bg-primary);
+      padding: 16px 24px;
+      border-radius: var(--radius);
+      border: 2px solid var(--border);
+      text-align: center;
+    }
+    .quiz-score-value {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--danger);
+    }
+
+    .quiz-question {
+      background: var(--bg-primary);
+      padding: 24px;
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      border: 1px solid var(--border);
+    }
+    .question-text {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+      color: var(--text-primary);
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .question-number {
+      width: 32px; height: 32px;
+      background: var(--danger);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding-left: 44px;
+    }
+    .quiz-option {
+      padding: 16px 20px;
+      background: var(--bg-secondary);
+      border: 2px solid var(--border);
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.95rem;
+    }
+    .quiz-option:hover:not(.disabled) {
+      border-color: var(--danger);
+      background: var(--bg-primary);
+    }
+    .quiz-option.selected {
+      border-color: var(--danger);
+      background: rgba(239,68,68,0.1);
+    }
+    .quiz-option.correct {
+      border-color: var(--success);
+      background: rgba(16,185,129,0.15);
+    }
+    .quiz-option.incorrect {
+      border-color: var(--danger);
+      background: rgba(239,68,68,0.15);
+    }
+    .quiz-option.disabled { cursor: not-allowed; opacity: 0.7; }
+    .option-letter {
+      width: 28px; height: 28px;
+      background: var(--bg-primary);
+      border: 2px solid var(--border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+
+    .quiz-actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 24px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+    }
+    .btn-quiz {
+      padding: 14px 28px;
+      border-radius: var(--radius);
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: var(--transition);
+      border: none;
+      font-size: 1rem;
+    }
+    .btn-submit { background: var(--danger); color: white; }
+    .btn-submit:hover { background: #dc2626; }
+    .btn-reset {
+      background: var(--bg-secondary);
+      color: var(--text-primary);
+      border: 2px solid var(--border);
+    }
+    .btn-retry {
+      background: var(--accent);
+      color: white;
+      display: none;
+    }
+    .btn-retry.show { display: inline-flex; }
+
+    .quiz-feedback {
+      margin-top: 20px;
+      padding: 20px;
+      border-radius: var(--radius);
+      display: none;
+    }
+    .quiz-feedback.show { display: block; }
+    .quiz-feedback.success {
+      background: rgba(16,185,129,0.15);
+      border: 2px solid var(--success);
+      color: #047857;
+    }
+    .quiz-feedback.warning {
+      background: rgba(245,158,11,0.15);
+      border: 2px solid var(--warning);
+      color: #b45309;
+    }
+    .quiz-feedback.danger {
+      background: rgba(239,68,68,0.15);
+      border: 2px solid var(--danger);
+      color: #b91c1c;
+    }
+
+    /* Section Navigation */
+    .section-nav {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 40px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+    }
+    .nav-btn {
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: var(--transition);
+      border: 2px solid var(--border);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      text-decoration: none;
+    }
+    .nav-btn.primary {
+      background: var(--danger);
+      color: white;
+      border-color: var(--danger);
+    }
+    .nav-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+
+    /* Certificate */
+    .certificate-section {
+      display: none;
+      margin-top: 40px;
+      padding: 40px;
+      background: linear-gradient(135deg, rgba(239,68,68,0.1) 0%, rgba(244,63,94,0.1) 100%);
+      border: 3px solid var(--danger);
+      border-radius: var(--radius);
+      text-align: center;
+    }
+    .certificate-section.show { display: block; }
+
+    /* Footer */
+    .page-footer {
+      background: var(--bg-secondary);
+      padding: 30px 0;
+      text-align: center;
+      border-top: 1px solid var(--border);
+      margin-top: 40px;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .header-content { flex-direction: column; text-align: center; }
+      .quiz-header { flex-direction: column; align-items: stretch; }
+      .quiz-options { padding-left: 0; }
+      .question-text { flex-direction: column; gap: 8px; }
+      .editor-body { grid-template-columns: 1fr; }
+      .output-pane { border-left: none; border-top: 1px solid var(--border); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Page Header -->
+  <header class="page-header">
+    <div class="container">
+      <div class="header-content">
+        <a href="index.html" class="back-btn" title="Kembali ke Beranda">
+          <i class="fas fa-arrow-left"></i>
+        </a>
+        <div class="header-text">
+          <h1><i class="fas fa-graduation-cap"></i> Materi Kelas XII</h1>
+          <p>Implementasi & Proyek Web Programming</p>
+          <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 12px;">
+            <div class="level-badge">
+              <i class="fas fa-star"></i>
+              <span>Tingkat Lanjut • 5 Modul Lengkap</span>
+            </div>
+            <div class="overall-score">
+              <i class="fas fa-trophy"></i>
+              <span>Total Skor: <strong id="totalScore">0</strong>/500</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation Tabs -->
+  <nav class="topic-nav">
+    <div class="container">
+      <div class="topic-tabs">
+        <button class="tab-btn active" data-target="modul1">
+          🌐 HTML Dasar <span class="tab-badge" id="badge-modul1">0/100</span>
+        </button>
+        <button class="tab-btn" data-target="modul2">
+          🎨 CSS Styling <span class="tab-badge" id="badge-modul2">0/100</span>
+        </button>
+        <button class="tab-btn" data-target="modul3">
+          ⚡ JavaScript <span class="tab-badge" id="badge-modul3">0/100</span>
+        </button>
+        <button class="tab-btn" data-target="modul4">
+          🔗 Integrasi <span class="tab-badge" id="badge-modul4">0/100</span>
+        </button>
+        <button class="tab-btn" data-target="modul5">
+          🎯 Proyek Akhir <span class="tab-badge" id="badge-modul5">0/100</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="container">
+
+    <!-- ==================== MODUL 1: DASAR HTML ==================== -->
+    <section id="modul1" class="topic-section active">
+      <h2 class="section-title"><i class="fas fa-globe"></i> Dasar Pemrograman Web (HTML)</h2>
+      
+      <div class="content-intro">
+        <strong>🤔 Pernahkah kamu bertanya bagaimana website seperti Google atau Facebook dibuat?</strong><br>
+        Semua website di dunia dibangun menggunakan tiga teknologi utama: <strong>HTML</strong>, <strong>CSS</strong>, dan <strong>JavaScript</strong>. 
+        Di Kelas XII, kamu akan mempelajari ketiganya dan membuat website portofolio sendiri!
+      </div>
+
+      <div class="content-card">
+        <h4><i class="fas fa-book"></i> Apa itu HTML?</h4>
+        <p>
+          <strong>HTML</strong> (HyperText Markup Language) adalah bahasa markup standar untuk membuat halaman web. 
+          HTML menentukan <strong>struktur</strong> dan <strong>konten</strong> dari sebuah halaman web.
+        </p>
+        <p>
+          Analogi sederhana: Jika website adalah sebuah rumah, maka HTML adalah <strong>kerangka dan dinding</strong>-nya. 
+          CSS adalah <strong>cat dan dekorasi</strong>, sedangkan JavaScript adalah <strong>listrik dan sistem otomatis</strong>.
+        </p>
+      </div>
+
+      <div class="content-card">
+        <h4><i class="fas fa-code"></i> Struktur Dasar HTML</h4>
+        <div class="code-block">
+<span class="code-tag">&lt;!DOCTYPE html&gt;</span>
+<span class="code-tag">&lt;html</span> <span class="code-attr">lang</span>=<span class="code-value">"id"</span><span class="code-tag">&gt;</span>
+<span class="code-tag">&lt;head&gt;</span>
+    <span class="code-tag">&lt;meta</span> <span class="code-attr">charset</span>=<span class="code-value">"UTF-8"</span><span class="code-tag">&gt;</span>
+    <span class="code-tag">&lt;title&gt;</span>Judul Halaman<span class="code-tag">&lt;/title&gt;</span>
+<span class="code-tag">&lt;/head&gt;</span>
+<span class="code-tag">&lt;body&gt;</span>
+    <span class="code-tag">&lt;h1&gt;</span>Selamat Datang<span class="code-tag">&lt;/h1&gt;</span>
+    <span class="code-tag">&lt;p&gt;</span>Ini adalah paragraf pertama.<span class="code-tag">&lt;/p&gt;</span>
+<span class="code-tag">&lt;/body&gt;</span>
+<span class="code-tag">&lt;/html&gt;</span>
+        </div>
+      </div>
+
+      <div class="content-card">
+        <h4><i class="fas fa-tags"></i> Tag HTML yang Sering Digunakan</h4>
+        <div class="symbol-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+          <div class="symbol-item">
+            <div class="symbol-visual terminal" style="background: var(--danger);">&lt;h1&gt;</div>
+            <div class="symbol-info">
+              <h5>Heading (h1-h6)</h5>
+              <p>Judul dan subjudul halaman</p>
+            </div>
+          </div>
+          <div class="symbol-item">
+            <div class="symbol-visual process" style="background: var(--secondary);">&lt;p&gt;</div>
+            <div class="symbol-info">
+              <h5>Paragraph</h5>
+              <p>Teks paragraf konten</p>
+            </div>
+          </div>
+          <div class="symbol-item">
+            <div class="symbol-visual io" style="background: #64748b;">&lt;a&gt;</div>
+            <div class="symbol-info">
+              <h5>Anchor/Link</h5>
+              <p>Tautan ke halaman lain</p>
+            </div>
+          </div>
+          <div class="symbol-item">
+            <div class="symbol-visual terminal" style="background: var(--warning);">&lt;img&gt;</div>
+            <div class="symbol-info">
+              <h5>Image</h5>
+              <p>Menampilkan gambar</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Editor Modul 1 -->
+      <div class="live-editor">
+        <div class="editor-header">
+          <div class="editor-title">
+            <i class="fas fa-code"></i>
+            Live HTML Editor - Coba Sendiri!
+          </div>
+          <div>
+            <button class="btn-run" onclick="runCode('modul1')">
+              <i class="fas fa-play"></i> Preview HTML
+            </button>
+            <button class="btn-clear" onclick="clearOutput('modul1')">
+              <i class="fas fa-trash"></i> Clear
+            </button>
+          </div>
+        </div>
+        <div class="editor-body">
+          <div class="editor-pane">
+            <span class="editor-pane-label">📝 Kode HTML</span>
+            <textarea class="code-textarea" id="code-modul1" spellcheck="false">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Website Pertamaku&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Selamat Datang di Website Saya&lt;/h1&gt;
+    &lt;p&gt;Nama: [Nama Kamu]&lt;/p&gt;
+    &lt;p&gt;Kelas: XII IPA/IPA&lt;/p&gt;
+    &lt;p&gt;Sekolah: SMA Negeri 1 Cluring&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</textarea>
+          </div>
+          <div class="editor-pane output-pane">
+            <span class="editor-pane-label">🖥️ Preview Website</span>
+            <div class="preview-frame" id="output-modul1">Klik "Preview HTML" untuk melihat hasil...</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tip-box">
+        <i class="fas fa-lightbulb"></i>
+        <div>
+          <strong>💡 Tips Penting:</strong> 
+          Setiap tag HTML harus ditutup (kecuali tag kosong seperti <code>&lt;img&gt;</code> dan <code>&lt;br&gt;</code>). 
+          Gunakan indentasi agar kode mudah dibaca. Selalu test di browser!
+        </div>
+      </div>
+
+      <div class="note-box">
+        <strong>📚 Konteks Lokal:</strong> 
+        Kamu bisa membuat website profil sekolah, galeri foto wisata Banyuwangi, 
+        atau portofolio pribadi sebagai proyek akhir!
+      </div>
+
+      <!-- QUIZ MODUL 1 -->
+      <div class="quiz-container" id="quiz-modul1">
+        <div class="quiz-header">
+          <div>
+            <h3 style="margin-bottom: 8px;">Kuis Modul 1: HTML Dasar</h3>
+            <div style="color: var(--text-muted); font-size: 0.9rem;">
+              <i class="fas fa-question-circle"></i> 5 Soal • <i class="fas fa-star"></i> 100 Poin
+            </div>
+          </div>
+          <div class="quiz-score-display">
+            <div style="font-size: 0.85rem; color: var(--text-muted);">Skor Anda</div>
+            <div class="quiz-score-value" id="score-modul1">0</div>
+            <div style="font-size: 0.9rem; color: var(--text-muted);">/ 100 poin</div>
+          </div>
+        </div>
+
+        <form id="form-modul1">
+          <div class="quiz-question" data-correct="b">
+            <div class="question-text">
+              <span class="question-number">1</span>
+              <span>Kepanjangan dari HTML adalah?</span>
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option"><span class="option-letter">A</span><span>High Text Making Language</span></label>
+              <label class="quiz-option"><span class="option-letter">B</span><span>HyperText Markup Language</span></label>
+              <label class="quiz-option"><span class="option-letter">C</span><span>Hyper Transfer Markup Language</span></label>
+              <label class="quiz-option"><span class="option-letter">D</span><span>Home Tool Markup Language</span></label>
+            </div>
+          </div>
+          <div class="quiz-question" data-correct="a">
+            <div class="question-text">
+              <span class="question-number">2</span>
+              <span>Tag untuk membuat judul terbesar adalah?</span>
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option"><span class="option-letter">A</span><span>&lt;h1&gt;</span></label>
+              <label class="quiz-option"><span class="option-letter">B</span><span>&lt;head&gt;</span></label>
+              <label class="quiz-option"><span class="option-letter">C</span><span>&lt;header&gt;</span></label>
+              <label class="quiz-option"><span class="option-letter">D</span><span>&lt;h6&gt;</span></label>
+            </div>
+          </div>
+          <div class="quiz-question" data-correct="c">
+            <div class="question-text">
+              <span class="question-number">3</span>
+              <span>Tag untuk membuat link adalah?</span>
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option"><span class="option-letter">A</span><span>&lt;link&gt;</span></label>
+              <label class="quiz-option"><span class="option-letter">B</span><span>&lt;href&gt;</span></label>
+              <label class="quiz-option"><span class="option-letter">C</span><span>&lt;a&gt;</span></label>
+              <label class="quiz-option"><span class="option-letter">D</span><span>&lt;url&gt;</span></label>
+            </div>
+          </div>
+          <div class="quiz-question" data-correct="d">
+            <div class="question-text">
+              <span class="question-number">4</span>
+              <span>Tag yang benar untuk menampilkan gambar adalah?</span>
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option"><span class="option-letter">A</span><span>&lt;image&gt;</span></label>
+              <label class="quiz-option"><span class="option-letter">B</span><span>&lt;pic&gt;</span></label>
+              <label class="quiz-option"><span class="option-letter">C</span><span>&lt;img src&gt;</span></label>
+              <label class="quiz-option"><span class="option-letter">D</span><span>&lt;img src="gambar.jpg"&gt;</span></label>
+            </div>
+          </div>
+          <div class="quiz-question" data-correct="a">
+            <div class="question-text">
+              <span class="question-number">5</span>
+              <span>Bagian HTML yang berisi konten yang terlihat di browser adalah?</span>
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option"><span class="option-letter">A</span><span>&lt;body&gt;</span></label>
+              <label class="quiz-option"><span class="option-letter">B</span><span>&lt;head&gt;</span></label>
+              <label class="quiz-option"><span class="option-letter">C</span><span>&lt;html&gt;</span></label>
+              <label class="quiz-option"><span class="option-letter">D</span><span>&lt;meta&gt;</span></label>
+            </div>
+          </div>
+
+          <div class="quiz-actions">
+            <button type="button" class="btn-quiz btn-submit" onclick="submitQuiz('modul1')">
+              <i class="fas fa-paper-plane"></i> Kirim Jawaban
+            </button>
+            <button type="button" class="btn-quiz btn-reset" onclick="resetQuiz('modul1')">
+              <i class="fas fa-redo"></i> Reset
+            </button>
+            <button type="button" class="btn-quiz btn-retry" id="retry-modul1" onclick="retryQuiz('modul1')">
+              <i class="fas fa-sync-alt"></i> Coba Lagi
+            </button>
+          </div>
+        </form>
+        <div class="quiz-feedback" id="feedback-modul1"></div>
+      </div>
+
+      <div class="section-nav">
+        <span></span>
+        <button class="nav-btn primary" onclick="nextModule('modul2')">
+          Lanjut ke CSS <i class="fas fa-arrow-right"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- ==================== MODUL 2: CSS STYLING ==================== -->
+    <section id="modul2" class="topic-section">
+      <h2 class="section-title"><i class="fas fa-palette"></i> CSS Styling</h2>
+      
+      <div class="content-intro">
+        <strong>🤔 Mengapa website terlihat berbeda-beda padahal sama-sama menggunakan HTML?</strong><br>
+        Jawabannya adalah <strong>CSS</strong> (Cascading Style Sheets)! CSS bertanggung jawab untuk 
+        <strong>menghias</strong> dan <strong>mempercantik</strong> tampilan website.
+      </div>
+
+      <div class="content-card">
+        <h4><i class="fas fa-book"></i> Apa itu CSS?</h4>
+        <p>
+          <strong>CSS</strong> adalah bahasa stylesheet yang digunakan untuk mengatur <strong>tampilan</strong> 
+          dan <strong>layout</strong> halaman web. CSS mengontrol warna, font, ukuran, posisi, dan animasi.
+        </p>
+        <p>
+          Analogi: Jika HTML adalah kerangka rumah, CSS adalah <strong>cat, wallpaper, furnitur, dan dekorasi</strong> 
+          yang membuat rumah terlihat indah!
+        </p>
+      </div>
+
+      <div class="content-card">
+        <h4><i class="fas fa-code"></i> Sintaks Dasar CSS</h4>
+        <div class="code-block">
+<span class="code-selector">selector</span> {
+    <span class="code-property">property</span>: <span class="code-value">value</span>;
+}
+
+<span class="code-comment">// Contoh:</span>
+<span class="code-selector">h1</span> {
+    <span class="code-property">color</span>: <span class="code-value">blue</span>;
+    <span class="code-property">font-size</span>: <span class="code-value">24px</span>;
+}
+
+<span class="code-selector">.class-name</span> {
+    <span class="code-property">background</span>: <span class="code-value">#f0f0f0</span>;
+}
+
+<span class="code-selector">#id-name</span> {
+    <span class="code-property">border</span>: <span class="code-value">1px solid black</span>;
+}
+        </div>
+      </div>
+
+      <!-- Live Editor Modul 2 -->
+      <div class="live-editor">
+        <div class="editor-header">
+          <div class="editor-title">
+            <i class="fas fa-code"></i>
+            Live CSS Editor - Styling
+          </div>
+          <div>
+            <button class="btn-run" onclick="runCode('modul2')">
+              <i class="fas fa-play"></i> Preview CSS
+            </button>
+            <button class="btn-clear" onclick="clearOutput('modul2')">
+              <i class="fas fa-trash"></i> Clear
+            </button>
+          </div>
+        </div>
+        <div class="editor-body">
+          <div class="editor-pane">
+            <span class="editor-pane-label">📝 Kode HTML + CSS</span>
+            <textarea class="code-textarea" id="code-modul2" spellcheck="false">&lt;style&gt;
+    h1 {
+        color: #ef4444;
+        text-align: center;
+        font-family: Arial, sans-serif;
+    }
+    p {
+        color: #475569;
+        font-size: 18px;
+        line-height: 1.6;
+    }
+    .box {
+        background: #f1f5f9;
+        padding: 20px;
+        border-radius: 8px;
+        margin: 20px 0;
+    }
+&lt;/style&gt;
+
+&lt;h1&gt;Website SMA N 1 Cluring&lt;/h1&gt;
+&lt;div class="box"&gt;
+    &lt;p&gt;Selamat datang di website sekolah kami.&lt;/p&gt;
+    &lt;p&gt;Berlokasi di Jalan H. Huzaini, Benculuk – Cluring&lt;/p&gt;
+&lt;/div&gt;</textarea>
+          </div>
+          <div class="editor-pane output-pane">
+            <span class="editor-pane-label">🖥️ Preview Website</span>
+            <div class="preview-frame" id="output-modul2">Klik "Preview CSS" untuk melihat hasil...</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- QUIZ MODUL 2 -->
+      <div class="quiz-container" id="quiz-modul2">
+        <div class="quiz-header">
+          <div>
+            <h3 style="margin-bottom: 8px;">Kuis Modul 2: CSS</h3>
+            <div style="color: var(--text-muted); font-size: 0.9rem;">
+              <i class="fas fa-question-circle"></i> 5 Soal • <i class="fas fa-star"></i> 100 Poin
+            </div>
+          </div>
+          <div class="quiz-score-display">
+            <div style="font-size: 0.85rem; color: var(--text-muted);">Skor Anda</div>
+            <div class="quiz-score-value" id="score-modul2">0</div>
+            <div style="font-size: 0.9rem; color: var(--text-muted);">/ 100 poin</div>
+          </div>
+        </div>
+
+        <form id="form-modul2">
+          <div class="quiz-question" data-correct="c">
+            <div class="question-text">
+              <span class="question-number">1</span>
+              <span>Kepanjangan dari CSS adalah?</span>
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option"><span class="option-letter">A</span><span>Computer Style Sheets</span></label>
+              <label class="quiz-option"><span class="option-letter">B</span><span>Creative Style System</span></label>
+              <label class="quiz-option"><span class="option-letter">C</span><span>Cascading Style Sheets</span></label>
+              <label class="quiz-option"><span class="option-letter">D</span><span>Colorful Style Sheets</span></label>
+            </div>
+          </div>
+          <div class="quiz-question" data-correct="a">
+            <div class="question-text">
+              <span class="question-number">2</span>
+              <span>Property CSS untuk mengubah warna teks adalah?</span>
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option"><span class="option-letter">A</span><span>color</span></label>
+              <label class="quiz-option"><span class="option-letter">B</span><span>text-color</span></label>
+              <label class="quiz-option"><span class="option-letter">C</span><span>font-color</span></label>
+              <label class="quiz-option"><span class="option-letter">D</span><span>foreground</span></label>
+            </div>
+          </div>
+          <div class="quiz-question" data-correct="b">
+            <div class="question-text">
+              <span class="question-number">3</span>
+              <span>Selector CSS untuk class diawali dengan simbol?</span>
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option"><span class="option-letter">A</span><span>#</span></label>
+              <label class="quiz-option"><span class="option-letter">B</span><span>.</span></label>
+              <label class="quiz-option"><span class="option-letter">C</span><span>@</span></label>
+              <label class="quiz-option"><span class="option-letter">D</span><span>$</span></label>
+            </div>
+          </div>
+          <div class="quiz-question" data-correct="d">
+            <div class="question-text">
+              <span class="question-number">4</span>
+              <span>Property untuk mengatur ukuran font adalah?</span>
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option"><span class="option-letter">A</span><span>text-size</span></label>
+              <label class="quiz-option"><span class="option-letter">B</span><span>font-weight</span></label>
+              <label class="quiz-option"><span class="option-letter">C</span><span>size</span></label>
+              <label class="quiz-option"><span class="option-letter">D</span><span>font-size</span></label>
+            </div>
+          </div>
+          <div class="quiz-question" data-correct="a">
+            <div class="question-text">
+              <span class="question-number">5</span>
+              <span>CSS dapat ditambahkan ke HTML dengan cara?</span>
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option"><span class="option-letter">A</span><span>Inline, Internal, External</span></label>
+              <label class="quiz-option"><span class="option-letter">B</span><span>Copy-Paste</span></label>
+              <label class="quiz-option"><span class="option-letter">C</span><span>Import saja</span></label>
+              <label class="quiz-option"><span class="option-letter">D</span><span>JavaScript</span></label>
+            </div>
+          </div>
+
+          <div class="quiz-actions">
+            <button type="button" class="btn-quiz btn-submit" onclick="submitQuiz('modul2')">
+              <i class="fas fa-paper-plane"></i> Kirim Jawaban
+            </button>
+            <button type="button" class="btn-quiz btn-reset" onclick="resetQuiz('modul2')">
+              <i class="fas fa-redo"></i> Reset
+            </button>
+            <button type="button" class="btn-quiz btn-retry" id="retry-modul2" onclick="retryQuiz('modul2')">
+              <i class="fas fa-sync-alt"></i> Coba Lagi
+            </button>
+          </div>
+        </form>
+        <div class="quiz-feedback" id="feedback-modul2"></div>
+      </div>
+
+      <div class="section-nav">
+        <button class="nav-btn" onclick="prevModule('modul1')">
+          <i class="fas fa-arrow-left"></i> Kembali
+        </button>
+        <button class="nav-btn primary" onclick="nextModule('modul3')">
+          Lanjut ke JavaScript <i class="fas fa-arrow-right"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- ==================== MODUL 3: JAVASCRIPT ==================== -->
+    <section id="modul3" class="topic-section">
+      <h2 class="section-title"><i class="fas fa-bolt"></i> JavaScript - Interaktivitas Web</h2>
+      
+      <div class="content-intro">
+        <strong>🤔 Bagaimana website bisa merespon klik, menampilkan animasi, atau memproses data?</strong><br>
+        Semua itu berkat <strong>JavaScript</strong>! JavaScript adalah bahasa pemrograman yang membuat website 
+        menjadi <strong>interaktif</strong> dan <strong>dinamis</strong>.
+      </div>
+
+      <div class="content-card">
+        <h4><i class="fas fa-book"></i> Apa itu JavaScript?</h4>
+        <p>
+          <strong>JavaScript</strong> adalah bahasa pemrograman yang berjalan di browser. JavaScript memungkinkan 
+          website untuk merespon interaksi pengguna, memanipulasi konten, dan berkomunikasi dengan server.
+        </p>
+        <p>
+          Analogi: Jika HTML adalah kerangka dan CSS adalah dekorasi, JavaScript adalah <strong>otak dan sistem saraf</strong> 
+          yang membuat website "hidup" dan bisa berinteraksi!
+        </p>
+      </div>
+
+      <div class="content-card">
+        <h4><i class="fas fa-code"></i> Sintaks Dasar JavaScript</h4>
+        <div class="code-block">
+<span class="code-comment">// Variabel</span>
+<span class="code-keyword">let</span> nama = <span class="code-string">"Budi"</span>;
+<span class="code-keyword">const</span> usia = 17;
+
+<span class="code-comment">// Fungsi</span>
+<span class="code-keyword">function</span> <span class="code-function">sapa</span>() {
+    <span class="code-function">alert</span>(<span class="code-string">"Halo, "</span> + nama);
+}
+
+<span class="code-comment">// Event Handler</span>
+document.<span class="code-function">getElementById</span>(<span class="code-string">"tombol"</span>).<span class="code-function">addEventListener</span>(<span class="code-string">"click"</span>, sapa);
+
+<span class="code-comment">// Manipulasi DOM</span>
+document.<span class="code-function">getElementById</span>(<span class="code-string">"teks"</span>).innerHTML = <span class="code-string">"Teks baru!"</span>;
+        </div>
+      </div>
+
+      <!-- Live Editor Modul 3 -->
+      <div class="live-editor">
+        <div class="editor-header">
+          <div class="editor-title">
+            <i class="fas fa-code"></i>
+            Live JavaScript Editor
+          </div>
+          <div>
+            <button class="btn-run" onclick="runCode('modul3')">
+              <i class="fas fa-play"></i> Jalankan JS
+            </button>
+            <button class="btn-clear" onclick="clearOutput('modul3')">
+              <i class="fas fa-trash"></i> Clear
+            </button>
+          </div>
+        </div>
+        <div class="editor-body">
+          <div class="editor-pane">
+            <span class="editor-pane-label">📝 Kode JavaScript</span>
+            <textarea class="code-textarea" id="code-modul3" spellcheck="false">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;JavaScript Demo&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1 id="judul"&gt;Selamat Datang&lt;/h1&gt;
+    &lt;button onclick="ubahWarna()"&gt;Ubah Warna&lt;/button&gt;
+    &lt;button onclick="ubahTeks()"&gt;Ubah Teks&lt;/button&gt;
+    
+    &lt;script&gt;
+        function ubahWarna() {
+            document.getElementById("judul").style.color = "red";
+        }
+        
+        function ubahTeks() {
+            document.getElementById("judul").innerHTML = "Halo SMA N 1 Cluring!";
+        }
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</textarea>
+          </div>
+          <div class="editor-pane output-pane">
+            <span class="editor-pane-label">🖥️ Preview Website</span>
+            <div class="preview-frame" id="output-modul3">Klik "Jalankan JS" untuk melihat hasil...</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- QUIZ MODUL 3 -->
+      <div class="quiz-container" id="quiz-modul3">
+        <div class="quiz-header">
+          <div>
+            <h3 style="margin-bottom: 8px;">Kuis Modul 3: JavaScript</h3>
+            <div style="color: var(--text-muted); font-size: 0.9rem;">
+              <i class="fas fa-question-circle"></i> 5 Soal • <i class="fas fa-star"></i> 100 Poin
+            </div>
+          </div>
+          <div class="quiz-score-display">
+            <div style="font-size: 0.85rem; color: var(--text-muted);">Skor Anda</div>
+            <div class="quiz-score-value" id="score-modul3">0</div>
+            <div style="font-size: 0.9rem; color: var(--text-muted);">/ 100 poin</div>
+          </div>
+        </div>
+
+        <form id="form-modul3">
+          <div class="quiz-question" data-correct="b">
+            <div class="question-text">
+              <span class="question-number">1</span>
+              <span>JavaScript digunakan untuk?</span>
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option"><span class="option-letter">A</span><span>Struktur halaman</span></label>
+              <label class="quiz-option"><span class="option-letter">B</span><span>Interaktivitas website</span></label>
+              <label class="quiz-option"><span class="option-letter">C</span><span>Styling tampilan</span></label>
+              <label class="quiz-option"><span class="option-letter">D</span><span>Database</span></label>
+            </div>
+          </div>
+          <div class="quiz-question" data-correct="a">
+            <div class="question-text">
+              <span class="question-number">2</span>
+              <span>Kata kunci untuk membuat variabel yang bisa diubah adalah?</span>
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option"><span class="option-letter">A</span><span>let</span></label>
+              <label class="quiz-option"><span class="option-letter">B</span><span>const</span></label>
+              <label class="quiz-option"><span class="option-letter">C</span><span>var</span></label>
+              <label class="quiz-option"><span class="option-letter">D</span><span>fixed</span></label>
+            </div>
+          </div>
+          <div class="quiz-question" data-correct="c">
+            <div class="question-text">
+              <span class="question-number">3</span>
+              <span>Fungsi untuk menampilkan alert adalah?</span>
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option"><span class="option-letter">A</span><span>show()</span></label>
+              <label class="quiz-option"><span class="option-letter">B</span><span>display()</span></label>
+              <label class="quiz-option"><span class="option-letter">C</span><span>alert()</span></label>
+              <label class="quiz-option"><span class="option-letter">D</span><span>message()</span></label>
+            </div>
+          </div>
+          <div class="quiz-question" data-correct="d">
+            <div class="question-text">
+              <span class="question-number">4</span>
+              <span>Event untuk mendeteksi klik mouse adalah?</span>
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option"><span class="option-letter">A</span><span>onMouse</span></label>
+              <label class="quiz-option"><span class="option-letter">B</span><span>onClick</span></label>
+              <label class="quiz-option"><span class="option-letter">C</span><span>mouseClick</span></label>
+              <label class="quiz-option"><span class="option-letter">D</span><span>click</span></label>
+            </div>
+          </div>
+          <div class="quiz-question" data-correct="a">
+            <div class="question-text">
+              <span class="question-number">5</span>
+              <span>DOM dalam JavaScript adalah singkatan dari?</span>
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option"><span class="option-letter">A</span><span>Document Object Model</span></label>
+              <label class="quiz-option"><span class="option-letter">B</span><span>Data Object Model</span></label>
+              <label class="quiz-option"><span class="option-letter">C</span><span>Document Orientation Mode</span></label>
+              <label class="quiz-option"><span class="option-letter">D</span><span>Digital Object Memory</span></label>
+            </div>
+          </div>
+
+          <div class="quiz-actions">
+            <button type="button" class="btn-quiz btn-submit" onclick="submitQuiz('modul3')">
+              <i class="fas fa-paper-plane"></i> Kirim Jawaban
+            </button>
+            <button type="button" class="btn-quiz btn-reset" onclick="resetQuiz('modul3')">
+              <i class="fas fa-redo"></i> Reset
+            </button>
+            <button type="button" class="btn-quiz btn-retry" id="retry-modul3" onclick="retryQuiz('modul3')">
+              <i class="fas fa-sync-alt"></i> Coba Lagi
+            </button>
+          </div>
+        </form>
+        <div class="quiz-feedback" id="feedback-modul3"></div>
+      </div>
+
+      <div class="section-nav">
+        <button class="nav-btn" onclick="prevModule('modul2')">
+          <i class="fas fa-arrow-left"></i> Kembali
+        </button>
+        <button class="nav-btn primary" onclick="nextModule('modul4')">
+          Lanjut ke Integrasi <i class="fas fa-arrow-right"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- ==================== MODUL 4: INTEGRASI ==================== -->
+    <section id="modul4" class="topic-section">
+      <h2 class="section-title"><i class="fas fa-link"></i> Integrasi HTML, CSS & JavaScript</h2>
+      
+      <div class="content-intro">
+        <strong>🎯 Saatnya menggabungkan semua pengetahuanmu!</strong><br>
+        Di modul ini, kamu akan belajar bagaimana <strong>menggabungkan HTML, CSS, dan JavaScript</strong> 
+        untuk membuat website yang lengkap dan fungsional.
+      </div>
+
+      <div class="content-card">
+        <h4><i class="fas fa-book"></i> Struktur Proyek Web Lengkap</h4>
+        <div class="code-block">
+<span class="code-comment">// Struktur Folder:</span>
+proyek-website/
+├── index.html      (Struktur)
+├── style.css       (Tampilan)
+├── script.js       (Interaktivitas)
+└── images/         (Asset gambar)
+
+<span class="code-comment">// HTML dengan CSS & JS External:</span>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!-- Konten HTML --&gt;
+    &lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+        </div>
+      </div>
+
+      <!-- Live Editor Modul 4 -->
+      <div class="live-editor">
+        <div class="editor-header">
+          <div class="editor-title">
+            <i class="fas fa-code"></i>
+            Live Editor - Website Lengkap
+          </div>
+          <div>
+            <button class="btn-run" onclick="runCode('modul4')">
+              <i class="fas fa-play"></i> Preview Website
+            </button>
+            <button class="btn-clear" onclick="clearOutput('modul4')">
+              <i class="fas fa-trash"></i> Clear
+            </button>
+          </div>
+        </div>
+        <div class="editor-body">
+          <div class="editor-pane">
+            <span class="editor-pane-label">📝 Kode Lengkap (HTML+CSS+JS)</span>
+            <textarea class="code-textarea" id="code-modul4" spellcheck="false">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Website SMA N 1 Cluring&lt;/title&gt;
+    &lt;style&gt;
+        body { font-family: Arial; padding: 20px; }
+        h1 { color: #ef4444; text-align: center; }
+        .info { background: #f1f5f9; padding: 20px; border-radius: 8px; }
+        button { background: #10b981; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; }
+        button:hover { background: #059669; }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Selamat Datang&lt;/h1&gt;
+    &lt;div class="info"&gt;
+        &lt;p id="teks"&gt;SMA Negeri 1 Cluring - Banyuwangi&lt;/p&gt;
+        &lt;button onclick="ubahTeks()"&gt;Klik Saya&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;script&gt;
+        function ubahTeks() {
+            document.getElementById("teks").innerHTML = "Terima kasih telah berkunjung!";
+        }
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</textarea>
+          </div>
+          <div class="editor-pane output-pane">
+            <span class="editor-pane-label">🖥️ Preview Website</span>
+            <div class="preview-frame" id="output-modul4">Klik "Preview Website" untuk melihat hasil...</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- QUIZ MODUL 4 -->
+      <div class="quiz-container" id="quiz-modul4">
+        <div class="quiz-header">
+          <div>
+            <h3 style="margin-bottom: 8px;">Kuis Modul 4: Integrasi</h3>
+            <div style="color: var(--text-muted); font-size: 0.9rem;">
+              <i class="fas fa-question-circle"></i> 5 Soal • <i class="fas fa-star"></i> 100 Poin
+            </div>
+          </div>
+          <div class="quiz-score-display">
+            <div style="font-size: 0.85rem; color: var(--text-muted);">Skor Anda</div>
+            <div class="quiz-score-value" id="score-modul4">0</div>
+            <div style="font-size: 0.9rem; color: var(--text-muted);">/ 100 poin</div>
+          </div>
+        </div>
+
+        <form id="form-modul4">
+          <div class="quiz-question" data-correct="a">
+            <div class="question-text">
+              <span class="question-number">1</span>
+              <span>Tag untuk menghubungkan file CSS external adalah?</span>
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option"><span class="option-letter">A</span><span>&lt;link rel="stylesheet"&gt;</span></label>
+              <label class="quiz-option"><span class="option-letter">B</span><span>&lt;css&gt;</span></label>
+              <label class="quiz-option"><span class="option-letter">C</span><span>&lt;style src&gt;</span></label>
+              <label class="quiz-option"><span class="option-letter">D</span><span>&lt;import&gt;</span></label>
+            </div>
+          </div>
+          <div class="quiz-question" data-correct="b">
+            <div class="question-text">
+              <span class="question-number">2</span>
+              <span>Tag untuk menghubungkan file JavaScript external adalah?</span>
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option"><span class="option-letter">A</span><span>&lt;js&gt;</span></label>
+              <label class="quiz-option"><span class="option-letter">B</span><span>&lt;script src&gt;</span></label>
+              <label class="quiz-option"><span class="option-letter">C</span><span>&lt;javascript&gt;</span></label>
+              <label class="quiz-option"><span class="option-letter">D</span><span>&lt;link js&gt;</span></label>
+            </div>
+          </div>
+          <div class="quiz-question" data-correct="c">
+            <div class="question-text">
+              <span class="question-number">3</span>
+              <span>Urutan loading yang benar adalah?</span>
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option"><span class="option-letter">A</span><span>JS → CSS → HTML</span></label>
+              <label class="quiz-option"><span class="option-letter">B</span><span>CSS → JS → HTML</span></label>
+              <label class="quiz-option"><span class="option-letter">C</span><span>HTML → CSS → JS</span></label>
+              <label class="quiz-option"><span class="option-letter">D</span><span>HTML → JS → CSS</span></label>
+            </div>
+          </div>
+          <div class="quiz-question" data-correct="d">
+            <div class="question-text">
+              <span class="question-number">4</span>
+              <span>File JavaScript biasanya disimpan dengan ekstensi?</span>
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option"><span class="option-letter">A</span><span>.html</span></label>
+              <label class="quiz-option"><span class="option-letter">B</span><span>.css</span></label>
+              <label class="quiz-option"><span class="option-letter">C</span><span>.txt</span></label>
+              <label class="quiz-option"><span class="option-letter">D</span><span>.js</span></label>
+            </div>
+          </div>
+          <div class="quiz-question" data-correct="a">
+            <div class="question-text">
+              <span class="question-number">5</span>
+              <span>Tempat terbaik meletakkan script JS adalah?</span>
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option"><span class="option-letter">A</span><span>Sebelum &lt;/body&gt;</span></label>
+              <label class="quiz-option"><span class="option-letter">B</span><span>Di &lt;head&gt;</span></label>
+              <label class="quiz-option"><span class="option-letter">C</span><span>Di &lt;html&gt;</span></label>
+              <label class="quiz-option"><span class="option-letter">D</span><span>Di file terpisah saja</span></label>
+            </div>
+          </div>
+
+          <div class="quiz-actions">
+            <button type="button" class="btn-quiz btn-submit" onclick="submitQuiz('modul4')">
+              <i class="fas fa-paper-plane"></i> Kirim Jawaban
+            </button>
+            <button type="button" class="btn-quiz btn-reset" onclick="resetQuiz('modul4')">
+              <i class="fas fa-redo"></i> Reset
+            </button>
+            <button type="button" class="btn-quiz btn-retry" id="retry-modul4" onclick="retryQuiz('modul4')">
+              <i class="fas fa-sync-alt"></i> Coba Lagi
+            </button>
+          </div>
+        </form>
+        <div class="quiz-feedback" id="feedback-modul4"></div>
+      </div>
+
+      <div class="section-nav">
+        <button class="nav-btn" onclick="prevModule('modul3')">
+          <i class="fas fa-arrow-left"></i> Kembali
+        </button>
+        <button class="nav-btn primary" onclick="nextModule('modul5')">
+          Lanjut ke Proyek Akhir <i class="fas fa-arrow-right"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- ==================== MODUL 5: PROYEK AKHIR ==================== -->
+    <section id="modul5" class="topic-section">
+      <h2 class="section-title"><i class="fas fa-project-diagram"></i> Proyek Akhir & Persiapan Uji Kompetensi</h2>
+      
+      <div class="content-intro">
+        <strong>🎉 Selamat! Kamu telah mencapai modul terakhir!</strong><br>
+        Di modul ini, kamu akan membuat <strong>proyek website lengkap</strong> sebagai tugas akhir 
+        dan mempersiapkan diri untuk uji kompetensi.
+      </div>
+
+      <div class="content-card">
+        <h4><i class="fas fa-tasks"></i> Tugas Proyek Akhir</h4>
+        <p>Buatlah website portofolio pribadi dengan ketentuan:</p>
+        <ul>
+          <li>✅ Minimal 3 halaman (Home, About, Contact)</li>
+          <li>✅ Menggunakan HTML, CSS, dan JavaScript</li>
+          <li>✅ Responsive (bisa dibuka di HP dan laptop)</li>
+          <li>✅ Konten tentang diri sendiri atau sekolah</li>
+          <li>✅ Minimal 1 fitur interaktif (tombol, form, animasi)</li>
+        </ul>
+      </div>
+
+      <div class="content-card">
+        <h4><i class="fas fa-folder"></i> Contoh Struktur Proyek</h4>
+        <div class="code-block">
+<span class="code-comment">// Folder Proyek:</span>
+portofolio-saya/
+├── index.html        (Halaman Utama)
+├── about.html        (Tentang Saya)
+├── contact.html      (Kontak)
+├── style.css         (CSS untuk semua halaman)
+├── script.js         (JavaScript interaktif)
+└── images/           (Foto profil, dll)
+        </div>
+      </div>
+
+      <!-- Live Editor Modul 5 -->
+      <div class="live-editor">
+        <div class="editor-header">
+          <div class="editor-title">
+            <i class="fas fa-code"></i>
+            Live Editor - Proyek Portofolio
+          </div>
+          <div>
+            <button class="btn-run" onclick="runCode('modul5')">
+              <i class="fas fa-play"></i> Preview Portofolio
+            </button>
+            <button class="btn-clear" onclick="clearOutput('modul5')">
+              <i class="fas fa-trash"></i> Clear
+            </button>
+          </div>
+        </div>
+        <div class="editor-body">
+          <div class="editor-pane">
+            <span class="editor-pane-label">📝 Template Portofolio</span>
+            <textarea class="code-textarea" id="code-modul5" spellcheck="false">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Portofolio Saya&lt;/title&gt;
+    &lt;style&gt;
+        body { font-family: Arial; margin: 0; padding: 0; }
+        header { background: #ef4444; color: white; padding: 20px; text-align: center; }
+        nav { background: #f1f5f9; padding: 10px; text-align: center; }
+        nav a { margin: 0 15px; color: #0f172a; text-decoration: none; }
+        .content { padding: 40px 20px; max-width: 800px; margin: 0 auto; }
+        footer { background: #1e293b; color: white; text-align: center; padding: 20px; margin-top: 40px; }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;h1&gt;[Nama Kamu]&lt;/h1&gt;
+        &lt;p&gt;Siswa SMA Negeri 1 Cluring&lt;/p&gt;
+    &lt;/header&gt;
+    &lt;nav&gt;
+        &lt;a href="#"&gt;Home&lt;/a&gt;
+        &lt;a href="#"&gt;About&lt;/a&gt;
+        &lt;a href="#"&gt;Contact&lt;/a&gt;
+    &lt;/nav&gt;
+    &lt;div class="content"&gt;
+        &lt;h2&gt;Selamat Datang&lt;/h2&gt;
+        &lt;p&gt;Ini adalah website portofolio saya.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;footer&gt;
+        &lt;p&gt;&copy; 2024 - SMA N 1 Cluring&lt;/p&gt;
+    &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</textarea>
+          </div>
+          <div class="editor-pane output-pane">
+            <span class="editor-pane-label">🖥️ Preview Portofolio</span>
+            <div class="preview-frame" id="output-modul5">Klik "Preview Portofolio" untuk melihat hasil...</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- QUIZ MODUL 5 -->
+      <div class="quiz-container" id="quiz-modul5">
+        <div class="quiz-header">
+          <div>
+            <h3 style="margin-bottom: 8px;">Kuis Modul 5: Proyek Akhir</h3>
+            <div style="color: var(--text-muted); font-size: 0.9rem;">
+              <i class="fas fa-question-circle"></i> 5 Soal • <i class="fas fa-star"></i> 100 Poin
+            </div>
+          </div>
+          <div class="quiz-score-display">
+            <div style="font-size: 0.85rem; color: var(--text-muted);">Skor Anda</div>
+            <div class="quiz-score-value" id="score-modul5">0</div>
+            <div style="font-size: 0.9rem; color: var(--text-muted);">/ 100 poin</div>
+          </div>
+        </div>
+
+        <form id="form-modul5">
+          <div class="quiz-question" data-correct="c">
+            <div class="question-text">
+              <span class="question-number">1</span>
+              <span>Minimal jumlah halaman untuk proyek akhir adalah?</span>
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option"><span class="option-letter">A</span><span>1 halaman</span></label>
+              <label class="quiz-option"><span class="option-letter">B</span><span>2 halaman</span></label>
+              <label class="quiz-option"><span class="option-letter">C</span><span>3 halaman</span></label>
+              <label class="quiz-option"><span class="option-letter">D</span><span>5 halaman</span></label>
+            </div>
+          </div>
+          <div class="quiz-question" data-correct="a">
+            <div class="question-text">
+              <span class="question-number">2</span>
+              <span>Teknologi yang wajib digunakan dalam proyek adalah?</span>
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option"><span class="option-letter">A</span><span>HTML, CSS, JavaScript</span></label>
+              <label class="quiz-option"><span class="option-letter">B</span><span>Python saja</span></label>
+              <label class="quiz-option"><span class="option-letter">C</span><span>PHP saja</span></label>
+              <label class="quiz-option"><span class="option-letter">D</span><span>Database</span></label>
+            </div>
+          </div>
+          <div class="quiz-question" data-correct="b">
+            <div class="question-text">
+              <span class="question-number">3</span>
+              <span>Responsive design berarti?</span>
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option"><span class="option-letter">A</span><span>Cepat loading</span></label>
+              <label class="quiz-option"><span class="option-letter">B</span><span>Bisa dibuka di berbagai device</span></label>
+              <label class="quiz-option"><span class="option-letter">C</span><span>Banyak animasi</span></label>
+              <label class="quiz-option"><span class="option-letter">D</span><span>Warna-warni</span></label>
+            </div>
+          </div>
+          <div class="quiz-question" data-correct="d">
+            <div class="question-text">
+              <span class="question-number">4</span>
+              <span>File CSS sebaiknya disimpan?</span>
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option"><span class="option-letter">A</span><span>Di HTML</span></label>
+              <label class="quiz-option"><span class="option-letter">B</span><span>Di JavaScript</span></label>
+              <label class="quiz-option"><span class="option-letter">C</span><span>Di database</span></label>
+              <label class="quiz-option"><span class="option-letter">D</span><span>File terpisah .css</span></label>
+            </div>
+          </div>
+          <div class="quiz-question" data-correct="a">
+            <div class="question-text">
+              <span class="question-number">5</span>
+              <span>Tag HTML untuk navigasi adalah?</span>
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option"><span class="option-letter">A</span><span>&lt;nav&gt;</span></label>
+              <label class="quiz-option"><span class="option-letter">B</span><span>&lt;navigation&gt;</span></label>
+              <label class="quiz-option"><span class="option-letter">C</span><span>&lt;menu&gt;</span></label>
+              <label class="quiz-option"><span class="option-letter">D</span><span>&lt;links&gt;</span></label>
+            </div>
+          </div>
+
+          <div class="quiz-actions">
+            <button type="button" class="btn-quiz btn-submit" onclick="submitQuiz('modul5')">
+              <i class="fas fa-paper-plane"></i> Kirim Jawaban
+            </button>
+            <button type="button" class="btn-quiz btn-reset" onclick="resetQuiz('modul5')">
+              <i class="fas fa-redo"></i> Reset
+            </button>
+            <button type="button" class="btn-quiz btn-retry" id="retry-modul5" onclick="retryQuiz('modul5')">
+              <i class="fas fa-sync-alt"></i> Coba Lagi
+            </button>
+          </div>
+        </form>
+        <div class="quiz-feedback" id="feedback-modul5"></div>
+      </div>
+
+      <!-- Certificate Section -->
+      <div class="certificate-section" id="certificateSection">
+        <div style="font-size: 4rem; color: var(--danger); margin-bottom: 20px;"><i class="fas fa-certificate"></i></div>
+        <h3 style="font-size: 2rem; margin-bottom: 12px;">🎉 Selamat!</h3>
+        <p style="color: var(--text-secondary); margin-bottom: 24px;">
+          Anda telah menyelesaikan semua modul Kelas XII dengan total skor <strong id="finalScore">0</strong>/500
+        </p>
+        <button class="nav-btn primary" onclick="downloadCertificate()">
+          <i class="fas fa-download"></i> Download Sertifikat
+        </button>
+      </div>
+
+      <div class="section-nav">
+        <button class="nav-btn" onclick="prevModule('modul4')">
+          <i class="fas fa-arrow-left"></i> Kembali
+        </button>
+        <a href="kelas-xi.html" class="nav-btn">
+          <i class="fas fa-arrow-left"></i> Ke Kelas XI
+        </a>
+        <a href="index.html" class="nav-btn primary">
+          <i class="fas fa-home"></i> Ke Beranda
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Quiz Results Modal -->
+  <div class="modal-overlay" id="resultModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:1000; align-items:center; justify-content:center; padding:20px;">
+    <div style="background:var(--bg-primary); border-radius:var(--radius); max-width:600px; width:100%; padding:40px; text-align:center; box-shadow:0 20px 60px rgba(0,0,0,0.3);">
+      <div id="modalIcon" style="width:100px; height:100px; border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 24px; font-size:3rem;"></div>
+      <h2 id="modalTitle" style="font-size:2rem; margin-bottom:12px;">Selamat!</h2>
+      <div id="modalScore" style="font-size:3.5rem; font-weight:800; background:linear-gradient(135deg,var(--danger),var(--accent)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin:16px 0;"></div>
+      <p id="modalMessage" style="color:var(--text-secondary); margin-bottom:24px;"></p>
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:32px;">
+        <div style="background:var(--bg-secondary); padding:16px; border-radius:var(--radius);">
+          <span id="statCorrect" style="font-size:1.8rem; font-weight:700; color:var(--danger); display:block;"></span>
+          <span style="font-size:0.85rem; color:var(--text-muted);">Jawaban Benar</span>
+        </div>
+        <div style="background:var(--bg-secondary); padding:16px; border-radius:var(--radius);">
+          <span id="statWrong" style="font-size:1.8rem; font-weight:700; color:var(--danger); display:block;"></span>
+          <span style="font-size:0.85rem; color:var(--text-muted);">Jawaban Salah</span>
+        </div>
+        <div style="background:var(--bg-secondary); padding:16px; border-radius:var(--radius);">
+          <span id="statPercentage" style="font-size:1.8rem; font-weight:700; color:var(--danger); display:block;"></span>
+          <span style="font-size:0.85rem; color:var(--text-muted);">Persentase</span>
+        </div>
+      </div>
+      <div style="display:flex; gap:12px; justify-content:center;">
+        <button class="nav-btn" onclick="closeModal()"><i class="fas fa-times"></i> Tutup</button>
+        <button class="nav-btn primary" id="btnNextModule" onclick="nextModuleFromModal()"><i class="fas fa-arrow-right"></i> Lanjut</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="page-footer">
+    <div class="container">
+      <p><strong>Smart Algorithm</strong> • Media Ajar Coding Berbasis Web</p>
+      <p style="margin-top:8px;">SMA Negeri 1 Cluring • Muchamad Irwan Maulana, S.Kom</p>
+    </div>
+  </footer>
+
+  <!-- Theme Toggle -->
+  <button id="themeToggle" style="position:fixed; bottom:24px; right:24px; width:50px; height:50px; border-radius:50%; background:var(--danger); color:white; border:none; cursor:pointer; box-shadow:0 4px 12px rgba(0,0,0,0.2); z-index:999; display:flex; align-items:center; justify-content:center; font-size:1.2rem;" onclick="toggleTheme()">
+    <i class="fas fa-moon"></i>
+  </button>
+
+  <script>
+    // Quiz State Management
+    const quizState = {
+      modul1: { score: 0, answered: false, completed: false },
+      modul2: { score: 0, answered: false, completed: false },
+      modul3: { score: 0, answered: false, completed: false },
+      modul4: { score: 0, answered: false, completed: false },
+      modul5: { score: 0, answered: false, completed: false }
+    };
+
+    let currentModule = 'modul1';
+
+    // Load/Save functions
+    function loadQuizState() {
+      const saved = localStorage.getItem('quizState_kelasXII');
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        Object.assign(quizState, parsed);
+        updateAllScores();
+      }
+    }
+
+    function saveQuizState() {
+      localStorage.setItem('quizState_kelasXII', JSON.stringify(quizState));
+    }
+
+    function updateScore(modul) {
+      document.getElementById(`score-${modul}`).textContent = quizState[modul].score;
+      document.getElementById(`badge-${modul}`).textContent = `${quizState[modul].score}/100`;
+      updateTotalScore();
+    }
+
+    function updateTotalScore() {
+      const total = Object.values(quizState).reduce((sum, m) => sum + m.score, 0);
+      document.getElementById('totalScore').textContent = total;
+      const allCompleted = Object.values(quizState).every(m => m.completed);
+      if (allCompleted) {
+        document.getElementById('finalScore').textContent = total;
+        document.getElementById('certificateSection').classList.add('show');
+      }
+    }
+
+    function updateAllScores() {
+      Object.keys(quizState).forEach(modul => {
+        updateScore(modul);
+        if (quizState[modul].answered) {
+          document.getElementById(`retry-${modul}`).classList.add('show');
+        }
+      });
+    }
+
+    // Tab Navigation
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.topic-section').forEach(s => s.classList.remove('active'));
+        btn.classList.add('active');
+        currentModule = btn.dataset.target;
+        document.getElementById(currentModule).classList.add('active');
+        window.scrollTo({ top: 200, behavior: 'smooth' });
+      });
+    });
+
+    function nextModule(targetId) {
+      document.querySelector(`[data-target="${targetId}"]`).click();
+    }
+
+    function prevModule(targetId) { nextModule(targetId); }
+
+    // ============================================
+    // WORKING CODE SIMULATOR - HTML/CSS/JS
+    // ============================================
+    function runCode(modul) {
+      const code = document.getElementById(`code-${modul}`).value;
+      const output = document.getElementById(`output-${modul}`);
+      
+      output.innerHTML = '<div style="text-align:center; padding:50px; color:#64748b;">⏳ Loading...</div>';
+      
+      setTimeout(() => {
+        try {
+          // Render HTML directly in preview frame
+          output.innerHTML = code;
+          
+          // Execute JavaScript if present
+          const scripts = output.querySelectorAll('script');
+          scripts.forEach(script => {
+            const newScript = document.createElement('script');
+            newScript.textContent = script.textContent;
+            output.appendChild(newScript);
+          });
+        } catch (error) {
+          output.innerHTML = `<div style="color:#ef4444; padding:20px;">❌ Error: ${error.message}</div>`;
+        }
+      }, 500);
+    }
+
+    function clearOutput(modul) {
+      const output = document.getElementById(`output-${modul}`);
+      output.innerHTML = 'Klik "Preview" untuk melihat hasil...';
+    }
+
+    // Quiz Functions
+    function submitQuiz(modul) {
+      const form = document.getElementById(`form-${modul}`);
+      const questions = form.querySelectorAll('.quiz-question');
+      let correct = 0, answered = 0;
+
+      questions.forEach(q => {
+        const selected = q.querySelector('.quiz-option.selected');
+        const correctAnswer = q.dataset.correct;
+        if (selected) {
+          answered++;
+          const selectedLetter = selected.querySelector('.option-letter').textContent.toLowerCase();
+          q.querySelectorAll('.quiz-option').forEach(opt => {
+            opt.classList.add('disabled');
+            const letter = opt.querySelector('.option-letter').textContent.toLowerCase();
+            if (letter === correctAnswer) opt.classList.add('correct');
+          });
+          if (selectedLetter === correctAnswer) correct++;
+          else selected.classList.add('incorrect');
+        }
+      });
+
+      if (answered < questions.length) { alert('Silakan jawab semua soal terlebih dahulu!'); return; }
+
+      const score = correct * 20;
+      quizState[modul].score = score;
+      quizState[modul].answered = true;
+      quizState[modul].completed = score >= 60;
+      saveQuizState();
+      updateScore(modul);
+
+      const feedback = document.getElementById(`feedback-${modul}`);
+      let feedbackClass, feedbackTitle, feedbackText;
+      if (score >= 80) {
+        feedbackClass = 'success'; feedbackTitle = '🎉 Excellent!';
+        feedbackText = `Skor Anda ${score}/100! Pemahaman Anda sangat baik.`;
+      } else if (score >= 60) {
+        feedbackClass = 'warning'; feedbackTitle = '👍 Good Job!';
+        feedbackText = `Skor Anda ${score}/100. Anda lulus, tapi masih bisa ditingkatkan.`;
+      } else {
+        feedbackClass = 'danger'; feedbackTitle = '📚 Perlu Belajar Lagi';
+        feedbackText = `Skor Anda ${score}/100. Pelajari kembali materi dan coba lagi.`;
+      }
+      feedback.className = `quiz-feedback show ${feedbackClass}`;
+      feedback.innerHTML = `<div style="font-size:1.2rem; font-weight:700; margin-bottom:8px;">${feedbackTitle}</div><div>${feedbackText}</div>`;
+      document.getElementById(`retry-${modul}`).classList.add('show');
+      setTimeout(() => showResultModal(modul, correct, questions.length - correct, score), 500);
+    }
+
+    function resetQuiz(modul) {
+      if (!confirm('Reset semua jawaban?')) return;
+      const form = document.getElementById(`form-${modul}`);
+      form.querySelectorAll('.quiz-option').forEach(opt => opt.classList.remove('selected','correct','incorrect','disabled'));
+      const feedback = document.getElementById(`feedback-${modul}`);
+      feedback.classList.remove('show'); feedback.innerHTML = '';
+      quizState[modul].score = 0; quizState[modul].answered = false; quizState[modul].completed = false;
+      saveQuizState(); updateScore(modul);
+      document.getElementById(`retry-${modul}`).classList.remove('show');
+    }
+
+    function retryQuiz(modul) {
+      resetQuiz(modul);
+      document.getElementById(`feedback-${modul}`).classList.remove('show');
+      window.scrollTo({ top: document.getElementById(`quiz-${modul}`).offsetTop - 100, behavior: 'smooth' });
+    }
+
+    document.querySelectorAll('.quiz-option').forEach(option => {
+      option.addEventListener('click', function() {
+        if (this.classList.contains('disabled')) return;
+        const question = this.closest('.quiz-question');
+        question.querySelectorAll('.quiz-option').forEach(opt => opt.classList.remove('selected'));
+        this.classList.add('selected');
+      });
+    });
+
+    // Result Modal
+    function showResultModal(modul, correct, wrong, score) {
+      const modal = document.getElementById('resultModal');
+      const icon = document.getElementById('modalIcon');
+      const title = document.getElementById('modalTitle');
+      const message = document.getElementById('modalMessage');
+      const btnNext = document.getElementById('btnNextModule');
+
+      document.getElementById('modalScore').textContent = score;
+      document.getElementById('statCorrect').textContent = correct;
+      document.getElementById('statWrong').textContent = wrong;
+      document.getElementById('statPercentage').textContent = score + '%';
+
+      if (score >= 80) {
+        icon.style.background = 'linear-gradient(135deg,#ef4444,#f43f5e)';
+        icon.style.color = 'white';
+        icon.innerHTML = '<i class="fas fa-trophy"></i>';
+        title.textContent = 'Excellent! 🎉';
+        message.textContent = 'Pemahaman Anda sangat baik!';
+      } else if (score >= 60) {
+        icon.style.background = 'linear-gradient(135deg,#f59e0b,#fbbf24)';
+        icon.style.color = 'white';
+        icon.innerHTML = '<i class="fas fa-check-circle"></i>';
+        title.textContent = 'Good Job! 👍';
+        message.textContent = 'Anda lulus! Tingkatkan lagi pemahaman.';
+      } else {
+        icon.style.background = 'linear-gradient(135deg,#ef4444,#f87171)';
+        icon.style.color = 'white';
+        icon.innerHTML = '<i class="fas fa-book-reader"></i>';
+        title.textContent = 'Keep Learning! 📚';
+        message.textContent = 'Pelajari kembali materi dan coba lagi.';
+      }
+
+      const modules = ['modul1','modul2','modul3','modul4','modul5'];
+      const currentIndex = modules.indexOf(modul);
+      if (currentIndex < modules.length - 1) {
+        btnNext.style.display = 'inline-flex';
+        btnNext.onclick = () => { closeModal(); nextModule(modules[currentIndex + 1]); };
+      } else {
+        btnNext.style.display = 'none';
+      }
+      modal.style.display = 'flex';
+    }
+
+    function closeModal() { document.getElementById('resultModal').style.display = 'none'; }
+    function nextModuleFromModal() { document.getElementById('btnNextModule').click(); }
+    function checkAllCompleted() {
+      const allCompleted = Object.values(quizState).every(m => m.completed);
+      if (allCompleted) {
+        document.getElementById('certificateSection').classList.add('show');
+        alert('🎉 Selamat! Semua modul selesai. Scroll ke bawah untuk sertifikat!');
+      } else {
+        alert('📚 Selesaikan semua modul dengan minimal 60 poin untuk mendapatkan sertifikat!');
+      }
+    }
+    function downloadCertificate() { alert('Fitur download sertifikat akan segera hadir!'); }
+
+    // Theme Toggle
+    function toggleTheme() {
+      const html = document.documentElement;
+      const current = html.getAttribute('data-theme');
+      const next = current === 'light' ? 'dark' : 'light';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      document.querySelector('#themeToggle i').className = next === 'light' ? 'fas fa-moon' : 'fas fa-sun';
+    }
+    if (localStorage.getItem('theme') === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      document.querySelector('#themeToggle i').className = 'fas fa-sun';
+    }
+
+    document.getElementById('resultModal').addEventListener('click', function(e) {
+      if (e.target === this) closeModal();
+    });
+
+    // Initialize
+    loadQuizState();
+  </script>
+</body>
+</html>
