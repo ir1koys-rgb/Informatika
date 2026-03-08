@@ -1,0 +1,1535 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Belajar Bahasa C - Platform Interaktif</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .nav {
+            display: flex;
+            flex-wrap: wrap;
+            background: #34495e;
+            padding: 10px;
+        }
+
+        .nav button {
+            flex: 1;
+            min-width: 150px;
+            padding: 15px 20px;
+            background: transparent;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.3s;
+            margin: 5px;
+            border-radius: 8px;
+        }
+
+        .nav button:hover, .nav button.active {
+            background: #3498db;
+            transform: translateY(-2px);
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            color: #34495e;
+            margin: 25px 0 15px 0;
+        }
+
+        p {
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .code-box {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            margin: 20px 0;
+            overflow-x: auto;
+            border-left: 5px solid #3498db;
+        }
+
+        .code-box .comment { color: #95a5a6; }
+        .code-box .keyword { color: #e74c3c; }
+        .code-box .string { color: #2ecc71; }
+        .code-box .number { color: #f39c12; }
+
+        .simulator {
+            background: #f8f9fa;
+            border: 2px solid #3498db;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .simulator h4 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .code-editor {
+            width: 100%;
+            min-height: 200px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            padding: 15px;
+            border: 2px solid #bdc3c7;
+            border-radius: 8px;
+            resize: vertical;
+            background: #1a1a2e;
+            color: #00ff00;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1em;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin: 10px 5px 10px 0;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+        }
+
+        .btn-warning {
+            background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+        }
+
+        .output {
+            background: #1a1a2e;
+            color: #00ff00;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            margin-top: 15px;
+            min-height: 100px;
+            white-space: pre-wrap;
+        }
+
+        .quiz-container {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 20px 0;
+        }
+
+        .question {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #3498db;
+        }
+
+        .question h4 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .options {
+            display: grid;
+            gap: 10px;
+        }
+
+        .option {
+            padding: 12px 15px;
+            background: #ecf0f1;
+            border: 2px solid #bdc3c7;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .option:hover {
+            background: #3498db;
+            color: white;
+            border-color: #3498db;
+        }
+
+        .option.selected {
+            background: #3498db;
+            color: white;
+            border-color: #2980b9;
+        }
+
+        .option.correct {
+            background: #2ecc71;
+            color: white;
+            border-color: #27ae60;
+        }
+
+        .option.wrong {
+            background: #e74c3c;
+            color: white;
+            border-color: #c0392b;
+        }
+
+        .result-box {
+            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 20px 0;
+            display: none;
+        }
+
+        .result-box h3 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: #ecf0f1;
+            border-radius: 5px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #3498db, #2ecc71);
+            width: 0%;
+            transition: width 0.5s;
+        }
+
+        .tip-box {
+            background: #fff3cd;
+            border-left: 5px solid #f39c12;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .tip-box strong {
+            color: #d35400;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .table th, .table td {
+            border: 2px solid #bdc3c7;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .table th {
+            background: #3498db;
+            color: white;
+        }
+
+        .table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 5px 15px;
+            background: #3498db;
+            color: white;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 { font-size: 1.8em; }
+            .nav { flex-direction: column; }
+            .content { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🖥️ Belajar Bahasa C</h1>
+            <p>Platform Interaktif - Teori, Simulator & Kuis</p>
+        </div>
+
+        <div class="nav">
+            <button class="active" onclick="showSection('intro')">📖 Pengenalan</button>
+            <button onclick="showSection('dasar')">🔤 Dasar C</button>
+            <button onclick="showSection('operator')">🔢 Operator</button>
+            <button onclick="showSection('kontrol')">🎛️ Kontrol</button>
+            <button onclick="showSection('array')">📊 Array</button>
+            <button onclick="showSection('pointer')">🎯 Pointer</button>
+            <button onclick="showSection('fungsi')">⚙️ Fungsi</button>
+            <button onclick="showSection('simulator')">🧪 Simulator</button>
+            <button onclick="showSection('kuis')">📝 Kuis</button>
+        </div>
+
+        <div class="content">
+            <!-- SECTION 1: PENGENALAN -->
+            <div id="intro" class="section active">
+                <h2>📖 Pengenalan Bahasa C</h2>
+                
+                <h3>Apa itu Bahasa C?</h3>
+                <p>
+                    Bahasa C adalah bahasa pemrograman yang dikembangkan oleh <strong>Dennis Ritchie</strong> 
+                    pada tahun <strong>1972</strong> di Bell Labs. C sering disebut sebagai "induk" dari banyak 
+                    bahasa pemrograman modern seperti C++, Java, Python, dan PHP.
+                </p>
+
+                <div class="tip-box">
+                    <strong>💡 Fakta Menarik:</strong> 
+                    Sistem operasi UNIX dan Linux ditulis menggunakan bahasa C!
+                </div>
+
+                <h3>Karakteristik Utama</h3>
+                <table class="table">
+                    <tr>
+                        <th>Karakteristik</th>
+                        <th>Penjelasan</th>
+                    </tr>
+                    <tr>
+                        <td>Procedural</td>
+                        <td>Program disusun berdasarkan prosedur atau fungsi</td>
+                    </tr>
+                    <tr>
+                        <td>Low-Level</td>
+                        <td>Memiliki akses ke memori (pointer) seperti assembly</td>
+                    </tr>
+                    <tr>
+                        <td>Portable</td>
+                        <td>Kode bisa dikompilasi di berbagai platform</td>
+                    </tr>
+                    <tr>
+                        <td>Efisien</td>
+                        <td>Menghasilkan kode mesin yang cepat dan hemat memori</td>
+                    </tr>
+                    <tr>
+                        <td>Case-Sensitive</td>
+                        <td>Huruf besar dan kecil dibedakan</td>
+                    </tr>
+                </table>
+
+                <h3>Struktur Dasar Program C</h3>
+                <div class="code-box">
+<span class="keyword">#include</span> &lt;stdio.h&gt;  <span class="comment">// Memanggil library</span>
+
+<span class="keyword">int</span> main() {           <span class="comment">// Fungsi utama</span>
+    <span class="comment">// Deklarasi variabel</span>
+    <span class="keyword">int</span> angka = <span class="number">10</span>;
+
+    <span class="comment">// Statement</span>
+    printf(<span class="string">"Hello, World!\n"</span>);
+    
+    <span class="keyword">return</span> <span class="number">0</span>;          <span class="comment">// Mengakhiri program</span>
+}
+                </div>
+
+                <h3>Proses Kompilasi</h3>
+                <div style="display: flex; flex-wrap: wrap; gap: 10px; margin: 20px 0;">
+                    <span class="badge">1. Preprocessing</span>
+                    <span class="badge">2. Compiling</span>
+                    <span class="badge">3. Assembling</span>
+                    <span class="badge">4. Linking</span>
+                </div>
+
+                <button class="btn" onclick="showSection('dasar')">Lanjut ke Dasar C →</button>
+            </div>
+
+            <!-- SECTION 2: DASAR C -->
+            <div id="dasar" class="section">
+                <h2>🔤 Dasar-Dasar Bahasa C</h2>
+
+                <h3>Tipe Data Primitif</h3>
+                <table class="table">
+                    <tr>
+                        <th>Tipe Data</th>
+                        <th>Ukuran</th>
+                        <th>Deskripsi</th>
+                        <th>Format</th>
+                    </tr>
+                    <tr>
+                        <td>int</td>
+                        <td>4 byte</td>
+                        <td>Bilangan bulat</td>
+                        <td>%d</td>
+                    </tr>
+                    <tr>
+                        <td>float</td>
+                        <td>4 byte</td>
+                        <td>Desimal (presisi tunggal)</td>
+                        <td>%f</td>
+                    </tr>
+                    <tr>
+                        <td>double</td>
+                        <td>8 byte</td>
+                        <td>Desimal (presisi ganda)</td>
+                        <td>%lf</td>
+                    </tr>
+                    <tr>
+                        <td>char</td>
+                        <td>1 byte</td>
+                        <td>Karakter tunggal</td>
+                        <td>%c</td>
+                    </tr>
+                </table>
+
+                <h3>Variabel</h3>
+                <div class="code-box">
+<span class="keyword">int</span> umur = <span class="number">20</span>;
+<span class="keyword">float</span> harga = <span class="number">15.5</span>;
+<span class="keyword">char</span> inisial = <span class="string">'A'</span>;  <span class="comment">// Tanda kutip satu</span>
+                </div>
+
+                <div class="tip-box">
+                    <strong>⚠️ Aturan Penamaan Variabel:</strong>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li>Harus dimulai dengan huruf atau underscore (_)</li>
+                        <li>Tidak boleh mengandung spasi</li>
+                        <li>Tidak boleh menggunakan kata kunci (int, return, if, dll)</li>
+                    </ul>
+                </div>
+
+                <h3>Input dan Output</h3>
+                <div class="code-box">
+<span class="keyword">#include</span> &lt;stdio.h&gt;
+
+<span class="keyword">int</span> main() {
+    <span class="keyword">int</span> angka;
+    
+    <span class="comment">// Output ke layar</span>
+    printf(<span class="string">"Masukkan angka: "</span>);
+    
+    <span class="comment">// Input dari user (perhatikan tanda &)</span>
+    scanf(<span class="string">"%d"</span>, &angka);
+    
+    printf(<span class="string">"Anda memasukkan: %d"</span>, angka);
+    
+    <span class="keyword">return</span> <span class="number">0</span>;
+}
+                </div>
+
+                <h3>🧪 Simulator: Hello World</h3>
+                <div class="simulator">
+                    <h4>Coba edit kode di bawah ini:</h4>
+                    <textarea class="code-editor" id="helloEditor">#include <stdio.h>
+
+int main() {
+    printf("Hello, World!\n");
+    return 0;
+}</textarea>
+                    <br>
+                    <button class="btn" onclick="runHello()">▶️ Jalankan Kode</button>
+                    <button class="btn btn-warning" onclick="resetHello()">🔄 Reset</button>
+                    <div class="output" id="helloOutput">Output akan muncul di sini...</div>
+                </div>
+
+                <button class="btn" onclick="showSection('operator')">Lanjut ke Operator →</button>
+            </div>
+
+            <!-- SECTION 3: OPERATOR -->
+            <div id="operator" class="section">
+                <h2>🔢 Operator dalam C</h2>
+
+                <h3>Operator Aritmatika</h3>
+                <table class="table">
+                    <tr>
+                        <th>Operator</th>
+                        <th>Fungsi</th>
+                        <th>Contoh</th>
+                        <th>Hasil</th>
+                    </tr>
+                    <tr>
+                        <td>+</td>
+                        <td>Penjumlahan</td>
+                        <td>5 + 3</td>
+                        <td>8</td>
+                    </tr>
+                    <tr>
+                        <td>-</td>
+                        <td>Pengurangan</td>
+                        <td>5 - 3</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>*</td>
+                        <td>Perkalian</td>
+                        <td>5 * 3</td>
+                        <td>15</td>
+                    </tr>
+                    <tr>
+                        <td>/</td>
+                        <td>Pembagian</td>
+                        <td>6 / 2</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td>%</td>
+                        <td>Modulus (Sisa Bagi)</td>
+                        <td>7 % 3</td>
+                        <td>1</td>
+                    </tr>
+                </table>
+
+                <h3>Operator Relasional</h3>
+                <div class="code-box">
+<span class="keyword">int</span> a = <span class="number">10</span>, b = <span class="number">5</span>;
+
+a == b   <span class="comment">// Sama dengan (False/0)</span>
+a != b   <span class="comment">// Tidak sama (True/1)</span>
+a > b    <span class="comment">// Lebih besar (True/1)</span>
+a < b     <span class="comment">// Lebih kecil (False/0)</span>
+a >= b   <span class="comment">// Lebih besar atau sama (True/1)</span>
+a <= b   <span class="comment">// Lebih kecil atau sama (False/0)</span>
+                </div>
+
+                <h3>Operator Logika</h3>
+                <table class="table">
+                    <tr>
+                        <th>Operator</th>
+                        <th>Nama</th>
+                        <th>Contoh</th>
+                        <th>Hasil</th>
+                    </tr>
+                    <tr>
+                        <td>&&</td>
+                        <td>AND</td>
+                        <td>(5>3) && (2<4)</td>
+                        <td>True (1)</td>
+                    </tr>
+                    <tr>
+                        <td>||</td>
+                        <td>OR</td>
+                        <td>(5>3) || (2>4)</td>
+                        <td>True (1)</td>
+                    </tr>
+                    <tr>
+                        <td>!</td>
+                        <td>NOT</td>
+                        <td>!(5>3)</td>
+                        <td>False (0)</td>
+                    </tr>
+                </table>
+
+                <h3>🧪 Simulator: Kalkulator Operator</h3>
+                <div class="simulator">
+                    <h4>Masukkan dua angka dan pilih operator:</h4>
+                    <input type="number" id="opNum1" value="10" style="padding: 10px; margin: 5px; width: 100px;">
+                    <select id="opSelect" style="padding: 10px; margin: 5px;">
+                        <option value="+">+</option>
+                        <option value="-">-</option>
+                        <option value="*">*</option>
+                        <option value="/">/</option>
+                        <option value="%">%</option>
+                    </select>
+                    <input type="number" id="opNum2" value="5" style="padding: 10px; margin: 5px; width: 100px;">
+                    <br>
+                    <button class="btn" onclick="calculate()">Hitung</button>
+                    <div class="output" id="opOutput">Hasil akan muncul di sini...</div>
+                </div>
+
+                <button class="btn" onclick="showSection('kontrol')">Lanjut ke Kontrol →</button>
+            </div>
+
+            <!-- SECTION 4: KONTROL -->
+            <div id="kontrol" class="section">
+                <h2>🎛️ Kontrol Alur Program</h2>
+
+                <h3>Percabangan (If-Else)</h3>
+                <div class="code-box">
+<span class="keyword">int</span> nilai = <span class="number">75</span>;
+
+<span class="keyword">if</span> (nilai >= <span class="number">70</span>) {
+    printf(<span class="string">"Lulus\n"</span>);
+} <span class="keyword">else if</span> (nilai >= <span class="number">50</span>) {
+    printf(<span class="string">"Remedial\n"</span>);
+} <span class="keyword">else</span> {
+    printf(<span class="string">"Gagal\n"</span>);
+}
+                </div>
+
+                <h3>Switch Case</h3>
+                <div class="code-box">
+<span class="keyword">int</span> hari = <span class="number">3</span>;
+
+<span class="keyword">switch</span> (hari) {
+    <span class="keyword">case</span> <span class="number">1</span>: printf(<span class="string">"Senin"</span>); <span class="keyword">break</span>;
+    <span class="keyword">case</span> <span class="number">2</span>: printf(<span class="string">"Selasa"</span>); <span class="keyword">break</span>;
+    <span class="keyword">case</span> <span class="number">3</span>: printf(<span class="string">"Rabu"</span>); <span class="keyword">break</span>;
+    <span class="keyword">default</span>: printf(<span class="string">"Hari tidak valid"</span>);
+}
+                </div>
+
+                <h3>Perulangan (Loops)</h3>
+                <div class="code-box">
+<span class="comment">// For Loop</span>
+<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < <span class="number">5</span>; i++) {
+    printf(<span class="string">"%d "</span>, i);  <span class="comment">// Output: 0 1 2 3 4</span>
+}
+
+<span class="comment">// While Loop</span>
+<span class="keyword">int</span> j = <span class="number">0</span>;
+<span class="keyword">while</span> (j < <span class="number">5</span>) {
+    printf(<span class="string">"%d "</span>, j);
+    j++;
+}
+
+<span class="comment">// Do-While Loop</span>
+<span class="keyword">int</span> k = <span class="number">0</span>;
+<span class="keyword">do</span> {
+    printf(<span class="string">"%d "</span>, k);
+    k++;
+} <span class="keyword">while</span> (k < <span class="number">5</span>);
+                </div>
+
+                <h3>🧪 Simulator: If-Else Interaktif</h3>
+                <div class="simulator">
+                    <h4>Masukkan nilai (0-100):</h4>
+                    <input type="number" id="nilaiInput" min="0" max="100" value="75" 
+                           style="padding: 10px; margin: 5px; width: 150px;">
+                    <br>
+                    <button class="btn" onclick="cekNilai()">Cek Kelulusan</button>
+                    <div class="output" id="nilaiOutput">Hasil akan muncul di sini...</div>
+                </div>
+
+                <h3>🧪 Simulator: Loop Visualizer</h3>
+                <div class="simulator">
+                    <h4>Masukkan jumlah iterasi:</h4>
+                    <input type="number" id="loopCount" min="1" max="20" value="5" 
+                           style="padding: 10px; margin: 5px; width: 100px;">
+                    <br>
+                    <button class="btn" onclick="runLoop()">Jalankan Loop</button>
+                    <div class="output" id="loopOutput">Hasil loop akan muncul di sini...</div>
+                </div>
+
+                <button class="btn" onclick="showSection('array')">Lanjut ke Array →</button>
+            </div>
+
+            <!-- SECTION 5: ARRAY -->
+            <div id="array" class="section">
+                <h2>📊 Array dan String</h2>
+
+                <h3>Apa itu Array?</h3>
+                <p>
+                    Array adalah kumpulan data dengan tipe yang sama yang disimpan berurutan di memori. 
+                    <strong>Indeks array dimulai dari 0!</strong>
+                </p>
+
+                <div class="code-box">
+<span class="keyword">int</span> angka[<span class="number">5</span>] = {<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>, <span class="number">50</span>};
+
+<span class="comment">// Mengakses elemen</span>
+printf(<span class="string">"%d"</span>, angka[<span class="number">0</span>]);  <span class="comment">// Output: 10</span>
+printf(<span class="string">"%d"</span>, angka[<span class="number">2</span>]);  <span class="comment">// Output: 30</span>
+
+<span class="comment">// Mengubah nilai</span>
+angka[<span class="number">1</span>] = <span class="number">100</span>;  <span class="comment">// Sekarang angka[1] = 100</span>
+                </div>
+
+                <h3>String dalam C</h3>
+                <p>
+                    C tidak memiliki tipe data string khusus. String adalah array dari <code>char</code> 
+                    yang diakhiri dengan karakter null (<code>\0</code>).
+                </p>
+
+                <div class="code-box">
+<span class="keyword">char</span> nama[] = <span class="string">"Budi"</span>;
+<span class="comment">// Di memori: ['B', 'u', 'd', 'i', '\0']</span>
+
+<span class="comment">// Fungsi string (perlu #include &lt;string.h&gt;)</span>
+strlen(nama);    <span class="comment">// Panjang string</span>
+strcpy(nama, <span class="string">"Andi"</span>);  <span class="comment">// Copy string</span>
+strcmp(nama, <span class="string">"Andi"</span>);  <span class="comment">// Compare string</span>
+                </div>
+
+                <h3>🧪 Simulator: Array Visualizer</h3>
+                <div class="simulator">
+                    <h4>Masukkan 5 angka untuk array:</h4>
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap; margin: 10px 0;">
+                        <input type="number" class="arrayInput" value="10" style="padding: 10px; width: 80px;" placeholder="Index 0">
+                        <input type="number" class="arrayInput" value="20" style="padding: 10px; width: 80px;" placeholder="Index 1">
+                        <input type="number" class="arrayInput" value="30" style="padding: 10px; width: 80px;" placeholder="Index 2">
+                        <input type="number" class="arrayInput" value="40" style="padding: 10px; width: 80px;" placeholder="Index 3">
+                        <input type="number" class="arrayInput" value="50" style="padding: 10px; width: 80px;" placeholder="Index 4">
+                    </div>
+                    <button class="btn" onclick="visualizeArray()">Visualisasi Array</button>
+                    <button class="btn btn-success" onclick="calculateArray()">Hitung Total & Rata-rata</button>
+                    <div class="output" id="arrayOutput">Hasil akan muncul di sini...</div>
+                </div>
+
+                <h3>🧪 Simulator: String Manipulator</h3>
+                <div class="simulator">
+                    <h4>Masukkan teks:</h4>
+                    <input type="text" id="stringInput" value="Hello C" 
+                           style="padding: 10px; width: 300px; margin: 10px 0;">
+                    <br>
+                    <button class="btn" onclick="stringInfo()">Info String</button>
+                    <button class="btn btn-warning" onclick="reverseString()">Balik String</button>
+                    <button class="btn btn-success" onclick="toUpperCase()">Huruf Besar</button>
+                    <div class="output" id="stringOutput">Hasil akan muncul di sini...</div>
+                </div>
+
+                <button class="btn" onclick="showSection('pointer')">Lanjut ke Pointer →</button>
+            </div>
+
+            <!-- SECTION 6: POINTER -->
+            <div id="pointer" class="section">
+                <h2>🎯 Pointer (Konsep Penting!)</h2>
+
+                <div class="tip-box">
+                    <strong>⚠️ Pointer adalah konsep tersulit tapi paling penting di C!</strong>
+                    <br>
+                    Pointer adalah variabel yang menyimpan <strong>alamat memori</strong> dari variabel lain.
+                </div>
+
+                <h3>Simbol Pointer</h3>
+                <table class="table">
+                    <tr>
+                        <th>Simbol</th>
+                        <th>Nama</th>
+                        <th>Fungsi</th>
+                        <th>Contoh</th>
+                    </tr>
+                    <tr>
+                        <td>&</td>
+                        <td>Address-of</td>
+                        <td>Mengambil alamat memori</td>
+                        <td>&x</td>
+                    </tr>
+                    <tr>
+                        <td>*</td>
+                        <td>Dereference</td>
+                        <td>Mengakses nilai di alamat</td>
+                        <td>*ptr</td>
+                    </tr>
+                </table>
+
+                <h3>Contoh Dasar Pointer</h3>
+                <div class="code-box">
+<span class="keyword">int</span> x = <span class="number">10</span>;
+<span class="keyword">int</span> *ptr = &x;  <span class="comment">// ptr menyimpan alamat x</span>
+
+printf(<span class="string">"%d"</span>, x);     <span class="comment">// Output: 10 (nilai)</span>
+printf(<span class="string">"%p"</span>, ptr);    <span class="comment">// Output: 0x7ffee... (alamat)</span>
+printf(<span class="string">"%d"</span>, *ptr);   <span class="comment">// Output: 10 (nilai di alamat ptr)</span>
+
+<span class="comment">// Mengubah nilai x melalui pointer</span>
+*ptr = <span class="number">20</span>;  <span class="comment">// Sekarang x = 20</span>
+                </div>
+
+                <h3>Analogi Sederhana</h3>
+                <div style="background: #e8f4f8; padding: 20px; border-radius: 10px; margin: 20px 0;">
+                    <h4>🏠 Analogi Rumah:</h4>
+                    <ul style="margin-left: 20px; margin-top: 10px; line-height: 2;">
+                        <li><strong>Variabel Biasa</strong> = Isi rumah (misal: ada TV di dalam)</li>
+                        <li><strong>Pointer</strong> = Alamat rumah (misal: Jl. Mawar No. 5)</li>
+                        <li><strong>& (Address)</strong> = Menanyakan alamat rumah</li>
+                        <li><strong>* (Dereference)</strong> = Masuk ke rumah dan melihat isinya</li>
+                    </ul>
+                </div>
+
+                <h3>🧪 Simulator: Pointer Visualizer</h3>
+                <div class="simulator">
+                    <h4>Simulasi Pointer:</h4>
+                    <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+                        <div style="background: #3498db; color: white; padding: 20px; border-radius: 10px; min-width: 150px;">
+                            <strong>Variabel x</strong><br>
+                            Nilai: <span id="ptrValue">10</span><br>
+                            Alamat: <span id="ptrAddress">0x1000</span>
+                        </div>
+                        <div style="background: #e74c3c; color: white; padding: 20px; border-radius: 10px; min-width: 150px;">
+                            <strong>Pointer ptr</strong><br>
+                            Isi: <span id="ptrContent">0x1000</span><br>
+                            *ptr: <span id="ptrDeref">10</span>
+                        </div>
+                    </div>
+                    <br>
+                    <button class="btn" onclick="changePointerValue()">Ubah Nilai via Pointer</button>
+                    <button class="btn btn-warning" onclick="resetPointer()">Reset</button>
+                    <div class="output" id="pointerOutput">Interaksi pointer akan muncul di sini...</div>
+                </div>
+
+                <button class="btn" onclick="showSection('fungsi')">Lanjut ke Fungsi →</button>
+            </div>
+
+            <!-- SECTION 7: FUNGSI -->
+            <div id="fungsi" class="section">
+                <h2>⚙️ Fungsi dalam C</h2>
+
+                <h3>Apa itu Fungsi?</h3>
+                <p>
+                    Fungsi adalah blok kode yang melakukan tugas tertentu dan dapat digunakan kembali. 
+                    Fungsi membantu membuat kode lebih terorganisir dan mudah dipelihara.
+                </p>
+
+                <h3>Struktur Fungsi</h3>
+                <div class="code-box">
+<span class="comment">// Deklarasi (Prototipe)</span>
+<span class="keyword">int</span> tambah(<span class="keyword">int</span> a, <span class="keyword">int</span> b);
+
+<span class="keyword">int</span> main() {
+    <span class="keyword">int</span> hasil = tambah(<span class="number">5</span>, <span class="number">3</span>);
+    printf(<span class="string">"%d"</span>, hasil);  <span class="comment">// Output: 8</span>
+    <span class="keyword">return</span> <span class="number">0</span>;
+}
+
+<span class="comment">// Definisi</span>
+<span class="keyword">int</span> tambah(<span class="keyword">int</span> a, <span class="keyword">int</span> b) {
+    <span class="keyword">return</span> a + b;
+}
+                </div>
+
+                <h3>Pass by Value vs Pass by Reference</h3>
+                <table class="table">
+                    <tr>
+                        <th>Tipe</th>
+                        <th>Cara Kerja</th>
+                        <th>Perubahan di Fungsi</th>
+                    </tr>
+                    <tr>
+                        <td>Pass by Value</td>
+                        <td>Salinan nilai dikirim</td>
+                        <td>Tidak mempengaruhi variabel asli</td>
+                    </tr>
+                    <tr>
+                        <td>Pass by Reference</td>
+                        <td>Alamat memori dikirim</td>
+                        <td>Mempengaruhi variabel asli</td>
+                    </tr>
+                </table>
+
+                <div class="code-box">
+<span class="comment">// Pass by Value</span>
+<span class="keyword">void</span> ubahNilai(<span class="keyword">int</span> x) {
+    x = <span class="number">100</span>;  <span class="comment">// Tidak mengubah variabel asli</span>
+}
+
+<span class="comment">// Pass by Reference (dengan Pointer)</span>
+<span class="keyword">void</span> ubahAlamat(<span class="keyword">int</span> *x) {
+    *x = <span class="number">100</span>;  <span class="comment">// Mengubah variabel asli</span>
+}
+                </div>
+
+                <h3>🧪 Simulator: Fungsi Interaktif</h3>
+                <div class="simulator">
+                    <h4>Pilih jenis fungsi:</h4>
+                    <select id="funcType" style="padding: 10px; margin: 10px 0; width: 200px;">
+                        <option value="tambah">Fungsi Tambah</option>
+                        <option value="kali">Fungsi Kali</option>
+                        <option value="pangkat">Fungsi Pangkat</option>
+                        <option value="faktorial">Fungsi Faktorial</option>
+                    </select>
+                    <br>
+                    <div id="funcInputs">
+                        <input type="number" id="funcNum1" value="5" style="padding: 10px; margin: 5px; width: 100px;">
+                        <input type="number" id="funcNum2" value="3" style="padding: 10px; margin: 5px; width: 100px;">
+                    </div>
+                    <br>
+                    <button class="btn" onclick="runFunction()">Jalankan Fungsi</button>
+                    <div class="output" id="funcOutput">Hasil fungsi akan muncul di sini...</div>
+                </div>
+
+                <button class="btn" onclick="showSection('simulator')">Lanjut ke Simulator Lengkap →</button>
+            </div>
+
+            <!-- SECTION 8: SIMULATOR LENGKAP -->
+            <div id="simulator" class="section">
+                <h2>🧪 Simulator Kode C Lengkap</h2>
+
+                <p>
+                    Di sini Anda bisa menulis dan menjalankan kode C secara interaktif. 
+                    Simulator ini akan mensimulasikan output dari kode Anda.
+                </p>
+
+                <div class="tip-box">
+                    <strong>💡 Tips:</strong> Simulator ini memiliki keterbatasan. Untuk proyek serius, 
+                    gunakan compiler C asli seperti GCC atau online compiler seperti OnlineGDB.
+                </div>
+
+                <h3>Template Kode</h3>
+                <div style="display: flex; gap: 10px; margin: 20px 0; flex-wrap: wrap;">
+                    <button class="btn" onclick="loadTemplate('hello')">Hello World</button>
+                    <button class="btn" onclick="loadTemplate('kalkulator')">Kalkulator</button>
+                    <button class="btn" onclick="loadTemplate('loop')">Perulangan</button>
+                    <button class="btn" onclick="loadTemplate('array')">Array</button>
+                    <button class="btn" onclick="loadTemplate('kasir')">Kasir Sederhana</button>
+                </div>
+
+                <div class="simulator">
+                    <h4>💻 Code Editor:</h4>
+                    <textarea class="code-editor" id="mainEditor" style="min-height: 400px;">#include <stdio.h>
+
+int main() {
+    printf("Hello, World!\n");
+    printf("Selamat belajar Bahasa C!\n");
+    
+    return 0;
+}</textarea>
+                    <br>
+                    <button class="btn" onclick="runCode()">▶️ Jalankan Kode</button>
+                    <button class="btn btn-warning" onclick="clearCode()">🗑️ Hapus</button>
+                    <button class="btn btn-success" onclick="checkSyntax()">✓ Cek Syntax</button>
+                    
+                    <h4 style="margin-top: 20px;">📤 Output:</h4>
+                    <div class="output" id="mainOutput" style="min-height: 200px;">Output program akan muncul di sini...</div>
+                </div>
+
+                <h3>Kode Contoh Lengkap</h3>
+                <div class="code-box">
+<span class="comment">// Program Kasir Sederhana</span>
+<span class="keyword">#include</span> &lt;stdio.h&gt;
+
+<span class="keyword">struct</span> Barang {
+    <span class="keyword">char</span> nama[<span class="number">50</span>];
+    <span class="keyword">int</span> harga;
+    <span class="keyword">int</span> jumlah;
+};
+
+<span class="keyword">int</span> main() {
+    <span class="keyword">struct</span> Barang belanja[<span class="number">10</span>];
+    <span class="keyword">int</span> total = <span class="number">0</span>;
+    
+    <span class="comment">// Input dan proses</span>
+    <span class="comment">// ... kode lengkap ada di template ...</span>
+    
+    <span class="keyword">return</span> <span class="number">0</span>;
+}
+                </div>
+
+                <button class="btn" onclick="showSection('kuis')">Lanjut ke Kuis →</button>
+            </div>
+
+            <!-- SECTION 9: KUIS -->
+            <div id="kuis" class="section">
+                <h2>📝 Kuis Pemahaman Bahasa C</h2>
+
+                <p>
+                    Uji pemahaman Anda dengan 10 soal kuis berikut. 
+                    Setiap soal bernilai 10 poin. Nilai minimal lulus: 70.
+                </p>
+
+                <div class="progress-bar">
+                    <div class="progress-fill" id="quizProgress"></div>
+                </div>
+
+                <div class="quiz-container" id="quizContainer">
+                    <!-- Questions will be loaded here -->
+                </div>
+
+                <div class="result-box" id="resultBox">
+                    <h3 id="scoreDisplay">0/100</h3>
+                    <p id="scoreMessage"></p>
+                    <button class="btn" onclick="resetQuiz()">🔄 Ulangi Kuis</button>
+                    <button class="btn btn-success" onclick="showSection('intro')">📖 Belajar Lagi</button>
+                </div>
+
+                <button class="btn btn-success" id="submitQuiz" onclick="submitQuiz()" style="display: none;">
+                    📤 Submit Jawaban
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // NAVIGATION
+        function showSection(sectionId) {
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.nav button').forEach(b => b.classList.remove('active'));
+            
+            document.getElementById(sectionId).classList.add('active');
+            event.target.classList.add('active');
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // HELLO WORLD SIMULATOR
+        function runHello() {
+            const code = document.getElementById('helloEditor').value;
+            const output = document.getElementById('helloOutput');
+            
+            if (code.includes('printf') && code.includes('Hello')) {
+                output.innerHTML = 'Hello, World!\n\n✅ Program berhasil dijalankan!';
+                output.style.color = '#00ff00';
+            } else {
+                output.innerHTML = '❌ Error: Kode tidak valid atau tidak ada printf';
+                output.style.color = '#ff6b6b';
+            }
+        }
+
+        function resetHello() {
+            document.getElementById('helloEditor').value = `#include <stdio.h>
+
+int main() {
+    printf("Hello, World!\\n");
+    return 0;
+}`;
+            document.getElementById('helloOutput').innerHTML = 'Output akan muncul di sini...';
+        }
+
+        // OPERATOR CALCULATOR
+        function calculate() {
+            const num1 = parseFloat(document.getElementById('opNum1').value);
+            const num2 = parseFloat(document.getElementById('opNum2').value);
+            const op = document.getElementById('opSelect').value;
+            const output = document.getElementById('opOutput');
+            
+            let result;
+            switch(op) {
+                case '+': result = num1 + num2; break;
+                case '-': result = num1 - num2; break;
+                case '*': result = num1 * num2; break;
+                case '/': 
+                    if (num2 === 0) {
+                        output.innerHTML = '❌ Error: Pembagian dengan nol!';
+                        output.style.color = '#ff6b6b';
+                        return;
+                    }
+                    result = num1 / num2; 
+                    break;
+                case '%': 
+                    result = Math.floor(num1) % Math.floor(num2); 
+                    break;
+            }
+            
+            output.innerHTML = `Hasil: ${num1} ${op} ${num2} = ${result}`;
+            output.style.color = '#00ff00';
+        }
+
+        // NILAI CHECKER
+        function cekNilai() {
+            const nilai = parseInt(document.getElementById('nilaiInput').value);
+            const output = document.getElementById('nilaiOutput');
+            
+            if (nilai >= 70) {
+                output.innerHTML = `✅ Nilai: ${nilai}\nStatus: LULUS\nSelamat!`;
+                output.style.color = '#2ecc71';
+            } else if (nilai >= 50) {
+                output.innerHTML = `⚠️ Nilai: ${nilai}\nStatus: REMEDIAL\nBelajar lagi!`;
+                output.style.color = '#f39c12';
+            } else {
+                output.innerHTML = `❌ Nilai: ${nilai}\nStatus: GAGAL\nJangan menyerah!`;
+                output.style.color = '#e74c3c';
+            }
+        }
+
+        // LOOP VISUALIZER
+        function runLoop() {
+            const count = parseInt(document.getElementById('loopCount').value);
+            const output = document.getElementById('loopOutput');
+            
+            if (count < 1 || count > 20) {
+                output.innerHTML = '❌ Masukkan angka antara 1-20';
+                return;
+            }
+            
+            let result = 'Hasil Loop:\n';
+            for (let i = 0; i < count; i++) {
+                result += `Iterasi ${i + 1}: i = ${i}\n`;
+            }
+            result += `\n✅ Loop selesai setelah ${count} iterasi!`;
+            
+            output.innerHTML = result;
+            output.style.color = '#00ff00';
+        }
+
+        // ARRAY VISUALIZER
+        function visualizeArray() {
+            const inputs = document.querySelectorAll('.arrayInput');
+            const output = document.getElementById('arrayOutput');
+            
+            let result = 'Visualisasi Array:\n[';
+            inputs.forEach((input, index) => {
+                result += `${input.value}`;
+                if (index < inputs.length - 1) result += ', ';
+            });
+            result += ']\n\n';
+            
+            inputs.forEach((input, index) => {
+                result += `Index [${index}] = ${input.value}\n`;
+            });
+            
+            output.innerHTML = result;
+            output.style.color = '#00ff00';
+        }
+
+        function calculateArray() {
+            const inputs = document.querySelectorAll('.arrayInput');
+            const output = document.getElementById('arrayOutput');
+            
+            let total = 0;
+            inputs.forEach(input => {
+                total += parseInt(input.value) || 0;
+            });
+            
+            const avg = total / inputs.length;
+            
+            output.innerHTML = `Total: ${total}\nRata-rata: ${avg.toFixed(2)}\n✅ Perhitungan selesai!`;
+            output.style.color = '#00ff00';
+        }
+
+        // STRING MANIPULATOR
+        function stringInfo() {
+            const str = document.getElementById('stringInput').value;
+            const output = document.getElementById('stringOutput');
+            
+            output.innerHTML = `Teks: "${str}"\nPanjang: ${str.length} karakter\n✅ Info string ditampilkan!`;
+            output.style.color = '#00ff00';
+        }
+
+        function reverseString() {
+            const str = document.getElementById('stringInput').value;
+            const output = document.getElementById('stringOutput');
+            
+            const reversed = str.split('').reverse().join('');
+            output.innerHTML = `Original: "${str}"\nDibalik: "${reversed}"\n✅ String dibalik!`;
+            output.style.color = '#00ff00';
+        }
+
+        function toUpperCase() {
+            const str = document.getElementById('stringInput').value;
+            const output = document.getElementById('stringOutput');
+            
+            output.innerHTML = `Original: "${str}"\nHuruf Besar: "${str.toUpperCase()}"\n✅ Konversi selesai!`;
+            output.style.color = '#00ff00';
+        }
+
+        // POINTER SIMULATOR
+        let pointerValue = 10;
+        
+        function changePointerValue() {
+            pointerValue = 20;
+            document.getElementById('ptrValue').textContent = pointerValue;
+            document.getElementById('ptrDeref').textContent = pointerValue;
+            
+            const output = document.getElementById('pointerOutput');
+            output.innerHTML = `*ptr = ${pointerValue}\nNilai x berubah menjadi ${pointerValue}!\n✅ Pointer berhasil mengubah nilai!`;
+            output.style.color = '#00ff00';
+        }
+
+        function resetPointer() {
+            pointerValue = 10;
+            document.getElementById('ptrValue').textContent = pointerValue;
+            document.getElementById('ptrDeref').textContent = pointerValue;
+            document.getElementById('pointerOutput').innerHTML = 'Pointer direset ke nilai awal.';
+        }
+
+        // FUNCTION SIMULATOR
+        function runFunction() {
+            const type = document.getElementById('funcType').value;
+            const num1 = parseFloat(document.getElementById('funcNum1').value);
+            const num2 = parseFloat(document.getElementById('funcNum2').value);
+            const output = document.getElementById('funcOutput');
+            
+            let result;
+            let formula;
+            
+            switch(type) {
+                case 'tambah':
+                    result = num1 + num2;
+                    formula = `${num1} + ${num2}`;
+                    break;
+                case 'kali':
+                    result = num1 * num2;
+                    formula = `${num1} × ${num2}`;
+                    break;
+                case 'pangkat':
+                    result = Math.pow(num1, num2);
+                    formula = `${num1}^${num2}`;
+                    break;
+                case 'faktorial':
+                    result = 1;
+                    for (let i = 1; i <= num1; i++) result *= i;
+                    formula = `${num1}!`;
+                    break;
+            }
+            
+            output.innerHTML = `Fungsi: ${formula}\nHasil: ${result}\n✅ Fungsi dijalankan!`;
+            output.style.color = '#00ff00';
+        }
+
+        // MAIN CODE SIMULATOR
+        const templates = {
+            hello: `#include <stdio.h>
+
+int main() {
+    printf("Hello, World!\\n");
+    printf("Selamat belajar Bahasa C!\\n");
+    return 0;
+}`,
+            kalkulator: `#include <stdio.h>
+
+int main() {
+    int a = 10, b = 5;
+    
+    printf("Penjumlahan: %d\\n", a + b);
+    printf("Pengurangan: %d\\n", a - b);
+    printf("Perkalian: %d\\n", a * b);
+    printf("Pembagian: %d\\n", a / b);
+    
+    return 0;
+}`,
+            loop: `#include <stdio.h>
+
+int main() {
+    for (int i = 1; i <= 5; i++) {
+        printf("Iterasi ke-%d\\n", i);
+    }
+    return 0;
+}`,
+            array: `#include <stdio.h>
+
+int main() {
+    int angka[5] = {10, 20, 30, 40, 50};
+    
+    for (int i = 0; i < 5; i++) {
+        printf("angka[%d] = %d\\n", i, angka[i]);
+    }
+    return 0;
+}`,
+            kasir: `#include <stdio.h>
+
+int main() {
+    char nama[50] = "Budi";
+    int harga = 50000;
+    int jumlah = 2;
+    int total = harga * jumlah;
+    
+    printf("=== STRUK ===\\n");
+    printf("Nama: %s\\n", nama);
+    printf("Total: Rp %d\\n", total);
+    
+    return 0;
+}`
+        };
+
+        function loadTemplate(templateName) {
+            document.getElementById('mainEditor').value = templates[templateName];
+        }
+
+        function runCode() {
+            const code = document.getElementById('mainEditor').value;
+            const output = document.getElementById('mainOutput');
+            
+            // Simple simulation
+            let simulatedOutput = '';
+            
+            if (code.includes('printf("Hello, World!')) {
+                simulatedOutput += 'Hello, World!\n';
+            }
+            if (code.includes('Selamat belajar')) {
+                simulatedOutput += 'Selamat belajar Bahasa C!\n';
+            }
+            if (code.includes('Penjumlahan')) {
+                simulatedOutput += 'Penjumlahan: 15\nPengurangan: 5\nPerkalian: 50\nPembagian: 2\n';
+            }
+            if (code.includes('Iterasi')) {
+                for (let i = 1; i <= 5; i++) {
+                    simulatedOutput += `Iterasi ke-${i}\n`;
+                }
+            }
+            if (code.includes('angka[')) {
+                for (let i = 0; i < 5; i++) {
+                    simulatedOutput += `angka[${i}] = ${(i + 1) * 10}\n`;
+                }
+            }
+            if (code.includes('STRUK')) {
+                simulatedOutput += '=== STRUK ===\nNama: Budi\nTotal: Rp 100000\n';
+            }
+            
+            if (simulatedOutput) {
+                output.innerHTML = simulatedOutput + '\n✅ Program selesai!';
+                output.style.color = '#00ff00';
+            } else {
+                output.innerHTML = '⚠️ Simulator tidak mengenali pola kode ini.\n\nCatatan: Ini adalah simulator sederhana. Untuk hasil akurat, gunakan compiler C asli.';
+                output.style.color = '#f39c12';
+            }
+        }
+
+        function clearCode() {
+            document.getElementById('mainEditor').value = '';
+            document.getElementById('mainOutput').innerHTML = 'Output program akan muncul di sini...';
+        }
+
+        function checkSyntax() {
+            const code = document.getElementById('mainEditor').value;
+            const output = document.getElementById('mainOutput');
+            
+            const errors = [];
+            
+            if (!code.includes('int main()')) {
+                errors.push('❌ Tidak ada fungsi main()');
+            }
+            if (!code.includes('#include')) {
+                errors.push('❌ Tidak ada #include');
+            }
+            if (code.includes('printf') && !code.includes(';')) {
+                errors.push('❌ Missing semicolon (;)');
+            }
+            if ((code.match(/{/g) || []).length !== (code.match(/}/g) || []).length) {
+                errors.push('❌ Kurung kurawal tidak seimbang');
+            }
+            
+            if (errors.length === 0) {
+                output.innerHTML = '✅ Syntax OK! Tidak ada error yang terdeteksi.';
+                output.style.color = '#2ecc71';
+            } else {
+                output.innerHTML = '⚠️ Potensi Error:\n' + errors.join('\n');
+                output.style.color = '#e74c3c';
+            }
+        }
+
+        // QUIZ SYSTEM
+        const quizQuestions = [
+            {
+                question: "Apa tahun bahasa C dikembangkan?",
+                options: ["1965", "1972", "1980", "1990"],
+                correct: 1
+            },
+            {
+                question: "Siapa pengembang bahasa C?",
+                options: ["Bill Gates", "Steve Jobs", "Dennis Ritchie", "Linus Torvalds"],
+                correct: 2
+            },
+            {
+                question: "Tipe data untuk bilangan bulat adalah...",
+                options: ["float", "char", "int", "double"],
+                correct: 2
+            },
+            {
+                question: "Simbol untuk mengambil alamat memori adalah...",
+                options: ["*", "&", "%", "#"],
+                correct: 1
+            },
+            {
+                question: "Indeks array dimulai dari...",
+                options: ["1", "0", "-1", "Tergantung"],
+                correct: 1
+            },
+            {
+                question: "Fungsi untuk menampilkan output ke layar adalah...",
+                options: ["scanf()", "print()", "printf()", "display()"],
+                correct: 2
+            },
+            {
+                question: "Operator modulus (%) digunakan untuk...",
+                options: ["Pembagian", "Perkalian", "Sisa bagi", "Pangkat"],
+                correct: 2
+            },
+            {
+                question: "Karakter akhir string dalam C adalah...",
+                options: ["\\n", "\\0", "\\t", "\\r"],
+                correct: 1
+            },
+            {
+                question: "Keyword untuk mengakhiri program C adalah...",
+                options: ["end", "stop", "return 0", "exit"],
+                correct: 2
+            },
+            {
+                question: "Library untuk fungsi input/output adalah...",
+                options: ["stdlib.h", "string.h", "stdio.h", "math.h"],
+                correct: 2
+            }
+        ];
+
+        let userAnswers = new Array(quizQuestions.length).fill(null);
+
+        function loadQuiz() {
+            const container = document.getElementById('quizContainer');
+            container.innerHTML = '';
+            
+            quizQuestions.forEach((q, index) => {
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'question';
+                questionDiv.id = `question${index}`;
+                
+                let optionsHtml = '<div class="options">';
+                q.options.forEach((opt, optIndex) => {
+                    optionsHtml += `<div class="option" onclick="selectAnswer(${index}, ${optIndex})">${opt}</div>`;
+                });
+                optionsHtml += '</div>';
+                
+                questionDiv.innerHTML = `
+                    <h4>${index + 1}. ${q.question}</h4>
+                    ${optionsHtml}
+                    <div class="feedback" id="feedback${index}" style="margin-top: 10px; font-weight: bold;"></div>
+                `;
+                
+                container.appendChild(questionDiv);
+            });
+            
+            document.getElementById('submitQuiz').style.display = 'block';
+            document.getElementById('resultBox').style.display = 'none';
+            updateProgress();
+        }
+
+        function selectAnswer(questionIndex, answerIndex) {
+            userAnswers[questionIndex] = answerIndex;
+            
+            const questionDiv = document.getElementById(`question${questionIndex}`);
+            const options = questionDiv.querySelectorAll('.option');
+            
+            options.forEach((opt, idx) => {
+                opt.classList.remove('selected');
+                if (idx === answerIndex) {
+                    opt.classList.add('selected');
+                }
+            });
+            
+            updateProgress();
+        }
+
+        function updateProgress() {
+            const answered = userAnswers.filter(a => a !== null).length;
+            const percentage = (answered / quizQuestions.length) * 100;
+            document.getElementById('quizProgress').style.width = percentage + '%';
+        }
+
+        function submitQuiz() {
+            const unanswered = userAnswers.filter(a => a === null).length;
+            
+            if (unanswered > 0) {
+                if (!confirm(`Anda belum menjawab ${unanswered} soal. Yakin submit?`)) {
+                    return;
+                }
+            }
+            
+            let score = 0;
+            
+            quizQuestions.forEach((q, index) => {
+                const feedback = document.getElementById(`feedback${index}`);
+                const options = document.getElementById(`question${index}`).querySelectorAll('.option');
+                
+                if (userAnswers[index] === q.correct) {
+                    score += 10;
+                    options[q.correct].classList.add('correct');
+                    feedback.innerHTML = '✅ Benar! (+10 poin)';
+                    feedback.style.color = '#2ecc71';
+                } else {
+                    if (userAnswers[index] !== null) {
+                        options[userAnswers[index]].classList.add('wrong');
+                    }
+                    options[q.correct].classList.add('correct');
+                    feedback.innerHTML = `❌ Salah! Jawaban: ${q.options[q.correct]}`;
+                    feedback.style.color = '#e74c3c';
+                }
+                
+                options.forEach(opt => opt.style.pointerEvents = 'none');
+            });
+            
+            document.getElementById('submitQuiz').style.display = 'none';
+            
+            const resultBox = document.getElementById('resultBox');
+            const scoreDisplay = document.getElementById('scoreDisplay');
+            const scoreMessage = document.getElementById('scoreMessage');
+            
+            resultBox.style.display = 'block';
+            scoreDisplay.textContent = `${score}/100`;
+            
+            if (score >= 90) {
+                scoreMessage.textContent = '🏆 Luar biasa! Anda menguasai Bahasa C!';
+                resultBox.style.background = 'linear-gradient(135deg, #2ecc71 0%, #27ae60 100%)';
+            } else if (score >= 70) {
+                scoreMessage.textContent = '✅ Bagus! Anda lulus dengan baik.';
+                resultBox.style.background = 'linear-gradient(135deg, #3498db 0%, #2980b9 100%)';
+            } else if (score >= 50) {
+                scoreMessage.textContent = '⚠️ Cukup. Perlu belajar lagi.';
+                resultBox.style.background = 'linear-gradient(135deg, #f39c12 0%, #e67e22 100%)';
+            } else {
+                scoreMessage.textContent = '❌ Jangan menyerah! Pelajari materi lagi.';
+                resultBox.style.background = 'linear-gradient(135deg, #e74c3c 0%, #c0392b 100%)';
+            }
+            
+            window.scrollTo({ top: document.getElementById('resultBox').offsetTop - 100, behavior: 'smooth' });
+        }
+
+        function resetQuiz() {
+            userAnswers = new Array(quizQuestions.length).fill(null);
+            loadQuiz();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            loadQuiz();
+        });
+    </script>
+</body>
+</html>
