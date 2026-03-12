@@ -1621,44 +1621,144 @@ dari kombinasi operasi logika Boolean ini.
 <div class="content-card">
 <h4><i class="fas fa-code-branch"></i> Struktur Percabangan: IF-ELSE</h4>
 <div class="code-block">
-<span class="code-comment">// Contoh: Menentukan kategori nilai</span>
-<span class="code-keyword">INPUT</span> nilai
-<span class="code-keyword">IF</span> nilai >= 90 <span class="code-keyword">THEN</span>
-<span class="code-keyword">PRINT</span> <span class="code-string">"Sangat Baik"</span>
-<span class="code-keyword">ELSE IF</span> nilai >= 75 <span class="code-keyword">THEN</span>
-<span class="code-keyword">PRINT</span> <span class="code-string">"Baik"</span>
-<span class="code-keyword">ELSE IF</span> nilai >= 60 <span class="code-keyword">THEN</span>
-<span class="code-keyword">PRINT</span> <span class="code-string">"Cukup"</span>
-<span class="code-keyword">ELSE</span>
-<span class="code-keyword">PRINT</span> <span class="code-string">"Perlu Belajar Lagi"</span>
-<span class="code-keyword">END IF</span>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        h1{
+            color: #2c3e50;
+        }
+        h2{
+            color: #34495e;
+        }
+        pre{
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-left: 4px solid #333;
+        }
+        .kesimpulan{
+            background-color: #eef6ff;
+            padding: 10px;
+            border-left: 5px solid #0077cc;
+        }
+    </style>
+
+<body>
+
+<h1>Struktur Percabangan IF–ELSE</h1>
+
+<p>
+Struktur <b>IF–ELSE</b> adalah struktur kontrol dalam pemrograman yang digunakan 
+untuk <b>mengambil keputusan berdasarkan suatu kondisi</b>.
+</p>
+
+<p>
+Program akan memeriksa kondisi terlebih dahulu:
+</p>
+
+<ul>
+<li>Jika kondisi <b>benar (TRUE)</b> maka program menjalankan perintah tertentu.</li>
+<li>Jika kondisi <b>salah (FALSE)</b> maka program menjalankan perintah lainnya.</li>
+</ul>
+
+<h2>1. Bentuk Dasar IF–ELSE</h2>
+
+<p>Penulisan dalam pseudocode:</p>
+
+<pre>
+IF kondisi THEN
+    perintah jika kondisi benar
+ELSE
+    perintah jika kondisi salah
+END IF
+</pre>
+
+<p><b>Penjelasan:</b></p>
+
+<ul>
+<li><b>IF</b> : memulai pengecekan kondisi</li>
+<li><b>kondisi</b> : syarat yang diperiksa</li>
+<li><b>THEN</b> : perintah jika kondisi benar</li>
+<li><b>ELSE</b> : perintah jika kondisi salah</li>
+<li><b>END IF</b> : menutup percabangan</li>
+</ul>
+
+<h2>2. Contoh Pseudocode</h2>
+
+<p>Program untuk menentukan lulus atau tidak lulus.</p>
+
+<pre>
+DECLARE nilai AS integer
+
+SET nilai = 80
+
+IF nilai >= 75 THEN
+    PRINT "Anda Lulus"
+ELSE
+    PRINT "Anda Tidak Lulus"
+END IF
+</pre>
+
+<h2>3. Contoh dalam Bahasa C</h2>
+
+<pre>
+#include &lt;stdio.h&gt;
+
+int main() {
+
+    int nilai = 80;
+
+    if (nilai >= 75) {
+        printf("Anda Lulus\n");
+    } 
+    else {
+        printf("Anda Tidak Lulus\n");
+    }
+
+    return 0;
+}
+</pre>
+
+<h2>4. Contoh Logika Sehari-hari</h2>
+
+<pre>
+IF hujan THEN
+    bawa payung
+ELSE
+    tidak perlu payung
+END IF
+</pre>
+
+<div class="kesimpulan">
+<h2>Kesimpulan</h2>
+
+<p>Struktur <b>IF–ELSE</b> digunakan untuk:</p>
+
+<ul>
+<li>Mengambil keputusan dalam program</li>
+<li>Memilih dua kemungkinan tindakan</li>
+<li>Menjalankan perintah berdasarkan kondisi</li>
+</ul>
+
+<p><b>Alur kerja:</b></p>
+
+<pre>
+Periksa kondisi
+      ↓
+   TRUE ? → Jalankan perintah IF
+      ↓
+   FALSE → Jalankan perintah ELSE
+</pre>
+
+</div>
+
+</body>
 </div>
 </div>
-<div class="content-card">
-<h4><i class="fas fa-diagram-project"></i> Contoh: Login Sederhana</h4>
-<div class="code-block">
-<span class="code-comment">// Algoritma: Sistem Login</span>
-<span class="code-keyword">START</span>
-<span class="code-keyword">INPUT</span> username, password
-<span class="code-keyword">IF</span> username == <span class="code-string">"admin"</span> AND password == <span class="code-string">"12345"</span> <span class="code-keyword">THEN</span>
-<span class="code-keyword">PRINT</span> <span class="code-string">"✅ Login Berhasil!"</span>
-<span class="code-keyword">ELSE</span>
-<span class="code-keyword">PRINT</span> <span class="code-string">"❌ Login Gagal!"</span>
-<span class="code-keyword">END IF</span>
-<span class="code-keyword">END</span>
-</div>
-<div class="step-explanation">
-<h5><i class="fas fa-list-1-2"></i> Pembahasan:</h5>
-<ol class="step-list">
-<li>Program meminta input <code>username</code> dan <code>password</code>.</li>
-<li>Kondisi diperiksa: apakah username = "admin" <strong>DAN</strong> password = "12345"?</li>
-<li>Jika <strong>kedua</strong> kondisi benar → tampilkan "Login Berhasil".</li>
-<li>Jika <strong>salah satu</strong> atau keduanya salah → tampilkan "Login Gagal".</li>
-<li>Program selesai.</li>
-</ol>
-</div>
-</div>
-<div class="tip-box">
+
 <i class="fas fa-lightbulb"></i>
 <div>
 <strong>💡 Tips Logika:</strong>
