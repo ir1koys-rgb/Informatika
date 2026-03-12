@@ -1423,18 +1423,40 @@ Labelnya adalah nama variabel, dan isinya adalah nilai/data yang disimpan.
 </div>
 <div class="content-card">
 <h4><i class="fas fa-code"></i> Contoh: Deklarasi dan Penggunaan Variabel</h4>
-<div class="code-block">
-<span class="code-comment">// Contoh: Data Siswa</span>
-<span class="code-keyword">DECLARE</span> nama_siswa <span class="code-keyword">AS</span> string
-<span class="code-keyword">DECLARE</span> nilai_ujian <span class="code-keyword">AS</span> float
-<span class="code-keyword">DECLARE</span> status_lulus <span class="code-keyword">AS</span> boolean
-<span class="code-keyword">SET</span> nama_siswa = <span class="code-string">"Siti Nurhaliza"</span>
-<span class="code-keyword">SET</span> nilai_ujian = 85.5
-<span class="code-keyword">SET</span> status_lulus = <span class="code-keyword">true</span>
-<span class="code-keyword">PRINT</span> <span class="code-string">"Nama: "</span>, nama_siswa
-<span class="code-keyword">PRINT</span> <span class="code-string">"Nilai: "</span>, nilai_ujian
-<span class="code-keyword">PRINT</span> <span class="code-string">"Lulus: "</span>, status_lulus
-</div>
+
+
+<pre><code>
+#include &lt;stdio.h&gt;
+
+int main() {
+
+    // Deklarasi variabel
+    char nama[50];
+    int umur;
+    float tinggi;
+
+    // Input data
+    printf("Masukkan nama: ");
+    scanf("%s", nama);
+
+    printf("Masukkan umur: ");
+    scanf("%d", &umur);
+
+    printf("Masukkan tinggi: ");
+    scanf("%f", &tinggi);
+
+    // Output
+    printf("\nData Siswa\n");
+    printf("Nama   : %s\n", nama);
+    printf("Umur   : %d tahun\n", umur);
+    printf("Tinggi : %.2f cm\n", tinggi);
+
+    return 0;
+}
+</code></pre>
+
+
+  
 </div>
 <div class="tip-box">
 <i class="fas fa-lightbulb"></i>
