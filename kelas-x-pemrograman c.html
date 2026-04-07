@@ -909,84 +909,519 @@ Lanjut ke Kontrol <i class="fas fa-arrow-right"></i>
 <!-- SECTION 4: KONTROL (DIPERBARUI) -->
 <section id="kontrol" class="topic-section">
 <h2 class="section-title"><i class="fas fa-random"></i> Kontrol Alur Program</h2>
+<!-- edit -->
+
 <div class="content-card">
 <h3><i class="fas fa-code-branch"></i> Percabangan (If-Else)</h3>
 <div class="code-block">
-<span class="keyword">int</span> nilai = <span class="number">75</span>;
-<span class="keyword">if</span> (nilai >= <span class="number">70</span>) {
-printf(<span class="string">"Lulus\n"</span>);
-} <span class="keyword">else if</span> (nilai >= <span class="number">50</span>) {
-printf(<span class="string">"Remedial\n"</span>);
-} <span class="keyword">else</span> {
-printf(<span class="string">"Gagal\n"</span>);
+<div class="materi-ifelse">
+
+<style>
+.materi-ifelse {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 20px 0;
+    background-color: #f4f6f8;
+    padding: 20px;
+    border-radius: 10px;
 }
+
+.materi-ifelse h1,
+.materi-ifelse h2 {
+    color: #f8f8f2;
+}
+
+.materi-ifelse p,
+.materi-ifelse li {
+    color: #ecf0f1;
+}
+
+.materi-ifelse pre {
+    background: #272822;
+    color: #f8f8f2;
+    padding: 10px;
+    border-radius: 5px;
+    overflow-x: auto;
+}
+
+.materi-ifelse .container {
+    background:#636e72;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.materi-ifelse ul,
+.materi-ifelse ol {
+    padding-left: 20px;
+}
+
+.materi-ifelse * {
+    box-sizing: border-box;
+}
+</style>
+
+<div class="container">
+
+<h1>📘 Materi: Percabangan IF–ELSE</h1>
+
+<h2>1. Pengertian IF–ELSE</h2>
+<p>Percabangan <b>IF–ELSE</b> adalah struktur kontrol dalam pemrograman yang digunakan untuk mengambil keputusan berdasarkan suatu kondisi.</p>
+
+<p>➡️ Program akan:</p>
+<ul>
+    <li>Menjalankan perintah jika kondisi benar (true)</li>
+    <li>Menjalankan perintah lain jika kondisi salah (false)</li>
+</ul>
+
+<h2>2. Konsep Dasar</h2>
+<p>Contoh dalam kehidupan sehari-hari:</p>
+<p><i>"Jika nilai bagus, maka lulus. Jika tidak, maka tidak lulus."</i></p>
+
+<h2>3. Struktur Penulisan</h2>
+<p><b>🔹 Bentuk Umum:</b></p>
+<pre>
+IF (kondisi) THEN
+    perintah_jika_benar
+ELSE
+    perintah_jika_salah
+END IF
+</pre>
+
+<h2>4. Alur Kerja IF–ELSE</h2>
+<ol>
+    <li>Program mengecek kondisi</li>
+    <li>Jika kondisi true → jalankan blok IF</li>
+    <li>Jika kondisi false → jalankan blok ELSE</li>
+</ol>
+
+<h2>5. Contoh Sederhana (Pseudocode)</h2>
+<pre>
+DECLARE nilai AS INTEGER
+SET nilai = 80
+
+IF nilai >= 75 THEN
+    PRINT "Lulus"
+ELSE
+    PRINT "Tidak Lulus"
+END IF
+</pre>
+
+<p><b>📌 Penjelasan:</b></p>
+<ul>
+    <li>Jika nilai ≥ 75 → "Lulus"</li>
+    <li>Jika tidak → "Tidak Lulus"</li>
+</ul>
+
+<h2>6. Contoh dalam Bahasa C</h2>
+<pre>
+#include &lt;stdio.h&gt;
+
+int main() {
+    int nilai = 80;
+
+    if (nilai >= 75) {
+        printf("Lulus\n");
+    } else {
+        printf("Tidak Lulus\n");
+    }
+
+    return 0;
+}
+</pre>
+
 </div>
 </div>
+</div>
+</div>
+<!-- edit -->
+
 <div class="content-card">
 <h3><i class="fas fa-exchange-alt"></i> Switch Case</h3>
 <div class="code-block">
-<span class="keyword">int</span> hari = <span class="number">3</span>;
-<span class="keyword">switch</span> (hari) {
-<span class="keyword">case</span> <span class="number">1</span>: printf(<span class="string">"Senin"</span>); <span class="keyword">break</span>;
-<span class="keyword">case</span> <span class="number">2</span>: printf(<span class="string">"Selasa"</span>); <span class="keyword">break</span>;
-<span class="keyword">case</span> <span class="number">3</span>: printf(<span class="string">"Rabu"</span>); <span class="keyword">break</span>;
-<span class="keyword">default</span>: printf(<span class="string">"Hari tidak valid"</span>);
+
+<div class="materi-ifelse">
+
+<style>
+.materi-ifelse {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 20px 0;
+    background-color: #f4f6f8;
+    padding: 20px;
+    border-radius: 10px;
 }
+
+.materi-ifelse h1,
+.materi-ifelse h2 {
+    color: #f8f8f2;
+}
+
+.materi-ifelse p,
+.materi-ifelse li {
+    color: #ecf0f1;
+}
+
+.materi-ifelse pre {
+    background: #272822;
+    color: #f8f8f2;
+    padding: 10px;
+    border-radius: 5px;
+    overflow-x: auto;
+}
+
+.materi-ifelse .container {
+    background:#636e72;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.materi-ifelse ul,
+.materi-ifelse ol {
+    padding-left: 20px;
+}
+
+.materi-ifelse * {
+    box-sizing: border-box;
+}
+</style>
+
+<div class="container">
+
+<h1>📘 Materi: Percabangan Switch Case</h1>
+
+<h2>1. Pengertian Switch Case</h2>
+<p><b>Switch Case</b> adalah struktur percabangan yang digunakan untuk memilih satu aksi dari banyak pilihan berdasarkan nilai tertentu.</p>
+
+<p>➡️ Digunakan ketika:</p>
+<ul>
+    <li>Memiliki banyak pilihan kondisi</li>
+    <li>Nilai yang dibandingkan bersifat tetap (misal: 1, 2, 3)</li>
+</ul>
+
+<h2>2. Konsep Dasar</h2>
+<p>Contoh dalam kehidupan sehari-hari:</p>
+<p><i>"Jika angka 1 maka Senin, 2 maka Selasa, dan seterusnya."</i></p>
+
+<h2>3. Struktur Penulisan</h2>
+<p><b>🔹 Bentuk Umum:</b></p>
+<pre>
+SWITCH (variabel)
+    CASE nilai1:
+        perintah
+        BREAK
+    CASE nilai2:
+        perintah
+        BREAK
+    DEFAULT:
+        perintah
+END SWITCH
+</pre>
+
+<h2>4. Penjelasan Komponen</h2>
+<ul>
+    <li><b>SWITCH</b> → memilih variabel yang dicek</li>
+    <li><b>CASE</b> → nilai pembanding</li>
+    <li><b>BREAK</b> → menghentikan proses</li>
+    <li><b>DEFAULT</b> → dijalankan jika tidak ada yang cocok</li>
+</ul>
+
+<h2>5. Contoh Sederhana (Pseudocode)</h2>
+<pre>
+DECLARE hari AS INTEGER
+SET hari = 2
+
+SWITCH (hari)
+    CASE 1:
+        PRINT "Senin"
+        BREAK
+    CASE 2:
+        PRINT "Selasa"
+        BREAK
+    CASE 3:
+        PRINT "Rabu"
+        BREAK
+    DEFAULT:
+        PRINT "Hari tidak valid"
+END SWITCH
+</pre>
+
+<p><b>📌 Penjelasan:</b></p>
+<ul>
+    <li>Jika hari = 2 → "Selasa"</li>
+    <li>Jika tidak cocok → "Hari tidak valid"</li>
+</ul>
+
+<h2>6. Contoh dalam Bahasa C</h2>
+<pre>
+#include &lt;stdio.h&gt;
+
+int main() {
+    int hari = 2;
+
+    switch(hari) {
+        case 1:
+            printf("Senin\n");
+            break;
+        case 2:
+            printf("Selasa\n");
+            break;
+        case 3:
+            printf("Rabu\n");
+            break;
+        default:
+            printf("Hari tidak valid\n");
+    }
+
+    return 0;
+}
+</pre>
+
+<h2>7. Perbedaan dengan IF–ELSE</h2>
+<ul>
+    <li>IF–ELSE → untuk kondisi kompleks (>, <, dll)</li>
+    <li>Switch Case → untuk nilai pasti</li>
+    <li>Switch lebih rapi untuk banyak pilihan</li>
+</ul>
+
+<h2>8. Contoh Kasus Nyata</h2>
+<p><b>Menentukan Menu Makanan</b></p>
+
+<pre>
+DECLARE pilihan AS INTEGER
+SET pilihan = 1
+
+SWITCH (pilihan)
+    CASE 1:
+        PRINT "Nasi Goreng"
+        BREAK
+    CASE 2:
+        PRINT "Mie Ayam"
+        BREAK
+    CASE 3:
+        PRINT "Bakso"
+        BREAK
+    DEFAULT:
+        PRINT "Menu tidak tersedia"
+END SWITCH
+</pre>
+
+<h2>9. Kesalahan yang Sering Terjadi</h2>
+<ul>
+    <li>Lupa menggunakan BREAK</li>
+    <li>Nilai CASE tidak sesuai</li>
+    <li>Tidak menggunakan DEFAULT</li>
+</ul>
+
+<h2>10. Kesimpulan</h2>
+<ul>
+    <li>Switch Case digunakan untuk banyak pilihan nilai tetap</li>
+    <li>Membuat kode lebih rapi dan mudah dibaca</li>
+    <li>Cocok untuk kondisi sederhana dan terstruktur</li>
+</ul>
+
 </div>
 </div>
+
+</div>
+</div>
+
+<!-- edit -->
+
 <div class="content-card">
 <h3><i class="fas fa-redo"></i> Perulangan (Loops)</h3>
 <div class="code-block">
-<span class="comment">// For Loop</span>
-<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < <span class="number">5</span>; i++) {
-printf(<span class="string">"%d "</span>, i);  <span class="comment">// Output: 0 1 2 3 4</span>
-}
-<span class="comment">// While Loop</span>
-<span class="keyword">int</span> j = <span class="number">0</span>;
-<span class="keyword">while</span> (j < <span class="number">5</span>) {
-printf(<span class="string">"%d "</span>, j);
-j++;
-}
-<span class="comment">// Do-While Loop</span>
-<span class="keyword">int</span> k = <span class="number">0</span>;
-<span class="keyword">do</span> {
-printf(<span class="string">"%d "</span>, k);
-k++;
-} <span class="keyword">while</span> (k < <span class="number">5</span>);
-</div>
-</div>
+<div class="materi-ifelse">
 
-<!-- MATERI KONTROL LANJUTAN (TANPA OPERATOR LOGIKA) -->
-<div class="content-card">
-    <h3><i class="fas fa-layer-group"></i> Nested If (If Bersarang)</h3>
-    <p>Struktur if di dalam if. Digunakan untuk kondisi yang lebih kompleks.</p>
-    <div class="code-block">
-<span class="keyword">if</span> (usia >= <span class="number">17</span>) {
-    <span class="keyword">if</span> (punyaKTP == <span class="number">1</span>) {
-        printf(<span class="string">"Boleh membuat SIM"</span>);
-    } <span class="keyword">else</span> {
-        printf(<span class="string">"Buat KTP dulu!"</span>);
+<style>
+.materi-ifelse {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 20px 0;
+    background-color: #f4f6f8;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.materi-ifelse h1,
+.materi-ifelse h2 {
+    color: #f8f8f2;
+}
+
+.materi-ifelse p,
+.materi-ifelse li {
+    color: #ecf0f1;
+}
+
+.materi-ifelse pre {
+    background: #272822;
+    color: #f8f8f2;
+    padding: 10px;
+    border-radius: 5px;
+    overflow-x: auto;
+}
+
+.materi-ifelse .container {
+    background:#636e72;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.materi-ifelse ul,
+.materi-ifelse ol {
+    padding-left: 20px;
+}
+
+.materi-ifelse * {
+    box-sizing: border-box;
+}
+</style>
+
+<div class="container">
+
+<h1>📘 Materi: Perulangan (Looping)</h1>
+
+<h2>1. Pengertian Perulangan</h2>
+<p><b>Perulangan (Looping)</b> adalah proses menjalankan perintah secara berulang-ulang selama kondisi tertentu masih terpenuhi.</p>
+
+<p>➡️ Tujuan penggunaan:</p>
+<ul>
+    <li>Menghemat penulisan kode</li>
+    <li>Menghindari pengulangan manual</li>
+</ul>
+
+<h2>2. Konsep Dasar</h2>
+<p>Contoh dalam kehidupan sehari-hari:</p>
+<p><i>"Ulangi langkah berjalan sampai tujuan tercapai."</i></p>
+
+<h2>3. Jenis-Jenis Perulangan</h2>
+<ul>
+    <li><b>FOR</b></li>
+    <li><b>WHILE</b></li>
+    <li><b>DO WHILE</b></li>
+</ul>
+
+<h2>4. Perulangan FOR</h2>
+<p>Digunakan jika jumlah perulangan sudah diketahui.</p>
+
+<p><b>🔹 Pseudocode:</b></p>
+<pre>
+FOR i = 1 TO 5 DO
+    PRINT i
+END FOR
+</pre>
+
+<p><b>🔹 Contoh C:</b></p>
+<pre>
+#include &lt;stdio.h&gt;
+
+int main() {
+    int i;
+
+    for(i = 1; i <= 5; i++) {
+         printf("Assalamualaikum Siswa Smaring\n");
     }
-} <span class="keyword">else</span> {
-    printf(<span class="string">"Belum cukup umur"</span>);
-}
-    </div>
-</div>
 
-<div class="content-card">
-    <h3><i class="fas fa-stop"></i> Break & Continue</h3>
-    <ul>
-        <li><strong>break:</strong> Menghentikan loop secara paksa.</li>
-        <li><strong>continue:</strong> Melewati iterasi saat ini dan lanjut ke iterasi berikutnya.</li>
-    </ul>
-    <div class="code-block">
-<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < <span class="number">5</span>; i++) {
-    <span class="keyword">if</span> (i == <span class="number">3</span>) <span class="keyword">break</span>; <span class="comment">// Berhenti saat i=3</span>
-    printf(<span class="string">"%d "</span>, i);
+    return 0;
 }
-<span class="comment">// Output: 0 1 2</span>
-    </div>
+</pre>
+
+<h2>5. Perulangan WHILE</h2>
+<p>Digunakan jika jumlah perulangan belum diketahui pasti.</p>
+
+<p><b>🔹 Pseudocode:</b></p>
+<pre>
+DECLARE i AS INTEGER
+SET i = 1
+
+WHILE i <= 5 DO
+    PRINT i
+    SET i = i + 1
+END WHILE
+</pre>
+
+<p><b>🔹 Contoh C:</b></p>
+<pre>
+#include &lt;stdio.h&gt;
+
+int main() {
+    int i = 1;
+
+    while(i <= 5) {
+         printf("Assalamualaikum Siswa Smaring\n");
+        i++;
+    }
+
+    return 0;
+}
+</pre>
+
+<h2>6. Perulangan DO WHILE</h2>
+<p>Perulangan yang dijalankan minimal satu kali.</p>
+
+<p><b>🔹 Pseudocode:</b></p>
+<pre>
+DECLARE i AS INTEGER
+SET i = 1
+
+DO
+    PRINT i
+    SET i = i + 1
+WHILE i <= 5
+</pre>
+
+<p><b>🔹 Contoh C:</b></p>
+<pre>
+#include &lt;stdio.h&gt;
+
+int main() {
+    int i = 1;
+
+    do {
+         printf("Assalamualaikum Siswa Smaring\n");
+        i++;
+    } while(i <= 5);
+
+    return 0;
+}
+</pre>
+
+<h2>7. Perbedaan FOR, WHILE, DO WHILE</h2>
+<ul>
+    <li><b>FOR</b> → jumlah perulangan diketahui</li>
+    <li><b>WHILE</b> → kondisi dicek di awal</li>
+    <li><b>DO WHILE</b> → kondisi dicek di akhir</li>
+</ul>
+
+<h2>8. Contoh Kasus Nyata</h2>
+<p><b>Mencetak angka genap dari 1 sampai 10</b></p>
+
+<pre>
+FOR i = 1 TO 10 DO
+    IF i MOD 2 = 0 THEN
+        PRINT i
+    END IF
+END FOR
+</pre>
+
+<h2>9. Kesalahan yang Sering Terjadi</h2>
+<ul>
+    <li>Infinite loop (perulangan tidak berhenti)</li>
+    <li>Salah kondisi</li>
+    <li>Lupa increment atau decrement</li>
+</ul>
+
+<h2>10. Kesimpulan</h2>
+<ul>
+    <li>Perulangan digunakan untuk menjalankan perintah berulang</li>
+    <li>Terdapat FOR, WHILE, dan DO WHILE</li>
+    <li>Sangat penting dalam pemrograman</li>
+</ul>
+
 </div>
+</div>
+</div>
+</div>
+<!-- edit -->
 
 <div class="simulator">
 <h4><i class="fas fa-flask"></i> Simulator: If-Else Interaktif</h4>
@@ -1026,20 +1461,180 @@ Lanjut ke Array <i class="fas fa-arrow-right"></i>
 <section id="array" class="topic-section">
 <h2 class="section-title"><i class="fas fa-th-list"></i> Array dan String</h2>
 <div class="content-card">
-<h3><i class="fas fa-info-circle"></i> Apa itu Array?</h3>
-<p>
-Array adalah kumpulan data dengan tipe yang sama yang disimpan berurutan di memori.
-<strong>Indeks array dimulai dari 0!</strong>
-</p>
-<div class="code-block">
-<span class="keyword">int</span> angka[<span class="number">5</span>] = {<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>, <span class="number">50</span>};
-<span class="comment">// Mengakses elemen</span>
-printf(<span class="string">"%d"</span>, angka[<span class="number">0</span>]);  <span class="comment">// Output: 10</span>
-printf(<span class="string">"%d"</span>, angka[<span class="number">2</span>]);  <span class="comment">// Output: 30</span>
-<span class="comment">// Mengubah nilai</span>
-angka[<span class="number">1</span>] = <span class="number">100</span>;  <span class="comment">// Sekarang angka[1] = 100</span>
+<!-- edit -->
+
+<div class="materi-ifelse">
+
+<style>
+.materi-ifelse {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 20px 0;
+    background-color: #f4f6f8;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.materi-ifelse h1,
+.materi-ifelse h2 {
+    color: #f8f8f2;
+}
+
+.materi-ifelse p,
+.materi-ifelse li {
+    color: #ecf0f1;
+}
+
+.materi-ifelse pre {
+    background: #272822;
+    color: #f8f8f2;
+    padding: 10px;
+    border-radius: 5px;
+    overflow-x: auto;
+}
+
+.materi-ifelse .container {
+    background:#636e72;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.materi-ifelse ul,
+.materi-ifelse ol {
+    padding-left: 20px;
+}
+
+.materi-ifelse * {
+    box-sizing: border-box;
+}
+</style>
+
+<div class="container">
+
+<h1>📘 Materi: Array dan String</h1>
+
+<h2>1. Pengertian Array</h2>
+<p><b>Array</b> adalah struktur data yang digunakan untuk menyimpan banyak data dalam satu variabel dengan tipe yang sama.</p>
+
+<ul>
+    <li>Menyimpan banyak nilai sekaligus</li>
+    <li>Mempermudah pengolahan data</li>
+</ul>
+
+<h2>2. Ilustrasi Array</h2>
+<pre>
+Nilai = [80, 75, 90, 85]
+
+Indeks:   0   1   2   3
+</pre>
+
+<h2>3. Deklarasi Array (Pseudocode)</h2>
+<pre>
+DECLARE nilai[4] AS INTEGER
+
+SET nilai[0] = 80
+SET nilai[1] = 75
+SET nilai[2] = 90
+SET nilai[3] = 85
+</pre>
+
+<h2>4. Contoh Array dalam Bahasa C</h2>
+<pre>
+#include &lt;stdio.h&gt;
+
+int main() {
+    int nilai[4] = {80, 75, 90, 85};
+
+    printf("%d\n", nilai[0]);
+
+    return 0;
+}
+</pre>
+
+<h2>5. Perulangan pada Array</h2>
+<pre>
+FOR i = 0 TO 3 DO
+    PRINT nilai[i]
+END FOR
+</pre>
+
+<h2>6. Pengertian String</h2>
+<p><b>String</b> adalah kumpulan karakter (huruf, angka, simbol) yang dianggap sebagai satu data.</p>
+
+<p>➡️ String sebenarnya adalah <b>array dari karakter</b>.</p>
+
+<h2>7. Ilustrasi String</h2>
+<pre>
+Nama = "IRWAN"
+
+Indeks:  0   1   2   3   4
+         I   R   W   A   N
+</pre>
+
+<h2>8. Contoh String dalam Bahasa C</h2>
+<pre>
+#include &lt;stdio.h&gt;
+
+int main() {
+    char nama[] = "IRWAN";
+
+    printf("%s\n", nama);
+
+    return 0;
+}
+</pre>
+
+<h2>9. Mengakses Karakter String</h2>
+<pre>
+PRINT nama[0]   // I
+PRINT nama[2]   // W
+</pre>
+
+<h2>10. Contoh Kasus String</h2>
+<p><b>Menghitung jumlah huruf</b></p>
+
+<pre>
+DECLARE nama AS STRING
+SET nama = "IRWAN"
+
+SET i = 0
+
+WHILE nama[i] TIDAK KOSONG DO
+    i = i + 1
+END WHILE
+
+PRINT i
+</pre>
+
+<h2>11. Perbedaan Array dan String</h2>
+<ul>
+    <li>Array → menyimpan banyak data (angka/karakter)</li>
+    <li>String → khusus menyimpan teks</li>
+    <li>String adalah bagian dari array</li>
+</ul>
+
+<h2>12. Kesalahan yang Sering Terjadi</h2>
+<ul>
+    <li>Salah indeks (out of bounds)</li>
+    <li>Lupa bahwa indeks dimulai dari 0</li>
+    <li>Salah memahami string sebagai tipe berbeda</li>
+</ul>
+
+<h2>13. Kesimpulan</h2>
+<ul>
+    <li>Array menyimpan banyak data dalam satu variabel</li>
+    <li>String adalah array karakter</li>
+    <li>Keduanya sangat penting dalam pemrograman</li>
+</ul>
+
 </div>
 </div>
+
+</div>
+</div>
+
+<!-- edit -->
+
 <div class="simulator">
 <h4><i class="fas fa-flask"></i> Simulator: Array Visualizer</h4>
 <p style="color: var(--text-muted); margin-bottom: 15px;">Masukkan 5 angka untuk array:</p>
