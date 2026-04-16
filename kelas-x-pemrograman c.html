@@ -964,7 +964,7 @@ Lanjut ke Kontrol <i class="fas fa-arrow-right"></i>
 
 <h1>📘 Materi: Percabangan IF–ELSE</h1>
 
-<h2>1. Pengertian IF–ELSE</h2>
+<h2>Pengertian IF–ELSE</h2>
 <p>Percabangan <b>IF–ELSE</b> adalah struktur kontrol dalam pemrograman yang digunakan untuk mengambil keputusan berdasarkan suatu kondisi.</p>
 
 <p>➡️ Program akan:</p>
@@ -973,19 +973,36 @@ Lanjut ke Kontrol <i class="fas fa-arrow-right"></i>
     <li>Menjalankan perintah lain jika kondisi salah (false)</li>
 </ul>
 
-<h2>2. Konsep Dasar</h2>
+<h2>Konsep Dasar</h2>
 <p>Contoh dalam kehidupan sehari-hari:</p>
 <p><i>"Jika nilai bagus, maka lulus. Jika tidak, maka tidak lulus."</i></p>
 
-<h2>3. Struktur Kontrol Keputusan </h2>
+<h2>1. Struktur Kontrol Keputusan </h2>
 <p><b>🔹 if:</b></p>
 <pre>
 if (kondisi) {
     // perintah yang dijalankan jika kondisi benar
 }
 </pre>
+    <h2>Contoh program IF</h2>
+<ol>
+#include <stdio.h>
 
-    <h2>3.Struktur Kontrol Keputusan</h2>
+int main() {
+    int nilai;
+
+    printf("Masukkan nilai: ");
+    scanf("%d", &nilai);
+
+    if (nilai >= 75) {
+        printf("Anda Lulus\n");
+    }
+
+    return 0;
+}
+</ol>
+    
+    <h2>2.Struktur Kontrol Keputusan</h2>
 <p><b>🔹 if-else:</b></p>
 <pre>
 if (kondisi) {
@@ -994,6 +1011,26 @@ if (kondisi) {
     // dijalankan jika kondisi salah
 }
 </pre>
+    <h2>Contoh program IF–ELSE</h2>
+<ol>
+#include <stdio.h>
+
+int main() {
+    int angka;
+
+    printf("Masukkan sebuah angka: ");
+    scanf("%d", &angka);
+
+    if (angka % 2 == 0) {
+        printf("Bilangan Genap\n");
+    } else {
+        printf("Bilangan Ganjil\n");
+    }
+
+    return 0;
+}
+    
+</ol>
 
      <h2>3.Struktur Kontrol Keputusan</h2>
 <p><b>🔹 if-else if:</b></p>
@@ -1008,11 +1045,10 @@ if (kondisi1) {
     // dijalankan jika semua kondisi salah
 }
 </pre>
-<pre>
+    
 <h2>Contoh program IF–ELSE IF</h2>
 <ol>
 #include <stdio.h>
-
 int main() {
     int nilai;
 
@@ -1035,7 +1071,6 @@ int main() {
 }
     
 </ol>
-</pre>
 
 
 </div>
