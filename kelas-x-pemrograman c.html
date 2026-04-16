@@ -1008,48 +1008,35 @@ if (kondisi1) {
     // dijalankan jika semua kondisi salah
 }
 </pre>
-
-<h2>4. Alur Kerja IF–ELSE</h2>
+<pre>
+<h2>Contoh program IF–ELSE IF</h2>
 <ol>
-    <li>Program mengecek kondisi</li>
-    <li>Jika kondisi true → jalankan blok IF</li>
-    <li>Jika kondisi false → jalankan blok ELSE</li>
-</ol>
-
-<h2>5. Contoh Sederhana (Pseudocode)</h2>
-<pre>
-DECLARE nilai AS INTEGER
-SET nilai = 80
-
-IF nilai >= 75 THEN
-    PRINT "Lulus"
-ELSE
-    PRINT "Tidak Lulus"
-END IF
-</pre>
-
-<p><b>📌 Penjelasan:</b></p>
-<ul>
-    <li>Jika nilai ≥ 75 → "Lulus"</li>
-    <li>Jika tidak → "Tidak Lulus"</li>
-</ul>
-
-<h2>6. Contoh dalam Bahasa C</h2>
-<pre>
-#include &lt;stdio.h&gt;
+#include <stdio.h>
 
 int main() {
-    int nilai = 80;
+    int nilai;
 
-    if (nilai >= 75) {
-        printf("Lulus\n");
+    printf("Masukkan nilai: ");
+    scanf("%d", &nilai);
+
+    if (nilai >= 90) {
+        printf("Nilai A\n");
+    } else if (nilai >= 80) {
+        printf("Nilai B\n");
+    } else if (nilai >= 70) {
+        printf("Nilai C\n");
+    } else if (nilai >= 60) {
+        printf("Nilai D\n");
     } else {
-        printf("Tidak Lulus\n");
+        printf("Nilai E\n");
     }
 
     return 0;
 }
+    
+</ol>
 </pre>
+
 
 </div>
 </div>
