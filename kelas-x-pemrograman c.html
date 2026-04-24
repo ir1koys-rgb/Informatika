@@ -1151,18 +1151,23 @@ int main() {
 <h2>3. Struktur Penulisan</h2>
 <p><b>🔹 Bentuk Umum:</b></p>
 <pre>
-SWITCH (variabel)
-    CASE nilai1:
-        perintah
-        BREAK
-    CASE nilai2:
-        perintah
-        BREAK
-    DEFAULT:
-        perintah
-END SWITCH
+<span class="keyword">switch</span> (ekspresi) {
+    <span class="keyword">case</span> nilai1:
+        <span class="comment">// perintah jika ekspresi == nilai1</span>
+        <span class="keyword">break</span>;
+        
+    <span class="keyword">case</span> nilai2:
+        <span class="comment">// perintah jika ekspresi == nilai2</span>
+        <span class="keyword">break</span>;
+        
+    <span class="keyword">case</span> nilai3:
+        <span class="comment">// perintah jika ekspresi == nilai3</span>
+        <span class="keyword">break</span>;
+        
+    <span class="keyword">default</span>:
+        <span class="comment">// perintah jika tidak ada yang cocok</span>
+}
 </pre>
-
 <h2>4. Penjelasan Komponen</h2>
 <ul>
     <li><b>SWITCH</b> → memilih variabel yang dicek</li>
