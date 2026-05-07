@@ -1510,7 +1510,7 @@ do {
   </ul>
 
     
-<p><b>🔹 Contoh C:</b></p>
+<p><b>🔹 Contoh 1 pemahaman:</b></p>
 <pre>
 #include &lt;stdio.h&gt;
 
@@ -1525,6 +1525,36 @@ int main() {
     return 0;
 }
 </pre>
+
+    <p><b>🔹 Contoh 2 penerapan:</b></p>
+<pre>
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+
+    char password[20];
+    char password_benar[] = "admin";
+
+    printf("=== LOGIN PROGRAM ===\n");
+
+    do {
+
+        printf("Masukkan Password : ");
+        scanf("%s", password);
+
+        if(strcmp(password, password_benar) != 0) {
+            printf("Password salah, coba lagi!\n\n");
+        }
+
+    } while(strcmp(password, password_benar) != 0);
+
+    printf("\nLogin berhasil!\n");
+
+    return 0;
+}
+</pre>
+
 
 <h2>7. Perbedaan FOR, WHILE, DO WHILE</h2>
 <ul>
