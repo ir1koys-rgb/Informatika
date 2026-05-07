@@ -1432,15 +1432,17 @@ while (kondisi) {
 
   <ul>
     <li>
-      <span class="highlight">Kondisi</span> → syarat agar perulangan terus berjalan
+      <span class="highlight">Program tidak tahu pengguna akan salah berapa kali.
     </li>
 
     <li>
-      Jika kondisi bernilai <b>true</b>, maka program akan terus mengulang
+      Perulangan terus berjalan:
     </li>
-
     <li>
-      Jika kondisi bernilai <b>false</b>, maka perulangan berhenti
+        jika password masih salah → ulang
+    </li>
+    <li>
+        jika password benar → berhenti
     </li>
   </ul>
 
@@ -1548,9 +1550,103 @@ END FOR
 
 <h2>10. Kesimpulan</h2>
 <ul>
-    <li>Perulangan digunakan untuk menjalankan perintah berulang</li>
-    <li>Terdapat FOR, WHILE, dan DO WHILE</li>
-    <li>Sangat penting dalam pemrograman</li>
+  <h2>📘 Perbedaan FOR, WHILE, dan DO WHILE</h2>
+
+  <p>
+    Berikut adalah perbedaan utama antara 
+    <span class="highlight">for</span>, 
+    <span class="highlight">while</span>, dan 
+    <span class="highlight">do while</span> dalam bahasa C.
+  </p>
+
+  <table>
+
+    <tr>
+      <th>Aspek</th>
+      <th>FOR</th>
+      <th>WHILE</th>
+      <th>DO WHILE</th>
+    </tr>
+
+    <tr>
+      <td>Jenis Perulangan</td>
+      <td>Counted loop</td>
+      <td>Uncounted loop</td>
+      <td>Uncounted loop</td>
+    </tr>
+
+    <tr>
+      <td>Jumlah Pengulangan</td>
+      <td>Biasanya sudah diketahui</td>
+      <td>Belum diketahui</td>
+      <td>Belum diketahui</td>
+    </tr>
+
+    <tr>
+      <td>Pemeriksaan Kondisi</td>
+      <td>Di awal</td>
+      <td>Di awal</td>
+      <td>Di akhir</td>
+    </tr>
+
+    <tr>
+      <td>Minimal Dijalankan</td>
+      <td>Bisa 0 kali</td>
+      <td>Bisa 0 kali</td>
+      <td>Pasti minimal 1 kali</td>
+    </tr>
+
+    <tr>
+      <td>Struktur</td>
+      <td>Ringkas dalam satu baris</td>
+      <td>Lebih sederhana</td>
+      <td>Mirip while tetapi memakai do</td>
+    </tr>
+
+    <tr>
+      <td>Cocok Digunakan Untuk</td>
+      <td>Menghitung perulangan</td>
+      <td>Perulangan berbasis kondisi</td>
+      <td>Menu/input yang tampil minimal sekali</td>
+    </tr>
+
+    <tr>
+      <td>Inisialisasi dan Iterasi</td>
+      <td>Menyatu di dalam for</td>
+      <td>Ditulis terpisah</td>
+      <td>Ditulis terpisah</td>
+    </tr>
+
+    <tr>
+      <td>Fleksibilitas</td>
+      <td>Lebih terstruktur</td>
+      <td>Lebih fleksibel</td>
+      <td>Fleksibel dan pasti berjalan sekali</td>
+    </tr>
+
+    <tr>
+      <td>Contoh Penggunaan</td>
+      <td>Cetak angka 1–10</td>
+      <td>Login password</td>
+      <td>Menu pilihan program</td>
+    </tr>
+
+    <tr>
+      <td>Bentuk Dasar</td>
+      <td>
+        for(i=1; i&lt;=5; i++)
+      </td>
+
+      <td>
+        while(i&lt;=5)
+      </td>
+
+      <td>
+        do { } while(i&lt;=5);
+      </td>
+    </tr>
+
+  </table>
 </ul>
 
 </div>
