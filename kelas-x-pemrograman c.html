@@ -1453,19 +1453,23 @@ while (kondisi) {
 <p><b>🔹 Contoh C:</b></p>
 <pre>
 #include &lt;stdio.h&gt;
+int password = 0;
 
-int main() {
-    int i = 1;
-
-    while(i <= 5) {
-         printf("Assalamualaikum Siswa Smaring\n");
-        i++;
-    }
-
-    return 0;
+while (password != 1234) {
+    printf("Masukkan password: ");
+    scanf("%d", &password);
 }
 </pre>
 
+ <h3>🔹 Penjelasan</h3>
+
+  <ul>
+    <li>
+      <span class="highlight"></span> → Di sini tidak ada i++, tapi tetap terjadi pengulangan sampai kondisi terpenuhi.
+    </li>
+  </ul>
+
+    
 <h2>6. Perulangan DO WHILE</h2>
 <p>Perulangan yang dijalankan minimal satu kali dan kondisi dicek di bagian akhir.</p>
 
@@ -1509,24 +1513,7 @@ do {
     </li>
   </ul>
 
-    
-<p><b>🔹 Contoh 1 pemahaman:</b></p>
-<pre>
-#include &lt;-stdio.h&gt;
-
-int main() {
-    int i = 1;
-
-    do {
-         printf("Assalamualaikum Siswa Smaring\n");
-        i++;
-    } while(i <= 5);
-
-    return 0;
-}
-</pre>
-
-    <p><b>🔹 Contoh 2 penerapan:</b></p>
+    <p><b>🔹 Contoh  penerapan do while di pemrogrman C:</b></p>
 <pre>
 #include <-stdio.h>
 #include <-string.h>
