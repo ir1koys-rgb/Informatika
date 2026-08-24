@@ -3,32 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Materi Kelas XII - Smart Algorithm</title>
+  <title>Materi Kelas XI - Smart Algorithm</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-:root {
-  --primary: #22c55e;
-  --primary-dark: #15803d;
-  --secondary: #4ade80;
-  --accent: #16a34a;
-  --success: #10b981;
-  --warning: #f59e0b;
-  --danger: #22c55e;
-  --bg-primary: #ffffff;
-  --bg-secondary: #f8fafc;
-  --bg-code: #1e293b;
-  --text-primary: #0f172a;
-  --text-secondary: #475569;
-  --text-muted: #64748b;
-  --text-light: #f8fafc;
-  --border: #e2e8f0;
-  --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-  --radius: 12px;
-  --transition: all 0.3s ease;
-}
+    :root {
+      --primary: #f59e0b;
+      --primary-dark: #d97706;
+      --secondary: #fbbf24;
+      --accent: #f59e0b;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --bg-primary: #ffffff;
+      --bg-secondary: #f8fafc;
+      --bg-code: #1e293b;
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --text-muted: #64748b;
+      --text-light: #f8fafc;
+      --border: #e2e8f0;
+      --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+      --radius: 12px;
+      --transition: all 0.3s ease;
+    }
     [data-theme="dark"] {
       --bg-primary: #0f172a;
       --bg-secondary: #1e293b;
@@ -47,14 +47,13 @@
     .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
     
     /* Header */
-/* Header */
-.page-header {
-  background: linear-gradient(135deg, #15803d 0%, #22c55e 100%);
-  color: white;
-  padding: 60px 0 40px;
-  position: relative;
-  overflow: hidden;
-}
+    .page-header {
+      background: linear-gradient(135deg, var(--warning) 0%, var(--accent) 100%);
+      color: white;
+      padding: 60px 0 40px;
+      position: relative;
+      overflow: hidden;
+    }
     .page-header::before {
       content: '';
       position: absolute;
@@ -111,7 +110,7 @@
       align-items: center;
       gap: 8px;
       background: rgba(255,255,255,0.95);
-      color: #b91c1c;
+      color: #b45309;
       padding: 10px 20px;
       border-radius: 20px;
       font-weight: 700;
@@ -153,10 +152,10 @@
     }
     .tab-btn:hover {
       background: var(--bg-primary);
-      color: var(--danger);
+      color: var(--warning);
     }
     .tab-btn.active {
-      background: var(--danger);
+      background: var(--warning);
       color: white;
     }
     .tab-badge {
@@ -186,18 +185,18 @@
       align-items: center;
       gap: 12px;
     }
-    .section-title i { color: var(--danger); font-size: 1.5rem; }
+    .section-title i { color: var(--warning); font-size: 1.5rem; }
 
     /* Enhanced Content Styles */
     .content-intro {
-      background: linear-gradient(135deg, rgba(239,68,68,0.1) 0%, rgba(244,63,94,0.1) 100%);
-      border-left: 4px solid var(--danger);
+      background: linear-gradient(135deg, rgba(245,158,11,0.1) 0%, rgba(251,191,36,0.1) 100%);
+      border-left: 4px solid var(--warning);
       padding: 24px;
       border-radius: 0 var(--radius) var(--radius) 0;
       margin: 24px 0;
       font-size: 1.05rem;
     }
-    .content-intro strong { color: #b91c1c; }
+    .content-intro strong { color: #b45309; }
 
     .content-card {
       background: var(--bg-secondary);
@@ -208,7 +207,7 @@
       transition: var(--transition);
     }
     .content-card:hover {
-      border-color: var(--danger);
+      border-color: var(--warning);
       box-shadow: var(--shadow);
     }
     .content-card h4 {
@@ -249,12 +248,12 @@
       color: var(--text-light);
       border: 1px solid #334155;
     }
-    .code-tag { color: #f472b6; }
-    .code-attr { color: #93c5fd; }
-    .code-value { color: #98c379; }
+    .code-keyword { color: #c678dd; }
+    .code-type { color: #e5c07b; }
+    .code-string { color: #98c379; }
     .code-comment { color: #5c6370; font-style: italic; }
-    .code-selector { color: #e5c07b; }
-    .code-property { color: #61afef; }
+    .code-function { color: #61afef; }
+    .code-number { color: #d19a66; }
 
     /* Live Editor - WORKING SIMULATOR */
     .live-editor {
@@ -281,7 +280,7 @@
       align-items: center;
       gap: 8px;
     }
-    .editor-title i { color: var(--danger); }
+    .editor-title i { color: var(--warning); }
     .btn-run {
       background: var(--success);
       color: white;
@@ -296,7 +295,7 @@
       transition: var(--transition);
     }
     .btn-run:hover {
-      background: #059669;
+      background: var(--primary-dark);
       transform: translateY(-2px);
     }
     .btn-clear {
@@ -349,20 +348,107 @@
     }
     .code-textarea:focus {
       outline: none;
-      border-color: var(--danger);
+      border-color: var(--warning);
     }
     .output-pane {
       background: var(--bg-primary);
       border-left: 1px solid var(--border);
     }
-    .preview-frame {
-      width: 100%;
-      height: 300px;
-      background: white;
-      border: 1px solid var(--border);
+    .output-content {
+      background: var(--bg-code);
       border-radius: var(--radius);
       padding: 16px;
-      overflow: auto;
+      min-height: 300px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      color: var(--success);
+      white-space: pre-wrap;
+      overflow-y: auto;
+    }
+    .output-content.error {
+      color: var(--danger);
+    }
+    .output-content.running {
+      color: var(--warning);
+    }
+
+    /* Input Simulation */
+    .input-simulation {
+      margin-top: 16px;
+      padding: 16px;
+      background: var(--bg-primary);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+    .input-simulation label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    .input-simulation input {
+      width: 100%;
+      padding: 10px 14px;
+      border: 2px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--bg-secondary);
+      color: var(--text-primary);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+    }
+    .input-simulation input:focus {
+      outline: none;
+      border-color: var(--warning);
+    }
+
+    /* Symbol Grid */
+    .symbol-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin: 24px 0;
+    }
+    .symbol-item {
+      background: var(--bg-primary);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      transition: var(--transition);
+    }
+    .symbol-item:hover {
+      border-color: var(--warning);
+      transform: translateX(4px);
+    }
+    .symbol-visual {
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      flex-shrink: 0;
+      font-size: 1.5rem;
+      color: white;
+    }
+    .symbol-visual.terminal { background: var(--primary); border-radius: 50%; }
+    .symbol-visual.process { background: var(--secondary); border-radius: 8px; }
+    .symbol-visual.decision { 
+      background: var(--accent); 
+      clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+      width: 70px; height: 70px;
+    }
+    .symbol-info h5 {
+      font-size: 1rem;
+      margin-bottom: 4px;
+      color: var(--text-primary);
+    }
+    .symbol-info p {
+      font-size: 0.9rem;
+      margin: 0;
+      color: var(--text-muted);
     }
 
     /* Step Explanation */
@@ -398,7 +484,7 @@
       top: 0;
       width: 28px;
       height: 28px;
-      background: var(--danger);
+      background: var(--warning);
       color: white;
       border-radius: 50%;
       display: flex;
@@ -410,7 +496,7 @@
 
     /* Tips & Notes */
     .tip-box {
-      background: linear-gradient(135deg, rgba(244,63,94,0.15) 0%, rgba(239,68,68,0.1) 100%);
+      background: linear-gradient(135deg, rgba(245,158,11,0.15) 0%, rgba(234,179,8,0.1) 100%);
       border-left: 4px solid var(--accent);
       padding: 20px;
       border-radius: 0 var(--radius) var(--radius) 0;
@@ -446,7 +532,7 @@
     .quiz-container {
       margin-top: 40px;
       padding: 32px;
-      background: linear-gradient(135deg, rgba(239,68,68,0.05) 0%, rgba(244,63,94,0.05) 100%);
+      background: linear-gradient(135deg, rgba(245,158,11,0.05) 0%, rgba(251,191,36,0.05) 100%);
       border: 2px solid var(--border);
       border-radius: var(--radius);
       position: relative;
@@ -456,7 +542,7 @@
       position: absolute;
       top: -12px;
       left: 24px;
-      background: var(--danger);
+      background: var(--warning);
       color: white;
       padding: 4px 16px;
       border-radius: 20px;
@@ -481,7 +567,7 @@
     .quiz-score-value {
       font-size: 2rem;
       font-weight: 700;
-      color: var(--danger);
+      color: var(--warning);
     }
 
     .quiz-question {
@@ -502,7 +588,7 @@
     }
     .question-number {
       width: 32px; height: 32px;
-      background: var(--danger);
+      background: var(--warning);
       color: white;
       border-radius: 50%;
       display: flex;
@@ -530,12 +616,12 @@
       font-size: 0.95rem;
     }
     .quiz-option:hover:not(.disabled) {
-      border-color: var(--danger);
+      border-color: var(--warning);
       background: var(--bg-primary);
     }
     .quiz-option.selected {
-      border-color: var(--danger);
-      background: rgba(239,68,68,0.1);
+      border-color: var(--warning);
+      background: rgba(245,158,11,0.1);
     }
     .quiz-option.correct {
       border-color: var(--success);
@@ -578,8 +664,8 @@
       border: none;
       font-size: 1rem;
     }
-    .btn-submit { background: var(--danger); color: white; }
-    .btn-submit:hover { background: #dc2626; }
+    .btn-submit { background: var(--warning); color: white; }
+    .btn-submit:hover { background: #d97706; }
     .btn-reset {
       background: var(--bg-secondary);
       color: var(--text-primary);
@@ -638,9 +724,9 @@
       text-decoration: none;
     }
     .nav-btn.primary {
-      background: var(--danger);
+      background: var(--warning);
       color: white;
-      border-color: var(--danger);
+      border-color: var(--warning);
     }
     .nav-btn:hover {
       transform: translateY(-2px);
@@ -652,8 +738,8 @@
       display: none;
       margin-top: 40px;
       padding: 40px;
-      background: linear-gradient(135deg, rgba(239,68,68,0.1) 0%, rgba(244,63,94,0.1) 100%);
-      border: 3px solid var(--danger);
+      background: linear-gradient(135deg, rgba(245,158,11,0.1) 0%, rgba(251,191,36,0.1) 100%);
+      border: 3px solid var(--warning);
       border-radius: var(--radius);
       text-align: center;
     }
@@ -691,12 +777,12 @@
           <i class="fas fa-arrow-left"></i>
         </a>
         <div class="header-text">
-          <h1><i class="fas fa-graduation-cap"></i> Materi Kelas XII</h1>
-          <p>Implementasi & Proyek Web Programming</p>
+          <h1><i class="fas fa-layer-group"></i> Materi Kelas XI</h1>
+          <p>Struktur & Logika Pemrograman Bahasa C</p>
           <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 12px;">
             <div class="level-badge">
               <i class="fas fa-star"></i>
-              <span>Tingkat Lanjut • 5 Modul Lengkap</span>
+              <span>Tingkat Menengah • 5 Modul Lengkap</span>
             </div>
             <div class="overall-score">
               <i class="fas fa-trophy"></i>
@@ -713,19 +799,19 @@
     <div class="container">
       <div class="topic-tabs">
         <button class="tab-btn active" data-target="modul1">
-          🌐 HTML Dasar <span class="tab-badge" id="badge-modul1">0/100</span>
+          🔀 Percabangan <span class="tab-badge" id="badge-modul1">0/100</span>
         </button>
         <button class="tab-btn" data-target="modul2">
-          🎨 CSS Styling <span class="tab-badge" id="badge-modul2">0/100</span>
+          🔄 Perulangan <span class="tab-badge" id="badge-modul2">0/100</span>
         </button>
         <button class="tab-btn" data-target="modul3">
-          ⚡ JavaScript <span class="tab-badge" id="badge-modul3">0/100</span>
+          📊 Tipe Data <span class="tab-badge" id="badge-modul3">0/100</span>
         </button>
         <button class="tab-btn" data-target="modul4">
-          🔗 Integrasi <span class="tab-badge" id="badge-modul4">0/100</span>
+          📦 Array <span class="tab-badge" id="badge-modul4">0/100</span>
         </button>
         <button class="tab-btn" data-target="modul5">
-          🎯 Proyek Akhir <span class="tab-badge" id="badge-modul5">0/100</span>
+          🎯 Latihan <span class="tab-badge" id="badge-modul5">0/100</span>
         </button>
       </div>
     </div>
@@ -734,89 +820,145 @@
   <!-- Main Content -->
   <main class="container">
 
-    <!-- ==================== MODUL 1: DASAR HTML ==================== -->
+    <!-- ==================== MODUL 1: STRUKTUR PERCABANGAN ==================== -->
     <section id="modul1" class="topic-section active">
-      <h2 class="section-title"><i class="fas fa-globe"></i> Dasar Pemrograman Web (HTML)</h2>
+      <h2 class="section-title"><i class="fas fa-code-branch"></i> Struktur Percabangan (If-Else)</h2>
       
       <div class="content-intro">
-        <strong>🤔 Pernahkah kamu bertanya bagaimana website seperti Google atau Facebook dibuat?</strong><br>
-        Semua website di dunia dibangun menggunakan tiga teknologi utama: <strong>HTML</strong>, <strong>CSS</strong>, dan <strong>JavaScript</strong>. 
-        Di Kelas XII, kamu akan mempelajari ketiganya dan membuat website portofolio sendiri!
+        <strong>🤔 Pernahkah kamu bertanya bagaimana program mengambil keputusan?</strong><br>
+        Misalnya, bagaimana sistem menentukan apakah seorang wisatawan boleh masuk Kawah Ijen berdasarkan usia? 
+        Atau bagaimana aplikasi menghitung diskon tiket wisata berdasarkan jumlah pengunjung? 
+        Jawabannya adalah <strong>struktur percabangan</strong> — cara program membuat keputusan berdasarkan kondisi tertentu.
       </div>
 
       <div class="content-card">
-        <h4><i class="fas fa-book"></i> Apa itu HTML?</h4>
+        <h4><i class="fas fa-book"></i> Pengertian Percabangan</h4>
         <p>
-          <strong>HTML</strong> (HyperText Markup Language) adalah bahasa markup standar untuk membuat halaman web. 
-          HTML menentukan <strong>struktur</strong> dan <strong>konten</strong> dari sebuah halaman web.
+          <strong>Percabangan</strong> (branching) adalah struktur kontrol yang memungkinkan program 
+          mengambil keputusan berdasarkan kondisi yang dinilai benar atau salah. Dalam bahasa C, 
+          percabangan menggunakan pernyataan <code>if</code>, <code>else if</code>, dan <code>else</code>.
         </p>
         <p>
-          Analogi sederhana: Jika website adalah sebuah rumah, maka HTML adalah <strong>kerangka dan dinding</strong>-nya. 
-          CSS adalah <strong>cat dan dekorasi</strong>, sedangkan JavaScript adalah <strong>listrik dan sistem otomatis</strong>.
+          Analogi sederhana: Seperti penjaga gerbang Kawah Ijen yang memeriksa tiket. 
+          Jika tiket valid → boleh masuk. Jika tidak → ditolak. Program bekerja dengan logika serupa!
         </p>
       </div>
 
       <div class="content-card">
-        <h4><i class="fas fa-code"></i> Struktur Dasar HTML</h4>
+        <h4><i class="fas fa-code"></i> Sintaks If-Else dalam Bahasa C</h4>
         <div class="code-block">
-<span class="code-tag">&lt;!DOCTYPE html&gt;</span>
-<span class="code-tag">&lt;html</span> <span class="code-attr">lang</span>=<span class="code-value">"id"</span><span class="code-tag">&gt;</span>
-<span class="code-tag">&lt;head&gt;</span>
-    <span class="code-tag">&lt;meta</span> <span class="code-attr">charset</span>=<span class="code-value">"UTF-8"</span><span class="code-tag">&gt;</span>
-    <span class="code-tag">&lt;title&gt;</span>Judul Halaman<span class="code-tag">&lt;/title&gt;</span>
-<span class="code-tag">&lt;/head&gt;</span>
-<span class="code-tag">&lt;body&gt;</span>
-    <span class="code-tag">&lt;h1&gt;</span>Selamat Datang<span class="code-tag">&lt;/h1&gt;</span>
-    <span class="code-tag">&lt;p&gt;</span>Ini adalah paragraf pertama.<span class="code-tag">&lt;/p&gt;</span>
-<span class="code-tag">&lt;/body&gt;</span>
-<span class="code-tag">&lt;/html&gt;</span>
+<span class="code-comment">// Contoh: Cek usia untuk masuk Kawah Ijen</span>
+<span class="code-type">#include</span> <span class="code-string">&lt;stdio.h&gt;</span>
+
+<span class="code-type">int</span> <span class="code-function">main</span>() {
+    <span class="code-type">int</span> usia;
+    
+    <span class="code-function">printf</span>(<span class="code-string">"Masukkan usia: "</span>);
+    <span class="code-function">scanf</span>(<span class="code-string">"%d"</span>, &usia);
+    
+    <span class="code-keyword">if</span> (usia >= 10 && usia <= 60) {
+        <span class="code-function">printf</span>(<span class="code-string">"✅ Boleh masuk Kawah Ijen\n"</span>);
+    } <span class="code-keyword">else</span> {
+        <span class="code-function">printf</span>(<span class="code-string">"❌ Usia tidak memenuhi syarat\n"</span>);
+    }
+    
+    <span class="code-keyword">return</span> <span class="code-number">0</span>;
+}
         </div>
       </div>
 
       <div class="content-card">
-        <h4><i class="fas fa-tags"></i> Tag HTML yang Sering Digunakan</h4>
-        <div class="symbol-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
-          <div class="symbol-item">
-            <div class="symbol-visual terminal" style="background: var(--danger);">&lt;h1&gt;</div>
-            <div class="symbol-info">
-              <h5>Heading (h1-h6)</h5>
-              <p>Judul dan subjudul halaman</p>
-            </div>
-          </div>
-          <div class="symbol-item">
-            <div class="symbol-visual process" style="background: var(--secondary);">&lt;p&gt;</div>
-            <div class="symbol-info">
-              <h5>Paragraph</h5>
-              <p>Teks paragraf konten</p>
-            </div>
-          </div>
-          <div class="symbol-item">
-            <div class="symbol-visual io" style="background: #64748b;">&lt;a&gt;</div>
-            <div class="symbol-info">
-              <h5>Anchor/Link</h5>
-              <p>Tautan ke halaman lain</p>
-            </div>
-          </div>
-          <div class="symbol-item">
-            <div class="symbol-visual terminal" style="background: var(--warning);">&lt;img&gt;</div>
-            <div class="symbol-info">
-              <h5>Image</h5>
-              <p>Menampilkan gambar</p>
-            </div>
-          </div>
+        <h4><i class="fas fa-diagram-project"></i> Jenis-Jenis Percabangan</h4>
+        
+        <h5 style="margin: 20px 0 12px; color: var(--text-primary);">1. If Sederhana</h5>
+        <div class="code-block">
+<span class="code-keyword">if</span> (kondisi) {
+    <span class="code-comment">// Kode dijalankan jika kondisi BENAR</span>
+}
+        </div>
+
+        <h5 style="margin: 20px 0 12px; color: var(--text-primary);">2. If-Else</h5>
+        <div class="code-block">
+<span class="code-keyword">if</span> (kondisi) {
+    <span class="code-comment">// Jika BENAR</span>
+} <span class="code-keyword">else</span> {
+    <span class="code-comment">// Jika SALAH</span>
+}
+        </div>
+
+        <h5 style="margin: 20px 0 12px; color: var(--text-primary);">3. If-Else-If (Bertingkat)</h5>
+        <div class="code-block">
+<span class="code-keyword">if</span> (kondisi1) {
+    <span class="code-comment">// Jika kondisi1 BENAR</span>
+} <span class="code-keyword">else if</span> (kondisi2) {
+    <span class="code-comment">// Jika kondisi2 BENAR</span>
+} <span class="code-keyword">else</span> {
+    <span class="code-comment">// Jika semua SALAH</span>
+}
         </div>
       </div>
 
-      <!-- Live Editor Modul 1 -->
+      <div class="content-card">
+        <h4><i class="fas fa-laptop-code"></i> Contoh Kasus: Sistem Tiket Wisata Banyuwangi</h4>
+        <p>Berikut program untuk menghitung harga tiket berdasarkan kategori pengunjung:</p>
+        
+        <div class="code-block">
+<span class="code-comment">// Program: Harga Tiket Wisata Kawah Ijen</span>
+<span class="code-type">#include</span> <span class="code-string">&lt;stdio.h&gt;</span>
+
+<span class="code-type">int</span> <span class="code-function">main</span>() {
+    <span class="code-type">int</span> usia;
+    <span class="code-type">int</span> harga;
+    
+    <span class="code-function">printf</span>(<span class="code-string">"=== Tiket Wisata Kawah Ijen ===\n"</span>);
+    <span class="code-function">printf</span>(<span class="code-string">"Masukkan usia pengunjung: "</span>);
+    <span class="code-function">scanf</span>(<span class="code-string">"%d"</span>, &usia);
+    
+    <span class="code-keyword">if</span> (usia < 5) {
+        harga = 0;
+        <span class="code-function">printf</span>(<span class="code-string">"Gratis untuk balita!\n"</span>);
+    } <span class="code-keyword">else if</span> (usia >= 5 && usia <= 12) {
+        harga = 15000;
+        <span class="code-function">printf</span>(<span class="code-string">"Harga tiket: Rp %d\n"</span>, harga);
+    } <span class="code-keyword">else if</span> (usia >= 13 && usia <= 60) {
+        harga = 30000;
+        <span class="code-function">printf</span>(<span class="code-string">"Harga tiket: Rp %d\n"</span>, harga);
+    } <span class="code-keyword">else</span> {
+        harga = 20000;
+        <span class="code-function">printf</span>(<span class="code-string">"Diskon lansia: Rp %d\n"</span>, harga);
+    }
+    
+    <span class="code-keyword">return</span> <span class="code-number">0</span>;
+}
+        </div>
+
+        <div class="step-explanation">
+          <h5><i class="fas fa-list-1-2"></i> Penjelasan Program:</h5>
+          <ol class="step-list">
+            <li>Deklarasi variabel <code>usia</code> dan <code>harga</code>.</li>
+            <li>Program meminta input usia pengunjung.</li>
+            <li>Percabangan memeriksa kategori usia:</li>
+            <ul style="padding-left: 40px; margin-top: 8px;">
+              <li>Usia < 5 tahun → Gratis</li>
+              <li>5-12 tahun → Rp 15.000 (anak-anak)</li>
+              <li>13-60 tahun → Rp 30.000 (dewasa)</li>
+              <li>> 60 tahun → Rp 20.000 (lansia, dapat diskon)</li>
+            </ul>
+            <li>Program menampilkan harga tiket sesuai kategori.</li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- Live Editor Modul 1 - WORKING SIMULATOR -->
       <div class="live-editor">
         <div class="editor-header">
           <div class="editor-title">
             <i class="fas fa-code"></i>
-            Live HTML Editor - Coba Sendiri!
+            Live Code Simulator - Coba Sendiri!
           </div>
           <div>
             <button class="btn-run" onclick="runCode('modul1')">
-              <i class="fas fa-play"></i> Preview HTML
+              <i class="fas fa-play"></i> Jalankan Kode
             </button>
             <button class="btn-clear" onclick="clearOutput('modul1')">
               <i class="fas fa-trash"></i> Clear
@@ -825,23 +967,37 @@
         </div>
         <div class="editor-body">
           <div class="editor-pane">
-            <span class="editor-pane-label">📝 Kode HTML</span>
-            <textarea class="code-textarea" id="code-modul1" spellcheck="false">&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;title&gt;Website Pertamaku&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;h1&gt;Selamat Datang di Website Saya&lt;/h1&gt;
-    &lt;p&gt;Nama: [Nama Kamu]&lt;/p&gt;
-    &lt;p&gt;Kelas: XII IPA/IPA&lt;/p&gt;
-    &lt;p&gt;Sekolah: SMA Negeri 1 Cluring&lt;/p&gt;
-&lt;/body&gt;
-&lt;/html&gt;</textarea>
+            <span class="editor-pane-label">📝 Kode Program (Bahasa C)</span>
+            <textarea class="code-textarea" id="code-modul1" spellcheck="false">#include &lt;stdio.h&gt;
+
+int main() {
+    int nilai;
+    
+    printf("Masukkan nilai ujian (0-100): ");
+    // Simulasi input
+    nilai = 85;
+    printf("%d\n", nilai);
+    
+    if (nilai >= 90) {
+        printf("Grade: A (Sangat Baik)\n");
+    } else if (nilai >= 75) {
+        printf("Grade: B (Baik)\n");
+    } else if (nilai >= 60) {
+        printf("Grade: C (Cukup)\n");
+    } else {
+        printf("Grade: D (Perlu Belajar)\n");
+    }
+    
+    return 0;
+}</textarea>
+            <div class="input-simulation">
+              <label>🔧 Simulasi Input Nilai:</label>
+              <input type="number" id="input-modul1" value="85" min="0" max="100" placeholder="Masukkan nilai 0-100">
+            </div>
           </div>
           <div class="editor-pane output-pane">
-            <span class="editor-pane-label">🖥️ Preview Website</span>
-            <div class="preview-frame" id="output-modul1">Klik "Preview HTML" untuk melihat hasil...</div>
+            <span class="editor-pane-label">🖥️ Output Program</span>
+            <div class="output-content" id="output-modul1">Klik "Jalankan Kode" untuk melihat hasil...</div>
           </div>
         </div>
       </div>
@@ -850,22 +1006,24 @@
         <i class="fas fa-lightbulb"></i>
         <div>
           <strong>💡 Tips Penting:</strong> 
-          Setiap tag HTML harus ditutup (kecuali tag kosong seperti <code>&lt;img&gt;</code> dan <code>&lt;br&gt;</code>). 
-          Gunakan indentasi agar kode mudah dibaca. Selalu test di browser!
+          Gunakan operator logika <code>&&</code> (AND) untuk menggabungkan kondisi. 
+          Contoh: <code>usia >= 10 && usia <= 60</code> berarti usia antara 10 sampai 60.
+          Perhatikan juga penggunaan <code>else if</code> untuk kondisi bertingkat!
         </div>
       </div>
 
       <div class="note-box">
         <strong>📚 Konteks Lokal:</strong> 
-        Kamu bisa membuat website profil sekolah, galeri foto wisata Banyuwangi, 
-        atau portofolio pribadi sebagai proyek akhir!
+        Program percabangan sangat berguna untuk sistem informasi wisata Banyuwangi, 
+        seperti perhitungan harga tiket, diskon hotel, atau sistem antrian objek wisata. 
+        Coba modifikasi program di atas untuk kasus lain!
       </div>
 
       <!-- QUIZ MODUL 1 -->
       <div class="quiz-container" id="quiz-modul1">
         <div class="quiz-header">
           <div>
-            <h3 style="margin-bottom: 8px;">Kuis Modul 1: HTML Dasar</h3>
+            <h3 style="margin-bottom: 8px;">Kuis Modul 1: Percabangan</h3>
             <div style="color: var(--text-muted); font-size: 0.9rem;">
               <i class="fas fa-question-circle"></i> 5 Soal • <i class="fas fa-star"></i> 100 Poin
             </div>
@@ -881,61 +1039,61 @@
           <div class="quiz-question" data-correct="b">
             <div class="question-text">
               <span class="question-number">1</span>
-              <span>Kepanjangan dari HTML adalah?</span>
+              <span>Operator logika AND dalam bahasa C ditulis dengan simbol?</span>
             </div>
             <div class="quiz-options">
-              <label class="quiz-option"><span class="option-letter">A</span><span>High Text Making Language</span></label>
-              <label class="quiz-option"><span class="option-letter">B</span><span>HyperText Markup Language</span></label>
-              <label class="quiz-option"><span class="option-letter">C</span><span>Hyper Transfer Markup Language</span></label>
-              <label class="quiz-option"><span class="option-letter">D</span><span>Home Tool Markup Language</span></label>
-            </div>
-          </div>
-          <div class="quiz-question" data-correct="a">
-            <div class="question-text">
-              <span class="question-number">2</span>
-              <span>Tag untuk membuat judul terbesar adalah?</span>
-            </div>
-            <div class="quiz-options">
-              <label class="quiz-option"><span class="option-letter">A</span><span>&lt;h1&gt;</span></label>
-              <label class="quiz-option"><span class="option-letter">B</span><span>&lt;head&gt;</span></label>
-              <label class="quiz-option"><span class="option-letter">C</span><span>&lt;header&gt;</span></label>
-              <label class="quiz-option"><span class="option-letter">D</span><span>&lt;h6&gt;</span></label>
+              <label class="quiz-option"><span class="option-letter">A</span><span>&</span></label>
+              <label class="quiz-option"><span class="option-letter">B</span><span>&&</span></label>
+              <label class="quiz-option"><span class="option-letter">C</span><span>||</span></label>
+              <label class="quiz-option"><span class="option-letter">D</span><span>!</span></label>
             </div>
           </div>
           <div class="quiz-question" data-correct="c">
             <div class="question-text">
-              <span class="question-number">3</span>
-              <span>Tag untuk membuat link adalah?</span>
+              <span class="question-number">2</span>
+              <span>Bagian kode yang dijalankan jika kondisi if bernilai salah adalah?</span>
             </div>
             <div class="quiz-options">
-              <label class="quiz-option"><span class="option-letter">A</span><span>&lt;link&gt;</span></label>
-              <label class="quiz-option"><span class="option-letter">B</span><span>&lt;href&gt;</span></label>
-              <label class="quiz-option"><span class="option-letter">C</span><span>&lt;a&gt;</span></label>
-              <label class="quiz-option"><span class="option-letter">D</span><span>&lt;url&gt;</span></label>
+              <label class="quiz-option"><span class="option-letter">A</span><span>then</span></label>
+              <label class="quiz-option"><span class="option-letter">B</span><span>otherwise</span></label>
+              <label class="quiz-option"><span class="option-letter">C</span><span>else</span></label>
+              <label class="quiz-option"><span class="option-letter">D</span><span>endif</span></label>
+            </div>
+          </div>
+          <div class="quiz-question" data-correct="a">
+            <div class="question-text">
+              <span class="question-number">3</span>
+              <span>Dalam program tiket wisata, jika usia = 8, maka harga tiket adalah?</span>
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option"><span class="option-letter">A</span><span>Rp 15.000</span></label>
+              <label class="quiz-option"><span class="option-letter">B</span><span>Rp 30.000</span></label>
+              <label class="quiz-option"><span class="option-letter">C</span><span>Gratis</span></label>
+              <label class="quiz-option"><span class="option-letter">D</span><span>Rp 20.000</span></label>
             </div>
           </div>
           <div class="quiz-question" data-correct="d">
             <div class="question-text">
               <span class="question-number">4</span>
-              <span>Tag yang benar untuk menampilkan gambar adalah?</span>
+              <span>Struktur if-else-if digunakan untuk?</span>
             </div>
             <div class="quiz-options">
-              <label class="quiz-option"><span class="option-letter">A</span><span>&lt;image&gt;</span></label>
-              <label class="quiz-option"><span class="option-letter">B</span><span>&lt;pic&gt;</span></label>
-              <label class="quiz-option"><span class="option-letter">C</span><span>&lt;img src&gt;</span></label>
-              <label class="quiz-option"><span class="option-letter">D</span><span>&lt;img src="gambar.jpg"&gt;</span></label>
+              <label class="quiz-option"><span class="option-letter">A</span><span>Perulangan</span></label>
+              <label class="quiz-option"><span class="option-letter">B</span><span>Deklarasi variabel</span></label>
+              <label class="quiz-option"><span class="option-letter">C</span><span>Input data</span></label>
+              <label class="quiz-option"><span class="option-letter">D</span><span>Percabangan bertingkat</span></label>
             </div>
           </div>
-          <div class="quiz-question" data-correct="a">
+          <div class="quiz-question" data-correct="b">
             <div class="question-text">
               <span class="question-number">5</span>
-              <span>Bagian HTML yang berisi konten yang terlihat di browser adalah?</span>
+              <span>Fungsi printf dalam bahasa C digunakan untuk?</span>
             </div>
             <div class="quiz-options">
-              <label class="quiz-option"><span class="option-letter">A</span><span>&lt;body&gt;</span></label>
-              <label class="quiz-option"><span class="option-letter">B</span><span>&lt;head&gt;</span></label>
-              <label class="quiz-option"><span class="option-letter">C</span><span>&lt;html&gt;</span></label>
-              <label class="quiz-option"><span class="option-letter">D</span><span>&lt;meta&gt;</span></label>
+              <label class="quiz-option"><span class="option-letter">A</span><span>Membaca input</span></label>
+              <label class="quiz-option"><span class="option-letter">B</span><span>Menampilkan output</span></label>
+              <label class="quiz-option"><span class="option-letter">C</span><span>Menghitung nilai</span></label>
+              <label class="quiz-option"><span class="option-letter">D</span><span>Mengulang kode</span></label>
             </div>
           </div>
 
@@ -957,53 +1115,103 @@
       <div class="section-nav">
         <span></span>
         <button class="nav-btn primary" onclick="nextModule('modul2')">
-          Lanjut ke CSS <i class="fas fa-arrow-right"></i>
+          Lanjut ke Perulangan <i class="fas fa-arrow-right"></i>
         </button>
       </div>
     </section>
 
-    <!-- ==================== MODUL 2: CSS STYLING ==================== -->
+    <!-- ==================== MODUL 2: STRUKTUR PERULANGAN ==================== -->
     <section id="modul2" class="topic-section">
-      <h2 class="section-title"><i class="fas fa-palette"></i> CSS Styling</h2>
+      <h2 class="section-title"><i class="fas fa-sync-alt"></i> Struktur Perulangan (Looping)</h2>
       
       <div class="content-intro">
-        <strong>🤔 Mengapa website terlihat berbeda-beda padahal sama-sama menggunakan HTML?</strong><br>
-        Jawabannya adalah <strong>CSS</strong> (Cascading Style Sheets)! CSS bertanggung jawab untuk 
-        <strong>menghias</strong> dan <strong>mempercantik</strong> tampilan website.
+        <strong>🤔 Bagaimana cara program menghitung total pengunjung Kawah Ijen dalam sebulan?</strong><br>
+        Atau bagaimana sistem menampilkan daftar 100 objek wisata di Banyuwangi tanpa menulis kode 100 kali? 
+        Jawabannya adalah <strong>perulangan</strong> (looping) — cara program menjalankan kode berulang kali secara otomatis.
       </div>
 
       <div class="content-card">
-        <h4><i class="fas fa-book"></i> Apa itu CSS?</h4>
+        <h4><i class="fas fa-book"></i> Pengertian Perulangan</h4>
         <p>
-          <strong>CSS</strong> adalah bahasa stylesheet yang digunakan untuk mengatur <strong>tampilan</strong> 
-          dan <strong>layout</strong> halaman web. CSS mengontrol warna, font, ukuran, posisi, dan animasi.
+          <strong>Perulangan</strong> (looping) adalah struktur kontrol yang memungkinkan program 
+          menjalankan blok kode berulang kali selama kondisi tertentu terpenuhi. Dalam bahasa C, 
+          terdapat 3 jenis perulangan: <code>for</code>, <code>while</code>, dan <code>do-while</code>.
         </p>
         <p>
-          Analogi: Jika HTML adalah kerangka rumah, CSS adalah <strong>cat, wallpaper, furnitur, dan dekorasi</strong> 
-          yang membuat rumah terlihat indah!
+          Analogi sederhana: Seperti menghitung jumlah tiket yang terjual setiap hari selama 30 hari. 
+          Daripada menulis kode 30 kali, kita cukup membuat perulangan yang berjalan 30 kali!
         </p>
       </div>
 
       <div class="content-card">
-        <h4><i class="fas fa-code"></i> Sintaks Dasar CSS</h4>
+        <h4><i class="fas fa-code"></i> Jenis-Jenis Perulangan dalam Bahasa C</h4>
+        
+        <h5 style="margin: 20px 0 12px; color: var(--text-primary);">1. For Loop (Perulangan Pasti)</h5>
         <div class="code-block">
-<span class="code-selector">selector</span> {
-    <span class="code-property">property</span>: <span class="code-value">value</span>;
+<span class="code-comment">// Contoh: Menampilkan angka 1 sampai 5</span>
+<span class="code-keyword">for</span> (<span class="code-type">int</span> i = 1; i <= 5; i++) {
+    <span class="code-function">printf</span>(<span class="code-string">"%d "</span>, i);
 }
+<span class="code-comment">// Output: 1 2 3 4 5</span>
+        </div>
 
-<span class="code-comment">// Contoh:</span>
-<span class="code-selector">h1</span> {
-    <span class="code-property">color</span>: <span class="code-value">blue</span>;
-    <span class="code-property">font-size</span>: <span class="code-value">24px</span>;
+        <h5 style="margin: 20px 0 12px; color: var(--text-primary);">2. While Loop (Perulangan Bersyarat)</h5>
+        <div class="code-block">
+<span class="code-comment">// Contoh: Menghitung mundur</span>
+<span class="code-type">int</span> i = 5;
+<span class="code-keyword">while</span> (i > 0) {
+    <span class="code-function">printf</span>(<span class="code-string">"%d "</span>, i);
+    i--;
 }
+<span class="code-comment">// Output: 5 4 3 2 1</span>
+        </div>
 
-<span class="code-selector">.class-name</span> {
-    <span class="code-property">background</span>: <span class="code-value">#f0f0f0</span>;
-}
+        <h5 style="margin: 20px 0 12px; color: var(--text-primary);">3. Do-While Loop (Minimal 1x Eksekusi)</h5>
+        <div class="code-block">
+<span class="code-comment">// Contoh: Input validasi</span>
+<span class="code-type">int</span> pilihan;
+<span class="code-keyword">do</span> {
+    <span class="code-function">printf</span>(<span class="code-string">"Pilih menu (1-3): "</span>);
+    <span class="code-function">scanf</span>(<span class="code-string">"%d"</span>, &pilihan);
+} <span class="code-keyword">while</span> (pilihan < 1 || pilihan > 3);
+        </div>
+      </div>
 
-<span class="code-selector">#id-name</span> {
-    <span class="code-property">border</span>: <span class="code-value">1px solid black</span>;
+      <div class="content-card">
+        <h4><i class="fas fa-laptop-code"></i> Contoh Kasus: Daftar Wisata Banyuwangi</h4>
+        <p>Program untuk menampilkan daftar 5 objek wisata populer di Banyuwangi:</p>
+        
+        <div class="code-block">
+<span class="code-comment">// Program: Daftar Wisata Banyuwangi</span>
+<span class="code-type">#include</span> <span class="code-string">&lt;stdio.h&gt;</span>
+
+<span class="code-type">int</span> <span class="code-function">main</span>() {
+    <span class="code-type">char</span> wisata[5][50] = {
+        <span class="code-string">"Kawah Ijen"</span>,
+        <span class="code-string">"Pulau Merah"</span>,
+        <span class="code-string">"Baluran National Park"</span>,
+        <span class="code-string">"Pantai Pulau Tabuhan"</span>,
+        <span class="code-string">"Air Terjun Lider"</span>
+    };
+    
+    <span class="code-function">printf</span>(<span class="code-string">"=== 5 Wisata Populer Banyuwangi ===\n\n"</span>);
+    
+    <span class="code-keyword">for</span> (<span class="code-type">int</span> i = 0; i < 5; i++) {
+        <span class="code-function">printf</span>(<span class="code-string">"%d. %s\n"</span>, i+1, wisata[i]);
+    }
+    
+    <span class="code-keyword">return</span> <span class="code-number">0</span>;
 }
+        </div>
+
+        <div class="step-explanation">
+          <h5><i class="fas fa-list-1-2"></i> Penjelasan Program:</h5>
+          <ol class="step-list">
+            <li>Deklarasi array 2 dimensi untuk menyimpan 5 nama wisata.</li>
+            <li>Perulangan <code>for</code> berjalan dari i=0 sampai i<5 (5 kali).</li>
+            <li>Setiap iterasi menampilkan nomor dan nama wisata.</li>
+            <li>Output: Daftar 5 wisata dengan nomor urut.</li>
+          </ol>
         </div>
       </div>
 
@@ -1012,11 +1220,11 @@
         <div class="editor-header">
           <div class="editor-title">
             <i class="fas fa-code"></i>
-            Live CSS Editor - Styling
+            Live Code Simulator - Perulangan
           </div>
           <div>
             <button class="btn-run" onclick="runCode('modul2')">
-              <i class="fas fa-play"></i> Preview CSS
+              <i class="fas fa-play"></i> Jalankan Kode
             </button>
             <button class="btn-clear" onclick="clearOutput('modul2')">
               <i class="fas fa-trash"></i> Clear
@@ -1025,44 +1233,59 @@
         </div>
         <div class="editor-body">
           <div class="editor-pane">
-            <span class="editor-pane-label">📝 Kode HTML + CSS</span>
-            <textarea class="code-textarea" id="code-modul2" spellcheck="false">&lt;style&gt;
-    h1 {
-        color: #ef4444;
-        text-align: center;
-        font-family: Arial, sans-serif;
-    }
-    p {
-        color: #475569;
-        font-size: 18px;
-        line-height: 1.6;
-    }
-    .box {
-        background: #f1f5f9;
-        padding: 20px;
-        border-radius: 8px;
-        margin: 20px 0;
-    }
-&lt;/style&gt;
+            <span class="editor-pane-label">📝 Kode Program (Bahasa C)</span>
+            <textarea class="code-textarea" id="code-modul2" spellcheck="false">#include &lt;stdio.h&gt;
 
-&lt;h1&gt;Website SMA N 1 Cluring&lt;/h1&gt;
-&lt;div class="box"&gt;
-    &lt;p&gt;Selamat datang di website sekolah kami.&lt;/p&gt;
-    &lt;p&gt;Berlokasi di Jalan H. Huzaini, Benculuk – Cluring&lt;/p&gt;
-&lt;/div&gt;</textarea>
+int main() {
+    int jumlah;
+    
+    printf("Masukkan jumlah perulangan: ");
+    // Simulasi input
+    jumlah = 5;
+    printf("%d\n\n", jumlah);
+    
+    printf("Hasil perulangan:\n");
+    for (int i = 1; i <= jumlah; i++) {
+        printf("%d. Iterasi ke-%d\n", i, i);
+    }
+    
+    printf("\nPerulangan selesai!\n");
+    return 0;
+}</textarea>
+            <div class="input-simulation">
+              <label>🔧 Simulasi Jumlah Perulangan:</label>
+              <input type="number" id="input-modul2" value="5" min="1" max="20" placeholder="Masukkan jumlah 1-20">
+            </div>
           </div>
           <div class="editor-pane output-pane">
-            <span class="editor-pane-label">🖥️ Preview Website</span>
-            <div class="preview-frame" id="output-modul2">Klik "Preview CSS" untuk melihat hasil...</div>
+            <span class="editor-pane-label">🖥️ Output Program</span>
+            <div class="output-content" id="output-modul2">Klik "Jalankan Kode" untuk melihat hasil...</div>
           </div>
         </div>
+      </div>
+
+      <div class="tip-box">
+        <i class="fas fa-lightbulb"></i>
+        <div>
+          <strong>💡 Tips Penting:</strong> 
+          Gunakan <code>for</code> jika jumlah perulangan sudah diketahui. 
+          Gunakan <code>while</code> jika perulangan bergantung pada kondisi. 
+          Gunakan <code>do-while</code> jika kode harus dijalankan minimal 1 kali!
+          Hati-hati dengan <strong>infinite loop</strong> (perulangan tak terbatas)!
+        </div>
+      </div>
+
+      <div class="note-box">
+        <strong>📚 Konteks Lokal:</strong> 
+        Perulangan sangat berguna untuk menampilkan daftar data berulang, 
+        seperti daftar wisata, jadwal tour, atau antrian pengunjung objek wisata.
       </div>
 
       <!-- QUIZ MODUL 2 -->
       <div class="quiz-container" id="quiz-modul2">
         <div class="quiz-header">
           <div>
-            <h3 style="margin-bottom: 8px;">Kuis Modul 2: CSS</h3>
+            <h3 style="margin-bottom: 8px;">Kuis Modul 2: Perulangan</h3>
             <div style="color: var(--text-muted); font-size: 0.9rem;">
               <i class="fas fa-question-circle"></i> 5 Soal • <i class="fas fa-star"></i> 100 Poin
             </div>
@@ -1075,64 +1298,64 @@
         </div>
 
         <form id="form-modul2">
-          <div class="quiz-question" data-correct="c">
-            <div class="question-text">
-              <span class="question-number">1</span>
-              <span>Kepanjangan dari CSS adalah?</span>
-            </div>
-            <div class="quiz-options">
-              <label class="quiz-option"><span class="option-letter">A</span><span>Computer Style Sheets</span></label>
-              <label class="quiz-option"><span class="option-letter">B</span><span>Creative Style System</span></label>
-              <label class="quiz-option"><span class="option-letter">C</span><span>Cascading Style Sheets</span></label>
-              <label class="quiz-option"><span class="option-letter">D</span><span>Colorful Style Sheets</span></label>
-            </div>
-          </div>
           <div class="quiz-question" data-correct="a">
             <div class="question-text">
-              <span class="question-number">2</span>
-              <span>Property CSS untuk mengubah warna teks adalah?</span>
+              <span class="question-number">1</span>
+              <span>Perulangan yang paling tepat digunakan jika jumlah iterasi sudah diketahui adalah?</span>
             </div>
             <div class="quiz-options">
-              <label class="quiz-option"><span class="option-letter">A</span><span>color</span></label>
-              <label class="quiz-option"><span class="option-letter">B</span><span>text-color</span></label>
-              <label class="quiz-option"><span class="option-letter">C</span><span>font-color</span></label>
-              <label class="quiz-option"><span class="option-letter">D</span><span>foreground</span></label>
+              <label class="quiz-option"><span class="option-letter">A</span><span>for</span></label>
+              <label class="quiz-option"><span class="option-letter">B</span><span>while</span></label>
+              <label class="quiz-option"><span class="option-letter">C</span><span>do-while</span></label>
+              <label class="quiz-option"><span class="option-letter">D</span><span>if-else</span></label>
+            </div>
+          </div>
+          <div class="quiz-question" data-correct="c">
+            <div class="question-text">
+              <span class="question-number">2</span>
+              <span>Perulangan yang minimal dijalankan 1 kali adalah?</span>
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option"><span class="option-letter">A</span><span>for</span></label>
+              <label class="quiz-option"><span class="option-letter">B</span><span>while</span></label>
+              <label class="quiz-option"><span class="option-letter">C</span><span>do-while</span></label>
+              <label class="quiz-option"><span class="option-letter">D</span><span>switch</span></label>
             </div>
           </div>
           <div class="quiz-question" data-correct="b">
             <div class="question-text">
               <span class="question-number">3</span>
-              <span>Selector CSS untuk class diawali dengan simbol?</span>
+              <span>Output dari: for(int i=1; i<=3; i++) printf("%d", i); adalah?</span>
             </div>
             <div class="quiz-options">
-              <label class="quiz-option"><span class="option-letter">A</span><span>#</span></label>
-              <label class="quiz-option"><span class="option-letter">B</span><span>.</span></label>
-              <label class="quiz-option"><span class="option-letter">C</span><span>@</span></label>
-              <label class="quiz-option"><span class="option-letter">D</span><span>$</span></label>
+              <label class="quiz-option"><span class="option-letter">A</span><span>123</span></label>
+              <label class="quiz-option"><span class="option-letter">B</span><span>123</span></label>
+              <label class="quiz-option"><span class="option-letter">C</span><span>012</span></label>
+              <label class="quiz-option"><span class="option-letter">D</span><span>234</span></label>
             </div>
           </div>
           <div class="quiz-question" data-correct="d">
             <div class="question-text">
               <span class="question-number">4</span>
-              <span>Property untuk mengatur ukuran font adalah?</span>
+              <span>Untuk menghentikan perulangan secara paksa digunakan statement?</span>
             </div>
             <div class="quiz-options">
-              <label class="quiz-option"><span class="option-letter">A</span><span>text-size</span></label>
-              <label class="quiz-option"><span class="option-letter">B</span><span>font-weight</span></label>
-              <label class="quiz-option"><span class="option-letter">C</span><span>size</span></label>
-              <label class="quiz-option"><span class="option-letter">D</span><span>font-size</span></label>
+              <label class="quiz-option"><span class="option-letter">A</span><span>stop</span></label>
+              <label class="quiz-option"><span class="option-letter">B</span><span>exit</span></label>
+              <label class="quiz-option"><span class="option-letter">C</span><span>return</span></label>
+              <label class="quiz-option"><span class="option-letter">D</span><span>break</span></label>
             </div>
           </div>
           <div class="quiz-question" data-correct="a">
             <div class="question-text">
               <span class="question-number">5</span>
-              <span>CSS dapat ditambahkan ke HTML dengan cara?</span>
+              <span>Infinite loop terjadi ketika?</span>
             </div>
             <div class="quiz-options">
-              <label class="quiz-option"><span class="option-letter">A</span><span>Inline, Internal, External</span></label>
-              <label class="quiz-option"><span class="option-letter">B</span><span>Copy-Paste</span></label>
-              <label class="quiz-option"><span class="option-letter">C</span><span>Import saja</span></label>
-              <label class="quiz-option"><span class="option-letter">D</span><span>JavaScript</span></label>
+              <label class="quiz-option"><span class="option-letter">A</span><span>Kondisi perulangan selalu benar</span></label>
+              <label class="quiz-option"><span class="option-letter">B</span><span>Kondisi perulangan selalu salah</span></label>
+              <label class="quiz-option"><span class="option-letter">C</span><span>Tidak ada variabel</span></label>
+              <label class="quiz-option"><span class="option-letter">D</span><span>Kode terlalu panjang</span></label>
             </div>
           </div>
 
@@ -1156,50 +1379,76 @@
           <i class="fas fa-arrow-left"></i> Kembali
         </button>
         <button class="nav-btn primary" onclick="nextModule('modul3')">
-          Lanjut ke JavaScript <i class="fas fa-arrow-right"></i>
+          Lanjut ke Tipe Data <i class="fas fa-arrow-right"></i>
         </button>
       </div>
     </section>
 
-    <!-- ==================== MODUL 3: JAVASCRIPT ==================== -->
+    <!-- ==================== MODUL 3: TIPE DATA & OPERATOR ==================== -->
     <section id="modul3" class="topic-section">
-      <h2 class="section-title"><i class="fas fa-bolt"></i> JavaScript - Interaktivitas Web</h2>
+      <h2 class="section-title"><i class="fas fa-database"></i> Tipe Data & Operator</h2>
       
       <div class="content-intro">
-        <strong>🤔 Bagaimana website bisa merespon klik, menampilkan animasi, atau memproses data?</strong><br>
-        Semua itu berkat <strong>JavaScript</strong>! JavaScript adalah bahasa pemrograman yang membuat website 
-        menjadi <strong>interaktif</strong> dan <strong>dinamis</strong>.
+        <strong>🤔 Mengapa penting memilih tipe data yang tepat?</strong><br>
+        Bayangkan menyimpan harga tiket wisata (angka desimal) dalam variabel integer. Hasilnya akan salah! 
+        <strong>Tipe data</strong> menentukan bagaimana data disimpan dan diolah dalam program.
       </div>
 
       <div class="content-card">
-        <h4><i class="fas fa-book"></i> Apa itu JavaScript?</h4>
-        <p>
-          <strong>JavaScript</strong> adalah bahasa pemrograman yang berjalan di browser. JavaScript memungkinkan 
-          website untuk merespon interaksi pengguna, memanipulasi konten, dan berkomunikasi dengan server.
-        </p>
-        <p>
-          Analogi: Jika HTML adalah kerangka dan CSS adalah dekorasi, JavaScript adalah <strong>otak dan sistem saraf</strong> 
-          yang membuat website "hidup" dan bisa berinteraksi!
-        </p>
+        <h4><i class="fas fa-book"></i> Tipe Data Dasar dalam Bahasa C</h4>
+        <div class="symbol-grid">
+          <div class="symbol-item">
+            <div class="symbol-visual process">123</div>
+            <div class="symbol-info">
+              <h5>🔢 int (Integer)</h5>
+              <p>Angka bulat: <code>int usia = 17;</code></p>
+            </div>
+          </div>
+          <div class="symbol-item">
+            <div class="symbol-visual process">3.14</div>
+            <div class="symbol-info">
+              <h5>📐 float/double</h5>
+              <p>Angka desimal: <code>float harga = 15000.50;</code></p>
+            </div>
+          </div>
+          <div class="symbol-item">
+            <div class="symbol-visual io">'A'</div>
+            <div class="symbol-info">
+              <h5>🔤 char</h5>
+              <p>Karakter tunggal: <code>char grade = 'A';</code></p>
+            </div>
+          </div>
+          <div class="symbol-item">
+            <div class="symbol-visual terminal">"Hi"</div>
+            <div class="symbol-info">
+              <h5>📝 string</h5>
+              <p>Teks: <code>char nama[] = "Budi";</code></p>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="content-card">
-        <h4><i class="fas fa-code"></i> Sintaks Dasar JavaScript</h4>
+        <h4><i class="fas fa-calculator"></i> Operator dalam Bahasa C</h4>
+        
+        <h5 style="margin: 20px 0 12px; color: var(--text-primary);">1. Operator Aritmatika</h5>
         <div class="code-block">
-<span class="code-comment">// Variabel</span>
-<span class="code-keyword">let</span> nama = <span class="code-string">"Budi"</span>;
-<span class="code-keyword">const</span> usia = 17;
++  (Penjumlahan)    -  (Pengurangan)
+*  (Perkalian)      /  (Pembagian)
+%  (Modulus/Sisa)   ++ (Increment)
+-- (Decrement)
+        </div>
 
-<span class="code-comment">// Fungsi</span>
-<span class="code-keyword">function</span> <span class="code-function">sapa</span>() {
-    <span class="code-function">alert</span>(<span class="code-string">"Halo, "</span> + nama);
-}
+        <h5 style="margin: 20px 0 12px; color: var(--text-primary);">2. Operator Perbandingan</h5>
+        <div class="code-block">
+== (Sama dengan)     != (Tidak sama)
+>  (Lebih besar)     <  (Lebih kecil)
+>= (>=)              <= (<=)
+        </div>
 
-<span class="code-comment">// Event Handler</span>
-document.<span class="code-function">getElementById</span>(<span class="code-string">"tombol"</span>).<span class="code-function">addEventListener</span>(<span class="code-string">"click"</span>, sapa);
-
-<span class="code-comment">// Manipulasi DOM</span>
-document.<span class="code-function">getElementById</span>(<span class="code-string">"teks"</span>).innerHTML = <span class="code-string">"Teks baru!"</span>;
+        <h5 style="margin: 20px 0 12px; color: var(--text-primary);">3. Operator Logika</h5>
+        <div class="code-block">
+&& (AND)    || (OR)    ! (NOT)
         </div>
       </div>
 
@@ -1208,11 +1457,11 @@ document.<span class="code-function">getElementById</span>(<span class="code-str
         <div class="editor-header">
           <div class="editor-title">
             <i class="fas fa-code"></i>
-            Live JavaScript Editor
+            Live Code Simulator - Tipe Data & Operator
           </div>
           <div>
             <button class="btn-run" onclick="runCode('modul3')">
-              <i class="fas fa-play"></i> Jalankan JS
+              <i class="fas fa-play"></i> Jalankan Kode
             </button>
             <button class="btn-clear" onclick="clearOutput('modul3')">
               <i class="fas fa-trash"></i> Clear
@@ -1221,32 +1470,26 @@ document.<span class="code-function">getElementById</span>(<span class="code-str
         </div>
         <div class="editor-body">
           <div class="editor-pane">
-            <span class="editor-pane-label">📝 Kode JavaScript</span>
-            <textarea class="code-textarea" id="code-modul3" spellcheck="false">&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;title&gt;JavaScript Demo&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;h1 id="judul"&gt;Selamat Datang&lt;/h1&gt;
-    &lt;button onclick="ubahWarna()"&gt;Ubah Warna&lt;/button&gt;
-    &lt;button onclick="ubahTeks()"&gt;Ubah Teks&lt;/button&gt;
+            <span class="editor-pane-label">📝 Kode Program (Bahasa C)</span>
+            <textarea class="code-textarea" id="code-modul3" spellcheck="false">#include &lt;stdio.h&gt;
+
+int main() {
+    int a = 10, b = 3;
     
-    &lt;script&gt;
-        function ubahWarna() {
-            document.getElementById("judul").style.color = "red";
-        }
-        
-        function ubahTeks() {
-            document.getElementById("judul").innerHTML = "Halo SMA N 1 Cluring!";
-        }
-    &lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;</textarea>
+    printf("=== Operasi Aritmatika ===\n");
+    printf("a = %d, b = %d\n\n", a, b);
+    printf("a + b = %d\n", a + b);
+    printf("a - b = %d\n", a - b);
+    printf("a * b = %d\n", a * b);
+    printf("a / b = %d\n", a / b);
+    printf("a %% b = %d\n", a % b);
+    
+    return 0;
+}</textarea>
           </div>
           <div class="editor-pane output-pane">
-            <span class="editor-pane-label">🖥️ Preview Website</span>
-            <div class="preview-frame" id="output-modul3">Klik "Jalankan JS" untuk melihat hasil...</div>
+            <span class="editor-pane-label">🖥️ Output Program</span>
+            <div class="output-content" id="output-modul3">Klik "Jalankan Kode" untuk melihat hasil...</div>
           </div>
         </div>
       </div>
@@ -1255,7 +1498,7 @@ document.<span class="code-function">getElementById</span>(<span class="code-str
       <div class="quiz-container" id="quiz-modul3">
         <div class="quiz-header">
           <div>
-            <h3 style="margin-bottom: 8px;">Kuis Modul 3: JavaScript</h3>
+            <h3 style="margin-bottom: 8px;">Kuis Modul 3: Tipe Data & Operator</h3>
             <div style="color: var(--text-muted); font-size: 0.9rem;">
               <i class="fas fa-question-circle"></i> 5 Soal • <i class="fas fa-star"></i> 100 Poin
             </div>
@@ -1268,64 +1511,64 @@ document.<span class="code-function">getElementById</span>(<span class="code-str
         </div>
 
         <form id="form-modul3">
-          <div class="quiz-question" data-correct="b">
-            <div class="question-text">
-              <span class="question-number">1</span>
-              <span>JavaScript digunakan untuk?</span>
-            </div>
-            <div class="quiz-options">
-              <label class="quiz-option"><span class="option-letter">A</span><span>Struktur halaman</span></label>
-              <label class="quiz-option"><span class="option-letter">B</span><span>Interaktivitas website</span></label>
-              <label class="quiz-option"><span class="option-letter">C</span><span>Styling tampilan</span></label>
-              <label class="quiz-option"><span class="option-letter">D</span><span>Database</span></label>
-            </div>
-          </div>
           <div class="quiz-question" data-correct="a">
             <div class="question-text">
-              <span class="question-number">2</span>
-              <span>Kata kunci untuk membuat variabel yang bisa diubah adalah?</span>
+              <span class="question-number">1</span>
+              <span>Tipe data untuk menyimpan angka bulat adalah?</span>
             </div>
             <div class="quiz-options">
-              <label class="quiz-option"><span class="option-letter">A</span><span>let</span></label>
-              <label class="quiz-option"><span class="option-letter">B</span><span>const</span></label>
-              <label class="quiz-option"><span class="option-letter">C</span><span>var</span></label>
-              <label class="quiz-option"><span class="option-letter">D</span><span>fixed</span></label>
+              <label class="quiz-option"><span class="option-letter">A</span><span>int</span></label>
+              <label class="quiz-option"><span class="option-letter">B</span><span>float</span></label>
+              <label class="quiz-option"><span class="option-letter">C</span><span>char</span></label>
+              <label class="quiz-option"><span class="option-letter">D</span><span>double</span></label>
+            </div>
+          </div>
+          <div class="quiz-question" data-correct="b">
+            <div class="question-text">
+              <span class="question-number">2</span>
+              <span>Operator untuk sisa pembagian adalah?</span>
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option"><span class="option-letter">A</span><span>/</span></label>
+              <label class="quiz-option"><span class="option-letter">B</span><span>%</span></label>
+              <label class="quiz-option"><span class="option-letter">C</span><span>*</span></label>
+              <label class="quiz-option"><span class="option-letter">D</span><span>&</span></label>
             </div>
           </div>
           <div class="quiz-question" data-correct="c">
             <div class="question-text">
               <span class="question-number">3</span>
-              <span>Fungsi untuk menampilkan alert adalah?</span>
+              <span>Hasil dari 15 % 4 adalah?</span>
             </div>
             <div class="quiz-options">
-              <label class="quiz-option"><span class="option-letter">A</span><span>show()</span></label>
-              <label class="quiz-option"><span class="option-letter">B</span><span>display()</span></label>
-              <label class="quiz-option"><span class="option-letter">C</span><span>alert()</span></label>
-              <label class="quiz-option"><span class="option-letter">D</span><span>message()</span></label>
+              <label class="quiz-option"><span class="option-letter">A</span><span>3.75</span></label>
+              <label class="quiz-option"><span class="option-letter">B</span><span>4</span></label>
+              <label class="quiz-option"><span class="option-letter">C</span><span>3</span></label>
+              <label class="quiz-option"><span class="option-letter">D</span><span>0</span></label>
             </div>
           </div>
           <div class="quiz-question" data-correct="d">
             <div class="question-text">
               <span class="question-number">4</span>
-              <span>Event untuk mendeteksi klik mouse adalah?</span>
+              <span>Operator == digunakan untuk?</span>
             </div>
             <div class="quiz-options">
-              <label class="quiz-option"><span class="option-letter">A</span><span>onMouse</span></label>
-              <label class="quiz-option"><span class="option-letter">B</span><span>onClick</span></label>
-              <label class="quiz-option"><span class="option-letter">C</span><span>mouseClick</span></label>
-              <label class="quiz-option"><span class="option-letter">D</span><span>click</span></label>
+              <label class="quiz-option"><span class="option-letter">A</span><span>Penugasan</span></label>
+              <label class="quiz-option"><span class="option-letter">B</span><span>Penjumlahan</span></label>
+              <label class="quiz-option"><span class="option-letter">C</span><span>Perkalian</span></label>
+              <label class="quiz-option"><span class="option-letter">D</span><span>Perbandingan sama dengan</span></label>
             </div>
           </div>
           <div class="quiz-question" data-correct="a">
             <div class="question-text">
               <span class="question-number">5</span>
-              <span>DOM dalam JavaScript adalah singkatan dari?</span>
+              <span>Tipe data char digunakan untuk menyimpan?</span>
             </div>
             <div class="quiz-options">
-              <label class="quiz-option"><span class="option-letter">A</span><span>Document Object Model</span></label>
-              <label class="quiz-option"><span class="option-letter">B</span><span>Data Object Model</span></label>
-              <label class="quiz-option"><span class="option-letter">C</span><span>Document Orientation Mode</span></label>
-              <label class="quiz-option"><span class="option-letter">D</span><span>Digital Object Memory</span></label>
+              <label class="quiz-option"><span class="option-letter">A</span><span>Karakter tunggal</span></label>
+              <label class="quiz-option"><span class="option-letter">B</span><span>Angka desimal</span></label>
+              <label class="quiz-option"><span class="option-letter">C</span><span>Teks panjang</span></label>
+              <label class="quiz-option"><span class="option-letter">D</span><span>Boolean</span></label>
             </div>
           </div>
 
@@ -1349,42 +1592,46 @@ document.<span class="code-function">getElementById</span>(<span class="code-str
           <i class="fas fa-arrow-left"></i> Kembali
         </button>
         <button class="nav-btn primary" onclick="nextModule('modul4')">
-          Lanjut ke Integrasi <i class="fas fa-arrow-right"></i>
+          Lanjut ke Array <i class="fas fa-arrow-right"></i>
         </button>
       </div>
     </section>
 
-    <!-- ==================== MODUL 4: INTEGRASI ==================== -->
+    <!-- ==================== MODUL 4: ARRAY ==================== -->
     <section id="modul4" class="topic-section">
-      <h2 class="section-title"><i class="fas fa-link"></i> Integrasi HTML, CSS & JavaScript</h2>
+      <h2 class="section-title"><i class="fas fa-th-list"></i> Array & Struktur Data</h2>
       
       <div class="content-intro">
-        <strong>🎯 Saatnya menggabungkan semua pengetahuanmu!</strong><br>
-        Di modul ini, kamu akan belajar bagaimana <strong>menggabungkan HTML, CSS, dan JavaScript</strong> 
-        untuk membuat website yang lengkap dan fungsional.
+        <strong>🤔 Bagaimana menyimpan data 30 siswa kelas XI dalam satu variabel?</strong><br>
+        <strong>Array</strong> adalah solusi! Seperti lemari dengan banyak laci bernomor, 
+        array memungkinkan kita menyimpan banyak data dengan tipe yang sama dalam satu variabel.
       </div>
 
       <div class="content-card">
-        <h4><i class="fas fa-book"></i> Struktur Proyek Web Lengkap</h4>
-        <div class="code-block">
-<span class="code-comment">// Struktur Folder:</span>
-proyek-website/
-├── index.html      (Struktur)
-├── style.css       (Tampilan)
-├── script.js       (Interaktivitas)
-└── images/         (Asset gambar)
+        <h4><i class="fas fa-book"></i> Pengertian Array</h4>
+        <p>
+          <strong>Array</strong> adalah struktur data yang menyimpan kumpulan elemen dengan tipe data yang sama 
+          dalam satu variabel. Setiap elemen dapat diakses menggunakan <strong>index</strong> (dimulai dari 0).
+        </p>
+        <p>
+          Analogi sederhana: Seperti rak buku dengan 10 slot. Setiap slot bernomor 0-9 dan bisa diisi buku. 
+          Array bekerja dengan cara serupa!
+        </p>
+      </div>
 
-<span class="code-comment">// HTML dengan CSS & JS External:</span>
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;link rel="stylesheet" href="style.css"&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;!-- Konten HTML --&gt;
-    &lt;script src="script.js"&gt;&lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;
+      <div class="content-card">
+        <h4><i class="fas fa-code"></i> Deklarasi dan Akses Array</h4>
+        <div class="code-block">
+<span class="code-comment">// Deklarasi Array</span>
+<span class="code-type">int</span> nilai[5];  <span class="code-comment">// Array dengan 5 elemen</span>
+
+<span class="code-comment">// Mengisi nilai</span>
+nilai[0] = 80;
+nilai[1] = 85;
+nilai[2] = 90;
+
+<span class="code-comment">// Mengakses nilai</span>
+<span class="code-function">printf</span>(<span class="code-string">"%d"</span>, nilai[0]);  <span class="code-comment">// Output: 80</span>
         </div>
       </div>
 
@@ -1393,11 +1640,11 @@ proyek-website/
         <div class="editor-header">
           <div class="editor-title">
             <i class="fas fa-code"></i>
-            Live Editor - Website Lengkap
+            Live Code Simulator - Array
           </div>
           <div>
             <button class="btn-run" onclick="runCode('modul4')">
-              <i class="fas fa-play"></i> Preview Website
+              <i class="fas fa-play"></i> Jalankan Kode
             </button>
             <button class="btn-clear" onclick="clearOutput('modul4')">
               <i class="fas fa-trash"></i> Clear
@@ -1406,36 +1653,31 @@ proyek-website/
         </div>
         <div class="editor-body">
           <div class="editor-pane">
-            <span class="editor-pane-label">📝 Kode Lengkap (HTML+CSS+JS)</span>
-            <textarea class="code-textarea" id="code-modul4" spellcheck="false">&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;title&gt;Website SMA N 1 Cluring&lt;/title&gt;
-    &lt;style&gt;
-        body { font-family: Arial; padding: 20px; }
-        h1 { color: #ef4444; text-align: center; }
-        .info { background: #f1f5f9; padding: 20px; border-radius: 8px; }
-        button { background: #10b981; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; }
-        button:hover { background: #059669; }
-    &lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;h1&gt;Selamat Datang&lt;/h1&gt;
-    &lt;div class="info"&gt;
-        &lt;p id="teks"&gt;SMA Negeri 1 Cluring - Banyuwangi&lt;/p&gt;
-        &lt;button onclick="ubahTeks()"&gt;Klik Saya&lt;/button&gt;
-    &lt;/div&gt;
-    &lt;script&gt;
-        function ubahTeks() {
-            document.getElementById("teks").innerHTML = "Terima kasih telah berkunjung!";
-        }
-    &lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;</textarea>
+            <span class="editor-pane-label">📝 Kode Program (Bahasa C)</span>
+            <textarea class="code-textarea" id="code-modul4" spellcheck="false">#include &lt;stdio.h&gt;
+
+int main() {
+    int nilai[5] = {80, 85, 90, 75, 95};
+    int total = 0;
+    float rata;
+    
+    printf("=== Nilai 5 Siswa ===\n\n");
+    
+    for (int i = 0; i < 5; i++) {
+        printf("Siswa %d: %d\n", i+1, nilai[i]);
+        total += nilai[i];
+    }
+    
+    rata = total / 5.0;
+    printf("\nTotal: %d\n", total);
+    printf("Rata-rata: %.2f\n", rata);
+    
+    return 0;
+}</textarea>
           </div>
           <div class="editor-pane output-pane">
-            <span class="editor-pane-label">🖥️ Preview Website</span>
-            <div class="preview-frame" id="output-modul4">Klik "Preview Website" untuk melihat hasil...</div>
+            <span class="editor-pane-label">🖥️ Output Program</span>
+            <div class="output-content" id="output-modul4">Klik "Jalankan Kode" untuk melihat hasil...</div>
           </div>
         </div>
       </div>
@@ -1444,7 +1686,7 @@ proyek-website/
       <div class="quiz-container" id="quiz-modul4">
         <div class="quiz-header">
           <div>
-            <h3 style="margin-bottom: 8px;">Kuis Modul 4: Integrasi</h3>
+            <h3 style="margin-bottom: 8px;">Kuis Modul 4: Array</h3>
             <div style="color: var(--text-muted); font-size: 0.9rem;">
               <i class="fas fa-question-circle"></i> 5 Soal • <i class="fas fa-star"></i> 100 Poin
             </div>
@@ -1457,64 +1699,64 @@ proyek-website/
         </div>
 
         <form id="form-modul4">
-          <div class="quiz-question" data-correct="a">
-            <div class="question-text">
-              <span class="question-number">1</span>
-              <span>Tag untuk menghubungkan file CSS external adalah?</span>
-            </div>
-            <div class="quiz-options">
-              <label class="quiz-option"><span class="option-letter">A</span><span>&lt;link rel="stylesheet"&gt;</span></label>
-              <label class="quiz-option"><span class="option-letter">B</span><span>&lt;css&gt;</span></label>
-              <label class="quiz-option"><span class="option-letter">C</span><span>&lt;style src&gt;</span></label>
-              <label class="quiz-option"><span class="option-letter">D</span><span>&lt;import&gt;</span></label>
-            </div>
-          </div>
           <div class="quiz-question" data-correct="b">
             <div class="question-text">
-              <span class="question-number">2</span>
-              <span>Tag untuk menghubungkan file JavaScript external adalah?</span>
+              <span class="question-number">1</span>
+              <span>Index array dalam bahasa C dimulai dari?</span>
             </div>
             <div class="quiz-options">
-              <label class="quiz-option"><span class="option-letter">A</span><span>&lt;js&gt;</span></label>
-              <label class="quiz-option"><span class="option-letter">B</span><span>&lt;script src&gt;</span></label>
-              <label class="quiz-option"><span class="option-letter">C</span><span>&lt;javascript&gt;</span></label>
-              <label class="quiz-option"><span class="option-letter">D</span><span>&lt;link js&gt;</span></label>
+              <label class="quiz-option"><span class="option-letter">A</span><span>1</span></label>
+              <label class="quiz-option"><span class="option-letter">B</span><span>0</span></label>
+              <label class="quiz-option"><span class="option-letter">C</span><span>-1</span></label>
+              <label class="quiz-option"><span class="option-letter">D</span><span>Tergantung</span></label>
+            </div>
+          </div>
+          <div class="quiz-question" data-correct="a">
+            <div class="question-text">
+              <span class="question-number">2</span>
+              <span>Deklarasi array yang benar adalah?</span>
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option"><span class="option-letter">A</span><span>int arr[5];</span></label>
+              <label class="quiz-option"><span class="option-letter">B</span><span>int arr;</span></label>
+              <label class="quiz-option"><span class="option-letter">C</span><span>array int[5];</span></label>
+              <label class="quiz-option"><span class="option-letter">D</span><span>int[5] arr;</span></label>
             </div>
           </div>
           <div class="quiz-question" data-correct="c">
             <div class="question-text">
               <span class="question-number">3</span>
-              <span>Urutan loading yang benar adalah?</span>
+              <span>Jika array memiliki 5 elemen, index terakhir adalah?</span>
             </div>
             <div class="quiz-options">
-              <label class="quiz-option"><span class="option-letter">A</span><span>JS → CSS → HTML</span></label>
-              <label class="quiz-option"><span class="option-letter">B</span><span>CSS → JS → HTML</span></label>
-              <label class="quiz-option"><span class="option-letter">C</span><span>HTML → CSS → JS</span></label>
-              <label class="quiz-option"><span class="option-letter">D</span><span>HTML → JS → CSS</span></label>
+              <label class="quiz-option"><span class="option-letter">A</span><span>5</span></label>
+              <label class="quiz-option"><span class="option-letter">B</span><span>6</span></label>
+              <label class="quiz-option"><span class="option-letter">C</span><span>4</span></label>
+              <label class="quiz-option"><span class="option-letter">D</span><span>3</span></label>
             </div>
           </div>
           <div class="quiz-question" data-correct="d">
             <div class="question-text">
               <span class="question-number">4</span>
-              <span>File JavaScript biasanya disimpan dengan ekstensi?</span>
+              <span>Array dapat menyimpan?</span>
             </div>
             <div class="quiz-options">
-              <label class="quiz-option"><span class="option-letter">A</span><span>.html</span></label>
-              <label class="quiz-option"><span class="option-letter">B</span><span>.css</span></label>
-              <label class="quiz-option"><span class="option-letter">C</span><span>.txt</span></label>
-              <label class="quiz-option"><span class="option-letter">D</span><span>.js</span></label>
+              <label class="quiz-option"><span class="option-letter">A</span><span>Tipe data berbeda</span></label>
+              <label class="quiz-option"><span class="option-letter">B</span><span>Hanya string</span></label>
+              <label class="quiz-option"><span class="option-letter">C</span><span>Hanya angka</span></label>
+              <label class="quiz-option"><span class="option-letter">D</span><span>Tipe data yang sama</span></label>
             </div>
           </div>
           <div class="quiz-question" data-correct="a">
             <div class="question-text">
               <span class="question-number">5</span>
-              <span>Tempat terbaik meletakkan script JS adalah?</span>
+              <span>Untuk mengakses elemen array digunakan?</span>
             </div>
             <div class="quiz-options">
-              <label class="quiz-option"><span class="option-letter">A</span><span>Sebelum &lt;/body&gt;</span></label>
-              <label class="quiz-option"><span class="option-letter">B</span><span>Di &lt;head&gt;</span></label>
-              <label class="quiz-option"><span class="option-letter">C</span><span>Di &lt;html&gt;</span></label>
-              <label class="quiz-option"><span class="option-letter">D</span><span>Di file terpisah saja</span></label>
+              <label class="quiz-option"><span class="option-letter">A</span><span>Index</span></label>
+              <label class="quiz-option"><span class="option-letter">B</span><span>Pointer</span></label>
+              <label class="quiz-option"><span class="option-letter">C</span><span>Loop</span></label>
+              <label class="quiz-option"><span class="option-letter">D</span><span>Function</span></label>
             </div>
           </div>
 
@@ -1538,44 +1780,49 @@ proyek-website/
           <i class="fas fa-arrow-left"></i> Kembali
         </button>
         <button class="nav-btn primary" onclick="nextModule('modul5')">
-          Lanjut ke Proyek Akhir <i class="fas fa-arrow-right"></i>
+          Lanjut ke Latihan <i class="fas fa-arrow-right"></i>
         </button>
       </div>
     </section>
 
-    <!-- ==================== MODUL 5: PROYEK AKHIR ==================== -->
+    <!-- ==================== MODUL 5: LATIHAN INTEGRATIF ==================== -->
     <section id="modul5" class="topic-section">
-      <h2 class="section-title"><i class="fas fa-project-diagram"></i> Proyek Akhir & Persiapan Uji Kompetensi</h2>
+      <h2 class="section-title"><i class="fas fa-tasks"></i> Latihan Integratif</h2>
       
       <div class="content-intro">
-        <strong>🎉 Selamat! Kamu telah mencapai modul terakhir!</strong><br>
-        Di modul ini, kamu akan membuat <strong>proyek website lengkap</strong> sebagai tugas akhir 
-        dan mempersiapkan diri untuk uji kompetensi.
+        <strong>🎯 Saatnya menguji pemahamanmu!</strong><br>
+        Modul ini berisi latihan soal interaktif yang menggabungkan semua materi: 
+        percabangan, perulangan, tipe data, dan array. Siapkan dirimu!
       </div>
 
       <div class="content-card">
-        <h4><i class="fas fa-tasks"></i> Tugas Proyek Akhir</h4>
-        <p>Buatlah website portofolio pribadi dengan ketentuan:</p>
-        <ul>
-          <li>✅ Minimal 3 halaman (Home, About, Contact)</li>
-          <li>✅ Menggunakan HTML, CSS, dan JavaScript</li>
-          <li>✅ Responsive (bisa dibuka di HP dan laptop)</li>
-          <li>✅ Konten tentang diri sendiri atau sekolah</li>
-          <li>✅ Minimal 1 fitur interaktif (tombol, form, animasi)</li>
-        </ul>
-      </div>
-
-      <div class="content-card">
-        <h4><i class="fas fa-folder"></i> Contoh Struktur Proyek</h4>
+        <h4><i class="fas fa-project-diagram"></i> Mini Project: Program Kasir Wisata</h4>
+        <p>Buat program kasir sederhana untuk menghitung total pembelian tiket wisata:</p>
+        
         <div class="code-block">
-<span class="code-comment">// Folder Proyek:</span>
-portofolio-saya/
-├── index.html        (Halaman Utama)
-├── about.html        (Tentang Saya)
-├── contact.html      (Kontak)
-├── style.css         (CSS untuk semua halaman)
-├── script.js         (JavaScript interaktif)
-└── images/           (Foto profil, dll)
+<span class="code-comment">// Program: Kasir Tiket Wisata</span>
+<span class="code-type">#include</span> <span class="code-string">&lt;stdio.h&gt;</span>
+
+<span class="code-type">int</span> <span class="code-function">main</span>() {
+    <span class="code-type">int</span> jumlah, harga = 30000;
+    <span class="code-type">int</span> total;
+    
+    <span class="code-function">printf</span>(<span class="code-string">"=== Kasir Tiket Wisata ===\n"</span>);
+    <span class="code-function">printf</span>(<span class="code-string">"Harga per tiket: Rp %d\n"</span>, harga);
+    <span class="code-function">printf</span>(<span class="code-string">"Jumlah tiket: "</span>);
+    <span class="code-function">scanf</span>(<span class="code-string">"%d"</span>, &jumlah);
+    
+    total = harga * jumlah;
+    
+    <span class="code-keyword">if</span> (jumlah >= 10) {
+        total = total * 0.9;  <span class="code-comment">// Diskon 10%</span>
+        <span class="code-function">printf</span>(<span class="code-string">"✅ Dapat diskon 10%%!\n"</span>);
+    }
+    
+    <span class="code-function">printf</span>(<span class="code-string">"Total bayar: Rp %d\n"</span>, total);
+    
+    <span class="code-keyword">return</span> <span class="code-number">0</span>;
+}
         </div>
       </div>
 
@@ -1584,11 +1831,11 @@ portofolio-saya/
         <div class="editor-header">
           <div class="editor-title">
             <i class="fas fa-code"></i>
-            Live Editor - Proyek Portofolio
+            Live Code Simulator - Latihan Akhir
           </div>
           <div>
             <button class="btn-run" onclick="runCode('modul5')">
-              <i class="fas fa-play"></i> Preview Portofolio
+              <i class="fas fa-play"></i> Jalankan Kode
             </button>
             <button class="btn-clear" onclick="clearOutput('modul5')">
               <i class="fas fa-trash"></i> Clear
@@ -1597,43 +1844,39 @@ portofolio-saya/
         </div>
         <div class="editor-body">
           <div class="editor-pane">
-            <span class="editor-pane-label">📝 Template Portofolio</span>
-            <textarea class="code-textarea" id="code-modul5" spellcheck="false">&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;title&gt;Portofolio Saya&lt;/title&gt;
-    &lt;style&gt;
-        body { font-family: Arial; margin: 0; padding: 0; }
-        header { background: #ef4444; color: white; padding: 20px; text-align: center; }
-        nav { background: #f1f5f9; padding: 10px; text-align: center; }
-        nav a { margin: 0 15px; color: #0f172a; text-decoration: none; }
-        .content { padding: 40px 20px; max-width: 800px; margin: 0 auto; }
-        footer { background: #1e293b; color: white; text-align: center; padding: 20px; margin-top: 40px; }
-    &lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;header&gt;
-        &lt;h1&gt;[Nama Kamu]&lt;/h1&gt;
-        &lt;p&gt;Siswa SMA Negeri 1 Cluring&lt;/p&gt;
-    &lt;/header&gt;
-    &lt;nav&gt;
-        &lt;a href="#"&gt;Home&lt;/a&gt;
-        &lt;a href="#"&gt;About&lt;/a&gt;
-        &lt;a href="#"&gt;Contact&lt;/a&gt;
-    &lt;/nav&gt;
-    &lt;div class="content"&gt;
-        &lt;h2&gt;Selamat Datang&lt;/h2&gt;
-        &lt;p&gt;Ini adalah website portofolio saya.&lt;/p&gt;
-    &lt;/div&gt;
-    &lt;footer&gt;
-        &lt;p&gt;&copy; 2024 - SMA N 1 Cluring&lt;/p&gt;
-    &lt;/footer&gt;
-&lt;/body&gt;
-&lt;/html&gt;</textarea>
+            <span class="editor-pane-label">📝 Kode Program (Bahasa C)</span>
+            <textarea class="code-textarea" id="code-modul5" spellcheck="false">#include &lt;stdio.h&gt;
+
+int main() {
+    int jumlahTiket = 5;
+    int harga = 30000;
+    int total;
+    
+    printf("=== Kasir Tiket Wisata ===\n");
+    printf("Harga per tiket: Rp %d\n", harga);
+    printf("Jumlah tiket: %d\n\n", jumlahTiket);
+    
+    total = harga * jumlahTiket;
+    
+    if (jumlahTiket >= 10) {
+        total = total * 0.9;
+        printf("✅ Dapat diskon 10%%!\n");
+    } else {
+        printf("❌ Tidak dapat diskon\n");
+    }
+    
+    printf("Total bayar: Rp %d\n", total);
+    
+    return 0;
+}</textarea>
+            <div class="input-simulation">
+              <label>🔧 Simulasi Jumlah Tiket:</label>
+              <input type="number" id="input-modul5" value="5" min="1" max="50" placeholder="Masukkan jumlah tiket">
+            </div>
           </div>
           <div class="editor-pane output-pane">
-            <span class="editor-pane-label">🖥️ Preview Portofolio</span>
-            <div class="preview-frame" id="output-modul5">Klik "Preview Portofolio" untuk melihat hasil...</div>
+            <span class="editor-pane-label">🖥️ Output Program</span>
+            <div class="output-content" id="output-modul5">Klik "Jalankan Kode" untuk melihat hasil...</div>
           </div>
         </div>
       </div>
@@ -1642,7 +1885,7 @@ portofolio-saya/
       <div class="quiz-container" id="quiz-modul5">
         <div class="quiz-header">
           <div>
-            <h3 style="margin-bottom: 8px;">Kuis Modul 5: Proyek Akhir</h3>
+            <h3 style="margin-bottom: 8px;">Kuis Modul 5: Latihan Integratif</h3>
             <div style="color: var(--text-muted); font-size: 0.9rem;">
               <i class="fas fa-question-circle"></i> 5 Soal • <i class="fas fa-star"></i> 100 Poin
             </div>
@@ -1655,64 +1898,64 @@ portofolio-saya/
         </div>
 
         <form id="form-modul5">
-          <div class="quiz-question" data-correct="c">
-            <div class="question-text">
-              <span class="question-number">1</span>
-              <span>Minimal jumlah halaman untuk proyek akhir adalah?</span>
-            </div>
-            <div class="quiz-options">
-              <label class="quiz-option"><span class="option-letter">A</span><span>1 halaman</span></label>
-              <label class="quiz-option"><span class="option-letter">B</span><span>2 halaman</span></label>
-              <label class="quiz-option"><span class="option-letter">C</span><span>3 halaman</span></label>
-              <label class="quiz-option"><span class="option-letter">D</span><span>5 halaman</span></label>
-            </div>
-          </div>
           <div class="quiz-question" data-correct="a">
             <div class="question-text">
-              <span class="question-number">2</span>
-              <span>Teknologi yang wajib digunakan dalam proyek adalah?</span>
+              <span class="question-number">1</span>
+              <span>Struktur yang tepat untuk program kasir dengan diskon adalah?</span>
             </div>
             <div class="quiz-options">
-              <label class="quiz-option"><span class="option-letter">A</span><span>HTML, CSS, JavaScript</span></label>
-              <label class="quiz-option"><span class="option-letter">B</span><span>Python saja</span></label>
-              <label class="quiz-option"><span class="option-letter">C</span><span>PHP saja</span></label>
-              <label class="quiz-option"><span class="option-letter">D</span><span>Database</span></label>
+              <label class="quiz-option"><span class="option-letter">A</span><span>if-else + aritmatika</span></label>
+              <label class="quiz-option"><span class="option-letter">B</span><span>for loop saja</span></label>
+              <label class="quiz-option"><span class="option-letter">C</span><span>Array saja</span></label>
+              <label class="quiz-option"><span class="option-letter">D</span><span>switch case</span></label>
             </div>
           </div>
           <div class="quiz-question" data-correct="b">
             <div class="question-text">
-              <span class="question-number">3</span>
-              <span>Responsive design berarti?</span>
+              <span class="question-number">2</span>
+              <span>Untuk menghitung total harga digunakan operator?</span>
             </div>
             <div class="quiz-options">
-              <label class="quiz-option"><span class="option-letter">A</span><span>Cepat loading</span></label>
-              <label class="quiz-option"><span class="option-letter">B</span><span>Bisa dibuka di berbagai device</span></label>
-              <label class="quiz-option"><span class="option-letter">C</span><span>Banyak animasi</span></label>
-              <label class="quiz-option"><span class="option-letter">D</span><span>Warna-warni</span></label>
+              <label class="quiz-option"><span class="option-letter">A</span><span>/</span></label>
+              <label class="quiz-option"><span class="option-letter">B</span><span>*</span></label>
+              <label class="quiz-option"><span class="option-letter">C</span><span>%</span></label>
+              <label class="quiz-option"><span class="option-letter">D</span><span>&&</span></label>
+            </div>
+          </div>
+          <div class="quiz-question" data-correct="c">
+            <div class="question-text">
+              <span class="question-number">3</span>
+              <span>Jika beli 10 tiket dengan harga 30.000 dan diskon 10%, total adalah?</span>
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option"><span class="option-letter">A</span><span>300.000</span></label>
+              <label class="quiz-option"><span class="option-letter">B</span><span>280.000</span></label>
+              <label class="quiz-option"><span class="option-letter">C</span><span>270.000</span></label>
+              <label class="quiz-option"><span class="option-letter">D</span><span>250.000</span></label>
             </div>
           </div>
           <div class="quiz-question" data-correct="d">
             <div class="question-text">
               <span class="question-number">4</span>
-              <span>File CSS sebaiknya disimpan?</span>
+              <span>Fungsi scanf digunakan untuk?</span>
             </div>
             <div class="quiz-options">
-              <label class="quiz-option"><span class="option-letter">A</span><span>Di HTML</span></label>
-              <label class="quiz-option"><span class="option-letter">B</span><span>Di JavaScript</span></label>
-              <label class="quiz-option"><span class="option-letter">C</span><span>Di database</span></label>
-              <label class="quiz-option"><span class="option-letter">D</span><span>File terpisah .css</span></label>
+              <label class="quiz-option"><span class="option-letter">A</span><span>Output</span></label>
+              <label class="quiz-option"><span class="option-letter">B</span><span>Perulangan</span></label>
+              <label class="quiz-option"><span class="option-letter">C</span><span>Kondisi</span></label>
+              <label class="quiz-option"><span class="option-letter">D</span><span>Input</span></label>
             </div>
           </div>
           <div class="quiz-question" data-correct="a">
             <div class="question-text">
               <span class="question-number">5</span>
-              <span>Tag HTML untuk navigasi adalah?</span>
+              <span>Kombinasi materi yang digunakan dalam program kasir adalah?</span>
             </div>
             <div class="quiz-options">
-              <label class="quiz-option"><span class="option-letter">A</span><span>&lt;nav&gt;</span></label>
-              <label class="quiz-option"><span class="option-letter">B</span><span>&lt;navigation&gt;</span></label>
-              <label class="quiz-option"><span class="option-letter">C</span><span>&lt;menu&gt;</span></label>
-              <label class="quiz-option"><span class="option-letter">D</span><span>&lt;links&gt;</span></label>
+              <label class="quiz-option"><span class="option-letter">A</span><span>Variabel + Percabangan + Operator</span></label>
+              <label class="quiz-option"><span class="option-letter">B</span><span>Array + Loop saja</span></label>
+              <label class="quiz-option"><span class="option-letter">C</span><span>Function saja</span></label>
+              <label class="quiz-option"><span class="option-letter">D</span><span>Pointer saja</span></label>
             </div>
           </div>
 
@@ -1733,10 +1976,10 @@ portofolio-saya/
 
       <!-- Certificate Section -->
       <div class="certificate-section" id="certificateSection">
-        <div style="font-size: 4rem; color: var(--danger); margin-bottom: 20px;"><i class="fas fa-certificate"></i></div>
+        <div style="font-size: 4rem; color: var(--warning); margin-bottom: 20px;"><i class="fas fa-certificate"></i></div>
         <h3 style="font-size: 2rem; margin-bottom: 12px;">🎉 Selamat!</h3>
         <p style="color: var(--text-secondary); margin-bottom: 24px;">
-          Anda telah menyelesaikan semua modul Kelas XII dengan total skor <strong id="finalScore">0</strong>/500
+          Anda telah menyelesaikan semua modul Kelas XI dengan total skor <strong id="finalScore">0</strong>/500
         </p>
         <button class="nav-btn primary" onclick="downloadCertificate()">
           <i class="fas fa-download"></i> Download Sertifikat
@@ -1747,8 +1990,8 @@ portofolio-saya/
         <button class="nav-btn" onclick="prevModule('modul4')">
           <i class="fas fa-arrow-left"></i> Kembali
         </button>
-        <a href="kelas-xi.html" class="nav-btn">
-          <i class="fas fa-arrow-left"></i> Ke Kelas XI
+        <a href="kelas-x.html" class="nav-btn">
+          <i class="fas fa-arrow-left"></i> Ke Kelas X
         </a>
         <a href="index.html" class="nav-btn primary">
           <i class="fas fa-home"></i> Ke Beranda
@@ -1763,19 +2006,19 @@ portofolio-saya/
     <div style="background:var(--bg-primary); border-radius:var(--radius); max-width:600px; width:100%; padding:40px; text-align:center; box-shadow:0 20px 60px rgba(0,0,0,0.3);">
       <div id="modalIcon" style="width:100px; height:100px; border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 24px; font-size:3rem;"></div>
       <h2 id="modalTitle" style="font-size:2rem; margin-bottom:12px;">Selamat!</h2>
-      <div id="modalScore" style="font-size:3.5rem; font-weight:800; background:linear-gradient(135deg,var(--danger),var(--accent)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin:16px 0;"></div>
+      <div id="modalScore" style="font-size:3.5rem; font-weight:800; background:linear-gradient(135deg,var(--warning),var(--accent)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin:16px 0;"></div>
       <p id="modalMessage" style="color:var(--text-secondary); margin-bottom:24px;"></p>
       <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:32px;">
         <div style="background:var(--bg-secondary); padding:16px; border-radius:var(--radius);">
-          <span id="statCorrect" style="font-size:1.8rem; font-weight:700; color:var(--danger); display:block;"></span>
+          <span id="statCorrect" style="font-size:1.8rem; font-weight:700; color:var(--warning); display:block;"></span>
           <span style="font-size:0.85rem; color:var(--text-muted);">Jawaban Benar</span>
         </div>
         <div style="background:var(--bg-secondary); padding:16px; border-radius:var(--radius);">
-          <span id="statWrong" style="font-size:1.8rem; font-weight:700; color:var(--danger); display:block;"></span>
+          <span id="statWrong" style="font-size:1.8rem; font-weight:700; color:var(--warning); display:block;"></span>
           <span style="font-size:0.85rem; color:var(--text-muted);">Jawaban Salah</span>
         </div>
         <div style="background:var(--bg-secondary); padding:16px; border-radius:var(--radius);">
-          <span id="statPercentage" style="font-size:1.8rem; font-weight:700; color:var(--danger); display:block;"></span>
+          <span id="statPercentage" style="font-size:1.8rem; font-weight:700; color:var(--warning); display:block;"></span>
           <span style="font-size:0.85rem; color:var(--text-muted);">Persentase</span>
         </div>
       </div>
@@ -1795,7 +2038,7 @@ portofolio-saya/
   </footer>
 
   <!-- Theme Toggle -->
-  <button id="themeToggle" style="position:fixed; bottom:24px; right:24px; width:50px; height:50px; border-radius:50%; background:var(--danger); color:white; border:none; cursor:pointer; box-shadow:0 4px 12px rgba(0,0,0,0.2); z-index:999; display:flex; align-items:center; justify-content:center; font-size:1.2rem;" onclick="toggleTheme()">
+  <button id="themeToggle" style="position:fixed; bottom:24px; right:24px; width:50px; height:50px; border-radius:50%; background:var(--warning); color:white; border:none; cursor:pointer; box-shadow:0 4px 12px rgba(0,0,0,0.2); z-index:999; display:flex; align-items:center; justify-content:center; font-size:1.2rem;" onclick="toggleTheme()">
     <i class="fas fa-moon"></i>
   </button>
 
@@ -1810,10 +2053,11 @@ portofolio-saya/
     };
 
     let currentModule = 'modul1';
+    let nextModuleTarget = '';
 
     // Load/Save functions
     function loadQuizState() {
-      const saved = localStorage.getItem('quizState_kelasXII');
+      const saved = localStorage.getItem('quizState_kelasXI');
       if (saved) {
         const parsed = JSON.parse(saved);
         Object.assign(quizState, parsed);
@@ -1822,7 +2066,7 @@ portofolio-saya/
     }
 
     function saveQuizState() {
-      localStorage.setItem('quizState_kelasXII', JSON.stringify(quizState));
+      localStorage.setItem('quizState_kelasXI', JSON.stringify(quizState));
     }
 
     function updateScore(modul) {
@@ -1864,40 +2108,115 @@ portofolio-saya/
 
     function nextModule(targetId) {
       document.querySelector(`[data-target="${targetId}"]`).click();
+      nextModuleTarget = targetId;
     }
 
     function prevModule(targetId) { nextModule(targetId); }
 
     // ============================================
-    // WORKING CODE SIMULATOR - HTML/CSS/JS
+    // WORKING CODE SIMULATOR - IMPROVED VERSION
     // ============================================
     function runCode(modul) {
       const code = document.getElementById(`code-${modul}`).value;
       const output = document.getElementById(`output-${modul}`);
+      const inputField = document.getElementById(`input-${modul}`);
       
-      output.innerHTML = '<div style="text-align:center; padding:50px; color:#64748b;">⏳ Loading...</div>';
+      output.classList.remove('error');
+      output.classList.add('running');
+      output.textContent = '⏳ Compiling...';
+      
+      // Get input value if exists
+      let inputValue = inputField ? parseInt(inputField.value) : null;
       
       setTimeout(() => {
+        output.classList.remove('running');
+        let result = '';
+        
         try {
-          // Render HTML directly in preview frame
-          output.innerHTML = code;
+          // Simulate C code execution based on module
+          switch(modul) {
+            case 'modul1':
+              // Percabangan - Grade Calculator
+              const nilai = inputValue || 85;
+              result = `Masukkan nilai ujian (0-100): ${nilai}\n`;
+              if (nilai >= 90) {
+                result += 'Grade: A (Sangat Baik)';
+              } else if (nilai >= 75) {
+                result += 'Grade: B (Baik)';
+              } else if (nilai >= 60) {
+                result += 'Grade: C (Cukup)';
+              } else {
+                result += 'Grade: D (Perlu Belajar)';
+              }
+              break;
+              
+            case 'modul2':
+              // Perulangan
+              const jumlah = inputValue || 5;
+              result = `Masukkan jumlah perulangan: ${jumlah}\n\nHasil perulangan:\n`;
+              for (let i = 1; i <= jumlah; i++) {
+                result += `${i}. Iterasi ke-${i}\n`;
+              }
+              result += '\nPerulangan selesai!';
+              break;
+              
+            case 'modul3':
+              // Operator
+              const a = 10, b = 3;
+              result = `=== Operasi Aritmatika ===\n`;
+              result += `a = ${a}, b = ${b}\n\n`;
+              result += `a + b = ${a + b}\n`;
+              result += `a - b = ${a - b}\n`;
+              result += `a * b = ${a * b}\n`;
+              result += `a / b = ${Math.floor(a / b)}\n`;
+              result += `a % b = ${a % b}`;
+              break;
+              
+            case 'modul4':
+              // Array
+              const nilaiArray = [80, 85, 90, 75, 95];
+              let total = 0;
+              result = `=== Nilai 5 Siswa ===\n\n`;
+              for (let i = 0; i < 5; i++) {
+                result += `Siswa ${i+1}: ${nilaiArray[i]}\n`;
+                total += nilaiArray[i];
+              }
+              const rata = total / 5.0;
+              result += `\nTotal: ${total}\n`;
+              result += `Rata-rata: ${rata.toFixed(2)}`;
+              break;
+              
+            case 'modul5':
+              // Kasir Wisata
+              const tiketCount = inputValue || 5;
+              const harga = 30000;
+              let totalBayar = harga * tiketCount;
+              result = `=== Kasir Tiket Wisata ===\n`;
+              result += `Harga per tiket: Rp ${harga}\n`;
+              result += `Jumlah tiket: ${tiketCount}\n\n`;
+              if (tiketCount >= 10) {
+                totalBayar = Math.floor(totalBayar * 0.9);
+                result += `✅ Dapat diskon 10%!\n`;
+              } else {
+                result += `❌ Tidak dapat diskon\n`;
+              }
+              result += `Total bayar: Rp ${totalBayar}`;
+              break;
+          }
           
-          // Execute JavaScript if present
-          const scripts = output.querySelectorAll('script');
-          scripts.forEach(script => {
-            const newScript = document.createElement('script');
-            newScript.textContent = script.textContent;
-            output.appendChild(newScript);
-          });
+          output.textContent = result;
+          output.classList.remove('error');
         } catch (error) {
-          output.innerHTML = `<div style="color:#ef4444; padding:20px;">❌ Error: ${error.message}</div>`;
+          output.textContent = `❌ Error: ${error.message}`;
+          output.classList.add('error');
         }
-      }, 500);
+      }, 800);
     }
 
     function clearOutput(modul) {
       const output = document.getElementById(`output-${modul}`);
-      output.innerHTML = 'Klik "Preview" untuk melihat hasil...';
+      output.textContent = 'Klik "Jalankan Kode" untuk melihat hasil...';
+      output.classList.remove('error', 'running');
     }
 
     // Quiz Functions
@@ -1989,7 +2308,7 @@ portofolio-saya/
       document.getElementById('statPercentage').textContent = score + '%';
 
       if (score >= 80) {
-        icon.style.background = 'linear-gradient(135deg,#ef4444,#f43f5e)';
+        icon.style.background = 'linear-gradient(135deg,#f59e0b,#fbbf24)';
         icon.style.color = 'white';
         icon.innerHTML = '<i class="fas fa-trophy"></i>';
         title.textContent = 'Excellent! 🎉';
