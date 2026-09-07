@@ -1636,14 +1636,241 @@ Materi_Bab_1_Informasi_Digital.pdf
 
     <!-- ==================== MODUL 2: STRUKTUR PERULANGAN ==================== -->
     <section id="modul2" class="topic-section">
-      <h2 class="section-title"><i class="fas fa-sync-alt"></i> Tabel ringkasan UU ITE (Looping)</h2>
-      
+      <h2 class="section-title"><i class="fas fa-sync-alt"></i> Tabel ringkasan UU ITE </h2>
+<div>
+
+      <!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Referensi UU ITE - Informatika Kelas XI</title>
+
+<style>
+/* =====================================================
+   REFERENSI UU ITE
+   CSS dibuat khusus agar tidak mengganggu template blog
+   ===================================================== */
+
+.uuite-page {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #263238;
+    line-height: 1.6;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 15px 40px;
+}
+
+/* HEADER */
+.uuite-page .uuite-header {
+    background: linear-gradient(135deg, #16834b, #0d6b3d);
+    color: white;
+    padding: 30px 25px;
+    border-radius: 16px;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+}
+
+.uuite-page .uuite-header h1 {
+    margin: 0 0 8px;
+    font-size: 30px;
+}
+
+.uuite-page .uuite-header p {
+    margin: 0;
+    font-size: 16px;
+}
+
+/* KOTAK CATATAN */
+.uuite-page .uuite-note {
+    background: #fff8df;
+    border-left: 5px solid #e0a800;
+    padding: 17px 20px;
+    margin: 20px 0;
+    border-radius: 10px;
+}
+
+/* SECTION */
+.uuite-page .uuite-section {
+    background: #ffffff;
+    padding: 22px;
+    margin: 20px 0;
+    border-radius: 14px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.07);
+}
+
+.uuite-page .uuite-section h2 {
+    color: #0d6b3d;
+    margin-top: 0;
+    border-bottom: 2px solid #dcefe5;
+    padding-bottom: 8px;
+}
+
+/* TIMELINE */
+.uuite-page .uuite-timeline {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.uuite-page .uuite-card {
+    background: #f8fbf9;
+    border: 1px solid #dce8e2;
+    border-radius: 12px;
+    padding: 18px;
+}
+
+.uuite-page .uuite-year {
+    font-size: 25px;
+    font-weight: bold;
+    color: #16834b;
+}
+
+.uuite-page .uuite-card strong {
+    display: block;
+    margin: 5px 0;
+}
+
+/* SEARCH */
+.uuite-page .uuite-search {
+    width: 100%;
+    padding: 13px 15px;
+    border: 1px solid #cbd8d2;
+    border-radius: 10px;
+    font-size: 16px;
+    outline: none;
+}
+
+.uuite-page .uuite-search:focus {
+    border-color: #16834b;
+    box-shadow: 0 0 0 3px rgba(22,131,75,0.12);
+}
+
+/* TABLE */
+.uuite-page .uuite-table-wrapper {
+    overflow-x: auto;
+    border-radius: 12px;
+    border: 1px solid #dfe7e3;
+}
+
+.uuite-page table {
+    width: 100%;
+    min-width: 1000px;
+    border-collapse: collapse;
+    background: white;
+}
+
+.uuite-page th {
+    background: #16834b;
+    color: white;
+    padding: 13px 10px;
+    text-align: left;
+    font-size: 14px;
+}
+
+.uuite-page td {
+    padding: 12px 10px;
+    border-bottom: 1px solid #e5ebe8;
+    vertical-align: top;
+    font-size: 14px;
+}
+
+.uuite-page tbody tr:nth-child(even) td {
+    background: #f7faf8;
+}
+
+.uuite-page tbody tr:hover td {
+    background: #eef8f2;
+}
+
+.uuite-page .pasal {
+    font-weight: bold;
+    color: #0d6b3d;
+    white-space: nowrap;
+}
+
+.uuite-page .penting td {
+    background: #fff9df !important;
+}
+
+.uuite-page .star {
+    color: #d08b00;
+    font-weight: bold;
+}
+
+/* DAFTAR */
+.uuite-page li {
+    margin-bottom: 8px;
+}
+
+/* SUMBER */
+.uuite-page .source-box {
+    background: #eef7f1;
+    padding: 16px;
+    border-radius: 10px;
+}
+
+.uuite-page .source-box a {
+    color: #0d6b3d;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.uuite-page .source-box a:hover {
+    text-decoration: underline;
+}
+
+/* FOOTER */
+.uuite-page .uuite-footer {
+    text-align: center;
+    color: #60736a;
+    font-size: 14px;
+    padding: 15px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 700px) {
+
+    .uuite-page {
+        padding: 0 8px 30px;
+    }
+
+    .uuite-page .uuite-header {
+        padding: 23px 18px;
+    }
+
+    .uuite-page .uuite-header h1 {
+        font-size: 24px;
+    }
+
+    .uuite-page .uuite-section {
+        padding: 16px;
+    }
+
+    .uuite-page .uuite-timeline {
+        grid-template-columns: 1fr;
+    }
+
+    .uuite-page td,
+    .uuite-page th {
+        font-size: 13px;
+    }
+}
+</style>
+</head>
 
 
-      <div class="content-card">
-        <h4><i class="fas fa-book"></i> Pengertian Perulangan</h4>
-        <p>
-        
+<body>
+
+<div class="uuite-page">
+
+<!-- =====================================================
+     HEADER
+     ===================================================== -->
+
+<header class="uuite-header">
+
     <h1>📚 Referensi UU ITE</h1>
 
     <p>
@@ -2711,6 +2938,163 @@ UU mulai berlaku setelah diundangkan.
 
     </div>
 
+</section>
+
+
+<!-- =====================================================
+     HAL YANG PERLU DIPAHAMI SISWA
+     ===================================================== -->
+
+<section class="uuite-section">
+
+    <h2>🧠 Hal Penting yang Perlu Dipahami</h2>
+
+    <ol>
+
+        <li>
+            Tidak semua informasi yang salah otomatis
+            merupakan tindak pidana UU ITE.
+        </li>
+
+        <li>
+            Suatu perbuatan harus memenuhi unsur
+            pasal yang bersangkutan.
+        </li>
+
+        <li>
+            Aktivitas di internet meninggalkan jejak digital
+            dan dapat memiliki konsekuensi hukum.
+        </li>
+
+        <li>
+            Jangan menyebarkan informasi sebelum
+            memeriksa kebenarannya.
+        </li>
+
+        <li>
+            Hormati privasi, nama baik, hak cipta,
+            dan keamanan akun orang lain.
+        </li>
+
+        <li>
+            Gunakan teknologi secara aman,
+            kritis, etis, dan bertanggung jawab.
+        </li>
+
+    </ol>
+
+</section>
+
+
+<!-- =====================================================
+     SUMBER RESMI
+     ===================================================== -->
+
+<section class="uuite-section">
+
+    <h2>🔗 Sumber Resmi</h2>
+
+    <div class="source-box">
+
+        <p>
+            Untuk membaca naskah peraturan secara lengkap,
+            peserta didik dapat menggunakan sumber resmi berikut:
+        </p>
+
+        <p>
+
+            <a
+              href="https://jdih.komdigi.go.id/produk_hukum/view/id/884/t/undangundang%20nomor%201%20tahun%202024"
+              target="_blank"
+              rel="noopener">
+
+              📄 JDIH Kementerian Komunikasi dan Digital –
+              UU No. 1 Tahun 2024
+
+            </a>
+
+        </p>
+
+        <p>
+
+            <a
+              href="https://peraturan.bpk.go.id/Details/274494/uu-no-1-tahun-2024"
+              target="_blank"
+              rel="noopener">
+
+              📄 Database Peraturan BPK –
+              UU No. 1 Tahun 2024
+
+            </a>
+
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FOOTER
+     ===================================================== -->
+
+<div class="uuite-footer">
+
+    📚 Referensi Informatika —
+    Informasi Digital
+
+    <br>
+
+    Gunakan teknologi secara
+    <strong>aman, kritis, etis, dan bertanggung jawab.</strong>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     JAVASCRIPT PENCARIAN
+     ===================================================== -->
+
+<script>
+
+const searchBox = document.getElementById("searchUUITE");
+
+const rows = document.querySelectorAll(
+    "#uuiteTable tbody tr"
+);
+
+searchBox.addEventListener("input", function () {
+
+    const keyword = this.value
+        .toLowerCase()
+        .trim();
+
+    rows.forEach(function(row) {
+
+        const text = row.textContent
+            .toLowerCase();
+
+        if (text.includes(keyword)) {
+
+            row.style.display = "";
+
+        } else {
+
+            row.style.display = "none";
+
+        }
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
+          </div>
 </section>
 
 
