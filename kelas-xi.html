@@ -808,7 +808,7 @@
           🔀 Informasi Digital <span class="tab-badge" id="badge-modul1">0/100</span>
         </button>
         <button class="tab-btn" data-target="modul2">
-          🔄 Perulangan <span class="tab-badge" id="badge-modul2">0/100</span>
+          🔄 Ringkasan UU ITE <span class="tab-badge" id="badge-modul2">0/100</span>
         </button>
         <button class="tab-btn" data-target="modul3">
           📊 Tipe Data <span class="tab-badge" id="badge-modul3">0/100</span>
@@ -1636,266 +1636,1471 @@ Materi_Bab_1_Informasi_Digital.pdf
 
     <!-- ==================== MODUL 2: STRUKTUR PERULANGAN ==================== -->
     <section id="modul2" class="topic-section">
-      <h2 class="section-title"><i class="fas fa-sync-alt"></i> Struktur Perulangan (Looping)</h2>
+      <h2 class="section-title"><i class="fas fa-sync-alt"></i> Tabel ringkasan UU ITE (Looping)</h2>
       
-      <div class="content-intro">
-        <strong>🤔 Bagaimana cara program menghitung total pengunjung Kawah Ijen dalam sebulan?</strong><br>
-        Atau bagaimana sistem menampilkan daftar 100 objek wisata di Banyuwangi tanpa menulis kode 100 kali? 
-        Jawabannya adalah <strong>perulangan</strong> (looping) — cara program menjalankan kode berulang kali secara otomatis.
-      </div>
+//
 
       <div class="content-card">
         <h4><i class="fas fa-book"></i> Pengertian Perulangan</h4>
         <p>
-          <strong>Perulangan</strong> (looping) adalah struktur kontrol yang memungkinkan program 
-          menjalankan blok kode berulang kali selama kondisi tertentu terpenuhi. Dalam bahasa C, 
-          terdapat 3 jenis perulangan: <code>for</code>, <code>while</code>, dan <code>do-while</code>.
-        </p>
+        <!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Referensi UU ITE - Informatika Kelas XI</title>
+
+<style>
+/* =====================================================
+   REFERENSI UU ITE
+   CSS dibuat khusus agar tidak mengganggu template blog
+   ===================================================== */
+
+.uuite-page {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #263238;
+    line-height: 1.6;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 15px 40px;
+}
+
+/* HEADER */
+.uuite-page .uuite-header {
+    background: linear-gradient(135deg, #16834b, #0d6b3d);
+    color: white;
+    padding: 30px 25px;
+    border-radius: 16px;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+}
+
+.uuite-page .uuite-header h1 {
+    margin: 0 0 8px;
+    font-size: 30px;
+}
+
+.uuite-page .uuite-header p {
+    margin: 0;
+    font-size: 16px;
+}
+
+/* KOTAK CATATAN */
+.uuite-page .uuite-note {
+    background: #fff8df;
+    border-left: 5px solid #e0a800;
+    padding: 17px 20px;
+    margin: 20px 0;
+    border-radius: 10px;
+}
+
+/* SECTION */
+.uuite-page .uuite-section {
+    background: #ffffff;
+    padding: 22px;
+    margin: 20px 0;
+    border-radius: 14px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.07);
+}
+
+.uuite-page .uuite-section h2 {
+    color: #0d6b3d;
+    margin-top: 0;
+    border-bottom: 2px solid #dcefe5;
+    padding-bottom: 8px;
+}
+
+/* TIMELINE */
+.uuite-page .uuite-timeline {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.uuite-page .uuite-card {
+    background: #f8fbf9;
+    border: 1px solid #dce8e2;
+    border-radius: 12px;
+    padding: 18px;
+}
+
+.uuite-page .uuite-year {
+    font-size: 25px;
+    font-weight: bold;
+    color: #16834b;
+}
+
+.uuite-page .uuite-card strong {
+    display: block;
+    margin: 5px 0;
+}
+
+/* SEARCH */
+.uuite-page .uuite-search {
+    width: 100%;
+    padding: 13px 15px;
+    border: 1px solid #cbd8d2;
+    border-radius: 10px;
+    font-size: 16px;
+    outline: none;
+}
+
+.uuite-page .uuite-search:focus {
+    border-color: #16834b;
+    box-shadow: 0 0 0 3px rgba(22,131,75,0.12);
+}
+
+/* TABLE */
+.uuite-page .uuite-table-wrapper {
+    overflow-x: auto;
+    border-radius: 12px;
+    border: 1px solid #dfe7e3;
+}
+
+.uuite-page table {
+    width: 100%;
+    min-width: 1000px;
+    border-collapse: collapse;
+    background: white;
+}
+
+.uuite-page th {
+    background: #16834b;
+    color: white;
+    padding: 13px 10px;
+    text-align: left;
+    font-size: 14px;
+}
+
+.uuite-page td {
+    padding: 12px 10px;
+    border-bottom: 1px solid #e5ebe8;
+    vertical-align: top;
+    font-size: 14px;
+}
+
+.uuite-page tbody tr:nth-child(even) td {
+    background: #f7faf8;
+}
+
+.uuite-page tbody tr:hover td {
+    background: #eef8f2;
+}
+
+.uuite-page .pasal {
+    font-weight: bold;
+    color: #0d6b3d;
+    white-space: nowrap;
+}
+
+.uuite-page .penting td {
+    background: #fff9df !important;
+}
+
+.uuite-page .star {
+    color: #d08b00;
+    font-weight: bold;
+}
+
+/* DAFTAR */
+.uuite-page li {
+    margin-bottom: 8px;
+}
+
+/* SUMBER */
+.uuite-page .source-box {
+    background: #eef7f1;
+    padding: 16px;
+    border-radius: 10px;
+}
+
+.uuite-page .source-box a {
+    color: #0d6b3d;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.uuite-page .source-box a:hover {
+    text-decoration: underline;
+}
+
+/* FOOTER */
+.uuite-page .uuite-footer {
+    text-align: center;
+    color: #60736a;
+    font-size: 14px;
+    padding: 15px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 700px) {
+
+    .uuite-page {
+        padding: 0 8px 30px;
+    }
+
+    .uuite-page .uuite-header {
+        padding: 23px 18px;
+    }
+
+    .uuite-page .uuite-header h1 {
+        font-size: 24px;
+    }
+
+    .uuite-page .uuite-section {
+        padding: 16px;
+    }
+
+    .uuite-page .uuite-timeline {
+        grid-template-columns: 1fr;
+    }
+
+    .uuite-page td,
+    .uuite-page th {
+        font-size: 13px;
+    }
+}
+</style>
+</head>
+
+
+<body>
+
+<div class="uuite-page">
+
+<!-- =====================================================
+     HEADER
+     ===================================================== -->
+
+<header class="uuite-header">
+
+    <h1>📚 Referensi UU ITE</h1>
+
+    <p>
+        Undang-Undang Informasi dan Transaksi Elektronik
+        untuk pembelajaran Informatika Kelas XI
+    </p>
+
+</header>
+
+
+<!-- =====================================================
+     CATATAN
+     ===================================================== -->
+
+<div class="uuite-note">
+
+    <strong>📌 Catatan untuk Peserta Didik</strong>
+
+    <p>
+        Halaman ini merupakan ringkasan untuk membantu memahami
+        aturan penggunaan teknologi informasi dan transaksi elektronik.
+        Tabel ini bukan salinan seluruh bunyi undang-undang.
+    </p>
+
+    <p>
+        Untuk persoalan hukum yang sebenarnya, gunakan naskah
+        peraturan resmi dan/atau mintalah bantuan pihak yang berwenang.
+    </p>
+
+</div>
+
+
+<!-- =====================================================
+     PERKEMBANGAN UU ITE
+     ===================================================== -->
+
+<section class="uuite-section">
+
+    <h2>📅 Perkembangan UU ITE</h2>
+
+    <div class="uuite-timeline">
+
+        <div class="uuite-card">
+
+            <div class="uuite-year">2008</div>
+
+            <strong>UU No. 11 Tahun 2008</strong>
+
+            <p>
+                Undang-Undang tentang Informasi dan
+                Transaksi Elektronik pertama.
+            </p>
+
+        </div>
+
+
+        <div class="uuite-card">
+
+            <div class="uuite-year">2016</div>
+
+            <strong>UU No. 19 Tahun 2016</strong>
+
+            <p>
+                Perubahan pertama terhadap
+                UU No. 11 Tahun 2008.
+            </p>
+
+        </div>
+
+
+        <div class="uuite-card">
+
+            <div class="uuite-year">2024</div>
+
+            <strong>UU No. 1 Tahun 2024</strong>
+
+            <p>
+                Perubahan kedua dan perubahan
+                terbaru terhadap UU ITE.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     PENCARIAN
+     ===================================================== -->
+
+<section class="uuite-section">
+
+    <h2>🔎 Cari Pasal atau Topik</h2>
+
+    <p>
+        Ketik nomor pasal atau kata kunci seperti
+        <strong>data pribadi</strong>,
+        <strong>hoaks</strong>,
+        <strong>nama baik</strong>,
+        <strong>ancaman</strong>,
+        <strong>akses</strong>, atau
+        <strong>transaksi</strong>.
+    </p>
+
+    <input
+        type="text"
+        id="searchUUITE"
+        class="uuite-search"
+        placeholder="🔍 Cari pasal atau topik..."
+    >
+
+</section>
+
+
+<!-- =====================================================
+     TABEL UU ITE
+     ===================================================== -->
+
+<section class="uuite-section">
+
+    <h2>📖 Ringkasan Pasal UU ITE</h2>
+
+    <p>
+        <span class="star">⭐</span>
+        menunjukkan materi yang sangat relevan
+        dengan pembelajaran <strong>Informasi Digital</strong>.
+    </p>
+
+
+    <div class="uuite-table-wrapper">
+
+    <table id="uuiteTable">
+
+        <thead>
+
+            <tr>
+
+                <th>No.</th>
+
+                <th>Pasal</th>
+
+                <th>Pokok Materi</th>
+
+                <th>Penjelasan Sederhana</th>
+
+                <th>Contoh Kehidupan Digital</th>
+
+            </tr>
+
+        </thead>
+
+
+        <tbody>
+
+
+<!-- 1 -->
+<tr>
+<td>1</td>
+<td class="pasal">Pasal 1</td>
+<td>Ketentuan umum</td>
+<td>
+Menjelaskan istilah-istilah penting dalam UU ITE.
+</td>
+<td>
+Memahami arti Informasi Elektronik, Dokumen Elektronik,
+Sistem Elektronik, dan Transaksi Elektronik.
+</td>
+</tr>
+
+
+<!-- 2 -->
+<tr>
+<td>2</td>
+<td class="pasal">Pasal 2</td>
+<td>Ruang lingkup</td>
+<td>
+Menjelaskan bahwa UU ITE berlaku terhadap perbuatan hukum
+yang menggunakan teknologi informasi dalam lingkup yang ditentukan UU.
+</td>
+<td>
+Aktivitas transaksi dan komunikasi digital tertentu
+dapat memiliki konsekuensi hukum.
+</td>
+</tr>
+
+
+<!-- 3 -->
+<tr>
+<td>3</td>
+<td class="pasal">Pasal 3</td>
+<td>Asas</td>
+<td>
+Mengatur asas pemanfaatan teknologi informasi
+dan transaksi elektronik.
+</td>
+<td>
+Penggunaan teknologi harus memperhatikan kepastian hukum,
+manfaat, kehati-hatian, dan iktikad baik.
+</td>
+</tr>
+
+
+<!-- 4 -->
+<tr>
+<td>4</td>
+<td class="pasal">Pasal 4</td>
+<td>Tujuan</td>
+<td>
+Menjelaskan tujuan pemanfaatan teknologi informasi
+dan transaksi elektronik.
+</td>
+<td>
+Teknologi digunakan untuk pendidikan, pelayanan,
+komunikasi, dan kegiatan ekonomi.
+</td>
+</tr>
+
+
+<!-- 5 -->
+<tr class="penting">
+<td>5</td>
+<td class="pasal">Pasal 5 ⭐</td>
+<td>Bukti elektronik</td>
+<td>
+Informasi dan dokumen elektronik serta hasil cetaknya
+dapat menjadi alat bukti hukum yang sah sesuai ketentuan.
+</td>
+<td>
+Email, dokumen digital, atau percakapan elektronik
+dapat menjadi bagian dari bukti suatu perkara.
+</td>
+</tr>
+
+
+<!-- 6 -->
+<tr>
+<td>6</td>
+<td class="pasal">Pasal 6</td>
+<td>Bentuk tertulis</td>
+<td>
+Mengatur keadaan ketika informasi elektronik
+dianggap memenuhi persyaratan tertulis.
+</td>
+<td>
+Dokumen digital tertentu dapat memenuhi
+persyaratan tertulis menurut hukum.
+</td>
+</tr>
+
+
+<!-- 7 -->
+<tr>
+<td>7</td>
+<td class="pasal">Pasal 7</td>
+<td>Pernyataan elektronik</td>
+<td>
+Mengatur penggunaan informasi elektronik
+sebagai bentuk pernyataan tertentu.
+</td>
+<td>
+Persetujuan dilakukan melalui sistem elektronik.
+</td>
+</tr>
+
+
+<!-- 8 -->
+<tr>
+<td>8</td>
+<td class="pasal">Pasal 8</td>
+<td>Informasi elektronik</td>
+<td>
+Mengatur kondisi mengenai informasi elektronik
+yang dapat digunakan dalam proses hukum.
+</td>
+<td>
+Data elektronik digunakan dalam suatu transaksi.
+</td>
+</tr>
+
+
+<!-- 9 -->
+<tr>
+<td>9</td>
+<td class="pasal">Pasal 9</td>
+<td>Informasi produk</td>
+<td>
+Pelaku usaha yang menawarkan produk melalui sistem elektronik
+wajib memberikan informasi tertentu.
+</td>
+<td>
+Toko online memberikan informasi mengenai barang
+atau jasa yang dijual.
+</td>
+</tr>
+
+
+<!-- 10 -->
+<tr>
+<td>10</td>
+<td class="pasal">Pasal 10</td>
+<td>Sertifikasi elektronik</td>
+<td>
+Mengatur penyelenggaraan sertifikasi elektronik.
+</td>
+<td>
+Tanda tangan elektronik digunakan untuk mendukung
+keaslian dokumen.
+</td>
+</tr>
+
+
+<!-- 11 -->
+<tr>
+<td>11</td>
+<td class="pasal">Pasal 11</td>
+<td>Tanda tangan elektronik</td>
+<td>
+Mengatur kekuatan hukum tanda tangan elektronik.
+</td>
+<td>
+Seseorang menandatangani dokumen secara elektronik.
+</td>
+</tr>
+
+
+<!-- 12 -->
+<tr>
+<td>12</td>
+<td class="pasal">Pasal 12</td>
+<td>Penyelenggara sertifikasi</td>
+<td>
+Mengatur kewajiban dan tanggung jawab
+terkait tanda tangan dan sertifikasi elektronik.
+</td>
+<td>
+Penyedia layanan sertifikasi harus menjalankan
+kewajibannya sesuai aturan.
+</td>
+</tr>
+
+
+<!-- 13 -->
+<tr>
+<td>13</td>
+<td class="pasal">Pasal 13</td>
+<td>Sertifikasi elektronik</td>
+<td>
+Mengatur penyelenggaraan sertifikasi elektronik.
+</td>
+<td>
+Sertifikat elektronik digunakan untuk
+mendukung transaksi digital.
+</td>
+</tr>
+
+
+<!-- 13A -->
+<tr class="penting">
+<td>14</td>
+<td class="pasal">Pasal 13A ⭐</td>
+<td>Identitas digital</td>
+<td>
+Mengatur identitas digital dalam penyelenggaraan
+sertifikasi elektronik.
+</td>
+<td>
+Seseorang menggunakan identitas digital
+untuk layanan elektronik.
+</td>
+</tr>
+
+
+<!-- 14 -->
+<tr>
+<td>15</td>
+<td class="pasal">Pasal 14</td>
+<td>Penyelenggara sertifikasi asing</td>
+<td>
+Mengatur ketentuan terkait penyelenggara
+sertifikasi elektronik dari luar negeri.
+</td>
+<td>
+Sertifikat elektronik dari penyelenggara luar negeri
+digunakan dalam transaksi tertentu.
+</td>
+</tr>
+
+
+<!-- 15 -->
+<tr>
+<td>16</td>
+<td class="pasal">Pasal 15</td>
+<td>Penyelenggara sistem elektronik</td>
+<td>
+Mengatur tanggung jawab penyelenggara
+sistem elektronik.
+</td>
+<td>
+Pengelola aplikasi harus menyediakan sistem
+yang dapat berfungsi dengan baik.
+</td>
+</tr>
+
+
+<!-- 16 -->
+<tr>
+<td>17</td>
+<td class="pasal">Pasal 16</td>
+<td>Persyaratan sistem elektronik</td>
+<td>
+Mengatur persyaratan penyelenggaraan
+sistem elektronik.
+</td>
+<td>
+Aplikasi harus memenuhi persyaratan
+penyelenggaraan sistem elektronik.
+</td>
+</tr>
+
+
+<!-- 16A -->
+<tr class="penting">
+<td>18</td>
+<td class="pasal">Pasal 16A ⭐</td>
+<td>Perlindungan anak</td>
+<td>
+Mengatur kewajiban penyelenggara sistem elektronik
+dalam memberikan perlindungan kepada anak.
+</td>
+<td>
+Platform digital harus memperhatikan keamanan
+pengguna anak.
+</td>
+</tr>
+
+
+<!-- 16B -->
+<tr>
+<td>19</td>
+<td class="pasal">Pasal 16B</td>
+<td>Sanksi administratif perlindungan anak</td>
+<td>
+Mengatur sanksi administratif terkait kewajiban
+perlindungan anak.
+</td>
+<td>
+Penyelenggara yang tidak memenuhi kewajiban
+dapat dikenai sanksi administratif.
+</td>
+</tr>
+
+
+<!-- 17 -->
+<tr>
+<td>20</td>
+<td class="pasal">Pasal 17</td>
+<td>Transaksi elektronik</td>
+<td>
+Mengatur penyelenggaraan transaksi elektronik.
+</td>
+<td>
+Jual beli dilakukan melalui marketplace.
+</td>
+</tr>
+
+
+<!-- 18 -->
+<tr>
+<td>21</td>
+<td class="pasal">Pasal 18</td>
+<td>Kontrak elektronik</td>
+<td>
+Mengatur kontrak elektronik dan akibat hukumnya.
+</td>
+<td>
+Seseorang menyetujui syarat dan ketentuan
+layanan digital.
+</td>
+</tr>
+
+
+<!-- 18A -->
+<tr class="penting">
+<td>22</td>
+<td class="pasal">Pasal 18A ⭐</td>
+<td>Kontrak elektronik internasional</td>
+<td>
+Mengatur kondisi tertentu mengenai
+kontrak elektronik internasional.
+</td>
+<td>
+Perusahaan Indonesia membuat kontrak elektronik
+dengan perusahaan luar negeri.
+</td>
+</tr>
+
+
+<!-- 19 -->
+<tr>
+<td>23</td>
+<td class="pasal">Pasal 19</td>
+<td>Sistem elektronik</td>
+<td>
+Transaksi elektronik menggunakan sistem elektronik
+yang disepakati.
+</td>
+<td>
+Pembayaran dilakukan melalui sistem yang disetujui
+penjual dan pembeli.
+</td>
+</tr>
+
+
+<!-- 20 -->
+<tr>
+<td>24</td>
+<td class="pasal">Pasal 20</td>
+<td>Agen elektronik</td>
+<td>
+Mengatur penggunaan agen elektronik dalam transaksi.
+</td>
+<td>
+Sistem otomatis menerima pesanan pelanggan.
+</td>
+</tr>
+
+
+<!-- 21 -->
+<tr>
+<td>25</td>
+<td class="pasal">Pasal 21</td>
+<td>Tanggung jawab transaksi</td>
+<td>
+Mengatur pihak yang bertanggung jawab
+dalam transaksi elektronik.
+</td>
+<td>
+Ketika transaksi bermasalah, perlu diketahui
+pihak yang bertanggung jawab.
+</td>
+</tr>
+
+
+<!-- 22 -->
+<tr>
+<td>26</td>
+<td class="pasal">Pasal 22</td>
+<td>Fitur otomatis</td>
+<td>
+Mengatur ketentuan mengenai perangkat atau
+fasilitas otomatis dalam transaksi elektronik.
+</td>
+<td>
+Sistem otomatis memproses pemesanan
+tanpa operator manusia secara langsung.
+</td>
+</tr>
+
+
+<!-- 23 -->
+<tr>
+<td>27</td>
+<td class="pasal">Pasal 23</td>
+<td>Nama domain</td>
+<td>
+Mengatur nama domain berdasarkan prinsip tertentu.
+</td>
+<td>
+Sekolah atau perusahaan mendaftarkan nama domain
+untuk situs resminya.
+</td>
+</tr>
+
+
+<!-- 24 -->
+<tr>
+<td>28</td>
+<td class="pasal">Pasal 24</td>
+<td>Pengelolaan nama domain</td>
+<td>
+Mengatur penggunaan dan pengelolaan nama domain.
+</td>
+<td>
+Nama domain digunakan sesuai ketentuan
+dan tidak disalahgunakan.
+</td>
+</tr>
+
+
+<!-- 25 -->
+<tr class="penting">
+<td>29</td>
+<td class="pasal">Pasal 25 ⭐</td>
+<td>Kekayaan intelektual</td>
+<td>
+Informasi atau dokumen elektronik yang memiliki
+kekayaan intelektual dilindungi sesuai hukum.
+</td>
+<td>
+Mengambil karya digital orang lain lalu
+mengakuinya sebagai karya sendiri.
+</td>
+</tr>
+
+
+<!-- 26 -->
+<tr class="penting">
+<td>30</td>
+<td class="pasal">Pasal 26 ⭐</td>
+<td>Data pribadi</td>
+<td>
+Mengatur penggunaan informasi yang berkaitan
+dengan data pribadi sesuai ketentuan hukum.
+</td>
+<td>
+Menyebarkan nomor telepon, foto, atau data pribadi
+seseorang tanpa dasar yang sah.
+</td>
+</tr>
+
+
+<!-- 27 -->
+<tr class="penting">
+<td>31</td>
+<td class="pasal">Pasal 27 ⭐</td>
+<td>Muatan yang dilarang</td>
+<td>
+Mengatur beberapa jenis muatan atau informasi
+elektronik yang dilarang.
+</td>
+<td>
+Menggunakan media digital untuk menyebarkan
+konten yang termasuk kategori terlarang.
+</td>
+</tr>
+
+
+<!-- 27A -->
+<tr class="penting">
+<td>32</td>
+<td class="pasal">Pasal 27A ⭐</td>
+<td>Nama baik</td>
+<td>
+Mengatur penyerangan kehormatan atau nama baik
+melalui informasi elektronik dengan unsur tertentu.
+</td>
+<td>
+Membuat unggahan yang menuduhkan suatu perbuatan
+kepada seseorang agar diketahui umum.
+</td>
+</tr>
+
+
+<!-- 27B -->
+<tr class="penting">
+<td>33</td>
+<td class="pasal">Pasal 27B ⭐</td>
+<td>Pemerasan/pengancaman</td>
+<td>
+Mengatur pemaksaan dengan menggunakan
+informasi elektronik untuk memperoleh keuntungan
+secara melawan hukum.
+</td>
+<td>
+Mengancam seseorang melalui pesan digital
+agar memberikan uang.
+</td>
+</tr>
+
+
+<!-- 28(1) -->
+<tr class="penting">
+<td>34</td>
+<td class="pasal">Pasal 28 ayat (1) ⭐</td>
+<td>Informasi bohong dalam transaksi</td>
+<td>
+Mengatur informasi bohong atau menyesatkan
+yang mengakibatkan kerugian materiil bagi konsumen
+dalam transaksi elektronik.
+</td>
+<td>
+Penjual online memberikan informasi palsu
+sehingga pembeli mengalami kerugian.
+</td>
+</tr>
+
+
+<!-- 28(2) -->
+<tr class="penting">
+<td>35</td>
+<td class="pasal">Pasal 28 ayat (2) ⭐</td>
+<td>Kebencian/permusuhan</td>
+<td>
+Mengatur penyebaran informasi elektronik yang
+memenuhi unsur menghasut kebencian atau permusuhan
+berdasarkan identitas tertentu.
+</td>
+<td>
+Membuat konten yang sengaja menghasut kebencian
+terhadap kelompok tertentu.
+</td>
+</tr>
+
+
+<!-- 28(3) -->
+<tr class="penting">
+<td>36</td>
+<td class="pasal">Pasal 28 ayat (3) ⭐</td>
+<td>Pemberitahuan bohong dan kerusuhan</td>
+<td>
+Mengatur pemberitahuan bohong yang diketahui
+dan menimbulkan kerusuhan di masyarakat.
+</td>
+<td>
+Menyebarkan kabar palsu yang diketahui bohong
+hingga menyebabkan kerusuhan.
+</td>
+</tr>
+
+
+<!-- 29 -->
+<tr class="penting">
+<td>37</td>
+<td class="pasal">Pasal 29 ⭐</td>
+<td>Ancaman kekerasan</td>
+<td>
+Mengatur pengiriman informasi elektronik secara langsung
+kepada korban yang berisi ancaman kekerasan
+atau menakut-nakuti.
+</td>
+<td>
+Mengirim pesan pribadi berisi ancaman kekerasan.
+</td>
+</tr>
+
+
+<!-- 30 -->
+<tr class="penting">
+<td>38</td>
+<td class="pasal">Pasal 30 ⭐</td>
+<td>Akses tanpa hak</td>
+<td>
+Mengatur akses terhadap komputer atau sistem elektronik
+tanpa hak.
+</td>
+<td>
+Masuk ke akun orang lain tanpa izin.
+</td>
+</tr>
+
+
+<!-- 31 -->
+<tr class="penting">
+<td>39</td>
+<td class="pasal">Pasal 31 ⭐</td>
+<td>Intersepsi/penyadapan</td>
+<td>
+Mengatur intersepsi atau penyadapan informasi elektronik
+secara melawan hukum.
+</td>
+<td>
+Menyadap komunikasi elektronik orang lain
+tanpa kewenangan yang sah.
+</td>
+</tr>
+
+
+<!-- 32 -->
+<tr class="penting">
+<td>40</td>
+<td class="pasal">Pasal 32 ⭐</td>
+<td>Pemindahan/manipulasi data</td>
+<td>
+Mengatur perbuatan tanpa hak terhadap informasi
+atau dokumen elektronik milik orang lain.
+</td>
+<td>
+Memindahkan atau mengubah file milik orang lain
+tanpa izin.
+</td>
+</tr>
+
+
+<!-- 33 -->
+<tr class="penting">
+<td>41</td>
+<td class="pasal">Pasal 33 ⭐</td>
+<td>Gangguan sistem</td>
+<td>
+Mengatur perbuatan yang menyebabkan
+sistem elektronik terganggu.
+</td>
+<td>
+Sengaja membuat sistem komputer tidak dapat
+berfungsi sebagaimana mestinya.
+</td>
+</tr>
+
+
+<!-- 34 -->
+<tr class="penting">
+<td>42</td>
+<td class="pasal">Pasal 34 ⭐</td>
+<td>Perangkat untuk tindak pidana</td>
+<td>
+Mengatur perbuatan tertentu terkait perangkat
+atau akses yang digunakan untuk melakukan
+tindak pidana.
+</td>
+<td>
+Menyediakan sarana digital yang memang ditujukan
+untuk melakukan perbuatan melawan hukum.
+</td>
+</tr>
+
+
+<!-- 35 -->
+<tr class="penting">
+<td>43</td>
+<td class="pasal">Pasal 35 ⭐</td>
+<td>Manipulasi data</td>
+<td>
+Mengatur manipulasi, penciptaan, perubahan,
+penghilangan, atau perusakan informasi elektronik
+agar seolah-olah autentik.
+</td>
+<td>
+Mengubah dokumen digital agar tampak
+sebagai dokumen asli.
+</td>
+</tr>
+
+
+<!-- 36 -->
+<tr class="penting">
+<td>44</td>
+<td class="pasal">Pasal 36 ⭐</td>
+<td>Kerugian</td>
+<td>
+Mengatur perbuatan tertentu melalui sistem elektronik
+yang mengakibatkan kerugian bagi orang lain.
+</td>
+<td>
+Perbuatan melawan hukum melalui sistem elektronik
+menyebabkan pihak lain rugi.
+</td>
+</tr>
+
+
+<!-- 37 -->
+<tr>
+<td>45</td>
+<td class="pasal">Pasal 37</td>
+<td>Perbuatan di luar wilayah Indonesia</td>
+<td>
+Mengatur ketentuan tertentu terhadap perbuatan
+yang dilakukan di luar wilayah hukum Indonesia
+tetapi menimbulkan akibat tertentu di Indonesia.
+</td>
+<td>
+Perbuatan digital dari luar negeri menimbulkan
+akibat terhadap kepentingan Indonesia.
+</td>
+</tr>
+
+
+<!-- 38 -->
+<tr>
+<td>46</td>
+<td class="pasal">Pasal 38</td>
+<td>Gugatan</td>
+<td>
+Mengatur hak mengajukan gugatan terhadap pihak tertentu
+terkait penyelenggaraan sistem atau transaksi elektronik.
+</td>
+<td>
+Pihak yang dirugikan dapat menempuh jalur hukum
+sesuai ketentuan.
+</td>
+</tr>
+
+
+<!-- 39 -->
+<tr>
+<td>47</td>
+<td class="pasal">Pasal 39</td>
+<td>Penyelesaian sengketa</td>
+<td>
+Mengatur penyelesaian sengketa dalam
+transaksi elektronik.
+</td>
+<td>
+Sengketa jual beli online dapat diselesaikan
+melalui mekanisme hukum yang tersedia.
+</td>
+</tr>
+
+
+<!-- 40 -->
+<tr class="penting">
+<td>48</td>
+<td class="pasal">Pasal 40 ⭐</td>
+<td>Peran Pemerintah</td>
+<td>
+Mengatur peran Pemerintah dalam penyelenggaraan
+ruang digital.
+</td>
+<td>
+Pemerintah dapat mengambil langkah sesuai
+kewenangannya terhadap aktivitas digital tertentu.
+</td>
+</tr>
+
+
+<!-- 40A -->
+<tr class="penting">
+<td>49</td>
+<td class="pasal">Pasal 40A ⭐</td>
+<td>Ekosistem digital</td>
+<td>
+Mengatur peran Pemerintah dalam mendorong
+ekosistem digital yang adil, akuntabel,
+aman, dan inovatif.
+</td>
+<td>
+Pemerintah membuat kebijakan untuk meningkatkan
+keamanan dan kepercayaan dalam ruang digital.
+</td>
+</tr>
+
+
+<!-- 41 -->
+<tr>
+<td>50</td>
+<td class="pasal">Pasal 41</td>
+<td>Masyarakat</td>
+<td>
+Mengatur peran masyarakat dalam pemanfaatan
+teknologi informasi.
+</td>
+<td>
+Masyarakat menggunakan teknologi secara
+aman dan bertanggung jawab.
+</td>
+</tr>
+
+
+<!-- 42 -->
+<tr>
+<td>51</td>
+<td class="pasal">Pasal 42</td>
+<td>Alat bukti</td>
+<td>
+Mengatur penggunaan alat bukti dalam tindak pidana
+terkait UU ITE sesuai hukum acara.
+</td>
+<td>
+Data elektronik dapat digunakan dalam proses
+penegakan hukum sesuai ketentuan.
+</td>
+</tr>
+
+
+<!-- 43 -->
+<tr class="penting">
+<td>52</td>
+<td class="pasal">Pasal 43 ⭐</td>
+<td>Penyidikan</td>
+<td>
+Mengatur kewenangan penyidik dalam menangani
+dugaan tindak pidana ITE.
+</td>
+<td>
+Penyidik melakukan proses hukum terhadap
+dugaan kejahatan digital.
+</td>
+</tr>
+
+
+<!-- 44 -->
+<tr>
+<td>53</td>
+<td class="pasal">Pasal 44</td>
+<td>Ketentuan hukum acara</td>
+<td>
+Mengatur penerapan hukum acara terhadap
+tindak pidana ITE.
+</td>
+<td>
+Penanganan perkara ITE mengikuti ketentuan
+hukum acara yang berlaku.
+</td>
+</tr>
+
+
+<!-- 45 -->
+<tr class="penting">
+<td>54</td>
+<td class="pasal">Pasal 45–45B ⭐</td>
+<td>Sanksi pidana</td>
+<td>
+Mengatur ketentuan sanksi pidana terhadap
+perbuatan tertentu yang dilarang dalam UU ITE.
+</td>
+<td>
+Perbuatan digital tertentu yang memenuhi
+unsur pidana dapat memiliki konsekuensi hukum.
+</td>
+</tr>
+
+
+<!-- 46 -->
+<tr>
+<td>55</td>
+<td class="pasal">Pasal 46–52</td>
+<td>Ketentuan pidana lainnya</td>
+<td>
+Mengatur ketentuan pidana yang berkaitan dengan
+beberapa pelanggaran dalam UU ITE.
+</td>
+<td>
+Akses tanpa hak, gangguan sistem, manipulasi data,
+dan perbuatan tertentu lainnya dapat dikenai sanksi
+jika memenuhi unsur.
+</td>
+</tr>
+
+
+<!-- 53 -->
+<tr>
+<td>56</td>
+<td class="pasal">Pasal 53</td>
+<td>Ketentuan peralihan</td>
+<td>
+Mengatur ketentuan peralihan terkait keberlakuan
+aturan atau pelaksanaan UU.
+</td>
+<td>
+Ketentuan lama tertentu dapat tetap digunakan
+sepanjang tidak bertentangan dengan aturan baru.
+</td>
+</tr>
+
+
+<!-- 54 -->
+<tr>
+<td>57</td>
+<td class="pasal">Pasal 54</td>
+<td>Ketentuan penutup</td>
+<td>
+Mengatur mulai berlakunya UU dan ketentuan
+terkait peraturan pelaksanaan.
+</td>
+<td>
+UU mulai berlaku setelah diundangkan.
+</td>
+</tr>
+
+
+        </tbody>
+
+    </table>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     HAL YANG PERLU DIPAHAMI SISWA
+     ===================================================== -->
+
+<section class="uuite-section">
+
+    <h2>🧠 Hal Penting yang Perlu Dipahami</h2>
+
+    <ol>
+
+        <li>
+            Tidak semua informasi yang salah otomatis
+            merupakan tindak pidana UU ITE.
+        </li>
+
+        <li>
+            Suatu perbuatan harus memenuhi unsur
+            pasal yang bersangkutan.
+        </li>
+
+        <li>
+            Aktivitas di internet meninggalkan jejak digital
+            dan dapat memiliki konsekuensi hukum.
+        </li>
+
+        <li>
+            Jangan menyebarkan informasi sebelum
+            memeriksa kebenarannya.
+        </li>
+
+        <li>
+            Hormati privasi, nama baik, hak cipta,
+            dan keamanan akun orang lain.
+        </li>
+
+        <li>
+            Gunakan teknologi secara aman,
+            kritis, etis, dan bertanggung jawab.
+        </li>
+
+    </ol>
+
+</section>
+
+
+<!-- =====================================================
+     SUMBER RESMI
+     ===================================================== -->
+
+<section class="uuite-section">
+
+    <h2>🔗 Sumber Resmi</h2>
+
+    <div class="source-box">
+
         <p>
-          Analogi sederhana: Seperti menghitung jumlah tiket yang terjual setiap hari selama 30 hari. 
-          Daripada menulis kode 30 kali, kita cukup membuat perulangan yang berjalan 30 kali!
+            Untuk membaca naskah peraturan secara lengkap,
+            peserta didik dapat menggunakan sumber resmi berikut:
+        </p>
+
+        <p>
+
+            <a
+              href="https://jdih.komdigi.go.id/produk_hukum/view/id/884/t/undangundang%20nomor%201%20tahun%202024"
+              target="_blank"
+              rel="noopener">
+
+              📄 JDIH Kementerian Komunikasi dan Digital –
+              UU No. 1 Tahun 2024
+
+            </a>
+
+        </p>
+
+        <p>
+
+            <a
+              href="https://peraturan.bpk.go.id/Details/274494/uu-no-1-tahun-2024"
+              target="_blank"
+              rel="noopener">
+
+              📄 Database Peraturan BPK –
+              UU No. 1 Tahun 2024
+
+            </a>
+
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FOOTER
+     ===================================================== -->
+
+<div class="uuite-footer">
+
+    📚 Referensi Informatika —
+    Informasi Digital
+
+    <br>
+
+    Gunakan teknologi secara
+    <strong>aman, kritis, etis, dan bertanggung jawab.</strong>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     JAVASCRIPT PENCARIAN
+     ===================================================== -->
+
+<script>
+
+const searchBox = document.getElementById("searchUUITE");
+
+const rows = document.querySelectorAll(
+    "#uuiteTable tbody tr"
+);
+
+searchBox.addEventListener("input", function () {
+
+    const keyword = this.value
+        .toLowerCase()
+        .trim();
+
+    rows.forEach(function(row) {
+
+        const text = row.textContent
+            .toLowerCase();
+
+        if (text.includes(keyword)) {
+
+            row.style.display = "";
+
+        } else {
+
+            row.style.display = "none";
+
+        }
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>  
         </p>
       </div>
-
-      <div class="content-card">
-        <h4><i class="fas fa-code"></i> Jenis-Jenis Perulangan dalam Bahasa C</h4>
-        
-        <h5 style="margin: 20px 0 12px; color: var(--text-primary);">1. For Loop (Perulangan Pasti)</h5>
-        <div class="code-block">
-<span class="code-comment">// Contoh: Menampilkan angka 1 sampai 5</span>
-<span class="code-keyword">for</span> (<span class="code-type">int</span> i = 1; i <= 5; i++) {
-    <span class="code-function">printf</span>(<span class="code-string">"%d "</span>, i);
-}
-<span class="code-comment">// Output: 1 2 3 4 5</span>
-        </div>
-
-        <h5 style="margin: 20px 0 12px; color: var(--text-primary);">2. While Loop (Perulangan Bersyarat)</h5>
-        <div class="code-block">
-<span class="code-comment">// Contoh: Menghitung mundur</span>
-<span class="code-type">int</span> i = 5;
-<span class="code-keyword">while</span> (i > 0) {
-    <span class="code-function">printf</span>(<span class="code-string">"%d "</span>, i);
-    i--;
-}
-<span class="code-comment">// Output: 5 4 3 2 1</span>
-        </div>
-
-        <h5 style="margin: 20px 0 12px; color: var(--text-primary);">3. Do-While Loop (Minimal 1x Eksekusi)</h5>
-        <div class="code-block">
-<span class="code-comment">// Contoh: Input validasi</span>
-<span class="code-type">int</span> pilihan;
-<span class="code-keyword">do</span> {
-    <span class="code-function">printf</span>(<span class="code-string">"Pilih menu (1-3): "</span>);
-    <span class="code-function">scanf</span>(<span class="code-string">"%d"</span>, &pilihan);
-} <span class="code-keyword">while</span> (pilihan < 1 || pilihan > 3);
-        </div>
-      </div>
-
-      <div class="content-card">
-        <h4><i class="fas fa-laptop-code"></i> Contoh Kasus: Daftar Wisata Banyuwangi</h4>
-        <p>Program untuk menampilkan daftar 5 objek wisata populer di Banyuwangi:</p>
-        
-        <div class="code-block">
-<span class="code-comment">// Program: Daftar Wisata Banyuwangi</span>
-<span class="code-type">#include</span> <span class="code-string">&lt;stdio.h&gt;</span>
-
-<span class="code-type">int</span> <span class="code-function">main</span>() {
-    <span class="code-type">char</span> wisata[5][50] = {
-        <span class="code-string">"Kawah Ijen"</span>,
-        <span class="code-string">"Pulau Merah"</span>,
-        <span class="code-string">"Baluran National Park"</span>,
-        <span class="code-string">"Pantai Pulau Tabuhan"</span>,
-        <span class="code-string">"Air Terjun Lider"</span>
-    };
-    
-    <span class="code-function">printf</span>(<span class="code-string">"=== 5 Wisata Populer Banyuwangi ===\n\n"</span>);
-    
-    <span class="code-keyword">for</span> (<span class="code-type">int</span> i = 0; i < 5; i++) {
-        <span class="code-function">printf</span>(<span class="code-string">"%d. %s\n"</span>, i+1, wisata[i]);
-    }
-    
-    <span class="code-keyword">return</span> <span class="code-number">0</span>;
-}
-        </div>
-
-        <div class="step-explanation">
-          <h5><i class="fas fa-list-1-2"></i> Penjelasan Program:</h5>
-          <ol class="step-list">
-            <li>Deklarasi array 2 dimensi untuk menyimpan 5 nama wisata.</li>
-            <li>Perulangan <code>for</code> berjalan dari i=0 sampai i<5 (5 kali).</li>
-            <li>Setiap iterasi menampilkan nomor dan nama wisata.</li>
-            <li>Output: Daftar 5 wisata dengan nomor urut.</li>
-          </ol>
-        </div>
-      </div>
-
-      <!-- Live Editor Modul 2 -->
-      <div class="live-editor">
-        <div class="editor-header">
-          <div class="editor-title">
-            <i class="fas fa-code"></i>
-            Live Code Simulator - Perulangan
-          </div>
-          <div>
-            <button class="btn-run" onclick="runCode('modul2')">
-              <i class="fas fa-play"></i> Jalankan Kode
-            </button>
-            <button class="btn-clear" onclick="clearOutput('modul2')">
-              <i class="fas fa-trash"></i> Clear
-            </button>
-          </div>
-        </div>
-        <div class="editor-body">
-          <div class="editor-pane">
-            <span class="editor-pane-label">📝 Kode Program (Bahasa C)</span>
-            <textarea class="code-textarea" id="code-modul2" spellcheck="false">#include &lt;stdio.h&gt;
-
-int main() {
-    int jumlah;
-    
-    printf("Masukkan jumlah perulangan: ");
-    // Simulasi input
-    jumlah = 5;
-    printf("%d\n\n", jumlah);
-    
-    printf("Hasil perulangan:\n");
-    for (int i = 1; i <= jumlah; i++) {
-        printf("%d. Iterasi ke-%d\n", i, i);
-    }
-    
-    printf("\nPerulangan selesai!\n");
-    return 0;
-}</textarea>
-            <div class="input-simulation">
-              <label>🔧 Simulasi Jumlah Perulangan:</label>
-              <input type="number" id="input-modul2" value="5" min="1" max="20" placeholder="Masukkan jumlah 1-20">
-            </div>
-          </div>
-          <div class="editor-pane output-pane">
-            <span class="editor-pane-label">🖥️ Output Program</span>
-            <div class="output-content" id="output-modul2">Klik "Jalankan Kode" untuk melihat hasil...</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="tip-box">
-        <i class="fas fa-lightbulb"></i>
-        <div>
-          <strong>💡 Tips Penting:</strong> 
-          Gunakan <code>for</code> jika jumlah perulangan sudah diketahui. 
-          Gunakan <code>while</code> jika perulangan bergantung pada kondisi. 
-          Gunakan <code>do-while</code> jika kode harus dijalankan minimal 1 kali!
-          Hati-hati dengan <strong>infinite loop</strong> (perulangan tak terbatas)!
-        </div>
-      </div>
-
-      <div class="note-box">
-        <strong>📚 Konteks Lokal:</strong> 
-        Perulangan sangat berguna untuk menampilkan daftar data berulang, 
-        seperti daftar wisata, jadwal tour, atau antrian pengunjung objek wisata.
-      </div>
-
-      <!-- QUIZ MODUL 2 -->
-      <div class="quiz-container" id="quiz-modul2">
-        <div class="quiz-header">
-          <div>
-            <h3 style="margin-bottom: 8px;">Kuis Modul 2: Perulangan</h3>
-            <div style="color: var(--text-muted); font-size: 0.9rem;">
-              <i class="fas fa-question-circle"></i> 5 Soal • <i class="fas fa-star"></i> 100 Poin
-            </div>
-          </div>
-          <div class="quiz-score-display">
-            <div style="font-size: 0.85rem; color: var(--text-muted);">Skor Anda</div>
-            <div class="quiz-score-value" id="score-modul2">0</div>
-            <div style="font-size: 0.9rem; color: var(--text-muted);">/ 100 poin</div>
-          </div>
-        </div>
-
-        <form id="form-modul2">
-          <div class="quiz-question" data-correct="a">
-            <div class="question-text">
-              <span class="question-number">1</span>
-              <span>Perulangan yang paling tepat digunakan jika jumlah iterasi sudah diketahui adalah?</span>
-            </div>
-            <div class="quiz-options">
-              <label class="quiz-option"><span class="option-letter">A</span><span>for</span></label>
-              <label class="quiz-option"><span class="option-letter">B</span><span>while</span></label>
-              <label class="quiz-option"><span class="option-letter">C</span><span>do-while</span></label>
-              <label class="quiz-option"><span class="option-letter">D</span><span>if-else</span></label>
-            </div>
-          </div>
-          <div class="quiz-question" data-correct="c">
-            <div class="question-text">
-              <span class="question-number">2</span>
-              <span>Perulangan yang minimal dijalankan 1 kali adalah?</span>
-            </div>
-            <div class="quiz-options">
-              <label class="quiz-option"><span class="option-letter">A</span><span>for</span></label>
-              <label class="quiz-option"><span class="option-letter">B</span><span>while</span></label>
-              <label class="quiz-option"><span class="option-letter">C</span><span>do-while</span></label>
-              <label class="quiz-option"><span class="option-letter">D</span><span>switch</span></label>
-            </div>
-          </div>
-          <div class="quiz-question" data-correct="b">
-            <div class="question-text">
-              <span class="question-number">3</span>
-              <span>Output dari: for(int i=1; i<=3; i++) printf("%d", i); adalah?</span>
-            </div>
-            <div class="quiz-options">
-              <label class="quiz-option"><span class="option-letter">A</span><span>123</span></label>
-              <label class="quiz-option"><span class="option-letter">B</span><span>123</span></label>
-              <label class="quiz-option"><span class="option-letter">C</span><span>012</span></label>
-              <label class="quiz-option"><span class="option-letter">D</span><span>234</span></label>
-            </div>
-          </div>
-          <div class="quiz-question" data-correct="d">
-            <div class="question-text">
-              <span class="question-number">4</span>
-              <span>Untuk menghentikan perulangan secara paksa digunakan statement?</span>
-            </div>
-            <div class="quiz-options">
-              <label class="quiz-option"><span class="option-letter">A</span><span>stop</span></label>
-              <label class="quiz-option"><span class="option-letter">B</span><span>exit</span></label>
-              <label class="quiz-option"><span class="option-letter">C</span><span>return</span></label>
-              <label class="quiz-option"><span class="option-letter">D</span><span>break</span></label>
-            </div>
-          </div>
-          <div class="quiz-question" data-correct="a">
-            <div class="question-text">
-              <span class="question-number">5</span>
-              <span>Infinite loop terjadi ketika?</span>
-            </div>
-            <div class="quiz-options">
-              <label class="quiz-option"><span class="option-letter">A</span><span>Kondisi perulangan selalu benar</span></label>
-              <label class="quiz-option"><span class="option-letter">B</span><span>Kondisi perulangan selalu salah</span></label>
-              <label class="quiz-option"><span class="option-letter">C</span><span>Tidak ada variabel</span></label>
-              <label class="quiz-option"><span class="option-letter">D</span><span>Kode terlalu panjang</span></label>
-            </div>
-          </div>
-
-          <div class="quiz-actions">
-            <button type="button" class="btn-quiz btn-submit" onclick="submitQuiz('modul2')">
-              <i class="fas fa-paper-plane"></i> Kirim Jawaban
-            </button>
-            <button type="button" class="btn-quiz btn-reset" onclick="resetQuiz('modul2')">
-              <i class="fas fa-redo"></i> Reset
-            </button>
-            <button type="button" class="btn-quiz btn-retry" id="retry-modul2" onclick="retryQuiz('modul2')">
-              <i class="fas fa-sync-alt"></i> Coba Lagi
-            </button>
-          </div>
-        </form>
-        <div class="quiz-feedback" id="feedback-modul2"></div>
-      </div>
-
-      <div class="section-nav">
-        <button class="nav-btn" onclick="prevModule('modul1')">
-          <i class="fas fa-arrow-left"></i> Kembali
-        </button>
-        <button class="nav-btn primary" onclick="nextModule('modul3')">
-          Lanjut ke Tipe Data <i class="fas fa-arrow-right"></i>
-        </button>
-      </div>
+//
     </section>
 
     <!-- ==================== MODUL 3: TIPE DATA & OPERATOR ==================== -->
