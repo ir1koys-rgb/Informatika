@@ -3191,70 +3191,7 @@ searchBox.addEventListener("input", function () {
 </section>
 
 
-<!-- =====================================================
-     FOOTER
-     ===================================================== -->
 
-<div class="uuite-footer">
-
-    📚 Referensi Informatika —
-    Informasi Digital
-
-    <br>
-
-    Gunakan teknologi secara
-    <strong>aman, kritis, etis, dan bertanggung jawab.</strong>
-
-</div>
-
-</div>
-
-
-<!-- =====================================================
-     JAVASCRIPT PENCARIAN
-     ===================================================== -->
-
-<script>
-
-const searchBox = document.getElementById("searchUUITE");
-
-const rows = document.querySelectorAll(
-    "#uuiteTable tbody tr"
-);
-
-searchBox.addEventListener("input", function () {
-
-    const keyword = this.value
-        .toLowerCase()
-        .trim();
-
-    rows.forEach(function(row) {
-
-        const text = row.textContent
-            .toLowerCase();
-
-        if (text.includes(keyword)) {
-
-            row.style.display = "";
-
-        } else {
-
-            row.style.display = "none";
-
-        }
-
-    });
-
-});
-
-</script>
-
-</body>
-</html>  
-        </p>
-      </div>
-//
-    </section>
 
     <!-- ==================== MODUL 3: TIPE DATA & OPERATOR ==================== -->
     <section id="modul3" class="topic-section">
